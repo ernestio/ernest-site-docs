@@ -1,4 +1,4 @@
-baseurl = "https://ernest.io/"
+baseurl = "https://docs.ernest.io/"
 languageCode = "en-us"
 title = "Ernest"
 theme = "hugo-material-docs"
@@ -9,16 +9,16 @@ googleAnalytics = ""
 
 [params]
 	# General information
-	author = "Ernestio"
+	author      = "Ernestio"
 	description = "Developer Driven Orchestration"
-	copyright = "Released under the MIT license"
+	copyright   = "Released under the MIT license"
 
 	# Repository
 	provider = "GitHub"
 	repo_url = "https://github.com/ernestio/ernest"
 
 	version = "1.11.0"
-	logo = "images/dog.png"
+	logo    = "images/dog.png"
 	favicon = ""
 
 	permalink = "#"
@@ -86,7 +86,7 @@ googleAnalytics = ""
 	weight = 70
 
 [blackfriday]
-	smartypants	= true
-	fractions = true
-	smartDashes = true
+	smartypants    = true
+	fractions      = true
+	smartDashes    = true
 	plainIDAnchors = true
