@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Supports on Ernest</title>
+    <link>https://ernest.io/support/index.xml</link>
+    <description>Recent content in Supports on Ernest</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Released under the MIT license</copyright>
+    <lastBuildDate>Wed, 09 Mar 2016 20:08:11 +0100</lastBuildDate>
+    <atom:link href="https://ernest.io/support/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Support</title>
+      <link>https://ernest.io/support/</link>
+      <pubDate>Wed, 09 Mar 2016 20:08:11 +0100</pubDate>
+      
+      <guid>https://ernest.io/support/</guid>
+      <description>
+
+&lt;h2 id=&#34;commercial-support&#34;&gt;Commercial Support&lt;/h2&gt;
+
+&lt;p&gt;R3 Labs offer two support plans for Ernest:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;Standard&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;Premium&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Contract Type&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Annual subscription&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Annual subscription&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Access to a technical support website&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&amp;#x25cf;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&amp;#x25cf;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Maintenance and upgrades&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&amp;#x25cf;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&amp;#x25cf;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Web support (email/chat) during standard business hours (9:00AM – 5:00 PM CET)&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&amp;#x25cf;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&amp;#x25cf;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Maximum number of designated contacts&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;3&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Feature priorities&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&amp;#x25cf;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Prioritized issue resolution&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&amp;#x25cf;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Response time on non-critical issues&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Best effort&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Within 8 business hours&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Response time on critical issues**&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Within 8 business hours&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Within 4 hours&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;Pricing&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;a href=&#34;https://ernest.io/supportplan&#34;&gt;[Contact us](http://ernest.io/supportplan)&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;a href=&#34;https://ernest.io/supportplan&#34;&gt;[Contact us](http://ernest.io/supportplan)&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;small&gt;**A ‘Critical Issue’ is defined as a system down that impacts your use of Ernest in a production environment. There is no viable workaround, and business is severely impacted.&lt;/small&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
