@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Supports on Ernest</title>
-    <link>https://ernest.io/support/index.xml</link>
+    <link>https://docs.ernest.io/support/index.xml</link>
     <description>Recent content in Supports on Ernest</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Released under the MIT license</copyright>
     <lastBuildDate>Wed, 09 Mar 2016 20:08:11 +0100</lastBuildDate>
-    <atom:link href="https://ernest.io/support/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://docs.ernest.io/support/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Support</title>
-      <link>https://ernest.io/support/</link>
+      <link>https://docs.ernest.io/support/</link>
       <pubDate>Wed, 09 Mar 2016 20:08:11 +0100</pubDate>
       
-      <guid>https://ernest.io/support/</guid>
+      <guid>https://docs.ernest.io/support/</guid>
       <description>
 
 &lt;h2 id=&#34;commercial-support&#34;&gt;Commercial Support&lt;/h2&gt;
@@ -88,8 +88,8 @@
 
 &lt;tr&gt;
 &lt;td&gt;Pricing&lt;/td&gt;
-&lt;td align=&#34;center&#34;&gt;&lt;a href=&#34;https://ernest.io/supportplan&#34;&gt;[Contact us](http://ernest.io/supportplan)&lt;/a&gt;&lt;/td&gt;
-&lt;td align=&#34;center&#34;&gt;&lt;a href=&#34;https://ernest.io/supportplan&#34;&gt;[Contact us](http://ernest.io/supportplan)&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;a href=&#34;https://docs.ernest.io/supportplan&#34;&gt;[Contact us](http://ernest.io/supportplan)&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;a href=&#34;https://docs.ernest.io/supportplan&#34;&gt;[Contact us](http://ernest.io/supportplan)&lt;/a&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;

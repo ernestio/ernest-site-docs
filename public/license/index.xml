@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Licenses on Ernest</title>
-    <link>https://ernest.io/license/index.xml</link>
+    <link>https://docs.ernest.io/license/index.xml</link>
     <description>Recent content in Licenses on Ernest</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Released under the MIT license</copyright>
     <lastBuildDate>Wed, 09 Mar 2016 19:56:50 +0100</lastBuildDate>
-    <atom:link href="https://ernest.io/license/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://docs.ernest.io/license/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Mozilla Public License Version 2.0</title>
-      <link>https://ernest.io/license/</link>
+      <link>https://docs.ernest.io/license/</link>
       <pubDate>Wed, 09 Mar 2016 19:56:50 +0100</pubDate>
       
-      <guid>https://ernest.io/license/</guid>
+      <guid>https://docs.ernest.io/license/</guid>
       <description>
 
 &lt;h2 id=&#34;1-definitions&#34;&gt;1. Definitions&lt;/h2&gt;

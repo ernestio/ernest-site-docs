@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Developers on Ernest</title>
-    <link>https://ernest.io/developer/index.xml</link>
+    <link>https://docs.ernest.io/developer/index.xml</link>
     <description>Recent content in Developers on Ernest</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Released under the MIT license</copyright>
     <lastBuildDate>Wed, 09 Mar 2016 20:10:46 +0100</lastBuildDate>
-    <atom:link href="https://ernest.io/developer/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://docs.ernest.io/developer/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Developer</title>
-      <link>https://ernest.io/developer/</link>
+      <link>https://docs.ernest.io/developer/</link>
       <pubDate>Wed, 09 Mar 2016 20:10:46 +0100</pubDate>
       
-      <guid>https://ernest.io/developer/</guid>
+      <guid>https://docs.ernest.io/developer/</guid>
       <description>
 
 &lt;h2 id=&#34;architecture-overview&#34;&gt;Architecture overview&lt;/h2&gt;

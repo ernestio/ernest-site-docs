@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Getting-starteds on Ernest</title>
-    <link>https://ernest.io/getting-started/index.xml</link>
+    <link>https://docs.ernest.io/getting-started/index.xml</link>
     <description>Recent content in Getting-starteds on Ernest</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Released under the MIT license</copyright>
     <lastBuildDate>Wed, 09 Mar 2016 00:11:02 +0100</lastBuildDate>
-    <atom:link href="https://ernest.io/getting-started/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://docs.ernest.io/getting-started/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Getting started</title>
-      <link>https://ernest.io/getting-started/</link>
+      <link>https://docs.ernest.io/getting-started/</link>
       <pubDate>Wed, 09 Mar 2016 00:11:02 +0100</pubDate>
       
-      <guid>https://ernest.io/getting-started/</guid>
+      <guid>https://docs.ernest.io/getting-started/</guid>
       <description>
 
 &lt;h2 id=&#34;quickstart-guide&#34;&gt;Quickstart Guide&lt;/h2&gt;
