@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ernest</title>
-    <link>https://docs.ernest.io/index.xml</link>
+    <link>http://docs.ernest.io/index.xml</link>
     <description>Recent content on Ernest</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Released under the MIT license</copyright>
     <lastBuildDate>Wed, 09 Mar 2016 00:11:02 +0100</lastBuildDate>
-    <atom:link href="https://docs.ernest.io/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://docs.ernest.io/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Getting started</title>
-      <link>https://docs.ernest.io/getting-started/</link>
+      <link>http://docs.ernest.io/getting-started/</link>
       <pubDate>Wed, 09 Mar 2016 00:11:02 +0100</pubDate>
       
-      <guid>https://docs.ernest.io/getting-started/</guid>
+      <guid>http://docs.ernest.io/getting-started/</guid>
       <description>
 
 &lt;h2 id=&#34;quickstart-guide&#34;&gt;Quickstart Guide&lt;/h2&gt;
@@ -213,10 +213,10 @@ Your environment endpoint is:
     
     <item>
       <title>Documentation</title>
-      <link>https://docs.ernest.io/documentation/</link>
+      <link>http://docs.ernest.io/documentation/</link>
       <pubDate>Wed, 09 Mar 2016 20:08:11 +0100</pubDate>
       
-      <guid>https://docs.ernest.io/documentation/</guid>
+      <guid>http://docs.ernest.io/documentation/</guid>
       <description>
 
 &lt;h2 id=&#34;using-the-cli&#34;&gt;Using the CLI&lt;/h2&gt;
@@ -2779,7 +2779,7 @@ nat_gateways:
 
 &lt;h2 id=&#34;vcloud-director-examples&#34;&gt;vCloud Director Examples&lt;/h2&gt;
 
-&lt;p&gt;If you would like to try Ernest but do not have access to vCloud you can request a demo vCloud account &lt;a href=&#34;https://docs.ernest.io/vcloud-account&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;If you would like to try Ernest but do not have access to vCloud you can request a demo vCloud account &lt;a href=&#34;http://docs.ernest.io/vcloud-account&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Before we get started we will need the following information:&lt;/p&gt;
 
@@ -3141,7 +3141,7 @@ Your environment endpoint is: 195.3.186.44
 &lt;p&gt;If you wish to change the platform update your YAML to show how you want the platform to look, then re-apply the YAML. Ernest will make the appropriate changes to the platform.&lt;/p&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;The SALT image can be downloaded from &lt;a href=&#34;https://docs.ernest.io/downloads/r3-salt-master.ova&#34;&gt;here&lt;/a&gt;. For the current version of Ernest (1.0) it is not possible to specify the catalog name that Ernest will get the SALT image from, you will need to place the image in a catalog named &amp;lsquo;r3&amp;rsquo;.&lt;/p&gt;
+&lt;p&gt;The SALT image can be downloaded from &lt;a href=&#34;http://docs.ernest.io/downloads/r3-salt-master.ova&#34;&gt;here&lt;/a&gt;. For the current version of Ernest (1.0) it is not possible to specify the catalog name that Ernest will get the SALT image from, you will need to place the image in a catalog named &amp;lsquo;r3&amp;rsquo;.&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h3 id=&#34;servers-only&#34;&gt;Servers Only&lt;/h3&gt;
@@ -3644,10 +3644,10 @@ Networks is a map with two fields&lt;/p&gt;
     
     <item>
       <title>Downloads</title>
-      <link>https://docs.ernest.io/downloads/</link>
+      <link>http://docs.ernest.io/downloads/</link>
       <pubDate>Wed, 09 Mar 2016 20:08:11 +0100</pubDate>
       
-      <guid>https://docs.ernest.io/downloads/</guid>
+      <guid>http://docs.ernest.io/downloads/</guid>
       <description>
 
 &lt;h2 id=&#34;get-ernest&#34;&gt;Get Ernest&lt;/h2&gt;
@@ -3693,10 +3693,10 @@ cd ernest
     
     <item>
       <title>Developer</title>
-      <link>https://docs.ernest.io/developer/</link>
+      <link>http://docs.ernest.io/developer/</link>
       <pubDate>Wed, 09 Mar 2016 20:10:46 +0100</pubDate>
       
-      <guid>https://docs.ernest.io/developer/</guid>
+      <guid>http://docs.ernest.io/developer/</guid>
       <description>
 
 &lt;h2 id=&#34;architecture-overview&#34;&gt;Architecture overview&lt;/h2&gt;
@@ -4016,10 +4016,10 @@ workflow-manager
     
     <item>
       <title>Community</title>
-      <link>https://docs.ernest.io/community/</link>
+      <link>http://docs.ernest.io/community/</link>
       <pubDate>Wed, 09 Mar 2016 19:56:50 +0100</pubDate>
       
-      <guid>https://docs.ernest.io/community/</guid>
+      <guid>http://docs.ernest.io/community/</guid>
       <description>
 
 &lt;h2 id=&#34;discuss&#34;&gt;Discuss&lt;/h2&gt;
@@ -4177,10 +4177,10 @@ workflow-manager
     
     <item>
       <title>Support</title>
-      <link>https://docs.ernest.io/support/</link>
+      <link>http://docs.ernest.io/support/</link>
       <pubDate>Wed, 09 Mar 2016 20:08:11 +0100</pubDate>
       
-      <guid>https://docs.ernest.io/support/</guid>
+      <guid>http://docs.ernest.io/support/</guid>
       <description>
 
 &lt;h2 id=&#34;commercial-support&#34;&gt;Commercial Support&lt;/h2&gt;
@@ -4253,8 +4253,8 @@ workflow-manager
 
 &lt;tr&gt;
 &lt;td&gt;Pricing&lt;/td&gt;
-&lt;td align=&#34;center&#34;&gt;&lt;a href=&#34;https://docs.ernest.io/supportplan&#34;&gt;[Contact us](http://ernest.io/supportplan)&lt;/a&gt;&lt;/td&gt;
-&lt;td align=&#34;center&#34;&gt;&lt;a href=&#34;https://docs.ernest.io/supportplan&#34;&gt;[Contact us](http://ernest.io/supportplan)&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;a href=&#34;http://docs.ernest.io/supportplan&#34;&gt;[Contact us](http://ernest.io/supportplan)&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;&lt;a href=&#34;http://docs.ernest.io/supportplan&#34;&gt;[Contact us](http://ernest.io/supportplan)&lt;/a&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -4265,10 +4265,10 @@ workflow-manager
     
     <item>
       <title>Mozilla Public License Version 2.0</title>
-      <link>https://docs.ernest.io/license/</link>
+      <link>http://docs.ernest.io/license/</link>
       <pubDate>Wed, 09 Mar 2016 19:56:50 +0100</pubDate>
       
-      <guid>https://docs.ernest.io/license/</guid>
+      <guid>http://docs.ernest.io/license/</guid>
       <description>
 
 &lt;h2 id=&#34;1-definitions&#34;&gt;1. Definitions&lt;/h2&gt;
@@ -4471,10 +4471,10 @@ If it is not possible or desirable to put the notice in a particular file, then 
     
     <item>
       <title>Ernest</title>
-      <link>https://docs.ernest.io/</link>
+      <link>http://docs.ernest.io/</link>
       <pubDate>Wed, 09 Mar 2016 00:11:02 +0100</pubDate>
       
-      <guid>https://docs.ernest.io/</guid>
+      <guid>http://docs.ernest.io/</guid>
       <description>
 
 &lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;

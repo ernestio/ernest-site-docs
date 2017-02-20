@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Documentations on Ernest</title>
-    <link>https://docs.ernest.io/documentation/index.xml</link>
+    <link>http://docs.ernest.io/documentation/index.xml</link>
     <description>Recent content in Documentations on Ernest</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Released under the MIT license</copyright>
     <lastBuildDate>Wed, 09 Mar 2016 20:08:11 +0100</lastBuildDate>
-    <atom:link href="https://docs.ernest.io/documentation/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://docs.ernest.io/documentation/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Documentation</title>
-      <link>https://docs.ernest.io/documentation/</link>
+      <link>http://docs.ernest.io/documentation/</link>
       <pubDate>Wed, 09 Mar 2016 20:08:11 +0100</pubDate>
       
-      <guid>https://docs.ernest.io/documentation/</guid>
+      <guid>http://docs.ernest.io/documentation/</guid>
       <description>
 
 &lt;h2 id=&#34;using-the-cli&#34;&gt;Using the CLI&lt;/h2&gt;
@@ -2578,7 +2578,7 @@ nat_gateways:
 
 &lt;h2 id=&#34;vcloud-director-examples&#34;&gt;vCloud Director Examples&lt;/h2&gt;
 
-&lt;p&gt;If you would like to try Ernest but do not have access to vCloud you can request a demo vCloud account &lt;a href=&#34;https://docs.ernest.io/vcloud-account&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;If you would like to try Ernest but do not have access to vCloud you can request a demo vCloud account &lt;a href=&#34;http://docs.ernest.io/vcloud-account&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Before we get started we will need the following information:&lt;/p&gt;
 
@@ -2940,7 +2940,7 @@ Your environment endpoint is: 195.3.186.44
 &lt;p&gt;If you wish to change the platform update your YAML to show how you want the platform to look, then re-apply the YAML. Ernest will make the appropriate changes to the platform.&lt;/p&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;The SALT image can be downloaded from &lt;a href=&#34;https://docs.ernest.io/downloads/r3-salt-master.ova&#34;&gt;here&lt;/a&gt;. For the current version of Ernest (1.0) it is not possible to specify the catalog name that Ernest will get the SALT image from, you will need to place the image in a catalog named &amp;lsquo;r3&amp;rsquo;.&lt;/p&gt;
+&lt;p&gt;The SALT image can be downloaded from &lt;a href=&#34;http://docs.ernest.io/downloads/r3-salt-master.ova&#34;&gt;here&lt;/a&gt;. For the current version of Ernest (1.0) it is not possible to specify the catalog name that Ernest will get the SALT image from, you will need to place the image in a catalog named &amp;lsquo;r3&amp;rsquo;.&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h3 id=&#34;servers-only&#34;&gt;Servers Only&lt;/h3&gt;

@@ -1,4 +1,4 @@
-baseurl = "https://docs.ernest.io/"
+baseurl = "http://docs.ernest.io/"
 languageCode = "en-us"
 title = "Ernest"
 theme = "hugo-material-docs"

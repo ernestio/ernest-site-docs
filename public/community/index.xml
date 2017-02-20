@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Communities on Ernest</title>
-    <link>https://docs.ernest.io/community/index.xml</link>
+    <link>http://docs.ernest.io/community/index.xml</link>
     <description>Recent content in Communities on Ernest</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Released under the MIT license</copyright>
     <lastBuildDate>Wed, 09 Mar 2016 19:56:50 +0100</lastBuildDate>
-    <atom:link href="https://docs.ernest.io/community/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://docs.ernest.io/community/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Community</title>
-      <link>https://docs.ernest.io/community/</link>
+      <link>http://docs.ernest.io/community/</link>
       <pubDate>Wed, 09 Mar 2016 19:56:50 +0100</pubDate>
       
-      <guid>https://docs.ernest.io/community/</guid>
+      <guid>http://docs.ernest.io/community/</guid>
       <description>
 
 &lt;h2 id=&#34;discuss&#34;&gt;Discuss&lt;/h2&gt;
