@@ -9,18 +9,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
-    <title>Getting started - Ernest</title>
+    <title>Community Slack Channel Access Form - Ernest</title>
     <meta name="generator" content="Hugo 0.16-DEV" />
 
     
     <meta name="description" content="Developer Driven Orchestration">
     
-    <link rel="canonical" href="http://docs.ernest.io/getting-started/">
+    <link rel="canonical" href="http://docs.ernest.io/slack/">
     
     <meta name="author" content="Ernestio">
     
 
-    <meta property="og:url" content="http://docs.ernest.io/getting-started/">
+    <meta property="og:url" content="http://docs.ernest.io/slack/">
     <meta property="og:title" content="Ernest">
     <meta property="og:image" content="http://docs.ernest.io/images/dog.png">
     <meta name="apple-mobile-web-app-title" content="Ernest">
@@ -97,7 +97,7 @@
     </div>
     <div class="stretch">
       <div class="title">
-        Getting started
+        Community Slack Channel Access Form
       </div>
     </div>
 
@@ -202,14 +202,11 @@
 
 
 
-<a class="current" title="Getting started" href="http://docs.ernest.io/getting-started/">
+<a  title="Getting started" href="http://docs.ernest.io/getting-started/">
 	
 	Getting started
 </a>
 
-
-<ul id="scrollspy">
-</ul>
 
 
   
@@ -366,207 +363,39 @@
 
 	<article class="article">
 		<div class="wrapper">
-			<h1>Getting started </h1>
+			<h1>Community Slack Channel Access Form </h1>
 
-			
+			<form class="form-horizontal" id="input-form" action="https://docs.google.com/forms/d/1t0olvu3MQNBdz3oTKLm_NczBeFzL8AnIeMOrQwfAKF4/formResponse?" method="POST" target="no-target" onSubmit="alert('Thank you for your request, we will process it shortly.');window.location.href = '/community/';">
+<fieldset>
 
-<h2 id="setup-ernest">Setup Ernest</h2>
+<legend></legend>
 
-<p>In this quickstart guide we will build a simple environment consisting of a public server and private server on AWS, and allow SSH access from our IP. You will need a working copy of Ernest and the Ernest CLI, your AWS Access Key and Secret Key, and an AWS VPC.</p>
+<div class="form-group">
+  <label for="firstname">First Name: </label>  
+  <input id="firstname" name="entry.1042863238" type="text" placeholder="First Name" required="">
+</div>
 
-<h3 id="get-ernest">Get Ernest</h3>
+<div class="form-group">
+  <label for="lastname">Last Name: </label>  
+  <input id="lastname" name="entry.893089123" type="text" placeholder="Last Name" required="">
+</div>
 
-<p>Follow the instructions <a href="http://docs.ernest.io/downloads/">here</a> to get Ernest and the Ernest CLI.</p>
+<div class="form-group">
+  <label for="email">Email Address: </label>  
+  <input id="email" name="entry.1081522787" type="text" placeholder="Email Address" required="">
+</div>
 
-<h3 id="setup-your-user">Setup Your User</h3>
+<div class="form-group">
+  <label for="submit"></label>
+  <div>
+    <button id="submit" type="submit" class="button">Submit</button>
+  </div>
+</div>
 
-<p>Target your Ernest instance:</p>
+</fieldset>
+</form>
 
-<pre><code>$ ernest target https://10.50.1.11
-Target set
-</code></pre>
-
-<p>10.50.1.11 is the IP address Ernest will be on if you are using the Vagrant Box. If you download the OVF or build Ernest from source then Ernest may be run on a different IP.</p>
-
-<p>Login to Ernest as admin:</p>
-
-<pre><code>$ ernest login --user admin --password w4rmR3d
-Welcome back admin
-</code></pre>
-
-<p>Create a user:</p>
-
-<pre><code>$ ernest user create user1 abc123
-User user1 successfully created
-</code></pre>
-
-<p>Create a group:</p>
-
-<pre><code>$ ernest group create group1
-Group 'group1' successfully created, you can add users with 'ernest group add-user username group1'
-</code></pre>
-
-<p>Add the user to the group:</p>
-
-<pre><code>$ ernest group add-user user1 group1
-User 'user1' is now assigned to group 'group1'
-</code></pre>
-
-<h3 id="setup-your-datacenter">Setup Your Datacenter</h3>
-
-<p>Login as the user:</p>
-
-<pre><code>$ ernest login --user user1 --password abc123
-Welcome back user1
-</code></pre>
-
-<p>Configure the datacenter on Ernest using your Access Key, Secret Key, and VPC ID:</p>
-
-<pre><code>$ ernest datacenter create aws --region eu-west-1 --secret_access_key XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX --access_key_id YYYYYYYYYYYYYYYYYYYY my-dc
-Datacenter 'my-dc' successfully created
-</code></pre>
-
-<h2 id="create-your-environment">Create Your Environment</h2>
-
-<p>We will use this YAML (demo.yml) to create our environment:</p>
-
-<pre><code>---
-name: demo
-datacenter: my-dc
-vpc_id: vpc-abcdef01
-
-networks:
-  - name: public
-    subnet: 10.0.10.0/24
-    public: true
-  - name: private
-    subnet: 10.0.11.0/24
-    public: false
-    nat_gateway: private-nat
-
-nat_gateways:
-  - name: private-nat
-    public_network: public
-
-security_groups:
-  - name: public-sg
-    egress:
-      - ip: 0.0.0.0/0
-        protocol: any
-        from_port: '0'
-        to_port: '65535'
-    ingress:
-      - ip: 52.211.19.211/32
-        protocol: tcp
-        from_port: '22'
-        to_port: '22'
-  - name: private-sg
-    egress:
-      - ip: 0.0.0.0/0
-        protocol: any
-        from_port: '0'
-        to_port: '65535'
-    ingress:
-      - ip: 10.0.0.0/16
-        protocol: tcp
-        from_port: '22'
-        to_port: '22'
-
-instances:
-  - name: public
-    elastic_ip: true
-    type: t2.micro
-    image: ami-ed82e39e
-    network: public
-    start_ip: 10.0.10.11
-    count: 1
-    key_pair: my-key
-    security_groups:
-      - public-sg
-
-  - name: private
-    type: t2.micro
-    image: ami-ed82e39e
-    network: private
-    start_ip: 10.0.11.11
-    count: 1
-    key_pair: my-key
-    security_groups:
-      - private-sg
-
-</code></pre>
-
-<p>Now we can apply our YAML:</p>
-
-<pre><code>$ ernest service apply demo.yml
-
-Environment creation requested
-Ernest will show you all output from your requested service creation
-You can cancel at any moment with Ctrl+C, even the service is still being created, you won't have any output
-
-Starting environment creation
-
-Creating networks:
- - my-dc-demo-public
-   IP     : 10.0.10.0/24
-   AWS ID : subnet-defabc01
-   Status : completed
- - my-dc-demo-private
-   IP     : 10.0.11.0/24
-   AWS ID : subnet-defabc02
-   Status : completed
-Networks successfully created
-
-Creating firewalls:
- - my-dc-demo-public-sg
-   Status    : completed
- - my-dc-demo-private-sg
-   Status    : completed
-Firewalls created
-
-Creating instances:
- - my-dc-demo-public-1
-   IP        : 10.0.10.11
-   AWS ID    : i-abcdef01abcdef011
-   Status    : completed
- - my-dc-demo-private-1
-   IP        : 10.0.11.11
-   AWS ID    : i-abcdef01abcdef012
-   Status    : completed
-Instances successfully created
-
-Updating instances:
- - my-dc-demo-public-1
-   IP        : 10.0.10.11
-   PUBLIC IP : 52.210.179.96
-   AWS ID    : i-abcdef01abcdef011
-   Status    : completed
- - my-dc-demo-private-1
-   IP        : 10.0.11.11
-   PUBLIC IP :
-   AWS ID    : i-abcdef01abcdef012
-   Status    : completed
-Instances successfully updated
-
-Creating nats:
- - my-dc-demo-private-nat
-   Status    : completed
-Nats created
-SUCCESS: rules successfully applied
-Your environment endpoint is:
-</code></pre>
-
-<p>Congratulations you have built something with Ernest!</p>
-
-<h3 id="next-steps">Next Steps</h3>
-
-<p>Find out how to use the CLI <a href="http://docs.ernest.io/documentation/">here</a>. Then dive into the detailed examples for the supported providers:</p>
-
-<ul>
-<li>Amazon Web Services</li>
-<li>vCloud Director</li>
-</ul>
-
+<iframe src="#" id="no-target" name="no-target" style="visibility:hidden"></iframe>
 
 			<aside class="copyright" role="note">
 				
@@ -584,7 +413,7 @@ Your environment endpoint is:
 <nav class="pagination" aria-label="Footer">
   <div class="previous">
   
-      <a href="http://docs.ernest.io/" title="Ernest">
+      <a href="http://docs.ernest.io/vcloud-account/" title="vCloud Account Creation Request Form">
         <span class="direction">
           Previous
         </span>
@@ -594,7 +423,7 @@ Your environment endpoint is:
           </div>
           <div class="stretch">
             <div class="title">
-              Ernest
+              vCloud Account Creation Request Form
             </div>
           </div>
         </div>
@@ -604,14 +433,14 @@ Your environment endpoint is:
 
   <div class="next">
   
-      <a href="http://docs.ernest.io/documentation/" title="Documentation">
+      <a href="http://docs.ernest.io/" title="Ernest">
         <span class="direction">
           Next
         </span>
         <div class="page">
           <div class="stretch">
             <div class="title">
-              Documentation
+              Ernest
             </div>
           </div>
           <div class="button button-next" role="button" aria-label="Next">

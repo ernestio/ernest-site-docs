@@ -2,11 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Communities on Ernest</title>
-    <link>http://docs.ernest.io/community/index.xml</link>
+    <link>http://docs.ernest.io/community/</link>
     <description>Recent content in Communities on Ernest</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>Released under the MIT license</copyright>
     <lastBuildDate>Wed, 09 Mar 2016 19:56:50 +0100</lastBuildDate>
     <atom:link href="http://docs.ernest.io/community/index.xml" rel="self" type="application/rss+xml" />
     
@@ -23,13 +22,13 @@
 &lt;p&gt;To discuss all things Ernest with other members of the community:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;join the Ernest &lt;a href=&#34;http://ernest.io/slack&#34;&gt;Slack channel&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;join the Ernest &lt;a href=&#34;http://docs.ernest.io/slack&#34;&gt;Slack channel&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;join the Ernest &lt;a href=&#34;https://groups.google.com/forum/#!forum/ernestio&#34;&gt;Google Group&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;contribute&#34;&gt;Contribute&lt;/h2&gt;
 
-&lt;p&gt;Ernest, the Ernest CLI, the VSE Creator Service, and the Ernest Site (this website) are all open source projects under the &lt;a href=&#34;license/&#34;&gt;Mozilla Public License v2.0&lt;/a&gt;. If you would like to help us improve these projects you can do so here:&lt;/p&gt;
+&lt;p&gt;Ernest, the Ernest CLI, the VSE Creator Service, and the Ernest Site (this website) are all open source projects under the &lt;a href=&#34;http://docs.ernest.io/license/&#34;&gt;Mozilla Public License v2.0&lt;/a&gt;. If you would like to help us improve these projects you can do so here:&lt;/p&gt;
 
 &lt;table align=&#34;left&#34;&gt;
 &lt;thead&gt;

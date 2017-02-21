@@ -29,4 +29,4 @@ Because Ernest is about developing and then using software reliably and reproduc
 Ernest is built around the idea that DevOps is not a job title, but a methodology, one which Ernest has enshrined in code. Ernest enables digital and SaaS transformation, while removing the complexity of DevOps by delivering it as-a-Service.
 
 ## Next steps
-Follow the instructions [here](downloads/) to get Ernest and the Ernest CLI. Once we have done that we can [start working](getting-started/) with them.
+Follow the instructions [here](/downloads/) to get Ernest and the Ernest CLI. Once we have done that we can [start working](/getting-started/) with them.

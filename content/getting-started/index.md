@@ -4,58 +4,71 @@ title: Getting started
 weight: 10
 ---
 
-## Quickstart Guide
+## Setup Ernest
 In this quickstart guide we will build a simple environment consisting of a public server and private server on AWS, and allow SSH access from our IP. You will need a working copy of Ernest and the Ernest CLI, your AWS Access Key and Secret Key, and an AWS VPC.
 
 ### Get Ernest
-Follow the instructions [here](downloads/) to get Ernest and the Ernest CLI.
+Follow the instructions [here](/downloads/) to get Ernest and the Ernest CLI.
 
 ### Setup Your User
-```sh
-#Target your Ernest instance:
+Target your Ernest instance:
 
+```
 $ ernest target https://10.50.1.11
 Target set
 ```
 
 10.50.1.11 is the IP address Ernest will be on if you are using the Vagrant Box. If you download the OVF or build Ernest from source then Ernest may be run on a different IP.
 
-```sh
-#Login to Ernest as admin:
+Login to Ernest as admin:
 
+```
 $ ernest login --user admin --password w4rmR3d
 Welcome back admin
+```
 
-#Create a user:
+Create a user:
 
+```
 $ ernest user create user1 abc123
 User user1 successfully created
+```
 
-#Create a group:
+Create a group:
 
+```
 $ ernest group create group1
 Group 'group1' successfully created, you can add users with 'ernest group add-user username group1'
+```
 
-#Add the user to the group:
+Add the user to the group:
 
+```
 $ ernest group add-user user1 group1
 User 'user1' is now assigned to group 'group1'
 ```
-### Setup Your Datacenter
-```sh
-#Login as the user:
 
+### Setup Your Datacenter
+
+Login as the user:
+
+```
 $ ernest login --user user1 --password abc123
 Welcome back user1
+```
 
-#Configure the datacenter on Ernest using your Access Key, Secret Key, and VPC ID:
+Configure the datacenter on Ernest using your Access Key, Secret Key, and VPC ID:
 
+```
 $ ernest datacenter create aws --region eu-west-1 --secret_access_key XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX --access_key_id YYYYYYYYYYYYYYYYYYYY my-dc
 Datacenter 'my-dc' successfully created
+```
 
-#Create Your Environment
-#We will use this YAML (demo.yml) to create our environment:
+## Create Your Environment
 
+We will use this YAML (demo.yml) to create our environment:
+
+```
 ---
 name: demo
 datacenter: my-dc
@@ -120,17 +133,16 @@ instances:
     security_groups:
       - private-sg
 
-  ```
+```
 
-### Now we can apply our YAML:
+Now we can apply our YAML:
 
-
-```sh
+```
 $ ernest service apply demo.yml
 
-#Environment creation requested
-#Ernest will show you all output from your requested service creation
-#You can cancel at any moment with Ctrl+C, even the service is still being created, you won't have any output
+Environment creation requested
+Ernest will show you all output from your requested service creation
+You can cancel at any moment with Ctrl+C, even the service is still being created, you won't have any output
 
 Starting environment creation
 
@@ -184,11 +196,10 @@ SUCCESS: rules successfully applied
 Your environment endpoint is:
 ```
 
-
 Congratulations you have built something with Ernest!
 
 ### Next Steps
-Find out how to use the CLI [here](documentation/). Then dive into the detailed examples for the supported providers:
+Find out how to use the CLI [here](/documentation/). Then dive into the detailed examples for the supported providers:
 
 - Amazon Web Services
 - vCloud Director

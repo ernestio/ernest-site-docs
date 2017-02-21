@@ -2,11 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Documentations on Ernest</title>
-    <link>http://docs.ernest.io/documentation/index.xml</link>
+    <link>http://docs.ernest.io/documentation/</link>
     <description>Recent content in Documentations on Ernest</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>Released under the MIT license</copyright>
     <lastBuildDate>Wed, 09 Mar 2016 20:08:11 +0100</lastBuildDate>
     <atom:link href="http://docs.ernest.io/documentation/index.xml" rel="self" type="application/rss+xml" />
     
@@ -22,30 +21,34 @@
 
 &lt;h3 id=&#34;connecting-to-ernest&#34;&gt;Connecting to Ernest&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;#The first step is to specify the IP address of our Ernest Server:
+&lt;p&gt;The first step is to specify the IP address of our Ernest Server:&lt;/p&gt;
 
-$ ernest target https://&amp;lt;Ernest Server IP&amp;gt;
+&lt;pre&gt;&lt;code&gt;$ ernest target https://&amp;lt;Ernest Server IP&amp;gt;
 Target set
+&lt;/code&gt;&lt;/pre&gt;
 
-#Now we should login to Ernest with the built-in admin account:
+&lt;p&gt;Now we should login to Ernest with the built-in admin account:&lt;/p&gt;
 
-ernest login
+&lt;pre&gt;&lt;code&gt;$ ernest login
 Username: admin
 Password: *******
+&lt;/code&gt;&lt;/pre&gt;
 
-#The default admin password is ‘w4rmR3d’
-#and change the admin password:
+&lt;p&gt;&lt;em&gt;(The default admin password is ‘w4rmR3d’)&lt;/em&gt;&lt;/p&gt;
 
-$ ernest user change-password
-#You&#39;re about to change your password, please respond the questions below:
+&lt;p&gt;and change the admin password:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ ernest user change-password
+You&#39;re about to change your password, please respond the questions below:
 Current password: &amp;lt;old admin password&amp;gt;
 New password: &amp;lt;new admin password&amp;gt;
 Confirm new password: &amp;lt;new admin password&amp;gt;
 Your password has been changed
+&lt;/code&gt;&lt;/pre&gt;
 
-#Now we can create a user, a group, and add the user to the group:
+&lt;p&gt;Now we can create a user, a group, and add the user to the group:&lt;/p&gt;
 
-$ ernest user create &amp;lt;user&amp;gt; &amp;lt;password&amp;gt;
+&lt;pre&gt;&lt;code&gt;$ ernest user create &amp;lt;user&amp;gt; &amp;lt;password&amp;gt;
 User &amp;lt;user&amp;gt; successfully created
 
 $ ernest group create &amp;lt;group&amp;gt;
@@ -53,20 +56,22 @@ Group &amp;lt;group&amp;gt; successfully created, you can add users with &#39;er
 
 $ ernest group add-user &amp;lt;user&amp;gt; &amp;lt;group&amp;gt;
 User &amp;lt;user&amp;gt; is now assigned to group &amp;lt;group&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
 
-#Now we can login with our new user:
+&lt;p&gt;Now we can login with our new user:&lt;/p&gt;
 
-$ ernest logout
+&lt;pre&gt;&lt;code&gt;$ ernest logout
 Bye.
 
 $ ernest login
 Username: &amp;lt;user&amp;gt;
 Password: &amp;lt;password&amp;gt;
 Welcome back &amp;lt;user&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
 
-#We can confirm our Ernest Server IP and user:
+&lt;p&gt;We can confirm our Ernest Server IP and user:&lt;/p&gt;
 
-$ ernest info
+&lt;pre&gt;&lt;code&gt;$ ernest info
 Current target : https://&amp;lt;Ernest Server IP&amp;gt;
 Current user : &amp;lt;user&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
@@ -75,54 +80,56 @@ Current user : &amp;lt;user&amp;gt;
 
 &lt;p&gt;Ernest uses the concept of a datacenter to specify an infrastructure service provider, the provider API endpoint, credentials to access the provider API, and information specific to certain provider types. An example of creating a datacenter in Ernest for Amazon Web Services is:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ ernest datacenter create aws --region region --secret_access_key secret_access_key --access_key_id access_key_id &amp;lt;dc name&amp;gt;
+&lt;pre&gt;&lt;code&gt;$ ernest datacenter create aws --region region --secret_access_key secret_access_key --access_key_id access_key_id &amp;lt;dc name&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&#34;services&#34;&gt;Services&lt;/h3&gt;
 
 &lt;h4 id=&#34;what-is-a-service&#34;&gt;What is a Service?&lt;/h4&gt;
 
-&lt;p&gt;With Ernest a Service is a collection of networking, virtual machines, and configuration options that collectively define an environment, and also the datacenter where the environment should be built. A service is defined in YAML format, and you can see examples of this in the provider-specific documentation.&lt;/p&gt;
+&lt;p&gt;With Ernest a &lt;strong&gt;service&lt;/strong&gt; is a collection of networking, virtual machines, and configuration options that collectively define an environment, and also the datacenter where the environment should be built. A service is defined in YAML format, and you can see examples of this in the provider-specific documentation.&lt;/p&gt;
 
 &lt;h4 id=&#34;how-to-create-modify-services&#34;&gt;How to create/modify Services&lt;/h4&gt;
 
 &lt;p&gt;Once we have created a datacenter and defined our service in YAML the process of building the service is:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ ernest service apply &amp;lt;yaml file&amp;gt;
+&lt;pre&gt;&lt;code&gt;$ ernest service apply &amp;lt;yaml file&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Once the service is created we can modify it by changing the YAML and then re-applying it. Ernest will calculate the differences and apply only those changes necessary to transition the service from the current state to the requested state.&lt;/p&gt;
 
 &lt;p&gt;Finally you can also destroy services if needed:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ ernest service destroy &amp;lt;service name&amp;gt;
+&lt;pre&gt;&lt;code&gt;$ ernest service destroy &amp;lt;service name&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h4 id=&#34;view-service-state-and-history&#34;&gt;View Service State and History&lt;/h4&gt;
 
 &lt;p&gt;Ernest stores the state of each service, as well as all historical states. You can list the available service with:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ ernest service list
+&lt;pre&gt;&lt;code&gt;$ ernest service list
+&lt;/code&gt;&lt;/pre&gt;
 
-#For a given service you can see the history of all builds for that service:
+&lt;p&gt;For a given service you can see the history of all builds for that service:&lt;/p&gt;
 
-$ ernest service history &amp;lt;service name&amp;gt;
+&lt;pre&gt;&lt;code&gt;$ ernest service history &amp;lt;service name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
 
-#We can view the YAML for a specific build by:
+&lt;p&gt;We can view the YAML for a specific build by:&lt;/p&gt;
 
-$ ernest service definition &amp;lt;service name&amp;gt; --build &amp;lt;build id&amp;gt;
+&lt;pre&gt;&lt;code&gt;$ ernest service definition &amp;lt;service name&amp;gt; --build &amp;lt;build id&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
 
-#We can view provider-generated information related to our service:
+&lt;p&gt;We can view provider-generated information related to our service:&lt;/p&gt;
 
-$ ernest service info &amp;lt;service name&amp;gt;
+&lt;pre&gt;&lt;code&gt;$ ernest service info &amp;lt;service name&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;cli-command-reference&#34;&gt;CLI Command Reference&lt;/h2&gt;
 
 &lt;h3 id=&#34;ernest-target&#34;&gt;ernest target&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;
-NAME:
+&lt;pre&gt;&lt;code&gt;NAME:
    ernest target - Configure Ernest target instance.
 
 USAGE:
@@ -137,11 +144,11 @@ DESCRIPTION:
 
 &lt;h3 id=&#34;ernest-info&#34;&gt;ernest info&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;NAME:
+&lt;pre&gt;&lt;code&gt;NAME:
    ernest info - Display system-wide information.
 
 USAGE:
-   ernest info  
+   ernest info
 
 DESCRIPTION:
    Displays ernest instance information.
@@ -152,11 +159,11 @@ DESCRIPTION:
 
 &lt;h3 id=&#34;ernest-login&#34;&gt;ernest login&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;NAME:
+&lt;pre&gt;&lt;code&gt;NAME:
    ernest login - Login with your Ernest credentials.
 
 USAGE:
-   ernest login [command options]  
+   ernest login [command options]
 
 DESCRIPTION:
    Logs an user into Ernest instance.
@@ -168,7 +175,7 @@ DESCRIPTION:
 
    Example:
     $ ernest login --user &amp;lt;user&amp;gt; --password &amp;lt;password&amp;gt;
-
+  
 
 OPTIONS:
    --user value      User credentials
@@ -177,11 +184,11 @@ OPTIONS:
 
 &lt;h3 id=&#34;ernest-logout&#34;&gt;ernest logout&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;NAME:
+&lt;pre&gt;&lt;code&gt;NAME:
    ernest logout - Clear local authentication credentials.
 
 USAGE:
-   ernest logout  
+   ernest logout
 
 DESCRIPTION:
    Logs out an user from Ernest instance.
@@ -192,11 +199,11 @@ DESCRIPTION:
 
 &lt;h3 id=&#34;ernest-user-list&#34;&gt;ernest user list&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;NAME:
+&lt;pre&gt;&lt;code&gt;NAME:
    ernest user list - List available users.
 
 USAGE:
-   ernest user list  
+   ernest user list
 
 DESCRIPTION:
    List available users.
@@ -207,7 +214,7 @@ DESCRIPTION:
 
 &lt;h3 id=&#34;ernest-user-create&#34;&gt;ernest user create&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;NAME:
+&lt;pre&gt;&lt;code&gt;NAME:
    ernest user create - Create a new user.
 
 USAGE:
@@ -223,7 +230,7 @@ DESCRIPTION:
 
    Example:
     $ ernest user create --email username@example.com &amp;lt;username&amp;gt; &amp;lt;password&amp;gt;
-
+  
 
 OPTIONS:
    --email value  Email for the user
@@ -231,7 +238,7 @@ OPTIONS:
 
 &lt;h3 id=&#34;ernest-user-change-password&#34;&gt;ernest user change-password&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;NAME:
+&lt;pre&gt;&lt;code&gt;NAME:
    ernest user change-password - Change password of available users.
 
 USAGE:
@@ -246,7 +253,7 @@ DESCRIPTION:
     or changing a change-password by being admin:
 
     $ ernest user change-password --user &amp;lt;username&amp;gt; --current-password &amp;lt;current-password&amp;gt; --password &amp;lt;new-password&amp;gt;
-
+  
 
 OPTIONS:
    --user value              The username of the user to change password
@@ -256,7 +263,7 @@ OPTIONS:
 
 &lt;h3 id=&#34;ernest-user-disable&#34;&gt;ernest user disable&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;NAME:
+&lt;pre&gt;&lt;code&gt;NAME:
    ernest user disable - Disable available users.
 
 USAGE:
@@ -271,11 +278,11 @@ DESCRIPTION:
 
 &lt;h3 id=&#34;ernest-group-delete&#34;&gt;ernest group delete&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;NAME:
+&lt;pre&gt;&lt;code&gt;NAME:
    ernest group delete - Deletes a group.
 
 USAGE:
-   ernest group delete  
+   ernest group delete
 
 DESCRIPTION:
    Deletes a group by name
@@ -286,11 +293,11 @@ DESCRIPTION:
 
 &lt;h3 id=&#34;ernest-group-list&#34;&gt;ernest group list&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;NAME:
+&lt;pre&gt;&lt;code&gt;NAME:
    ernest group list - List available groups.
 
 USAGE:
-   ernest group list  
+   ernest group list
 
 DESCRIPTION:
    List available groups.
@@ -301,11 +308,11 @@ DESCRIPTION:
 
 &lt;h3 id=&#34;ernest-group-create&#34;&gt;ernest group create&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;NAME:
+&lt;pre&gt;&lt;code&gt;NAME:
    ernest group create - Create a group.
 
 USAGE:
-   ernest group create  
+   ernest group create
 
 DESCRIPTION:
    Create a group.
@@ -316,11 +323,11 @@ DESCRIPTION:
 
 &lt;h3 id=&#34;ernest-group-add-user&#34;&gt;ernest group add-user&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;NAME:
+&lt;pre&gt;&lt;code&gt;NAME:
    ernest group add-user - Adds a user to a group.
 
 USAGE:
-   ernest group add-user  
+   ernest group add-user
 
 DESCRIPTION:
    Adds a user to a group.
@@ -331,11 +338,11 @@ DESCRIPTION:
 
 &lt;h3 id=&#34;ernest-group-remove-user&#34;&gt;ernest group remove-user&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;NAME:
+&lt;pre&gt;&lt;code&gt;NAME:
    ernest group remove-user - Removes an user from a group.
 
 USAGE:
-   ernest group remove-user  
+   ernest group remove-user
 
 DESCRIPTION:
    Removes an user from a group.
@@ -346,11 +353,11 @@ DESCRIPTION:
 
 &lt;h3 id=&#34;ernest-group-add-datacenter&#34;&gt;ernest group add-datacenter&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;NAME:
+&lt;pre&gt;&lt;code&gt;NAME:
    ernest group add-datacenter - Adds a datacenter to a group.
 
 USAGE:
-   ernest group add-datacenter  
+   ernest group add-datacenter
 
 DESCRIPTION:
    Adds a datacenter to a group.
@@ -361,11 +368,11 @@ DESCRIPTION:
 
 &lt;h3 id=&#34;ernest-group-remove-datacenter&#34;&gt;ernest group remove-datacenter&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;NAME:
+&lt;pre&gt;&lt;code&gt;NAME:
    ernest group remove-datacenter - Removes a datacenter from a group.
 
 USAGE:
-   ernest group remove-datacenter  
+   ernest group remove-datacenter
 
 DESCRIPTION:
    Removes an datacenter from a group.
@@ -376,11 +383,11 @@ DESCRIPTION:
 
 &lt;h3 id=&#34;ernest-datacenter-list&#34;&gt;ernest datacenter list&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;NAME:
+&lt;pre&gt;&lt;code&gt;NAME:
    ernest datacenter list - List available datacenters.
 
 USAGE:
-   ernest datacenter list  
+   ernest datacenter list
 
 DESCRIPTION:
    List available datacenters.
@@ -391,7 +398,7 @@ DESCRIPTION:
 
 &lt;h3 id=&#34;ernest-datacenter-create-vcloud&#34;&gt;ernest datacenter create vcloud&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;NAME:
+&lt;pre&gt;&lt;code&gt;NAME:
    ernest datacenter create vcloud - Create a new vcloud datacenter.
 
 USAGE:
@@ -415,7 +422,7 @@ DESCRIPTION:
       vcloud-url: &amp;quot;http://ss.com&amp;quot;
       vse-url: &amp;quot;http://ss.com&amp;quot;
 
-
+  
 
 OPTIONS:
    --user value            Your VCloud valid user name
@@ -430,7 +437,7 @@ OPTIONS:
 
 &lt;h3 id=&#34;ernest-datacenter-create-aws&#34;&gt;ernest datacenter create aws&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;NAME:
+&lt;pre&gt;&lt;code&gt;NAME:
    ernest datacenter create aws - Create a new aws datacenter.
 
 USAGE:
@@ -440,29 +447,29 @@ DESCRIPTION:
    Create a new AWS datacenter on the targeted instance of Ernest.
 
   Example:
-   $ ernest datacenter create aws --region region --secret_access_key secret_access_key --access_key_id access_key_id my_datacenter
+   $ ernest datacenter create aws --region us-west-2 --access_key_id AKIAIOSFODNN7EXAMPLE --secret_access_key wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY my_datacenter
 
    Template example:
     $ ernest datacenter create aws --template mydatacenter.yml mydatacenter
     Where mydatacenter.yaml will look like:
       ---
       fake: true
-      secret_access_key: secret_access_key
-      access_key_id: access_key_id
-      region: region
-
+      access_key_id : AKIAIOSFODNN7EXAMPLE
+      secret_access_key: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+      region: us-west-2
+   
 
 OPTIONS:
-   --region value    Datacenter region
-   --secret_access_key value     AWS secret_access_key
-   --access_key_id value    AWS access_key_id
-   --template value  Datacenter template
-   --fake            Fake datacenter
+   --region value, -r value             Datacenter region
+   --access_key_id value, -k value      AWS access key id
+   --secret_access_key value, -s value  AWS Secret access key
+   --template value, -t value           Datacenter template
+   --fake, -f                           Fake datacenter
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&#34;ernest-datacenter-update-vcloud&#34;&gt;ernest datacenter update vcloud&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;NAME:
+&lt;pre&gt;&lt;code&gt;NAME:
    ernest datacenter update vcloud - Updates the specified VCloud datacenter.
 
 USAGE:
@@ -473,7 +480,7 @@ DESCRIPTION:
 
    Example:
     $ ernest datacenter update vcloud --user &amp;lt;me&amp;gt; --org &amp;lt;org&amp;gt; --password &amp;lt;secret&amp;gt; my_datacenter
-
+  
 
 OPTIONS:
    --user value      Your VCloud valid user name
@@ -483,7 +490,7 @@ OPTIONS:
 
 &lt;h3 id=&#34;ernest-datacenter-update-aws&#34;&gt;ernest datacenter update aws&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;NAME:
+&lt;pre&gt;&lt;code&gt;NAME:
    ernest datacenter update aws - Updates the specified AWS datacenter.
 
 USAGE:
@@ -493,17 +500,17 @@ DESCRIPTION:
    Updates the specified AWS datacenter.
 
    Example:
-    $ ernest datacenter update aws --secret_access_key &amp;lt;secret_access_key&amp;gt; --access_key_id &amp;lt;access_key_id&amp;gt; my_datacenter
-
+    $ ernest datacenter update aws --access_key_id AKIAIOSFODNN7EXAMPLE --secret_access_key wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY my_datacenter
+  
 
 OPTIONS:
-   --secret_access_key value   Your AWS valid secret_access_key
-   --access_key_id value  Your AWS valid access_key_id
+   --access_key_id value      Your AWS access key id
+   --secret_access_key value  Your AWS secret access key
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&#34;ernest-datacenter-delete&#34;&gt;ernest datacenter delete&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;NAME:
+&lt;pre&gt;&lt;code&gt;NAME:
    ernest datacenter delete - Deletes the specified datacenter.
 
 USAGE:
@@ -518,11 +525,11 @@ DESCRIPTION:
 
 &lt;h3 id=&#34;ernest-service-list&#34;&gt;ernest service list&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;NAME:
+&lt;pre&gt;&lt;code&gt;NAME:
    ernest service list - List available services.
 
 USAGE:
-   ernest service list  
+   ernest service list
 
 DESCRIPTION:
    List available services and shows its most relevant information.
@@ -533,7 +540,7 @@ DESCRIPTION:
 
 &lt;h3 id=&#34;ernest-service-apply&#34;&gt;ernest service apply&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;NAME:
+&lt;pre&gt;&lt;code&gt;NAME:
    ernest service apply - Builds or changes infrastructure.
 
 USAGE:
@@ -551,7 +558,7 @@ DESCRIPTION:
 
 &lt;h3 id=&#34;ernest-service-destroy&#34;&gt;ernest service destroy&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;NAME:
+&lt;pre&gt;&lt;code&gt;NAME:
    ernest service destroy - Destroy a service.
 
 USAGE:
@@ -562,15 +569,16 @@ DESCRIPTION:
 
    Example:
     $ ernest destroy myservice
-
+  
 
 OPTIONS:
-   --force, -f  Force destroy command without asking for permission.
+   --force, -f  Hard ernest service removal.
+   --yes, -y    Destroy a service without prompting confirmation.
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&#34;ernest-service-history&#34;&gt;ernest service history&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;NAME:
+&lt;pre&gt;&lt;code&gt;NAME:
    ernest service history - Shows the history of a service, a list of builds
 
 USAGE:
@@ -585,7 +593,7 @@ DESCRIPTION:
 
 &lt;h3 id=&#34;ernest-service-reset&#34;&gt;ernest service reset&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;NAME:
+&lt;pre&gt;&lt;code&gt;NAME:
    ernest service reset - Reset an in progress service.
 
 USAGE:
@@ -600,7 +608,7 @@ DESCRIPTION:
 
 &lt;h3 id=&#34;ernest-service-definition&#34;&gt;ernest service definition&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;NAME:
+&lt;pre&gt;&lt;code&gt;NAME:
    ernest service definition - Show the current definition of a service by its name
 
 USAGE:
@@ -611,7 +619,7 @@ DESCRIPTION:
 
    Example:
     $ ernest service definition myservice
-
+  
 
 OPTIONS:
    --build value  Build ID
@@ -619,7 +627,7 @@ OPTIONS:
 
 &lt;h3 id=&#34;ernest-service-info&#34;&gt;ernest service info&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;NAME:
+&lt;pre&gt;&lt;code&gt;NAME:
    ernest service info - $ ernest service info &amp;lt;my_service&amp;gt; --build &amp;lt;specific build&amp;gt;
 
 USAGE:
@@ -632,6 +640,7 @@ DESCRIPTION:
    Examples:
     $ ernest service definition myservice
     $ ernest service definition myservice --build build1
+  
 
 OPTIONS:
    --build value  Build ID
@@ -639,7 +648,7 @@ OPTIONS:
 
 &lt;h3 id=&#34;ernest-service-monitor&#34;&gt;ernest service monitor&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;NAME:
+&lt;pre&gt;&lt;code&gt;NAME:
    ernest service monitor - Monitor a service.
 
 USAGE:
@@ -652,13 +661,47 @@ DESCRIPTION:
     $ ernest monitor my_service
 &lt;/code&gt;&lt;/pre&gt;
 
+&lt;h3 id=&#34;ernest-service-diff&#34;&gt;ernest service diff&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;NAME:
+   ernest service diff - $ ernest service diff &amp;lt;service_name&amp;gt; &amp;lt;build_a&amp;gt; &amp;lt;build_b&amp;gt;
+
+USAGE:
+   ernest service diff &amp;lt;service_name&amp;gt; &amp;lt;build_a&amp;gt; &amp;lt;build_b&amp;gt;
+
+DESCRIPTION:
+   Will display the diff between two different builds
+
+   Examples:
+    $ ernest service diff my_service 1 2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;ernest-service-import&#34;&gt;ernest service import&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;NAME:
+   ernest service import - $ ernest service import &amp;lt;my_datacenter&amp;gt; &amp;lt;my_service&amp;gt;
+
+USAGE:
+   ernest service import [command options] &amp;lt;service_name&amp;gt;
+
+DESCRIPTION:
+   Will import te service &amp;lt;my_service&amp;gt; from datacenter &amp;lt;datacenter_name&amp;gt;
+
+   Examples:
+    $ ernest service import my_datacenter my_service
+  
+
+OPTIONS:
+   --datacenter value  Datacenter name
+&lt;/code&gt;&lt;/pre&gt;
+
 &lt;h3 id=&#34;ernest-preferences-logger-list&#34;&gt;ernest preferences logger list&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;NAME:
+&lt;pre&gt;&lt;code&gt;NAME:
    ernest preferences logger list - Lists active loggers.
 
 USAGE:
-   ernest preferences logger list  
+   ernest preferences logger list
 
 DESCRIPTION:
    List active loggers.
@@ -669,11 +712,11 @@ DESCRIPTION:
 
 &lt;h3 id=&#34;ernest-preferences-logger-add&#34;&gt;ernest preferences logger add&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;NAME:
+&lt;pre&gt;&lt;code&gt;NAME:
    ernest preferences logger add - Creates / updates a logger based on its type.
 
 USAGE:
-   ernest preferences logger add [command options]  
+   ernest preferences logger add [command options]
 
 DESCRIPTION:
    Creates / updates a logger based on its types.
@@ -681,12 +724,12 @@ DESCRIPTION:
    Example:
     $ ernest preferences logger add basic --logfile /tmp/ernest.log
     $ ernest preferences logger add logstash --hostname 10.50.1.1 --port 5000 --timeout 50000
-    $ ernest preferences logger add rollbar --secret_access_key MY_ROLLBAR_TOKEN
-
+    $ ernest preferences logger add rollbar --token MY_ROLLBAR_TOKEN
+  
 
 OPTIONS:
    --logfile value   Specify the path for the loging file
-   --secret_access_key value     Rollbar token
+   --token value     Rollbar token
    --env value       Rollbar environment
    --hostname value  Logstash hostname
    --port value      Logstash port (default: 0)
@@ -695,17 +738,71 @@ OPTIONS:
 
 &lt;h3 id=&#34;ernest-preferences-logger-delete&#34;&gt;ernest preferences logger delete&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;NAME:
+&lt;pre&gt;&lt;code&gt;NAME:
    ernest preferences logger delete - Deletes a logger based on its type.
 
 USAGE:
-   ernest preferences logger delete  
+   ernest preferences logger delete
 
 DESCRIPTION:
    Deletes a logger based on its types.
 
    Example:
     $ ernest preferences logger delete basic
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;ernest-docs&#34;&gt;ernest docs&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;NAME:
+   ernest docs - Open docs in the default browser.
+
+USAGE:
+   ernest docs
+
+DESCRIPTION:
+   Open docs in the default browser.
+
+   Example:
+    $ ernest docs
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;ernest-setup&#34;&gt;ernest setup&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;NAME:
+   ernest setup - Use it to setup your ernest instance
+
+USAGE:
+   ernest setup [command options] [arguments...]
+
+DESCRIPTION:
+   This command will help you to setup your ernest instance by:
+- [ ] configure ernest-cli target
+- [ ] create a plain user
+- [ ] create a group
+- [ ] link the user to the group
+- [ ] login as the newly created user.
+- [ ] create a new datacenter (optional)
+  
+
+OPTIONS:
+   --user value, -u value      Admin user
+   --password value, -p value  Admin password
+   --target value, -t value    Ernest location
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;ernest-component&#34;&gt;ernest component&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;NAME:
+   ernest component - Components related subcommands
+
+USAGE:
+   ernest component command [command options] [arguments...]
+
+COMMANDS:
+     list  List components on your datacenter.
+
+OPTIONS:
+   --help, -h  show help
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;bootstrapping-with-salt&#34;&gt;Bootstrapping with Salt&lt;/h2&gt;
@@ -773,7 +870,7 @@ DESCRIPTION:
 &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;p&gt;You can download the Salt Master image from the &lt;a href=&#34;downloads/&#34;&gt;Download page&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;You can download the Salt Master image from the &lt;a href=&#34;http://docs.ernest.io/downloads/&#34;&gt;Download page&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2 id=&#34;amazon-web-services&#34;&gt;Amazon Web Services&lt;/h2&gt;
 
@@ -809,26 +906,28 @@ DESCRIPTION:
 &lt;li&gt;Ernest username/password&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;#The first step is to set the IP address of Ernest:
+&lt;p&gt;The first step is to set the IP address of Ernest:&lt;/p&gt;
 
-$ ernest target https://10.50.1.11
+&lt;pre&gt;&lt;code&gt;$ ernest target https://10.50.1.11
 Target set
 
-#Next we login to Ernest:
+&lt;/code&gt;&lt;/pre&gt;
 
-$ ernest login
+&lt;p&gt;Next we login to Ernest:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ ernest login
 Username: user1
 Password: ******
 Welcome back user1
-
-#Once we have logged in to Ernest we can setup the AWS datacenter and credentials that Ernest will use to create our infrastructure:
-
-$ ernest datacenter create aws --region eu-west-1 --secret_access_key XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX --access_key_id YYYYYYYYYYYYYYYYYYYY my-dc
-Datacenter &#39;my-dc&#39; successfully created
-
-#Now that we have our datacenter created in Ernest we can start building stuff.
-
 &lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Once we have logged in to Ernest we can setup the AWS datacenter and credentials that Ernest will use to create our infrastructure:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ ernest datacenter create aws --region eu-west-1 --secret_access_key XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX --access_key_id YYYYYYYYYYYYYYYYYYYY my-dc
+Datacenter &#39;my-dc&#39; successfully created
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now that we have our datacenter created in Ernest we can start building stuff.&lt;/p&gt;
 
 &lt;h3 id=&#34;creating-a-service&#34;&gt;Creating a Service&lt;/h3&gt;
 
@@ -836,7 +935,7 @@ Datacenter &#39;my-dc&#39; successfully created
 
 &lt;p&gt;Our environment is defined in the following YAML:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;---
+&lt;pre&gt;&lt;code&gt;---
 name: demo
 datacenter: my-dc
 vpc_id: vpc-abcdef01
@@ -874,10 +973,10 @@ instances:
 
 &lt;p&gt;Lets apply our definition:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ ernest service apply demo.yml
-#Environment creation requested
-#Ernest will show you all output from your requested service creation
-#You can cancel at any moment with Ctrl+C, even the service is still #being created, you won&#39;t have any output
+&lt;pre&gt;&lt;code&gt;$ ernest service apply demo.yml
+Environment creation requested
+Ernest will show you all output from your requested service creation
+You can cancel at any moment with Ctrl+C, even the service is still #being created, you won&#39;t have any output
 Starting environment creation
 
 Creating networks:
@@ -912,14 +1011,14 @@ Your environment endpoint is:
 
 &lt;p&gt;We can list the services we have built:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ ernest service list
+&lt;pre&gt;&lt;code&gt;$ ernest service list
 NAME  UPDATED         STATUS  ENDPOINT
 demo  2016-09-12 15:57:46.195942 +0000 UTC  done
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;We can see detailed provider-generated information related to our service:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ ernest service info demo
+&lt;pre&gt;&lt;code&gt;$ ernest service info demo
 Name : demo
 VPC : vpc-abcdef01
 
@@ -951,14 +1050,18 @@ Security groups:
 
 &lt;p&gt;We can view the history of applies for our service:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ ernest service history demo
-NAME  BUILD ID                UPDATED         STATUS
-demo  89389b76-cc25-4add-55e5-b7647217b4b1-abf663d6c173d4af98e3ff20bb7e8dde 2016-09-12 15:57:46.195942 +0000 UTC  done
+&lt;pre&gt;&lt;code&gt;$ ernest service history demo
++----+------+----------+--------------------------------+-------+
+| ID | NAME | BUILD ID |             STATUS             | USER  |
++----+------+----------+--------------------------------+-------+
+|  1 | demo | done     | 2016-09-12 15:57:46.195942     | user1 |
+|    |      |          | +0000 UTC                      |       |
++----+------+----------+--------------------------------+-------+
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;For our service we can show the definition applied for a given Build ID:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ ernest service definition demo --build 89389b76-cc25-4add-55e5-b7647217b4b1-abf663d6c173d4af98e3ff20bb7e8dde
+&lt;pre&gt;&lt;code&gt;$ ernest service definition demo --build 1
 ---
 name: demo
 datacenter: my-dc
@@ -1001,7 +1104,7 @@ instances:
 
 &lt;p&gt;Our modified YAML file is:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;---
+&lt;pre&gt;&lt;code&gt;---
 name: demo
 datacenter: my-dc
 vpc_id: vpc-abcdef01
@@ -1068,10 +1171,10 @@ instances:
 
 &lt;p&gt;When we apply this YAML we can see Ernest make the necessary changes:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ ernest service apply demo.yml
-#Environment creation requested
-#Ernest will show you all output from your requested service creation
-#You can cancel at any moment with Ctrl+C, even the service is still #being created, you won&#39;t have any output
+&lt;pre&gt;&lt;code&gt;$ ernest service apply demo.yml
+Environment creation requested
+Ernest will show you all output from your requested service creation
+You can cancel at any moment with Ctrl+C, even the service is still #being created, you won&#39;t have any output
 Starting environment creation
 
 Creating networks:
@@ -1111,14 +1214,14 @@ Your environment endpoint is:
 
 &lt;p&gt;We can see our service in the list, with the most recent update time:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ ernest service list
+&lt;pre&gt;&lt;code&gt;$ ernest service list
 NAME  UPDATED         STATUS  ENDPOINT
 demo  2016-09-12 16:03:40.195942 +0000 UTC  done
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;The service info has also updated with the new information:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ ernest service info demo
+&lt;pre&gt;&lt;code&gt;$ ernest service info demo
 Name : demo
 VPC : vpc-abcdef01
 
@@ -1158,16 +1261,20 @@ Security groups:
 
 &lt;p&gt;The history shows both of the applies we have done for this service:&lt;/p&gt;
 
-&lt;p&gt;``sh
-$ ernest service history demo
-NAME  BUILD ID                UPDATED         STATUS
-demo  72c1306c-c6ee-4d9b-4230-617d0e969ea9-abf663d6c173d4af98e3ff20bb7e8dde 2016-09-12 16:03:40.235144 +0000 UTC  done
-demo  89389b76-cc25-4add-55e5-b7647217b4b1-abf663d6c173d4af98e3ff20bb7e8dde 2016-09-12 15:57:46.195942 +0000 UTC  done&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ ernest service history demo
++----+------+----------+--------------------------------+-------+
+| ID | NAME | BUILD ID |             STATUS             | USER  |
++----+------+----------+--------------------------------+-------+
+|  2 | jr26 | done     | 2016-09-12 16:03:40.235144     | user1 |
+|    |      |          | +0000 UTC                      |       |
+|  1 | jr26 | done     | 2016-09-12 15:57:46.195942     | user1 |
+|    |      |          | +0000 UTC                      |       |
++----+------+----------+--------------------------------+-------+
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;pre&gt;&lt;code&gt;The definition for the most recent build can be displayed:
+&lt;p&gt;The definition for the most recent build can be displayed:&lt;/p&gt;
 
-```sh
-$ ernest service definition demo --build 72c1306c-c6ee-4d9b-4230-617d0e969ea9-abf663d6c173d4af98e3ff20bb7e8dde
+&lt;pre&gt;&lt;code&gt;$ ernest service definition demo --build 2
 ---
 name: demo
 datacenter: my-dc
@@ -1237,7 +1344,7 @@ instances:
 
 &lt;p&gt;After we have finished with our service we can remove it:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ ernest service destroy demo
+&lt;pre&gt;&lt;code&gt;$ ernest service destroy demo
 Are you sure? Please type yes or no and then press enter: yes
 
 Deleting nats:
@@ -1444,7 +1551,9 @@ rds_instances:
     size: db.r3.xlarge
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;service-options&#34;&gt;Service Options&lt;/h3&gt;
+&lt;h3 id=&#34;field-reference&#34;&gt;Field Reference&lt;/h3&gt;
+
+&lt;h4 id=&#34;service-options&#34;&gt;Service Options&lt;/h4&gt;
 
 &lt;pre&gt;&lt;code&gt;name: demo
 datacenter: my-dc
@@ -1493,7 +1602,7 @@ vpc_subnet: 10.0.0.0/16
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;networking&#34;&gt;Networking&lt;/h3&gt;
+&lt;h4 id=&#34;networking&#34;&gt;Networking&lt;/h4&gt;
 
 &lt;pre&gt;&lt;code&gt;networks:
   - name: web
@@ -1530,7 +1639,7 @@ nat_gateways:
 
 &lt;ul&gt;
 &lt;li&gt;String that defines the IP address range of the subnet.&lt;/li&gt;
-&lt;li&gt;It must follow CIDR notation as described at: &lt;a href=&#34;https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing&#34; target=&#34;_blank&#34;&gt;https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;It must follow CIDR notation as described at: &lt;a href=&#34;https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing&#34;&gt;https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;This field is mandatory.&lt;/li&gt;
 &lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
 &lt;li&gt;This field must be unique for this user &amp;amp; all the networks on the manifest.&lt;/li&gt;
@@ -1578,7 +1687,7 @@ nat_gateways:
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;security-groups&#34;&gt;Security Groups&lt;/h3&gt;
+&lt;h4 id=&#34;security-groups&#34;&gt;Security Groups&lt;/h4&gt;
 
 &lt;pre&gt;&lt;code&gt;security_groups:
   - name: web-sg
@@ -1617,7 +1726,7 @@ nat_gateways:
 
 &lt;ul&gt;
 &lt;li&gt;String that defines the IP address range for this rule.&lt;/li&gt;
-&lt;li&gt;It must follow CIDR notation as described at: &lt;a href=&#34;https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing&#34; target=&#34;_blank&#34;&gt;https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;It must follow CIDR notation as described at: &lt;a href=&#34;https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing&#34;&gt;https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;This field is mandatory.&lt;/li&gt;
 &lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
@@ -1657,7 +1766,7 @@ nat_gateways:
 
 &lt;ul&gt;
 &lt;li&gt;String that defines the IP address range for this rule.&lt;/li&gt;
-&lt;li&gt;It must follow CIDR notation as described at: &lt;a href=&#34;https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing&#34; target=&#34;_blank&#34;&gt;https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;It must follow CIDR notation as described at: &lt;a href=&#34;https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing&#34;&gt;https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;This field is mandatory.&lt;/li&gt;
 &lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
@@ -1688,7 +1797,7 @@ nat_gateways:
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;instances&#34;&gt;Instances&lt;/h3&gt;
+&lt;h4 id=&#34;instances&#34;&gt;Instances&lt;/h4&gt;
 
 &lt;pre&gt;&lt;code&gt;instances:
   - name: web
@@ -1811,7 +1920,7 @@ nat_gateways:
 &lt;li&gt;&lt;p&gt;This field cannot be empty or null&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;load-balancers&#34;&gt;Load Balancers&lt;/h3&gt;
+&lt;h4 id=&#34;load-balancers&#34;&gt;Load Balancers&lt;/h4&gt;
 
 &lt;pre&gt;&lt;code&gt;loadbalancers:
   - name: elb-1
@@ -1925,7 +2034,7 @@ nat_gateways:
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;s3-buckets&#34;&gt;S3 Buckets&lt;/h3&gt;
+&lt;h4 id=&#34;s3-buckets&#34;&gt;S3 Buckets&lt;/h4&gt;
 
 &lt;pre&gt;&lt;code&gt;s3_buckets:
   - name: bucket-1
@@ -1994,7 +2103,7 @@ nat_gateways:
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;### Route53 Zones&lt;/p&gt;
+&lt;p&gt;#### Route53 Zones&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt; route53_zones:
    - name: example.com
@@ -2076,7 +2185,7 @@ nat_gateways:
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;rds-clusters&#34;&gt;RDS Clusters&lt;/h3&gt;
+&lt;h4 id=&#34;rds-clusters&#34;&gt;RDS Clusters&lt;/h4&gt;
 
 &lt;pre&gt;&lt;code&gt;rds_clusters:
   - name: aurora-test
@@ -2209,7 +2318,7 @@ nat_gateways:
 &lt;ul&gt;
 &lt;li&gt;(string) The target rds cluster or mysql instance to replicate from.&lt;/li&gt;
 &lt;li&gt;Must be a valid ARN (Amazon Resource Name).&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html&#34; target=&#34;_blank&#34;&gt;http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html&#34;&gt;http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;&lt;strong&gt;final_snapshot&lt;/strong&gt;&lt;/p&gt;
@@ -2243,7 +2352,7 @@ nat_gateways:
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;rds-instances&#34;&gt;RDS Instances&lt;/h3&gt;
+&lt;h4 id=&#34;rds-instances&#34;&gt;RDS Instances&lt;/h4&gt;
 
 &lt;pre&gt;&lt;code&gt;rds_instances:
   - name: rds-test-1
@@ -2402,7 +2511,7 @@ nat_gateways:
 &lt;ul&gt;
 &lt;li&gt;(string) The target an rds instance to replicate from.&lt;/li&gt;
 &lt;li&gt;Must be a valid ARN (Amazon Resource Name) or instance name (if in the same region).&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html&#34; target=&#34;_blank&#34;&gt;http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html&#34;&gt;http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;&lt;strong&gt;final_snapshot&lt;/strong&gt;&lt;/p&gt;
@@ -2478,7 +2587,7 @@ nat_gateways:
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;### EBS Volumes&lt;/p&gt;
+&lt;h4 id=&#34;ebs-volumes&#34;&gt;EBS Volumes&lt;/h4&gt;
 
 &lt;pre&gt;&lt;code&gt; ebs_volumes:
    - name: database-vol
@@ -2583,7 +2692,7 @@ nat_gateways:
 &lt;p&gt;Before we get started we will need the following information:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;Ernest IP address (31.210.241.221)&lt;/li&gt;
+&lt;li&gt;Ernest IP address (31.210.241.231)&lt;/li&gt;
 &lt;li&gt;Ernest username/password (user1/xxxxxx)&lt;/li&gt;
 &lt;li&gt;vCloud URL (myvdc.carrenza.net)&lt;/li&gt;
 &lt;li&gt;vCloud organisation (r3labs-development)&lt;/li&gt;
@@ -2598,7 +2707,7 @@ nat_gateways:
 
 &lt;p&gt;The first step is to set the IP address of Ernest:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ ernest target https://31.210.241.221
+&lt;pre&gt;&lt;code&gt;$ ernest target https://31.210.241.231
 Target set
 
 &lt;/code&gt;&lt;/pre&gt;
@@ -2637,7 +2746,7 @@ datacenter: r3-jreid2
 bootstrapping: none
 service_ip: 195.3.186.42
 
-routers:
+routers: 
   - name: test1
     rules:
     - name: in_out_any
@@ -2684,9 +2793,9 @@ instances:
 &lt;p&gt;Now that we have defined our infrastructure we are ready to apply our definition:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;$ ernest service apply demo1.yml
-#Environment creation requested
-#Ernest will show you all output from your requested service creation
-#You can cancel at any moment with Ctrl+C, even the service is still #being created, you won&#39;t have any output
+Environment creation requested
+Ernest will show you all output from your requested service creation
+You can cancel at any moment with Ctrl+C, even the service is still being created, you won&#39;t have any output
 Starting environment creation
 Creating networks:
  - r3-jreid2-demo1-web
@@ -2723,9 +2832,9 @@ Your environment endpoint is: 195.3.186.42
 &lt;p&gt;For example if we increase the &amp;lsquo;web&amp;rsquo; instance count from 1 to 2 and re-apply the YAML a new server is created:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;$ ernest service apply demo1.yml
-#Environment creation requested
-#Ernest will show you all output from your requested service creation
-#You can cancel at any moment with Ctrl+C, even the service is still #being created, you won&#39;t have any output
+Environment creation requested
+Ernest will show you all output from your requested service creation
+You can cancel at any moment with Ctrl+C, even the service is still being created, you won&#39;t have any output
 Starting environment creation
 Creating instances:
  - r3-jreid2-demo1-web-2
@@ -2753,22 +2862,27 @@ demo1 2016-05-29 14:52:13 +0100 BST done  195.3.186.42
 &lt;p&gt;For a given service we can see the history:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;$ ernest service history demo1
-NAME  BUILD ID                                                              UPDATED             STATUS
-demo1 488249c2-63c2-484e-b6e0-c690ba859dab-8c22343f8f9d3dfb68e41cc033e7b492 2016-05-29 14:52:13 done
-demo1 6799e858-0484-42cb-bbb1-c1bc5f61e500-8c22343f8f9d3dfb68e41cc033e7b492 2016-05-29 14:39:56 done
++----+-------+----------+--------------------------------+-------+
+| ID | NAME  | BUILD ID |             STATUS             | USER  |
++----+-------+----------+--------------------------------+-------+
+|  2 | demo1 | done     | 2016-05-29 14:52:13.93758      | user1 |
+|    |       |          | +0000 UTC                      |       |
+|  1 | demo1 | done     | 2016-05-29 14:39:56.45893      | user1 |
+|    |       |          | +0000 UTC                      |       |
++----+-------+----------+--------------------------------+-------+
 
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;For a given service and build ID we can see the definition we applied:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ ernest service definition demo1
+&lt;pre&gt;&lt;code&gt;$ ernest service definition demo1 --build 2
 ---
 name: demo1
 datacenter: r3-jreid2
 bootstrapping: none
 service_ip: 195.3.186.42
 
-routers:
+routers: 
   - name: test1
     rules:
     - name: in_out_any
@@ -2824,10 +2938,10 @@ datacenter: r3-jreid2
 bootstrapping: salt
 service_ip: 195.3.186.42
 ernest_ip:
-  - 31.210.241.221
-  - 31.210.240.161
+  - 31.210.241.231
+  - 31.210.240.171
 
-routers:
+routers: 
   - name: test1
     rules:
     - name: in_out_any
@@ -2852,7 +2966,7 @@ routers:
         dns:
           - 8.8.8.8
           - 8.8.4.4
-
+          
     port_forwarding:
       - source: 195.3.186.42
         from_port: &#39;80&#39;
@@ -2884,9 +2998,9 @@ instances:
 &lt;p&gt;Now that we have defined our platform we are ready to create it:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;$ ernest service apply demo2.yml
-#Environment creation requested
-#Ernest will show you all output from your requested service creation
-#You can cancel at any moment with Ctrl+C, even the service is still #being created, you won&#39;t have any output
+Environment creation requested
+Ernest will show you all output from your requested service creation
+You can cancel at any moment with Ctrl+C, even the service is still being created, you won&#39;t have any output
 Starting environment creation
 Creating networks:
  - r3-jreid2-demo2-salt
@@ -2935,12 +3049,12 @@ Your environment endpoint is: 195.3.186.44
 
 &lt;p&gt;Notice that Ernest has automatically created a SALT instance for us on network 10.254.254.0/24. It has also trigged the bootstrapping process that installs the SALT minion on each of our servers, and then run the commands we specified in the provisioner section of each instance defined in the YAML.&lt;/p&gt;
 
-&lt;p&gt;You should be able to browse to &lt;a href=&#34;http://195.3.186.42&#34; target=&#34;_blank&#34;&gt;http://195.3.186.42&lt;/a&gt;. Congratulations!&lt;/p&gt;
+&lt;p&gt;You should be able to browse to &lt;a href=&#34;http://195.3.186.42&#34;&gt;http://195.3.186.42&lt;/a&gt;. Congratulations!&lt;/p&gt;
 
 &lt;p&gt;If you wish to change the platform update your YAML to show how you want the platform to look, then re-apply the YAML. Ernest will make the appropriate changes to the platform.&lt;/p&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;The SALT image can be downloaded from &lt;a href=&#34;http://docs.ernest.io/downloads/r3-salt-master.ova&#34;&gt;here&lt;/a&gt;. For the current version of Ernest (1.0) it is not possible to specify the catalog name that Ernest will get the SALT image from, you will need to place the image in a catalog named &amp;lsquo;r3&amp;rsquo;.&lt;/p&gt;
+&lt;p&gt;The SALT image can be downloaded from &lt;a href=&#34;http://download.ernest.io/r3-salt-master.zip&#34;&gt;here&lt;/a&gt;. For the current version of Ernest (1.0) it is not possible to specify the catalog name that Ernest will get the SALT image from, you will need to place the image in a catalog named &amp;lsquo;r3&amp;rsquo;.&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h3 id=&#34;servers-only&#34;&gt;Servers Only&lt;/h3&gt;
@@ -2966,9 +3080,9 @@ instances:
 &lt;p&gt;And applying it gives:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;$ ernest service apply demo3.yml
-#Environment creation requested
-#Ernest will show you all output from your requested service creation
-#You can cancel at any moment with Ctrl+C, even the service is still #being created, you won&#39;t have any output
+Environment creation requested
+Ernest will show you all output from your requested service creation
+You can cancel at any moment with Ctrl+C, even the service is still being created, you won&#39;t have any output
 Starting environment creation
 Creating instances:
  - r3-jreid2-demo3-web-1
@@ -2989,7 +3103,7 @@ Your environment endpoint is:
 
 &lt;p&gt;Environments built and managed with Ernest are defined in YAML format.&lt;/p&gt;
 
-&lt;h3 id=&#34;example&#34;&gt;Example&lt;/h2&gt;
+&lt;h3 id=&#34;example-1&#34;&gt;Example&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code&gt;---
 name: demo
@@ -2999,7 +3113,7 @@ service_ip: 195.3.186.44
 ernest_ip:
   - 31.210.240.161
 
-routers:
+routers: 
   - name: demo
     rules:
     - name: in_out_any
@@ -3052,12 +3166,12 @@ instances:
         - if [ x$1 == x&amp;quot;postcustomization&amp;quot; ]; then
         - yum -y install httpd
         - service httpd start
-        - fi
+        - fi 
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;field-reference&#34;&gt;Field Reference&lt;/h2&gt;
+&lt;h3 id=&#34;field-reference-1&#34;&gt;Field Reference&lt;/h3&gt;
 
-&lt;h3 id=&#34;service-options&#34;&gt;Service Options&lt;/h3&gt;
+&lt;h4 id=&#34;service-options-1&#34;&gt;Service Options&lt;/h4&gt;
 
 &lt;pre&gt;&lt;code&gt;name: demo
 datacenter: r3-jreid2
@@ -3103,22 +3217,22 @@ ernest_ip:
 &lt;li&gt;String that defines the public ip of the router already created on vcloud&lt;/li&gt;
 &lt;li&gt;This field is optional&lt;/li&gt;
 &lt;li&gt;This field defaults to none.&lt;/li&gt;
-&lt;li&gt;The value of this field is an IP, internally defined as &lt;a href=&#34;https://golang.org/pkg/net/#IP&#34; target=&#34;_blank&#34;&gt;https://golang.org/pkg/net/#IP&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;The value of this field is an IP, internally defined as &lt;a href=&#34;https://golang.org/pkg/net/#IP&#34;&gt;https://golang.org/pkg/net/#IP&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;&lt;strong&gt;ernest_ip&lt;/strong&gt;&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Array of IPs that defines the ernest instance public ip, so it will be allowed through the created service firewall rules.&lt;/li&gt;
-&lt;li&gt;The value of this field is an IP, internally defined as &lt;a href=&#34;https://golang.org/pkg/net/#IP&#34; target=&#34;_blank&#34;&gt;https://golang.org/pkg/net/#IP&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;The value of this field is an IP, internally defined as &lt;a href=&#34;https://golang.org/pkg/net/#IP&#34;&gt;https://golang.org/pkg/net/#IP&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
 &lt;li&gt;This field is mandatory only if you’ve defined bootstrapping as “salt”&lt;/li&gt;
 &lt;li&gt;This field defaults to an empty array.&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;networking&#34;&gt;Networking&lt;/h3&gt;
+&lt;h4 id=&#34;networking-1&#34;&gt;Networking&lt;/h4&gt;
 
-&lt;pre&gt;&lt;code&gt;routers:
+&lt;pre&gt;&lt;code&gt;routers: 
   - name: demo
     rules:
     - name: in_out_any
@@ -3237,7 +3351,7 @@ ernest_ip:
 
 &lt;ul&gt;
 &lt;li&gt;String that defines the name of a network to add to this service.&lt;/li&gt;
-&lt;li&gt;It must follow CIDR notation as described at: &lt;a href=&#34;https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing&#34; target=&#34;_blank&#34;&gt;https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;It must follow CIDR notation as described at: &lt;a href=&#34;https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing&#34;&gt;https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;This field is mandatory.&lt;/li&gt;
 &lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
 &lt;li&gt;This field must be unique for this user &amp;amp; all the networks on the manifest.&lt;/li&gt;
@@ -3247,9 +3361,9 @@ ernest_ip:
 
 &lt;ul&gt;
 &lt;li&gt;Array of IPs to use as dns servers on this service&lt;/li&gt;
-&lt;li&gt;It must follow CIDR notation as described at: &lt;a href=&#34;https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing&#34; target=&#34;_blank&#34;&gt;https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;It must follow CIDR notation as described at: &lt;a href=&#34;https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing&#34;&gt;https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;This field is optional.&lt;/li&gt;
-&lt;li&gt;This field can be empty and it will default to [&amp;laquo;8.8.8.8&amp;raquo;, &amp;laquo;8.8.4.4&amp;raquo;].&lt;/li&gt;
+&lt;li&gt;This field can be empty and it will default to [&amp;ldquo;8.8.8.8&amp;rdquo;, &amp;ldquo;8.8.4.4&amp;rdquo;].&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -3283,14 +3397,14 @@ ernest_ip:
 
 &lt;ul&gt;
 &lt;li&gt;String that defines the IP from the provider-specified sub-allocated list of IPs of the router.&lt;/li&gt;
-&lt;li&gt;It must follow CIDR notation as described at: &lt;a href=&#34;https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing&#34; target=&#34;_blank&#34;&gt;https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;It must follow CIDR notation as described at: &lt;a href=&#34;https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing&#34;&gt;https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;This field is optional.&lt;/li&gt;
 &lt;li&gt;This field can be null or empty, in case a router is created by Ernest it will default to the created one, on the other hand this value will be used.&lt;/li&gt;
 &lt;li&gt;This field must be unique for this user &amp;amp; all the networks on the manifest.&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;instances&#34;&gt;Instances&lt;/h3&gt;
+&lt;h4 id=&#34;instances-1&#34;&gt;Instances&lt;/h4&gt;
 
 &lt;pre&gt;&lt;code&gt;instances:
   - name: web
@@ -3313,7 +3427,7 @@ ernest_ip:
         - if [ x$1 == x&amp;quot;postcustomization&amp;quot; ]; then
         - yum -y install httpd
         - service httpd start
-        - fi
+        - fi 
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Instances support the following fields:&lt;/p&gt;
@@ -3354,7 +3468,7 @@ ernest_ip:
 &lt;li&gt;String that defines the name of a load balancer to add to this service.&lt;/li&gt;
 &lt;li&gt;This field is mandatory.&lt;/li&gt;
 &lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
-&lt;li&gt;This field must follow the Binary Prefix format: &lt;a href=&#34;https://en.wikipedia.org/wiki/Binary_prefix#Computer_memory&#34; target=&#34;_blank&#34;&gt;https://en.wikipedia.org/wiki/Binary_prefix#Computer_memory&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;This field must follow the Binary Prefix format: &lt;a href=&#34;https://en.wikipedia.org/wiki/Binary_prefix#Computer_memory&#34;&gt;https://en.wikipedia.org/wiki/Binary_prefix#Computer_memory&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;The possible binary prefixes are MB, GB, TB, PB, YB&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 
@@ -3364,7 +3478,7 @@ ernest_ip:
 &lt;li&gt;A list of sizes of hard disks that belongs to the VM&lt;/li&gt;
 &lt;li&gt;This field can be an empty list&lt;/li&gt;
 &lt;li&gt;This field is a list of strings&lt;/li&gt;
-&lt;li&gt;Each element of the string must follow the Binary Prefix format: &lt;a href=&#34;https://en.wikipedia.org/wiki/Binary_prefix#Hard_disk_drives&#34; target=&#34;_blank&#34;&gt;https://en.wikipedia.org/wiki/Binary_prefix#Hard_disk_drives&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Each element of the string must follow the Binary Prefix format: &lt;a href=&#34;https://en.wikipedia.org/wiki/Binary_prefix#Hard_disk_drives&#34;&gt;https://en.wikipedia.org/wiki/Binary_prefix#Hard_disk_drives&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;The possible binary prefixes are MB, GB, TB, PB, YB&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 
@@ -3375,7 +3489,7 @@ ernest_ip:
 &lt;li&gt;This field is optional.&lt;/li&gt;
 &lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
 &lt;li&gt;The value must be larger than the default root disk size of the template.&lt;/li&gt;
-&lt;li&gt;Each element of the string must follow the Binary Prefix format: &lt;a href=&#34;https://en.wikipedia.org/wiki/Binary_prefix#Hard_disk_drives&#34; target=&#34;_blank&#34;&gt;https://en.wikipedia.org/wiki/Binary_prefix#Hard_disk_drives&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Each element of the string must follow the Binary Prefix format: &lt;a href=&#34;https://en.wikipedia.org/wiki/Binary_prefix#Hard_disk_drives&#34;&gt;https://en.wikipedia.org/wiki/Binary_prefix#Hard_disk_drives&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;The possible binary prefixes are MB, GB, TB, PB, YB&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 

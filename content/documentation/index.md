@@ -7,30 +7,37 @@ weight: 20
 ## Using the CLI
 ### Connecting to Ernest
 
-```sh
-#The first step is to specify the IP address of our Ernest Server:
+The first step is to specify the IP address of our Ernest Server:
 
+```
 $ ernest target https://<Ernest Server IP>
 Target set
+```
 
-#Now we should login to Ernest with the built-in admin account:
+Now we should login to Ernest with the built-in admin account:
 
-ernest login
+```
+$ ernest login
 Username: admin
 Password: *******
+```
 
-#The default admin password is ‘w4rmR3d’
-#and change the admin password:
+*(The default admin password is ‘w4rmR3d’)*
 
+and change the admin password:
+
+```
 $ ernest user change-password
-#You're about to change your password, please respond the questions below:
+You're about to change your password, please respond the questions below:
 Current password: <old admin password>
 New password: <new admin password>
 Confirm new password: <new admin password>
 Your password has been changed
+```
 
-#Now we can create a user, a group, and add the user to the group:
+Now we can create a user, a group, and add the user to the group:
 
+```
 $ ernest user create <user> <password>
 User <user> successfully created
 
@@ -39,9 +46,11 @@ Group <group> successfully created, you can add users with 'ernest group add-use
 
 $ ernest group add-user <user> <group>
 User <user> is now assigned to group <group>
+```
 
-#Now we can login with our new user:
+Now we can login with our new user:
 
+```
 $ ernest logout
 Bye.
 
@@ -49,9 +58,11 @@ $ ernest login
 Username: <user>
 Password: <password>
 Welcome back <user>
+```
 
-#We can confirm our Ernest Server IP and user:
+We can confirm our Ernest Server IP and user:
 
+```
 $ ernest info
 Current target : https://<Ernest Server IP>
 Current user : <user>
@@ -59,47 +70,58 @@ Current user : <user>
 
 ### Datacenters
 Ernest uses the concept of a datacenter to specify an infrastructure service provider, the provider API endpoint, credentials to access the provider API, and information specific to certain provider types. An example of creating a datacenter in Ernest for Amazon Web Services is:
-```sh
+
+```
 $ ernest datacenter create aws --region region --secret_access_key secret_access_key --access_key_id access_key_id <dc name>
 ```
+
 ### Services
 #### What is a Service?
-With Ernest a Service is a collection of networking, virtual machines, and configuration options that collectively define an environment, and also the datacenter where the environment should be built. A service is defined in YAML format, and you can see examples of this in the provider-specific documentation.
+With Ernest a **service** is a collection of networking, virtual machines, and configuration options that collectively define an environment, and also the datacenter where the environment should be built. A service is defined in YAML format, and you can see examples of this in the provider-specific documentation.
 
 #### How to create/modify Services
 Once we have created a datacenter and defined our service in YAML the process of building the service is:
-```sh
+
+```
 $ ernest service apply <yaml file>
 ```
+
 Once the service is created we can modify it by changing the YAML and then re-applying it. Ernest will calculate the differences and apply only those changes necessary to transition the service from the current state to the requested state.
 
 Finally you can also destroy services if needed:
-```sh
+
+```
 $ ernest service destroy <service name>
 ```
+
 #### View Service State and History
 Ernest stores the state of each service, as well as all historical states. You can list the available service with:
-```sh
+
+```
 $ ernest service list
+```
 
-#For a given service you can see the history of all builds for that service:
+For a given service you can see the history of all builds for that service:
 
+```
 $ ernest service history <service name>
+```
 
-#We can view the YAML for a specific build by:
+We can view the YAML for a specific build by:
 
+```
 $ ernest service definition <service name> --build <build id>
+```
 
-#We can view provider-generated information related to our service:
+We can view provider-generated information related to our service:
 
+```
 $ ernest service info <service name>
 ```
 
 ## CLI Command Reference
 ### ernest target
-
-```sh
-
+```
 NAME:
    ernest target - Configure Ernest target instance.
 
@@ -112,14 +134,14 @@ DESCRIPTION:
    Example:
     $ ernest target https://myernest.com
 ```
-### ernest info
 
-```sh
+### ernest info
+```
 NAME:
    ernest info - Display system-wide information.
 
 USAGE:
-   ernest info  
+   ernest info
 
 DESCRIPTION:
    Displays ernest instance information.
@@ -129,13 +151,12 @@ DESCRIPTION:
 ```
 
 ### ernest login
-
-```sh
+```
 NAME:
    ernest login - Login with your Ernest credentials.
 
 USAGE:
-   ernest login [command options]  
+   ernest login [command options]
 
 DESCRIPTION:
    Logs an user into Ernest instance.
@@ -147,7 +168,7 @@ DESCRIPTION:
 
    Example:
     $ ernest login --user <user> --password <password>
-
+  
 
 OPTIONS:
    --user value      User credentials
@@ -155,13 +176,12 @@ OPTIONS:
 ```
 
 ### ernest logout
-
-```sh
+```
 NAME:
    ernest logout - Clear local authentication credentials.
 
 USAGE:
-   ernest logout  
+   ernest logout
 
 DESCRIPTION:
    Logs out an user from Ernest instance.
@@ -171,13 +191,12 @@ DESCRIPTION:
 ```
 
 ### ernest user list
-
-```sh
+```
 NAME:
    ernest user list - List available users.
 
 USAGE:
-   ernest user list  
+   ernest user list
 
 DESCRIPTION:
    List available users.
@@ -187,8 +206,7 @@ DESCRIPTION:
 ```
 
 ### ernest user create
-
-```sh
+```
 NAME:
    ernest user create - Create a new user.
 
@@ -205,15 +223,14 @@ DESCRIPTION:
 
    Example:
     $ ernest user create --email username@example.com <username> <password>
-
+  
 
 OPTIONS:
    --email value  Email for the user
 ```
 
 ### ernest user change-password
-
-```sh
+```
 NAME:
    ernest user change-password - Change password of available users.
 
@@ -229,7 +246,7 @@ DESCRIPTION:
     or changing a change-password by being admin:
 
     $ ernest user change-password --user <username> --current-password <current-password> --password <new-password>
-
+  
 
 OPTIONS:
    --user value              The username of the user to change password
@@ -238,8 +255,7 @@ OPTIONS:
 ```
 
 ### ernest user disable
-
-```sh
+```
 NAME:
    ernest user disable - Disable available users.
 
@@ -254,13 +270,12 @@ DESCRIPTION:
 ```
 
 ### ernest group delete
-
-```sh
+```
 NAME:
    ernest group delete - Deletes a group.
 
 USAGE:
-   ernest group delete  
+   ernest group delete
 
 DESCRIPTION:
    Deletes a group by name
@@ -270,13 +285,12 @@ DESCRIPTION:
 ```
 
 ### ernest group list
-
-```sh
+```
 NAME:
    ernest group list - List available groups.
 
 USAGE:
-   ernest group list  
+   ernest group list
 
 DESCRIPTION:
    List available groups.
@@ -286,13 +300,12 @@ DESCRIPTION:
 ```
 
 ### ernest group create
-
-```sh
+```
 NAME:
    ernest group create - Create a group.
 
 USAGE:
-   ernest group create  
+   ernest group create
 
 DESCRIPTION:
    Create a group.
@@ -302,13 +315,12 @@ DESCRIPTION:
 ```
 
 ### ernest group add-user
-
-```sh
+```
 NAME:
    ernest group add-user - Adds a user to a group.
 
 USAGE:
-   ernest group add-user  
+   ernest group add-user
 
 DESCRIPTION:
    Adds a user to a group.
@@ -318,13 +330,12 @@ DESCRIPTION:
 ```
 
 ### ernest group remove-user
-
-```sh
+```
 NAME:
    ernest group remove-user - Removes an user from a group.
 
 USAGE:
-   ernest group remove-user  
+   ernest group remove-user
 
 DESCRIPTION:
    Removes an user from a group.
@@ -334,13 +345,12 @@ DESCRIPTION:
 ```
 
 ### ernest group add-datacenter
-
-```sh
+```
 NAME:
    ernest group add-datacenter - Adds a datacenter to a group.
 
 USAGE:
-   ernest group add-datacenter  
+   ernest group add-datacenter
 
 DESCRIPTION:
    Adds a datacenter to a group.
@@ -350,13 +360,12 @@ DESCRIPTION:
 ```
 
 ### ernest group remove-datacenter
-
-```sh
+```
 NAME:
    ernest group remove-datacenter - Removes a datacenter from a group.
 
 USAGE:
-   ernest group remove-datacenter  
+   ernest group remove-datacenter
 
 DESCRIPTION:
    Removes an datacenter from a group.
@@ -366,13 +375,12 @@ DESCRIPTION:
 ```
 
 ### ernest datacenter list
-
-```sh
+```
 NAME:
    ernest datacenter list - List available datacenters.
 
 USAGE:
-   ernest datacenter list  
+   ernest datacenter list
 
 DESCRIPTION:
    List available datacenters.
@@ -382,8 +390,7 @@ DESCRIPTION:
 ```
 
 ### ernest datacenter create vcloud
-
-```sh
+```
 NAME:
    ernest datacenter create vcloud - Create a new vcloud datacenter.
 
@@ -408,7 +415,7 @@ DESCRIPTION:
       vcloud-url: "http://ss.com"
       vse-url: "http://ss.com"
 
-
+  
 
 OPTIONS:
    --user value            Your VCloud valid user name
@@ -422,8 +429,7 @@ OPTIONS:
 ```
 
 ### ernest datacenter create aws
-
-```sh
+```
 NAME:
    ernest datacenter create aws - Create a new aws datacenter.
 
@@ -434,29 +440,28 @@ DESCRIPTION:
    Create a new AWS datacenter on the targeted instance of Ernest.
 
   Example:
-   $ ernest datacenter create aws --region region --secret_access_key secret_access_key --access_key_id access_key_id my_datacenter
+   $ ernest datacenter create aws --region us-west-2 --access_key_id AKIAIOSFODNN7EXAMPLE --secret_access_key wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY my_datacenter
 
    Template example:
     $ ernest datacenter create aws --template mydatacenter.yml mydatacenter
     Where mydatacenter.yaml will look like:
       ---
       fake: true
-      secret_access_key: secret_access_key
-      access_key_id: access_key_id
-      region: region
-
+      access_key_id : AKIAIOSFODNN7EXAMPLE
+      secret_access_key: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+      region: us-west-2
+   
 
 OPTIONS:
-   --region value    Datacenter region
-   --secret_access_key value     AWS secret_access_key
-   --access_key_id value    AWS access_key_id
-   --template value  Datacenter template
-   --fake            Fake datacenter
+   --region value, -r value             Datacenter region
+   --access_key_id value, -k value      AWS access key id
+   --secret_access_key value, -s value  AWS Secret access key
+   --template value, -t value           Datacenter template
+   --fake, -f                           Fake datacenter
 ```
 
 ### ernest datacenter update vcloud
-
-```sh
+```
 NAME:
    ernest datacenter update vcloud - Updates the specified VCloud datacenter.
 
@@ -468,7 +473,7 @@ DESCRIPTION:
 
    Example:
     $ ernest datacenter update vcloud --user <me> --org <org> --password <secret> my_datacenter
-
+  
 
 OPTIONS:
    --user value      Your VCloud valid user name
@@ -477,8 +482,7 @@ OPTIONS:
 ```
 
 ### ernest datacenter update aws
-
-```sh
+```
 NAME:
    ernest datacenter update aws - Updates the specified AWS datacenter.
 
@@ -489,17 +493,16 @@ DESCRIPTION:
    Updates the specified AWS datacenter.
 
    Example:
-    $ ernest datacenter update aws --secret_access_key <secret_access_key> --access_key_id <access_key_id> my_datacenter
-
+    $ ernest datacenter update aws --access_key_id AKIAIOSFODNN7EXAMPLE --secret_access_key wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY my_datacenter
+  
 
 OPTIONS:
-   --secret_access_key value   Your AWS valid secret_access_key
-   --access_key_id value  Your AWS valid access_key_id
+   --access_key_id value      Your AWS access key id
+   --secret_access_key value  Your AWS secret access key
 ```
 
 ### ernest datacenter delete
-
-```sh
+```
 NAME:
    ernest datacenter delete - Deletes the specified datacenter.
 
@@ -514,13 +517,12 @@ DESCRIPTION:
 ```
 
 ### ernest service list
-
-```sh
+```
 NAME:
    ernest service list - List available services.
 
 USAGE:
-   ernest service list  
+   ernest service list
 
 DESCRIPTION:
    List available services and shows its most relevant information.
@@ -530,8 +532,7 @@ DESCRIPTION:
 ```
 
 ### ernest service apply
-
-```sh
+```
 NAME:
    ernest service apply - Builds or changes infrastructure.
 
@@ -549,8 +550,7 @@ DESCRIPTION:
 ```
 
 ### ernest service destroy
-
-```sh
+```
 NAME:
    ernest service destroy - Destroy a service.
 
@@ -562,15 +562,15 @@ DESCRIPTION:
 
    Example:
     $ ernest destroy myservice
-
+  
 
 OPTIONS:
-   --force, -f  Force destroy command without asking for permission.
+   --force, -f  Hard ernest service removal.
+   --yes, -y    Destroy a service without prompting confirmation.
 ```
 
 ### ernest service history
-
-```sh
+```
 NAME:
    ernest service history - Shows the history of a service, a list of builds
 
@@ -585,8 +585,7 @@ DESCRIPTION:
 ```
 
 ### ernest service reset
-
-```sh
+```
 NAME:
    ernest service reset - Reset an in progress service.
 
@@ -601,8 +600,7 @@ DESCRIPTION:
 ```
 
 ### ernest service definition
-
-```sh
+```
 NAME:
    ernest service definition - Show the current definition of a service by its name
 
@@ -614,15 +612,14 @@ DESCRIPTION:
 
    Example:
     $ ernest service definition myservice
-
+  
 
 OPTIONS:
    --build value  Build ID
 ```
 
 ### ernest service info
-
-```sh
+```
 NAME:
    ernest service info - $ ernest service info <my_service> --build <specific build>
 
@@ -636,14 +633,14 @@ DESCRIPTION:
    Examples:
     $ ernest service definition myservice
     $ ernest service definition myservice --build build1
+  
 
 OPTIONS:
    --build value  Build ID
 ```
 
 ### ernest service monitor
-
-```sh
+```
 NAME:
    ernest service monitor - Monitor a service.
 
@@ -657,29 +654,62 @@ DESCRIPTION:
     $ ernest monitor my_service
 ```
 
-### ernest preferences logger list
+### ernest service diff
+```
+NAME:
+   ernest service diff - $ ernest service diff <service_name> <build_a> <build_b>
 
-```sh
+USAGE:
+   ernest service diff <service_name> <build_a> <build_b>
+
+DESCRIPTION:
+   Will display the diff between two different builds
+
+   Examples:
+    $ ernest service diff my_service 1 2
+```
+
+### ernest service import
+```
+NAME:
+   ernest service import - $ ernest service import <my_datacenter> <my_service>
+
+USAGE:
+   ernest service import [command options] <service_name>
+
+DESCRIPTION:
+   Will import te service <my_service> from datacenter <datacenter_name>
+
+   Examples:
+    $ ernest service import my_datacenter my_service
+  
+
+OPTIONS:
+   --datacenter value  Datacenter name
+```
+
+### ernest preferences logger list
+```
 NAME:
    ernest preferences logger list - Lists active loggers.
 
 USAGE:
-   ernest preferences logger list  
+   ernest preferences logger list
 
 DESCRIPTION:
    List active loggers.
 
    Example:
     $ ernest preferences logger list
-```    
-### ernest preferences logger add
+```
 
-```sh
+### ernest preferences logger add
+```
 NAME:
    ernest preferences logger add - Creates / updates a logger based on its type.
 
 USAGE:
-   ernest preferences logger add [command options]  
+   ernest preferences logger add [command options]
 
 DESCRIPTION:
    Creates / updates a logger based on its types.
@@ -687,12 +717,12 @@ DESCRIPTION:
    Example:
     $ ernest preferences logger add basic --logfile /tmp/ernest.log
     $ ernest preferences logger add logstash --hostname 10.50.1.1 --port 5000 --timeout 50000
-    $ ernest preferences logger add rollbar --secret_access_key MY_ROLLBAR_TOKEN
-
+    $ ernest preferences logger add rollbar --token MY_ROLLBAR_TOKEN
+  
 
 OPTIONS:
    --logfile value   Specify the path for the loging file
-   --secret_access_key value     Rollbar token
+   --token value     Rollbar token
    --env value       Rollbar environment
    --hostname value  Logstash hostname
    --port value      Logstash port (default: 0)
@@ -700,19 +730,72 @@ OPTIONS:
 ```
 
 ### ernest preferences logger delete
-
-```sh
+```
 NAME:
    ernest preferences logger delete - Deletes a logger based on its type.
 
 USAGE:
-   ernest preferences logger delete  
+   ernest preferences logger delete
 
 DESCRIPTION:
    Deletes a logger based on its types.
 
    Example:
     $ ernest preferences logger delete basic
+```
+
+### ernest docs
+```
+NAME:
+   ernest docs - Open docs in the default browser.
+
+USAGE:
+   ernest docs
+
+DESCRIPTION:
+   Open docs in the default browser.
+
+   Example:
+    $ ernest docs
+```
+
+### ernest setup
+```
+NAME:
+   ernest setup - Use it to setup your ernest instance
+
+USAGE:
+   ernest setup [command options] [arguments...]
+
+DESCRIPTION:
+   This command will help you to setup your ernest instance by:
+- [ ] configure ernest-cli target
+- [ ] create a plain user
+- [ ] create a group
+- [ ] link the user to the group
+- [ ] login as the newly created user.
+- [ ] create a new datacenter (optional)
+  
+
+OPTIONS:
+   --user value, -u value      Admin user
+   --password value, -p value  Admin password
+   --target value, -t value    Ernest location
+```
+
+### ernest component
+```
+NAME:
+   ernest component - Components related subcommands
+
+USAGE:
+   ernest component command [command options] [arguments...]
+
+COMMANDS:
+     list  List components on your datacenter.
+
+OPTIONS:
+   --help, -h  show help
 ```
 
 ## Bootstrapping with Salt
@@ -781,7 +864,7 @@ If you wish to use Salt bootstrapping the supported OS versions and OS-specific 
 </table>
 
 
-You can download the Salt Master image from the [Download page](downloads/).   
+You can download the Salt Master image from the [Download page](/downloads/).
 
 ## Amazon Web Services
 ### Introduction
@@ -808,27 +891,31 @@ Before we get started we will need the following information:
 - Ernest IP address
 - Ernest username/password
 
-```sh
-#The first step is to set the IP address of Ernest:
+The first step is to set the IP address of Ernest:
 
+```
 $ ernest target https://10.50.1.11
 Target set
 
-#Next we login to Ernest:
+```
 
+Next we login to Ernest:
+
+```
 $ ernest login
 Username: user1
 Password: ******
 Welcome back user1
+```
 
-#Once we have logged in to Ernest we can setup the AWS datacenter and credentials that Ernest will use to create our infrastructure:
-
-$ ernest datacenter create aws --region eu-west-1 --secret_access_key XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX --access_key_id YYYYYYYYYYYYYYYYYYYY my-dc
-Datacenter 'my-dc' successfully created
-
-#Now that we have our datacenter created in Ernest we can start building stuff.
+Once we have logged in to Ernest we can setup the AWS datacenter and credentials that Ernest will use to create our infrastructure:
 
 ```
+$ ernest datacenter create aws --region eu-west-1 --secret_access_key XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX --access_key_id YYYYYYYYYYYYYYYYYYYY my-dc
+Datacenter 'my-dc' successfully created
+```
+
+Now that we have our datacenter created in Ernest we can start building stuff.
 
 ### Creating a Service
 We will create a simple environment with one Ubuntu server, a public IP assigned to it, and the ability to ssh to that server from our IP (52.211.19.211).
@@ -836,7 +923,7 @@ We will create a simple environment with one Ubuntu server, a public IP assigned
 
 Our environment is defined in the following YAML:
 
-```sh
+```
 ---
 name: demo
 datacenter: my-dc
@@ -871,15 +958,15 @@ instances:
     key_pair: my-key
     security_groups:
       - public-sg
-```      
+```
 
 Lets apply our definition:
 
-```sh
+```
 $ ernest service apply demo.yml
-#Environment creation requested
-#Ernest will show you all output from your requested service creation
-#You can cancel at any moment with Ctrl+C, even the service is still #being created, you won't have any output
+Environment creation requested
+Ernest will show you all output from your requested service creation
+You can cancel at any moment with Ctrl+C, even the service is still #being created, you won't have any output
 Starting environment creation
 
 Creating networks:
@@ -914,7 +1001,7 @@ Your environment endpoint is:
 
 We can list the services we have built:
 
-```sh
+```
 $ ernest service list
 NAME  UPDATED         STATUS  ENDPOINT
 demo  2016-09-12 15:57:46.195942 +0000 UTC  done
@@ -922,7 +1009,7 @@ demo  2016-09-12 15:57:46.195942 +0000 UTC  done
 
 We can see detailed provider-generated information related to our service:
 
-```sh
+```
 $ ernest service info demo
 Name : demo
 VPC : vpc-abcdef01
@@ -955,16 +1042,20 @@ Security groups:
 
 We can view the history of applies for our service:
 
-```sh
+```
 $ ernest service history demo
-NAME  BUILD ID                UPDATED         STATUS
-demo  89389b76-cc25-4add-55e5-b7647217b4b1-abf663d6c173d4af98e3ff20bb7e8dde 2016-09-12 15:57:46.195942 +0000 UTC  done
++----+------+----------+--------------------------------+-------+
+| ID | NAME | BUILD ID |             STATUS             | USER  |
++----+------+----------+--------------------------------+-------+
+|  1 | demo | done     | 2016-09-12 15:57:46.195942     | user1 |
+|    |      |          | +0000 UTC                      |       |
++----+------+----------+--------------------------------+-------+
 ```
 
 For our service we can show the definition applied for a given Build ID:
 
-```sh
-$ ernest service definition demo --build 89389b76-cc25-4add-55e5-b7647217b4b1-abf663d6c173d4af98e3ff20bb7e8dde
+```
+$ ernest service definition demo --build 1
 ---
 name: demo
 datacenter: my-dc
@@ -1008,7 +1099,7 @@ Lets modify the service we create above. We will add a private network with a se
 
 Our modified YAML file is:
 
-```sh
+```
 ---
 name: demo
 datacenter: my-dc
@@ -1076,11 +1167,11 @@ instances:
 
 When we apply this YAML we can see Ernest make the necessary changes:
 
-```sh
+```
 $ ernest service apply demo.yml
-#Environment creation requested
-#Ernest will show you all output from your requested service creation
-#You can cancel at any moment with Ctrl+C, even the service is still #being created, you won't have any output
+Environment creation requested
+Ernest will show you all output from your requested service creation
+You can cancel at any moment with Ctrl+C, even the service is still #being created, you won't have any output
 Starting environment creation
 
 Creating networks:
@@ -1120,7 +1211,7 @@ Your environment endpoint is:
 
 We can see our service in the list, with the most recent update time:
 
-```sh
+```
 $ ernest service list
 NAME  UPDATED         STATUS  ENDPOINT
 demo  2016-09-12 16:03:40.195942 +0000 UTC  done
@@ -1128,7 +1219,7 @@ demo  2016-09-12 16:03:40.195942 +0000 UTC  done
 
 The service info has also updated with the new information:
 
-```sh
+```
 $ ernest service info demo
 Name : demo
 VPC : vpc-abcdef01
@@ -1166,18 +1257,25 @@ Security groups:
 | my-dc-demo-private-sg        | sg-89012345 |
 +------------------------------+-------------+
 ```
+
 The history shows both of the applies we have done for this service:
 
-``sh
-$ ernest service history demo
-NAME  BUILD ID                UPDATED         STATUS
-demo  72c1306c-c6ee-4d9b-4230-617d0e969ea9-abf663d6c173d4af98e3ff20bb7e8dde 2016-09-12 16:03:40.235144 +0000 UTC  done
-demo  89389b76-cc25-4add-55e5-b7647217b4b1-abf663d6c173d4af98e3ff20bb7e8dde 2016-09-12 15:57:46.195942 +0000 UTC  done
 ```
+$ ernest service history demo
++----+------+----------+--------------------------------+-------+
+| ID | NAME | BUILD ID |             STATUS             | USER  |
++----+------+----------+--------------------------------+-------+
+|  2 | jr26 | done     | 2016-09-12 16:03:40.235144     | user1 |
+|    |      |          | +0000 UTC                      |       |
+|  1 | jr26 | done     | 2016-09-12 15:57:46.195942     | user1 |
+|    |      |          | +0000 UTC                      |       |
++----+------+----------+--------------------------------+-------+
+```
+
 The definition for the most recent build can be displayed:
 
-```sh
-$ ernest service definition demo --build 72c1306c-c6ee-4d9b-4230-617d0e969ea9-abf663d6c173d4af98e3ff20bb7e8dde
+```
+$ ernest service definition demo --build 2
 ---
 name: demo
 datacenter: my-dc
@@ -1242,10 +1340,11 @@ instances:
     security_groups:
       - private-sg
 ```
+
 ### Clean-up
 After we have finished with our service we can remove it:
 
-```sh
+```
 $ ernest service destroy demo
 Are you sure? Please type yes or no and then press enter: yes
 
@@ -1289,11 +1388,12 @@ SUCCESS: your environment has been successfully deleted
 
 ## AWS YAML Reference
 
-<p>Environments built and managed with Ernest are defined in YAML format.</p>
+Environments built and managed with Ernest are defined in YAML format.
 
 ### Example
 
-<pre><code>---
+```
+---
 name: demo
 datacenter: my-dc
 vpc_id: vpc-abcdef01
@@ -1451,61 +1551,50 @@ rds_instances:
   - name: rds-test-1
     cluster: rds-test
     size: db.r3.xlarge
-</code></pre>
+```
 
+### Field Reference
 
-<h3 id="service-options">Service Options</h3>
+#### Service Options
 
-<pre><code>name: demo
+```
+name: demo
 datacenter: my-dc
 vpc_id: vpc-abcdef01
 vpc_subnet: 10.0.0.0/16
 
-</code></pre>
+```
 
-<p>Service Options support the following fields:</p>
+Service Options support the following fields:
 
-<ul>
-<li><p><strong>name</strong></p>
+* **name**
+ * String that defines the name of the service to build.
+ * This field is mandatory.
+ * This field cannot be null or empty.
+ * The value of this field must be 50 characters maximum.
 
-<ul>
-<li>String that defines the name of the service to build.</li>
-<li>This field is mandatory.</li>
-<li>This field cannot be null or empty.</li>
-<li>The value of this field must be 50 characters maximum.</li>
-</ul></li>
+* **datacenter**
+ * String that defines the name of the datacenter where the service is built.
+ * This field is mandatory.
+ * This field cannot be null or empty.
+ * The value of this field must 50 characters maximum.
 
-<li><p><strong>datacenter</strong></p>
+* **vpc_id**
+ * String that defines the ID of the existing VPC the service will use.
+ * This field is mandatory, unless **vpc_subnet** is present.
+ * This field cannot be null or empty.
+ * The value of this field must be 50 characters maximum.
 
-<ul>
-<li>String that defines the name of the datacenter where the service is built.</li>
-<li>This field is mandatory.</li>
-<li>This field cannot be null or empty.</li>
-<li>The value of this field must 50 characters maximum.</li>
-</ul></li>
+* **vpc_subnet**
+ * String that defines the subnet of the VPC that will be created for the service to use.
+ * This field is mandatory, unless **vpc_id** is present.
+ * This field cannot be null or empty.
+ * The value of this field must 50 characters maximum.
 
-<li><p><strong>vpc_id</strong></p>
+#### Networking
 
-<ul>
-<li>String that defines the ID of the existing VPC the service will use.</li>
-<li>This field is mandatory, unless <strong>vpc_subnet</strong> is present.</li>
-<li>This field cannot be null or empty.</li>
-<li>The value of this field must be 50 characters maximum.</li>
-</ul></li>
-
-<li><p><strong>vpc_subnet</strong></p>
-
-<ul>
-<li>String that defines the subnet of the VPC that will be created for the service to use.</li>
-<li>This field is mandatory, unless <strong>vpc_id</strong> is present.</li>
-<li>This field cannot be null or empty.</li>
-<li>The value of this field must 50 characters maximum.</li>
-</ul></li>
-</ul>
-
-<h3 id="networking">Networking</h3>
-
-<pre><code>networks:
+```
+networks:
   - name: web
     subnet: 10.0.10.0/24
     public: true
@@ -1518,79 +1607,58 @@ nat_gateways:
   - name: db-nat
     public_network: web
 
-</code></pre>
+```
 
-<p>Networking supports the following fields:</p>
+Networking supports the following fields:
 
-<p><strong>networks</strong></p>
+**networks**
 
-<p>A network is a subnet that our instances can connect to. This is what allows us to network/isolate VM’s together.</p>
+A network is a subnet that our instances can connect to. This is what allows us to network/isolate VM’s together.
 
-<ul>
-<li><p><strong>name</strong></p>
+* **name**
+ * String that defines the name of the subnet to build.
+ * This field is mandatory.
+ * This field cannot be null or empty.
+ * The value of this field must be 50 characters maximum.
 
-<ul>
-<li>String that defines the name of the subnet to build.</li>
-<li>This field is mandatory.</li>
-<li>This field cannot be null or empty.</li>
-<li>The value of this field must be 50 characters maximum.</li>
-</ul></li>
+* **subnet**
+ * String that defines the IP address range of the subnet.
+ * It must follow CIDR notation as described at: https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing
+ * This field is mandatory.
+ * This field cannot be null or empty.
+ * This field must be unique for this user & all the networks on the manifest.
 
-<li><p><strong>subnet</strong></p>
+* **public**
+ * String that defines if the subnet will be public or private.
+ * This field is optional.
+ * Values can be: “true“ or “false“.
+ * This field will default to “false“.
 
-<ul>
-<li>String that defines the IP address range of the subnet.</li>
-<li>It must follow CIDR notation as described at: <a href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing" target="_blank">https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing</a></li>
-<li>This field is mandatory.</li>
-<li>This field cannot be null or empty.</li>
-<li>This field must be unique for this user &amp; all the networks on the manifest.</li>
-</ul></li>
+* **nat_gateway**
+ * String that defines the name of the NAT gateway to use for this subnet.
+ * This field is optional.
+ * This field can be empty.
 
-<li><p><strong>public</strong></p>
+**nat_gateways**
 
-<ul>
-<li>String that defines if the subnet will be public or private.</li>
-<li>This field is optional.</li>
-<li>Values can be: “true“ or “false“.</li>
-<li>This field will default to “false“.</li>
-</ul></li>
+NAT gateways enable instances in a private subnet to connect to the Internet or other AWS services, but prevent the Internet from initiating a connection with those instances.
 
-<li><p><strong>nat_gateway</strong></p>
+* **name**
+ * String that defines the name of the NAT gateway to build.
+ * This field is mandatory.
+ * This field cannot be null or empty.
+ * The value of this field must be 50 characters maximum.
 
-<ul>
-<li>String that defines the name of the NAT gateway to use for this subnet.</li>
-<li>This field is optional.</li>
-<li>This field can be empty.</li>
-</ul></li>
-</ul>
+* **public_network**
+ * String that defines the name of the public network the NAT gateway will reside.
+ * This field is mandatory.
+ * This field cannot be null or empty.
+ * The value of this field must be 50 characters maximum.
 
-<p><strong>nat_gateways</strong></p>
+#### Security Groups
 
-<p>NAT gateways enable instances in a private subnet to connect to the Internet or other AWS services, but prevent the Internet from initiating a connection with those instances.</p>
-
-<ul>
-<li><p><strong>name</strong></p>
-
-<ul>
-<li>String that defines the name of the NAT gateway to build.</li>
-<li>This field is mandatory.</li>
-<li>This field cannot be null or empty.</li>
-<li>The value of this field must be 50 characters maximum.</li>
-</ul></li>
-
-<li><p><strong>public_network</strong></p>
-
-<ul>
-<li>String that defines the name of the public network the NAT gateway will reside.</li>
-<li>This field is mandatory.</li>
-<li>This field cannot be null or empty.</li>
-<li>The value of this field must be 50 characters maximum.</li>
-</ul></li>
-</ul>
-
-<h3 id="security-groups">Security Groups</h3>
-
-<pre><code>security_groups:
+```
+security_groups:
   - name: web-sg
     egress:
       - ip: 0.0.0.0/0
@@ -1603,104 +1671,72 @@ nat_gateways:
         from_port: '0'
         to_port: '65535'
 
-</code></pre>
+```
 
-<p>Security Groups support the following fields:</p>
+Security Groups support the following fields:
 
-<ul>
-<li><strong>name</strong>
+* **name**
+ * String that defines the name of the security group to build.
+ * This field is mandatory.
+ * This field cannot be null or empty.
+ * The value of this field must be 50 characters maximum.
 
-<ul>
-<li>String that defines the name of the security group to build.</li>
-<li>This field is mandatory.</li>
-<li>This field cannot be null or empty.</li>
-<li>The value of this field must be 50 characters maximum.</li>
-</ul></li>
-</ul>
+**egress**
 
-<p><strong>egress</strong></p>
+Security group egress rules.
 
-<p>Security group egress rules.</p>
+* **ip**
+ * String that defines the IP address range for this rule.
+ * It must follow CIDR notation as described at: https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing
+ * This field is mandatory.
+ * This field cannot be null or empty.
 
-<ul>
-<li><p><strong>ip</strong></p>
+* **protocol**
+ * String that defines the protocol for this rule.
+ * This field is mandatory.
+ * This field cannot be null or empty.
+ * Values can be: tcp | udp | icmp | any
 
-<ul>
-<li>String that defines the IP address range for this rule.</li>
-<li>It must follow CIDR notation as described at: <a href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing" target="_blank">https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing</a></li>
-<li>This field is mandatory.</li>
-<li>This field cannot be null or empty.</li>
-</ul></li>
+* **from_port**
+ * Starting port-range number.
+ * This field is mandatory.
+ * Values can be: 0 - 65535.
 
-<li><p><strong>protocol</strong></p>
+* **to_port**
+ * Ending port-range number.
+ * This field is mandatory.
+ * Values can be: 0 - 65535.
 
-<ul>
-<li>String that defines the protocol for this rule.</li>
-<li>This field is mandatory.</li>
-<li>This field cannot be null or empty.</li>
-<li>Values can be: tcp | udp | icmp | any</li>
-</ul></li>
+**ingress**
 
-<li><p><strong>from_port</strong></p>
+Security group ingress rules.
 
-<ul>
-<li>Starting port-range number.</li>
-<li>This field is mandatory.</li>
-<li>Values can be: 0 - 65535.</li>
-</ul></li>
+* **ip**
+ * String that defines the IP address range for this rule.
+ * It must follow CIDR notation as described at: https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing
+ * This field is mandatory.
+ * This field cannot be null or empty.
 
-<li><p><strong>to_port</strong></p>
+* **protocol**
+ * String that defines the protocol for this rule.
+ * This field is mandatory.
+ * This field cannot be null or empty.
+ * Values can be: tcp | udp | icmp | any
 
-<ul>
-<li>Ending port-range number.</li>
-<li>This field is mandatory.</li>
-<li>Values can be: 0 - 65535.</li>
-</ul></li>
-</ul>
+* **from_port**
+ * Starting port-range number.
+ * This field is mandatory.
+ * Values can be: 0 - 65535.
 
-<p><strong>ingress</strong></p>
+* **to_port**
+ * Ending port-range number.
+ * This field is mandatory.
+ * Values can be: 0 - 65535.
 
-<p>Security group ingress rules.</p>
+#### Instances
 
-<ul>
-<li><p><strong>ip</strong></p>
-
-<ul>
-<li>String that defines the IP address range for this rule.</li>
-<li>It must follow CIDR notation as described at: <a href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing" target="_blank">https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing</a></li>
-<li>This field is mandatory.</li>
-<li>This field cannot be null or empty.</li>
-</ul></li>
-
-<li><p><strong>protocol</strong></p>
-
-<ul>
-<li>String that defines the protocol for this rule.</li>
-<li>This field is mandatory.</li>
-<li>This field cannot be null or empty.</li>
-<li>Values can be: tcp | udp | icmp | any</li>
-</ul></li>
-
-<li><p><strong>from_port</strong></p>
-
-<ul>
-<li>Starting port-range number.</li>
-<li>This field is mandatory.</li>
-<li>Values can be: 0 - 65535.</li>
-</ul></li>
-
-<li><p><strong>to_port</strong></p>
-
-<ul>
-<li>Ending port-range number.</li>
-<li>This field is mandatory.</li>
-<li>Values can be: 0 - 65535.</li>
-</ul></li>
-</ul>
-
-<h3 id="instances">Instances</h3>
-
-<pre><code>instances:
+```
+instances:
   - name: web
     elastic_ip: true
     type: t2.micro
@@ -1715,115 +1751,82 @@ nat_gateways:
       - volume: big-vol
         device: /dev/sdx
 
-</code></pre>
+```
 
-<p>Instances support the following fields:</p>
+Instances support the following fields:
 
-<ul>
-<li><p><strong>name</strong></p>
+* **name**
+ * String that defines the name of the instance to build.
+ * This field is mandatory.
+ * This field cannot be null or empty.
+ * This field must be unique by user & manifest.
+ * The value of this field must be 50 characters maximum.
 
-<ul>
-<li>String that defines the name of the instance to build.</li>
-<li>This field is mandatory.</li>
-<li>This field cannot be null or empty.</li>
-<li>This field must be unique by user &amp; manifest.</li>
-<li>The value of this field must be 50 characters maximum.</li>
-</ul></li>
+* **elastic_ip**
+ * String that defines if the instance will be assigned an elastic IP.
+ * This field is optional.
+ * Values can be: “true“ or “false“.
+ * This field will default to “false“.
 
-<li><p><strong>elastic_ip</strong></p>
+* **type**
+ * String that defines the instance size.
+ * This field is mandatory.
+ * This field cannot be null or empty.
+ * This field must be a valid AWS EC2 size.
 
-<ul>
-<li>String that defines if the instance will be assigned an elastic IP.</li>
-<li>This field is optional.</li>
-<li>Values can be: “true“ or “false“.</li>
-<li>This field will default to “false“.</li>
-</ul></li>
+* **image**
+ * String that defines the name of an AMI to install.
+ * This field is mandatory.
+ * This field cannot be null or empty.
 
-<li><p><strong>type</strong></p>
+* **network:**
+ * String that defines the name of a network to attach this instance.
+ * This field is mandatory.
+ * This field cannot be null or empty.
+ * The value of this field should exist on the networks section previously specified.
 
-<ul>
-<li>String that defines the instance size.</li>
-<li>This field is mandatory.</li>
-<li>This field cannot be null or empty.</li>
-<li>This field must be a valid AWS EC2 size.</li>
-</ul></li>
+* **start_ip:**
+ * String that defines the starting IP to allocate the VMs to be built.
+ * This field is mandatory.
+ * This field cannot be null or empty.
+ * This field must be a valid IP.
+ * This IP should belong to the network already defined on the instance.
 
-<li><p><strong>image</strong></p>
+* **count**
+ * Integer that defines the number of instances to be created.
+ * This field is mandatory.
+ * This field cannot be null or empty.
+ * This field must be greater or equal that 1
 
-<ul>
-<li>String that defines the name of an AMI to install.</li>
-<li>This field is mandatory.</li>
-<li>This field cannot be null or empty.</li>
-</ul></li>
+* **key_pair**
+ * String that specifies the key pair to be used to login to the instances.
+ * This field is optional.
+ * This field cannot be null or empty.
 
-<li><p><strong>network:</strong></p>
+* **security_groups**
+ * Array that contains security groups that will be applied to the instances.
+ * This field is optional.
+ * This field can be empty.
 
-<ul>
-<li>String that defines the name of a network to attach this instance.</li>
-<li>This field is mandatory.</li>
-<li>This field cannot be null or empty.</li>
-<li>The value of this field should exist on the networks section previously specified.</li>
-</ul></li>
+  **volumes**
 
-<li><p><strong>start_ip:</strong></p>
+  EBS volumes to be attached to the vm. Please note that the count of the EBS volume must be greater or equal to the amount of instances specified.
 
-<ul>
-<li>String that defines the starting IP to allocate the VMs to be built.</li>
-<li>This field is mandatory.</li>
-<li>This field cannot be null or empty.</li>
-<li>This field must be a valid IP.</li>
-<li>This IP should belong to the network already defined on the instance.</li>
-</ul></li>
+  * **volume**
+  * String that references the name of an EBS volume specidied on the yaml
+  * This field is mandatory
+  * This field cannot be empty or null
 
-<li><p><strong>count</strong></p>
+  * **device**
+  * String that defines what device name is exposed to the instance
+  * This field is mandatory
+  * This field cannot be empty or null
 
-<ul>
-<li>Integer that defines the number of instances to be created.</li>
-<li>This field is mandatory.</li>
-<li>This field cannot be null or empty.</li>
-<li>This field must be greater or equal that 1</li>
-</ul></li>
 
-<li><p><strong>key_pair</strong></p>
+#### Load Balancers
 
-<ul>
-<li>String that specifies the key pair to be used to login to the instances.</li>
-<li>This field is optional.</li>
-<li>This field cannot be null or empty.</li>
-</ul></li>
-
-<li><p><strong>security_groups</strong></p>
-
-<ul>
-<li>Array that contains security groups that will be applied to the instances.</li>
-<li>This field is optional.</li>
-<li>This field can be empty.</li>
-</ul></li>
-</ul>
-
-<p><strong>volumes</strong></p>
-
-<p>EBS volumes to be attached to the vm. Please note that the count of the EBS volume must be greater or equal to the amount of instances specified.</p>
-
-<ul>
-<li><strong>volume</strong></li>
-<li>String that references the name of an EBS volume specidied on the yaml</li>
-<li>This field is mandatory</li>
-
-<li><p>This field cannot be empty or null</p></li>
-
-<li><p><strong>device</strong></p></li>
-
-<li><p>String that defines what device name is exposed to the instance</p></li>
-
-<li><p>This field is mandatory</p></li>
-
-<li><p>This field cannot be empty or null</p></li>
-</ul>
-
-<h3 id="load-balancers">Load Balancers</h3>
-
-<pre><code>loadbalancers:
+```
+loadbalancers:
   - name: elb-1
     private: false
     subnets:
@@ -1841,103 +1844,70 @@ nat_gateways:
     security_groups:
       - web-sg
 
-</code></pre>
+```
+Loadbalancers support the following fields:
 
-<p>Loadbalancers support the following fields:</p>
+* **name**
+ * String that defines the name of the instance to build.
+ * This field is mandatory.
+ * This field cannot be null or empty.
+ * This field must be unique by user &amp; manifest.
+ * The value of this field must be 50 characters maximum.
 
-<ul>
-<li><p><strong>name</strong></p>
+* **private**
+ * Boolean that defines if the loadbalancer will be private or public.
+ * This field is optional.
+ * Values can be: “true“ or “false“.
+ * This field will default to “false“.
 
-<ul>
-<li>String that defines the name of the instance to build.</li>
-<li>This field is mandatory.</li>
-<li>This field cannot be null or empty.</li>
-<li>This field must be unique by user &amp; manifest.</li>
-<li>The value of this field must be 50 characters maximum.</li>
-</ul></li>
+ * **networks**
+  * Array of String's that defines which public network/subnet to attach to the ELB.
+  * This field is mandatory if private is set to false.
+  * This field cannot be null or empty.
+  * This field must specify a network/subnet that exists on the yaml.
+  * Only one subnet can be deployed per availablilty zone. It is advised that you specify an AZ when defining a network/subnet.
 
-<li><p><strong>private</strong></p>
+* **instances**
+ * Array of String's that defines which group of instances to add to the ELB.
+ * This field is mandatory.
+ * This field cannot be null or empty.
+ * This field must specify an instance group that exists on the yaml.
 
-<ul>
-<li>Boolean that defines if the loadbalancer will be private or public.</li>
-<li>This field is optional.</li>
-<li>Values can be: “true“ or “false“.</li>
+* **security_groups**
+ * Array of String's that defines which security groups to apply to the ELB.
+ * This field not is mandatory.
+ * This field must specify a security group that exists on the yaml.
 
-<li><p>This field will default to “false“.</p></li>
+**listeners**
 
-<li><p><strong>networks</strong></p></li>
+ELB Listeners.
 
-<li><p>Array of String&rsquo;s that defines which public network/subnet to attach to the ELB.</p></li>
+* **protocol**
+ * String that defines the protocol for this rule.
+ * This field is mandatory.
+ * This field cannot be null or empty.
+ * Values can be: http | https | ssl | tcp
+ * If https or ssl is specified, an ssl_cert must be specified.
 
-<li><p>This field is mandatory if private is set to false.</p></li>
+* **from_port**
+ * Starting port-range number.
+ * This field is mandatory.
+ * Values can be: 1 - 65535.
 
-<li><p>This field cannot be null or empty.</p></li>
+* **to_port**
+ * Ending port-range number.
+ * This field is mandatory.
+ * Values can be: 1 - 65535.
 
-<li><p>This field must specify a network/subnet that exists on the yaml.</p></li>
+* **ssl_cert**
+ * The ssl certificate ID of a valid AWS Certificate Manager (ACM) cert.
+ * This field is mandatory only if protocol is set to https or ssl.
 
-<li><p>Only one subnet can be deployed per availablilty zone. It is advised that you specify an AZ when defining a network/subnet.</p></li>
-</ul></li>
 
-<li><p><strong>instances</strong></p>
+#### S3 Buckets
 
-<ul>
-<li>Array of String&rsquo;s that defines which group of instances to add to the ELB.</li>
-<li>This field is mandatory.</li>
-<li>This field cannot be null or empty.</li>
-<li>This field must specify an instance group that exists on the yaml.</li>
-</ul></li>
-
-<li><p><strong>security_groups</strong></p>
-
-<ul>
-<li>Array of String&rsquo;s that defines which security groups to apply to the ELB.</li>
-<li>This field not is mandatory.</li>
-<li>This field must specify a security group that exists on the yaml.</li>
-</ul></li>
-</ul>
-
-<p><strong>listeners</strong></p>
-
-<p>ELB Listeners.</p>
-
-<ul>
-<li><p><strong>protocol</strong></p>
-
-<ul>
-<li>String that defines the protocol for this rule.</li>
-<li>This field is mandatory.</li>
-<li>This field cannot be null or empty.</li>
-<li>Values can be: http | https | ssl | tcp</li>
-<li>If https or ssl is specified, an ssl_cert must be specified.</li>
-</ul></li>
-
-<li><p><strong>from_port</strong></p>
-
-<ul>
-<li>Starting port-range number.</li>
-<li>This field is mandatory.</li>
-<li>Values can be: 1 - 65535.</li>
-</ul></li>
-
-<li><p><strong>to_port</strong></p>
-
-<ul>
-<li>Ending port-range number.</li>
-<li>This field is mandatory.</li>
-<li>Values can be: 1 - 65535.</li>
-</ul></li>
-
-<li><p><strong>ssl_cert</strong></p>
-
-<ul>
-<li>The ssl certificate ID of a valid AWS Certificate Manager (ACM) cert.</li>
-<li>This field is mandatory only if protocol is set to https or ssl.</li>
-</ul></li>
-</ul>
-
-<h3 id="s3-buckets">S3 Buckets</h3>
-
-<pre><code>s3_buckets:
+```
+s3_buckets:
   - name: bucket-1
     acl: private
     bucket_location: eu-west-1
@@ -1945,68 +1915,48 @@ nat_gateways:
       - id: foo
         type: emailaddress, id, uri
         permissions: full, read, read-acl, write-acl
-</code></pre>
+```
 
-<p>S3 support the following fields:</p>
+S3 support the following fields:
 
-<ul>
-<li><p><strong>name</strong></p>
+* **name**
+ * (string) name of the bucket.
+ * This field is mandatory.
+ * This field cannot be null or empty.
+ * This field must be unique by user &amp; manifest.
+ * The value of this field must be 50 characters maximum.
 
-<ul>
-<li>(string) name of the bucket.</li>
-<li>This field is mandatory.</li>
-<li>This field cannot be null or empty.</li>
-<li>This field must be unique by user &amp; manifest.</li>
-<li>The value of this field must be 50 characters maximum.</li>
-</ul></li>
+* **acl**
+ * (string) the canned ACL to apply to the bucket.
+ * The value of this field can be private, public-read, public-read-write
+ * or authenticated-read
 
-<li><p><strong>acl</strong></p>
+* **bucket_location**
+ * (string) the location constraint
+ * The value of this field can be EU, eu-west-1, us-west-1, us-west-2,
+ * ap-south-1, ap-southeast-2, ap-northeast-1, sa-east-1, cn-north-1 or
+ * eu-central-1
 
-<ul>
-<li>(string) the canned ACL to apply to the bucket.</li>
-<li>The value of this field can be private, public-read, public-read-write</li>
-<li>or authenticated-read</li>
-</ul></li>
+* **grantees**
+ * (collection) List of permissions on the bucket.
 
-<li><p><strong>bucket_location</strong></p>
+* **id**
+ * (string) Grantee name
 
-<ul>
-<li>(string) the location constraint</li>
-<li>The value of this field can be EU, eu-west-1, us-west-1, us-west-2,</li>
-<li>ap-south-1, ap-southeast-2, ap-northeast-1, sa-east-1, cn-north-1 or</li>
-<li>eu-central-1</li>
-</ul></li>
+* **type**
+ * (string) Grantee type
+ * Possible values : email address, id or uri
 
-<li><p><strong>grantees</strong></p>
+* **permissions**  
+ * (string) Permissions for this grantee on the bucket
+ * Possible values: full, read, read-acl and write-acl
 
-<ul>
-<li>(collection) List of permissions on the bucket.</li>
-</ul></li>
 
-<li><p><strong>id</strong></p>
 
-<ul>
-<li>(string) Grantee name</li>
-</ul></li>
+ #### Route53 Zones
 
-<li><p><strong>type</strong></p>
-
-<ul>
-<li>(string) Grantee type</li>
-<li>Possible values : email address, id or uri</li>
-</ul></li>
-
-<li><p><strong>permissions</strong></p>
-
-<ul>
-<li>(string) Permissions for this grantee on the bucket</li>
-<li>Possible values: full, read, read-acl and write-acl</li>
-</ul></li>
-</ul>
-
-<p>### Route53 Zones</p>
-
-<pre><code> route53_zones:
+ ```
+ route53_zones:
    - name: example.com
      private: false
      records:
@@ -2015,80 +1965,56 @@ nat_gateways:
          ttl: 3600
          values:
            - 8.8.8.8
-</code></pre>
+ ```
 
-<p>S3 support the following fields:</p>
+ S3 support the following fields:
 
-<ul>
-<li><p><strong>name</strong></p>
+ * **name**
+  * (string) The domain name of the zone.
+  * This field is mandatory.
+  * This field cannot be null or empty.
+  * This field must be unique by user &amp; manifest.
 
-<ul>
-<li>(string) The domain name of the zone.</li>
-<li>This field is mandatory.</li>
-<li>This field cannot be null or empty.</li>
-<li>This field must be unique by user &amp; manifest.</li>
-</ul></li>
+ * **private**
+  * (boolean) sets the zone to be private hosted zone.
+  * The value of this field can be true or false. Default is false.
 
-<li><p><strong>private</strong></p>
+**records**
 
-<ul>
-<li>(boolean) sets the zone to be private hosted zone.</li>
-<li>The value of this field can be true or false. Default is false.</li>
-</ul></li>
-</ul>
+The collection of DNS entries you want to host.
 
-<p><strong>records</strong></p>
+ * **entry**
+  * (string) the full domain record entry
+  * The value of this field should be an F.Q.D.N (fully qualified domain name)
 
-<p>The collection of DNS entries you want to host.</p>
+ * **Type**
+ * (string) the full domain record entry
+ * The value of this field should be one of 'A', 'AAAA', 'CNAME', 'MX', 'PTR', 'TXT', 'SRV', 'SPF', 'NAPTR', 'NS', 'SOA'
 
-<ul>
-<li><p><strong>entry</strong></p>
+ * **TTL**
+ * (int) the expiration period of the entry.
+ * The value of this field should be greater than 0
 
-<ul>
-<li>(string) the full domain record entry</li>
-<li>The value of this field should be an F.Q.D.N (fully qualified domain name)</li>
-</ul></li>
+ * **values**
+  * Array of strings. The values the entry will return
+  * These values must be valid for the type of record you have selected.
 
-<li><p><strong>Type</strong></p></li>
+ * **Loadbalancers**
+  * Array of strings. The loadbalancers you wish the entry to resolve to.
+  * The type of record must be set to CNAME
+  * You must specify only loadbalancers or instances, not both.
 
-<li><p>(string) the full domain record entry</p></li>
+ * **instances**
+  * Array of strings. The loadbalancers you wish the entry to resolve to.
+  * The type of record must be set to A
+  * This must target the individual instance, including the instances number, i.e. web-1
+  * You must specify only loadbalancers or instances, not both.
 
-<li><p>The value of this field should be one of &lsquo;A&rsquo;, &lsquo;AAAA&rsquo;, &lsquo;CNAME&rsquo;, &lsquo;MX&rsquo;, &lsquo;PTR&rsquo;, &lsquo;TXT&rsquo;, &lsquo;SRV&rsquo;, &lsquo;SPF&rsquo;, &lsquo;NAPTR&rsquo;, &lsquo;NS&rsquo;, &lsquo;SOA&rsquo;</p></li>
+#### RDS Clusters
 
-<li><p><strong>TTL</strong></p></li>
 
-<li><p>(int) the expiration period of the entry.</p></li>
-
-<li><p>The value of this field should be greater than 0</p></li>
-
-<li><p><strong>values</strong></p>
-
-<ul>
-<li>Array of strings. The values the entry will return</li>
-<li>These values must be valid for the type of record you have selected.</li>
-</ul></li>
-
-<li><p><strong>Loadbalancers</strong></p>
-
-<ul>
-<li>Array of strings. The loadbalancers you wish the entry to resolve to.</li>
-<li>The type of record must be set to CNAME</li>
-<li>You must specify only loadbalancers or instances, not both.</li>
-</ul></li>
-
-<li><p><strong>instances</strong></p>
-
-<ul>
-<li>Array of strings. The loadbalancers you wish the entry to resolve to.</li>
-<li>The type of record must be set to A</li>
-<li>This must target the individual instance, including the instances number, i.e. web-1</li>
-<li>You must specify only loadbalancers or instances, not both.</li>
-</ul></li>
-</ul>
-
-<h3 id="rds-clusters">RDS Clusters</h3>
-
-<pre><code>rds_clusters:
+```
+rds_clusters:
   - name: aurora-test
     engine: aurora
     engine_version: 1.9
@@ -2111,151 +2037,100 @@ nat_gateways:
     maintenance_window: Mon:21:30-Mon:22:00
     final_snapshot: true
 
-</code></pre>
+```
+RDS Clusters support the following fields:
 
-<p>RDS Clusters support the following fields:</p>
+* **name**
+ * (string) The name of the rds cluster.
+ * This field is mandatory.
+ * This field cannot be null or empty.
+ * This field must be unique by user &amp; manifest.
 
-<ul>
-<li><p><strong>name</strong></p>
+* **engine**
+ * (string) The engine type of the rds cluster.
+ * This field is mandatory.
+ * This field cannot be null or empty.
+ * Currently only 'aurora' is supported as a value.
 
-<ul>
-<li>(string) The name of the rds cluster.</li>
-<li>This field is mandatory.</li>
-<li>This field cannot be null or empty.</li>
-<li>This field must be unique by user &amp; manifest.</li>
-</ul></li>
+* **engine_version**
+ * (string) The engine_version of the rds cluster.
+ * This field is not mandatory.
 
-<li><p><strong>engine</strong></p>
+* **port**
+ * (int) The port exposed by the rds cluster.
+ * This field not is mandatory.
+ * This field must be between 1150 - 65535 (default: 3306).
 
-<ul>
-<li>(string) The engine type of the rds cluster.</li>
-<li>This field is mandatory.</li>
-<li>This field cannot be null or empty.</li>
-<li>Currently only &lsquo;aurora&rsquo; is supported as a value.</li>
-</ul></li>
+* **public**
+ * (boolean) Sets the rds cluster to be publicly accessible.
+ * This field not is mandatory.
+ * The value of this field can be true or alse. Default is false.
 
-<li><p><strong>engine_version</strong></p>
+* **availability_zones**
+ * Array of strings. The availability zones to deploy the rds cluster to.
+ * This field not is mandatory.
+ * The availability zone must be in the same region as the vpc it is deployed to.
+ * If the rds cluster is set to private, there must be networks specified for each availability zone.
 
-<ul>
-<li>(string) The engine_version of the rds cluster.</li>
-<li>This field is not mandatory.</li>
-</ul></li>
+* **security_groups**
+ * Array of String's that defines which security groups to apply to the rds cluster.
+ * This field not is mandatory.
+ * This field must specify a security group that exists on the yaml.
 
-<li><p><strong>port</strong></p>
+* **networks**
+ * Array of String's that defines which networks to expose the rds cluster to.
+ * This field not is mandatory (if public is set to true).
+ * This field must specify a security group that exists on the yaml.
 
-<ul>
-<li>(int) The port exposed by the rds cluster.</li>
-<li>This field not is mandatory.</li>
-<li>This field must be between 1150 - 65535 (default: 3306).</li>
-</ul></li>
+* **database_name**
+ * (string) The database name of the rds cluster.
+ * This field is mandatory.
+ * This field cannot be null or empty.
 
-<li><p><strong>public</strong></p>
+* **database_username**
+ * (string) The database username of the rds cluster.
+ * This field is mandatory.
+ * This field cannot be null or empty.
 
-<ul>
-<li>(boolean) Sets the rds cluster to be publicly accessible.</li>
-<li>This field not is mandatory.</li>
-<li>The value of this field can be true or alse. Default is false.</li>
-</ul></li>
+* **database_username**
+ * (string) The database password of the rds cluster.
+ * This field is mandatory.
+ * This field cannot be null or empty.
 
-<li><p><strong>availability_zones</strong></p>
+* **maintenance_window**
+ * (string) The time period at which any maintenance tasks will occur.
+ * This field is not mandatory.
+ * Format must be a range in the structure of DDD:HH::MM-DDD:HH::MM (Day:Hour:Minute)
 
-<ul>
-<li>Array of strings. The availability zones to deploy the rds cluster to.</li>
-<li>This field not is mandatory.</li>
-<li>The availability zone must be in the same region as the vpc it is deployed to.</li>
-<li>If the rds cluster is set to private, there must be networks specified for each availability zone.</li>
-</ul></li>
+* **replication_source**
+ * (string) The target rds cluster or mysql instance to replicate from.
+ * Must be a valid ARN (Amazon Resource Name).
+ * http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html
 
-<li><p><strong>security_groups</strong></p>
+* **final_snapshot**
+ * (boolean) Performs a final snapshot when the rds cluster is deleted.
+ * This field not is mandatory.
+ * The value of this field can be true or alse. Default is false.
 
-<ul>
-<li>Array of String&rsquo;s that defines which security groups to apply to the rds cluster.</li>
-<li>This field not is mandatory.</li>
-<li>This field must specify a security group that exists on the yaml.</li>
-</ul></li>
+**backups**
 
-<li><p><strong>networks</strong></p>
+Backup configuration.
 
-<ul>
-<li>Array of String&rsquo;s that defines which networks to expose the rds cluster to.</li>
-<li>This field not is mandatory (if public is set to true).</li>
-<li>This field must specify a security group that exists on the yaml.</li>
-</ul></li>
+* **window**
+ * (string) The time period at which backups will occur.
+ * This field is not mandatory.
+ * Format must be a range in the structure of DDD:HH::MM-DDD:HH::MM (Day:Hour:Minute)
 
-<li><p><strong>database_name</strong></p>
+* **retention**
+ * (int) The amount of time in days that backups will be retained for.
+ * This field is not mandatory.
+ * Must be between 1 - 35 days
 
-<ul>
-<li>(string) The database name of the rds cluster.</li>
-<li>This field is mandatory.</li>
-<li>This field cannot be null or empty.</li>
-</ul></li>
 
-<li><p><strong>database_username</strong></p>
+#### RDS Instances
 
-<ul>
-<li>(string) The database username of the rds cluster.</li>
-<li>This field is mandatory.</li>
-<li>This field cannot be null or empty.</li>
-</ul></li>
-
-<li><p><strong>database_username</strong></p>
-
-<ul>
-<li>(string) The database password of the rds cluster.</li>
-<li>This field is mandatory.</li>
-<li>This field cannot be null or empty.</li>
-</ul></li>
-
-<li><p><strong>maintenance_window</strong></p>
-
-<ul>
-<li>(string) The time period at which any maintenance tasks will occur.</li>
-<li>This field is not mandatory.</li>
-<li>Format must be a range in the structure of DDD:HH::MM-DDD:HH::MM (Day:Hour:Minute)</li>
-</ul></li>
-
-<li><p><strong>replication_source</strong></p>
-
-<ul>
-<li>(string) The target rds cluster or mysql instance to replicate from.</li>
-<li>Must be a valid ARN (Amazon Resource Name).</li>
-<li><a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html" target="_blank">http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html</a></li>
-</ul></li>
-
-<li><p><strong>final_snapshot</strong></p>
-
-<ul>
-<li>(boolean) Performs a final snapshot when the rds cluster is deleted.</li>
-<li>This field not is mandatory.</li>
-<li>The value of this field can be true or alse. Default is false.</li>
-</ul></li>
-</ul>
-
-<p><strong>backups</strong></p>
-
-<p>Backup configuration.</p>
-
-<ul>
-<li><p><strong>window</strong></p>
-
-<ul>
-<li>(string) The time period at which backups will occur.</li>
-<li>This field is not mandatory.</li>
-<li>Format must be a range in the structure of DDD:HH::MM-DDD:HH::MM (Day:Hour:Minute)</li>
-</ul></li>
-
-<li><p><strong>retention</strong></p>
-
-<ul>
-<li>(int) The amount of time in days that backups will be retained for.</li>
-<li>This field is not mandatory.</li>
-<li>Must be between 1 - 35 days</li>
-</ul></li>
-</ul>
-
-<h3 id="rds-instances">RDS Instances</h3>
-
-<pre><code>rds_instances:
+```
+rds_instances:
   - name: rds-test-1
     size: db.r3.xlarge
     engine: mysql
@@ -2278,219 +2153,149 @@ nat_gateways:
       rentention_period: 1
     maintenance_window: Mon:21:30-Mon:22:00
     final_snapshot: true
-</code></pre>
+```
 
-<p>RDS Instances support the following fields:</p>
 
-<ul>
-<li><p><strong>name</strong></p>
+RDS Instances support the following fields:
 
-<ul>
-<li>(string) The name of the rds instance.</li>
-<li>This field is mandatory.</li>
-<li>This field cannot be null or empty.</li>
-<li>This field must be unique by user &amp; manifest.</li>
-</ul></li>
+* **name**
+ * (string) The name of the rds instance.
+ * This field is mandatory.
+ * This field cannot be null or empty.
+ * This field must be unique by user &amp; manifest.
 
-<li><p><strong>engine</strong></p>
+* **engine**
+ * (string) The engine type of the rds instance.
+ * This field is mandatory.
+ * This field cannot be null or empty.
+ * Currently only 'aurora' is supported as a value.
 
-<ul>
-<li>(string) The engine type of the rds instance.</li>
-<li>This field is mandatory.</li>
-<li>This field cannot be null or empty.</li>
-<li>Currently only &lsquo;aurora&rsquo; is supported as a value.</li>
-</ul></li>
+* **engine_version**
+ * (string) The engine_version of the rds instance.
+ * This field is not mandatory.
 
-<li><p><strong>engine_version</strong></p>
+* **port**
+ * (int) The port exposed by the rds instance.
+ * This field not is mandatory.
+ * This field must be between 1150 - 65535 (default: 3306).
 
-<ul>
-<li>(string) The engine_version of the rds instance.</li>
-<li>This field is not mandatory.</li>
-</ul></li>
+* **public**
+ * (boolean) Sets the rds instance to be publicly accessible.
+ * This field not is mandatory.
+ * The value of this field can be true or alse. Default is false.
 
-<li><p><strong>port</strong></p>
+* **multi_az**
+ * (boolean) Deploys a synchronous standby instance in a different availability zone
+ * Cannot be used in conjunction with the 'availability_zone' parameter
+ * This field not is mandatory.
+ * The value of this field can be true or alse. Default is false.
 
-<ul>
-<li>(int) The port exposed by the rds instance.</li>
-<li>This field not is mandatory.</li>
-<li>This field must be between 1150 - 65535 (default: 3306).</li>
-</ul></li>
+* **availability_zones**
+ * Array of strings. The availability zones to deploy the rds instance to.
+ * This field not is mandatory.
+ * The availability zone must be in the same region as the vpc it is deployed to.
+ * If the rds instance is set to private, there must be networks specified for each availability zone.
 
-<li><p><strong>public</strong></p>
+* **security_groups**
+ * Array of String's that defines which security groups to apply to the rds instance.
+ * This field not is mandatory.
+ * This field must specify a security group that exists on the yaml.
 
-<ul>
-<li>(boolean) Sets the rds instance to be publicly accessible.</li>
-<li>This field not is mandatory.</li>
-<li>The value of this field can be true or alse. Default is false.</li>
-</ul></li>
+* **networks**
+ * Array of String's that defines which networks to expose the rds instance to.
+ * This field not is mandatory (if public is set to true).
+ * This field must specify a security group that exists on the yaml.
 
-<li><p><strong>multi_az</strong></p>
+* **database_name**
+ * (string) The database name of the rds instance.
+ * This field is mandatory.
+ * This field cannot be null or empty.
 
-<ul>
-<li>(boolean) Deploys a synchronous standby instance in a different availability zone</li>
-<li>Cannot be used in conjunction with the &lsquo;availability_zone&rsquo; parameter</li>
-<li>This field not is mandatory.</li>
-<li>The value of this field can be true or alse. Default is false.</li>
-</ul></li>
+* **database_username**
+ * (string) The database username of the rds instance.
+ * This field is mandatory.
+ * This field cannot be null or empty.
 
-<li><p><strong>availability_zones</strong></p>
+* **database_username**
+ * (string) The database password of the rds instance.
+ * This field is mandatory.
+ * This field cannot be null or empty.
 
-<ul>
-<li>Array of strings. The availability zones to deploy the rds instance to.</li>
-<li>This field not is mandatory.</li>
-<li>The availability zone must be in the same region as the vpc it is deployed to.</li>
-<li>If the rds instance is set to private, there must be networks specified for each availability zone.</li>
-</ul></li>
+* **maintenance_window**
+ * (string) The time period at which any maintenance tasks will occur.
+ * This field is not mandatory.
+ * Format must be a range in the structure of DDD:HH::MM-DDD:HH::MM (Day:Hour:Minute)
 
-<li><p><strong>security_groups</strong></p>
+* **promotion_tier**
+ * (int) specifies the order in which an aurora replica is promoted to a primary.
+ * This field is not mandatory.
+ * Must be between 1 - 15.
+ * Default is 1.
 
-<ul>
-<li>Array of String&rsquo;s that defines which security groups to apply to the rds instance.</li>
-<li>This field not is mandatory.</li>
-<li>This field must specify a security group that exists on the yaml.</li>
-</ul></li>
+* **auto_upgrade**
+ * (boolean) Performs automatic upgrades on the database (minor versions only)
+ * This field not is mandatory.
+ * The value of this field can be true or alse. Default is false.
 
-<li><p><strong>networks</strong></p>
+* **replication_source**
+ * (string) The target an rds instance to replicate from.
+ * Must be a valid ARN (Amazon Resource Name) or instance name (if in the same region).
+ * http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html
 
-<ul>
-<li>Array of String&rsquo;s that defines which networks to expose the rds instance to.</li>
-<li>This field not is mandatory (if public is set to true).</li>
-<li>This field must specify a security group that exists on the yaml.</li>
-</ul></li>
+* **final_snapshot**
+ * (boolean) Performs a final snapshot when the rds instance is deleted.
+ * This field not is mandatory.
+ * The value of this field can be true or alse. Default is false.
 
-<li><p><strong>database_name</strong></p>
 
-<ul>
-<li>(string) The database name of the rds instance.</li>
-<li>This field is mandatory.</li>
-<li>This field cannot be null or empty.</li>
-</ul></li>
+* **license**
+ * (string) The type of license you want to use with the database
+ * This field is not mandatory.
+ * Must be one of 'license-included', 'bring-your-own-license' or 'general-public-license'
 
-<li><p><strong>database_username</strong></p>
+**storage**
 
-<ul>
-<li>(string) The database username of the rds instance.</li>
-<li>This field is mandatory.</li>
-<li>This field cannot be null or empty.</li>
-</ul></li>
+Storage configuration. Only configurable when using a non-aurora engine.
 
-<li><p><strong>database_username</strong></p>
+* **type**
+ * (string) The type of storage you want to use.
+ * This field is not mandatory.
+ * Must be one of 'gp2' (general purpose SSD), 'io1' (performance optimised SSD) or 'standard' (magnetic disk)
+ * If io1 is specified, you must also set the 'iops' parameter
 
-<ul>
-<li>(string) The database password of the rds instance.</li>
-<li>This field is mandatory.</li>
-<li>This field cannot be null or empty.</li>
-</ul></li>
+* **size**
+ * (int) The amount of storage (GB) that you want to use.
+ * This field is not mandatory.
+ * Must be a value between 5 - 6144.
+ * Minimum size can vary between engine types.
 
-<li><p><strong>maintenance_window</strong></p>
+* **iops**
+ * (int) The amount of iops that you want the database to be limited to.
+ * This field is mandatory if storage type is 'io1'.
+ * This field must only be used in conjunction with 'io1' as a storage type.
+ * Must be a multiple between 3 and 10 of the storage amount.
+ * Must also be an integer multiple of 1000.
 
-<ul>
-<li>(string) The time period at which any maintenance tasks will occur.</li>
-<li>This field is not mandatory.</li>
-<li>Format must be a range in the structure of DDD:HH::MM-DDD:HH::MM (Day:Hour:Minute)</li>
-</ul></li>
+**backups**
 
-<li><p><strong>promotion_tier</strong></p>
+Backup configuration.
 
-<ul>
-<li>(int) specifies the order in which an aurora replica is promoted to a primary.</li>
-<li>This field is not mandatory.</li>
-<li>Must be between 1 - 15.</li>
-<li>Default is 1.</li>
-</ul></li>
+* **window**
+ * (string) The time period at which backups will occur.
+ * This field is not mandatory.
+ * Format must be a range in the structure of DDD:HH::MM-DDD:HH::MM (Day:Hour:Minute)
 
-<li><p><strong>auto_upgrade</strong></p>
+* **retention**
+ * (int) The amount of time in days that backups will be retained for.
+ * This field is not mandatory.
+ * Must be between 1 - 35 days
 
-<ul>
-<li>(boolean) Performs automatic upgrades on the database (minor versions only)</li>
-<li>This field not is mandatory.</li>
-<li>The value of this field can be true or alse. Default is false.</li>
-</ul></li>
 
-<li><p><strong>replication_source</strong></p>
 
-<ul>
-<li>(string) The target an rds instance to replicate from.</li>
-<li>Must be a valid ARN (Amazon Resource Name) or instance name (if in the same region).</li>
-<li><a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html" target="_blank">http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html</a></li>
-</ul></li>
+#### EBS Volumes
 
-<li><p><strong>final_snapshot</strong></p>
-
-<ul>
-<li>(boolean) Performs a final snapshot when the rds instance is deleted.</li>
-<li>This field not is mandatory.</li>
-<li>The value of this field can be true or alse. Default is false.</li>
-</ul></li>
-
-<li><p><strong>license</strong></p>
-
-<ul>
-<li>(string) The type of license you want to use with the database</li>
-<li>This field is not mandatory.</li>
-<li>Must be one of &lsquo;license-included&rsquo;, &lsquo;bring-your-own-license&rsquo; or &lsquo;general-public-license&rsquo;</li>
-</ul></li>
-</ul>
-
-<p><strong>storage</strong></p>
-
-<p>Storage configuration. Only configurable when using a non-aurora engine.</p>
-
-<ul>
-<li><p><strong>type</strong></p>
-
-<ul>
-<li>(string) The type of storage you want to use.</li>
-<li>This field is not mandatory.</li>
-<li>Must be one of &lsquo;gp2&rsquo; (general purpose SSD), &lsquo;io1&rsquo; (performance optimised SSD) or &lsquo;standard&rsquo; (magnetic disk)</li>
-<li>If io1 is specified, you must also set the &lsquo;iops&rsquo; parameter</li>
-</ul></li>
-
-<li><p><strong>size</strong></p>
-
-<ul>
-<li>(int) The amount of storage (GB) that you want to use.</li>
-<li>This field is not mandatory.</li>
-<li>Must be a value between 5 - 6144.</li>
-<li>Minimum size can vary between engine types.</li>
-</ul></li>
-
-<li><p><strong>iops</strong></p>
-
-<ul>
-<li>(int) The amount of iops that you want the database to be limited to.</li>
-<li>This field is mandatory if storage type is &lsquo;io1&rsquo;.</li>
-<li>This field must only be used in conjunction with &lsquo;io1&rsquo; as a storage type.</li>
-<li>Must be a multiple between 3 and 10 of the storage amount.</li>
-<li>Must also be an integer multiple of 1000.</li>
-</ul></li>
-</ul>
-
-<p><strong>backups</strong></p>
-
-<p>Backup configuration.</p>
-
-<ul>
-<li><p><strong>window</strong></p>
-
-<ul>
-<li>(string) The time period at which backups will occur.</li>
-<li>This field is not mandatory.</li>
-<li>Format must be a range in the structure of DDD:HH::MM-DDD:HH::MM (Day:Hour:Minute)</li>
-</ul></li>
-
-<li><p><strong>retention</strong></p>
-
-<ul>
-<li>(int) The amount of time in days that backups will be retained for.</li>
-<li>This field is not mandatory.</li>
-<li>Must be between 1 - 35 days</li>
-</ul></li>
-</ul>
-
-<p>### EBS Volumes</p>
-
-<pre><code> ebs_volumes:
+```
+ ebs_volumes:
    - name: database-vol
      count: 1
      type: io1
@@ -2499,76 +2304,49 @@ nat_gateways:
      availability_zone: eu-west-1a
      encrypted: true
      encryption_key_id: kms-id
-</code></pre>
+```
 
-<ul>
-<li><p><strong>name</strong></p>
 
-<ul>
-<li>(string) The name of the ebs volume.</li>
-<li>This field is mandatory.</li>
-<li>This field cannot be null or empty.</li>
-<li>This field must be unique by user &amp; manifest.</li>
-</ul></li>
+* **name**
+ * (string) The name of the ebs volume.
+ * This field is mandatory.
+ * This field cannot be null or empty.
+ * This field must be unique by user &amp; manifest.
 
-<li><p><strong>count</strong></p>
+* **count**
+ * Integer that defines the number of volunes to be created.
+ * This field is mandatory.
+ * This field cannot be null or empty.
+ * This field must be greater or equal that 1
 
-<ul>
-<li>Integer that defines the number of volunes to be created.</li>
-<li>This field is mandatory.</li>
-<li>This field cannot be null or empty.</li>
+ * **type**
+  * (string) The type of storage you want to use.
+  * This field is not mandatory.
+  * Must be one of 'gp2' (general purpose SSD), 'io1' (performance optimised SSD) or 'st1' (magnetic disk)
+  * If io1 is specified, you must also set the 'iops' parameter
 
-<li><p>This field must be greater or equal that 1</p></li>
+ * **size**
+  * (int) The amount of storage (GB) that you want to use.
+  * This field is not mandatory.
+  * Must be a value between 1 - 16384. (may vary for different storage types)
 
-<li><p><strong>type</strong></p></li>
+ * **iops**
+  * (int) The amount of iops that you want the volume to be limited to.
+  * This field is mandatory if storage type is 'io1'.
+  * This field must only be used in conjunction with 'io1' as a storage type.
+  * Must be a multiple between 3 and 10 of the storage amount.
+  * Must also be an integer multiple of 1000.
+  * Must be a value between 100 - 20000
 
-<li><p>(string) The type of storage you want to use.</p></li>
+* **encrypted**
+ * (boolean) Specifies whether the volume will be encrypted.
+ * This field not is mandatory.
+ * The value of this field can be true or false. Default is false.
+ * When enabling encryption, a kms key id must be provided
 
-<li><p>This field is not mandatory.</p></li>
-
-<li><p>Must be one of &lsquo;gp2&rsquo; (general purpose SSD), &lsquo;io1&rsquo; (performance optimised SSD) or &lsquo;st1&rsquo; (magnetic disk)</p></li>
-
-<li><p>If io1 is specified, you must also set the &lsquo;iops&rsquo; parameter</p></li>
-
-<li><p><strong>size</strong></p></li>
-
-<li><p>(int) The amount of storage (GB) that you want to use.</p></li>
-
-<li><p>This field is not mandatory.</p></li>
-
-<li><p>Must be a value between 1 - 16384. (may vary for different storage types)</p></li>
-
-<li><p><strong>iops</strong></p></li>
-
-<li><p>(int) The amount of iops that you want the volume to be limited to.</p></li>
-
-<li><p>This field is mandatory if storage type is &lsquo;io1&rsquo;.</p></li>
-
-<li><p>This field must only be used in conjunction with &lsquo;io1&rsquo; as a storage type.</p></li>
-
-<li><p>Must be a multiple between 3 and 10 of the storage amount.</p></li>
-
-<li><p>Must also be an integer multiple of 1000.</p></li>
-
-<li><p>Must be a value between 100 - 20000</p></li>
-</ul></li>
-
-<li><p><strong>encrypted</strong></p>
-
-<ul>
-<li>(boolean) Specifies whether the volume will be encrypted.</li>
-<li>This field not is mandatory.</li>
-<li>The value of this field can be true or false. Default is false.</li>
-<li>When enabling encryption, a kms key id must be provided</li>
-</ul></li>
-
-<li><p><strong>encryption_key_id</strong></p>
-
-<ul>
-<li>(string) The kms key id to use when encrypting data on the volume.</li>
-<li>This field is mandatory, only if encryption is set to true.</li>
-</ul></li>
-</ul>
+* **encryption_key_id**
+ * (string) The kms key id to use when encrypting data on the volume.
+ * This field is mandatory, only if encryption is set to true.
 
 ## vCloud Director
 vCloud Director (vCD) is cloud management tool from VMWare that acts as an overlay on top of vSphere, providing users with a self-service GUI and API. vCloud Director enables service providers to offer Infrastructure as a Service to their customers by providing users with direct control of virtual machine provisioning, and some aspects of networking.
@@ -2584,66 +2362,66 @@ All other common network operations are accesible to users, however many of them
 
 ## vCloud Director Examples
 
-<p>If you would like to try Ernest but do not have access to vCloud you can request a demo vCloud account <a href="/vcloud-account">here</a>.</p>
+If you would like to try Ernest but do not have access to vCloud you can request a demo vCloud account [here](/vcloud-account).
 
-<p>Before we get started we will need the following information:</p>
+Before we get started we will need the following information:
 
-<ul>
-<li>Ernest IP address (31.210.241.221)</li>
-<li>Ernest username/password (user1/xxxxxx)</li>
-<li>vCloud URL (myvdc.carrenza.net)</li>
-<li>vCloud organisation (r3labs-development)</li>
-<li>vCloud datacenter (r3-jreid2)</li>
-<li>vCloud network (DVS-VCD-EXT-665)</li>
-<li>vCloud username/password (jreid/xxxxxx)</li>
-<li>vCloud router name (test1)</li>
-<li>vCloud sub-allocated IP (195.3.186.42)</li>
-</ul>
+* Ernest IP address (31.210.241.231)
+* Ernest username/password (user1/xxxxxx)
+* vCloud URL (myvdc.carrenza.net)
+* vCloud organisation (r3labs-development)
+* vCloud datacenter (r3-jreid2)
+* vCloud network (DVS-VCD-EXT-665)
+* vCloud username/password (jreid/xxxxxx)
+* vCloud router name (test1)
+* vCloud sub-allocated IP (195.3.186.42)
 
-<p><em>The values in brackets are what we will use for this example. Your service provider can provide you with the vCloud information.</em></p>
+*The values in brackets are what we will use for this example. Your service provider can provide you with the vCloud information.*
 
-<p>The first step is to set the IP address of Ernest:</p>
+The first step is to set the IP address of Ernest:
 
-<pre><code>$ ernest target https://31.210.241.221
+```
+$ ernest target https://31.210.241.231
 Target set
 
-</code></pre>
+```
 
-<p>Next we login to Ernest:</p>
+Next we login to Ernest:
 
-<pre><code>$ ernest login
+```
+$ ernest login
 Username: user1
 Password: ******
 Welcome back user1
 
-</code></pre>
+```
 
-<p>Once we have logged in to Ernest we can setup the vCloud datacenter and credentials that Ernest will use to create our infrastructure:</p>
+Once we have logged in to Ernest we can setup the vCloud datacenter and credentials that Ernest will use to create our infrastructure:
 
-<pre><code>$ ernest datacenter create vcloud --user jreid --password xxxxxx --org r3labs-development --vcloud-url https://myvdc.carrenza.net --public-network DVS-VCD-EXT-665 r3-jreid2
+```
+$ ernest datacenter create vcloud --user jreid --password xxxxxx --org r3labs-development --vcloud-url https://myvdc.carrenza.net --public-network DVS-VCD-EXT-665 r3-jreid2
 Datacenter 'r3-jreid2' successfully created
 
-</code></pre>
+```
 
-<p>Now that we have our datacenter created in Ernest we can start building stuff. Below we will show examples for:</p>
+Now that we have our datacenter created in Ernest we can start building stuff. Below we will show examples for:
 
-<ul>
-<li>creating infrastructure only</li>
-<li>creating infrastructure and configuring the servers</li>
-<li>creating the servers only</li>
-</ul>
+* creating infrastructure only
+* creating infrastructure and configuring the servers
+* creating the servers only
 
-<h3 id="infrastructure-only">Infrastructure Only</h3>
+### Infrastructure Only
 
-<p>For our example we will deploy a single Ubuntu server from a catalog image (image: r3/ubuntu-1404) and configure our networking to permit SSH access to the server. Our YAML for this example is:</p>
+For our example we will deploy a single Ubuntu server from a catalog image (image: r3/ubuntu-1404) and configure our networking to permit SSH access to the server. Our YAML for this example is:
 
-<pre><code>---
+```
+---
 name: demo1
 datacenter: r3-jreid2
 bootstrapping: none
 service_ip: 195.3.186.42
 
-routers:
+routers: 
   - name: test1
     rules:
     - name: in_out_any
@@ -2685,14 +2463,15 @@ instances:
       name: web
       start_ip: 10.1.0.11
 
-</code></pre>
+```
 
-<p>Now that we have defined our infrastructure we are ready to apply our definition:</p>
+Now that we have defined our infrastructure we are ready to apply our definition:
 
-<pre><code>$ ernest service apply demo1.yml
-#Environment creation requested
-#Ernest will show you all output from your requested service creation
-#You can cancel at any moment with Ctrl+C, even the service is still #being created, you won't have any output
+```
+$ ernest service apply demo1.yml
+Environment creation requested
+Ernest will show you all output from your requested service creation
+You can cancel at any moment with Ctrl+C, even the service is still being created, you won't have any output
 Starting environment creation
 Creating networks:
  - r3-jreid2-demo1-web
@@ -2720,18 +2499,18 @@ Nats created
 SUCCESS: rules successfully applied
 Your environment endpoint is: 195.3.186.42
 
-</code></pre>
+```
+Congratulations! You have built your first infrastructure with Ernest. You can now SSH to the server on IP 195.3.186.42 to install and configure your software.
 
-<p>Congratulations! You have built your first infrastructure with Ernest. You can now SSH to the server on IP 195.3.186.42 to install and configure your software.</p>
+If you wish to change the infrastructure update your YAML to show how you want the infrastructure to look, then re-apply the YAML. Ernest will make the appropriate changes to the infrastructure.
 
-<p>If you wish to change the infrastructure update your YAML to show how you want the infrastructure to look, then re-apply the YAML. Ernest will make the appropriate changes to the infrastructure.</p>
+For example if we increase the 'web' instance count from 1 to 2 and re-apply the YAML a new server is created:
 
-<p>For example if we increase the &lsquo;web&rsquo; instance count from 1 to 2 and re-apply the YAML a new server is created:</p>
-
-<pre><code>$ ernest service apply demo1.yml
-#Environment creation requested
-#Ernest will show you all output from your requested service creation
-#You can cancel at any moment with Ctrl+C, even the service is still #being created, you won't have any output
+```
+$ ernest service apply demo1.yml
+Environment creation requested
+Ernest will show you all output from your requested service creation
+You can cancel at any moment with Ctrl+C, even the service is still being created, you won't have any output
 Starting environment creation
 Creating instances:
  - r3-jreid2-demo1-web-2
@@ -2746,35 +2525,43 @@ Instances successfully updated
 SUCCESS: rules successfully applied
 Your environment endpoint is: 195.3.186.42
 
-</code></pre>
+```
 
-<p>We can list the services we created:</p>
+We can list the services we created:
 
-<pre><code>$ ernest service list
+```
+$ ernest service list
 NAME  UPDATED       STATUS  ENDPOINT
 demo1 2016-05-29 14:52:13 +0100 BST done  195.3.186.42
 
-</code></pre>
+```
 
-<p>For a given service we can see the history:</p>
+For a given service we can see the history:
 
-<pre><code>$ ernest service history demo1
-NAME  BUILD ID                                                              UPDATED             STATUS
-demo1 488249c2-63c2-484e-b6e0-c690ba859dab-8c22343f8f9d3dfb68e41cc033e7b492 2016-05-29 14:52:13 done
-demo1 6799e858-0484-42cb-bbb1-c1bc5f61e500-8c22343f8f9d3dfb68e41cc033e7b492 2016-05-29 14:39:56 done
+```
+$ ernest service history demo1
++----+-------+----------+--------------------------------+-------+
+| ID | NAME  | BUILD ID |             STATUS             | USER  |
++----+-------+----------+--------------------------------+-------+
+|  2 | demo1 | done     | 2016-05-29 14:52:13.93758      | user1 |
+|    |       |          | +0000 UTC                      |       |
+|  1 | demo1 | done     | 2016-05-29 14:39:56.45893      | user1 |
+|    |       |          | +0000 UTC                      |       |
++----+-------+----------+--------------------------------+-------+
 
-</code></pre>
+```
 
-<p>For a given service and build ID we can see the definition we applied:</p>
+For a given service and build ID we can see the definition we applied:
 
-<pre><code>$ ernest service definition demo1
+```
+$ ernest service definition demo1 --build 2
 ---
 name: demo1
 datacenter: r3-jreid2
 bootstrapping: none
 service_ip: 195.3.186.42
 
-routers:
+routers: 
   - name: test1
     rules:
     - name: in_out_any
@@ -2816,24 +2603,25 @@ instances:
       name: web
       start_ip: 10.1.0.11
 
-</code></pre>
+```
 
-<h3 id="infrastructure-and-server-configuration">Infrastructure and Server Configuration</h3>
+### Infrastructure and Server Configuration
 
-<p>In the above example the task of installing and configuring software was left to the user to do. In this example we will bootstrap the servers and install our software directly from the YAML.</p>
+In the above example the task of installing and configuring software was left to the user to do. In this example we will bootstrap the servers and install our software directly from the YAML.
 
-<p>The new YAML is shown here:</p>
+The new YAML is shown here:
 
-<pre><code>---
+```
+---
 name: demo2
 datacenter: r3-jreid2
 bootstrapping: salt
 service_ip: 195.3.186.42
 ernest_ip:
-  - 31.210.241.221
-  - 31.210.240.161
+  - 31.210.241.231
+  - 31.210.240.171
 
-routers:
+routers: 
   - name: test1
     rules:
     - name: in_out_any
@@ -2858,7 +2646,7 @@ routers:
         dns:
           - 8.8.8.8
           - 8.8.4.4
-
+          
     port_forwarding:
       - source: 195.3.186.42
         from_port: '80'
@@ -2879,20 +2667,21 @@ instances:
         - 'sudo apt-get update'
         - 'sudo apt-get install apache2 -y'
 
-</code></pre>
+```
 
-<p>The first thing to notice is that we have changed &lsquo;bootstrapping&rsquo; from &lsquo;none&rsquo; to &lsquo;salt&rsquo;. This will result in Ernest deploying a SALT instance that we can use to manage our environment. Note that the &lsquo;bootstrapping&rsquo; option must be specified when an environment is created and cannot be changed for that environment.</p>
+The first thing to notice is that we have changed 'bootstrapping' from 'none' to 'salt'. This will result in Ernest deploying a SALT instance that we can use to manage our environment. Note that the 'bootstrapping' option must be specified when an environment is created and cannot be changed for that environment.
 
-<p>The next thing we have changed are the firewall and port-forwarding configuration. We have removed the sections needed for SSH access to the server since we are now able to run commands directly from the YAML.</p>
+The next thing we have changed are the firewall and port-forwarding configuration. We have removed the sections needed for SSH access to the server since we are now able to run commands directly from the YAML.
 
-<p>Finally, we have added a provisioner section to the instance that will install the Apache HTTP Server.</p>
+Finally, we have added a provisioner section to the instance that will install the Apache HTTP Server.
 
-<p>Now that we have defined our platform we are ready to create it:</p>
+Now that we have defined our platform we are ready to create it:
 
-<pre><code>$ ernest service apply demo2.yml
-#Environment creation requested
-#Ernest will show you all output from your requested service creation
-#You can cancel at any moment with Ctrl+C, even the service is still #being created, you won't have any output
+```
+$ ernest service apply demo2.yml
+Environment creation requested
+Ernest will show you all output from your requested service creation
+You can cancel at any moment with Ctrl+C, even the service is still being created, you won't have any output
 Starting environment creation
 Creating networks:
  - r3-jreid2-demo2-salt
@@ -2937,23 +2726,22 @@ Executions ran
 SUCCESS: rules successfully applied
 Your environment endpoint is: 195.3.186.44
 
-</code></pre>
+```
 
-<p>Notice that Ernest has automatically created a SALT instance for us on network 10.254.254.0/24. It has also trigged the bootstrapping process that installs the SALT minion on each of our servers, and then run the commands we specified in the provisioner section of each instance defined in the YAML.</p>
+Notice that Ernest has automatically created a SALT instance for us on network 10.254.254.0/24. It has also trigged the bootstrapping process that installs the SALT minion on each of our servers, and then run the commands we specified in the provisioner section of each instance defined in the YAML.
 
-<p>You should be able to browse to <a href="http://195.3.186.42" target="_blank">http://195.3.186.42</a>. Congratulations!</p>
+You should be able to browse to http://195.3.186.42. Congratulations! 
 
-<p>If you wish to change the platform update your YAML to show how you want the platform to look, then re-apply the YAML. Ernest will make the appropriate changes to the platform.</p>
+If you wish to change the platform update your YAML to show how you want the platform to look, then re-apply the YAML. Ernest will make the appropriate changes to the platform.
 
-<blockquote>
-<p>The SALT image can be downloaded from <a href="/downloads/r3-salt-master.ova">here</a>. For the current version of Ernest (1.0) it is not possible to specify the catalog name that Ernest will get the SALT image from, you will need to place the image in a catalog named &lsquo;r3&rsquo;.</p>
-</blockquote>
+> The SALT image can be downloaded from [here](http://download.ernest.io/r3-salt-master.zip). For the current version of Ernest (1.0) it is not possible to specify the catalog name that Ernest will get the SALT image from, you will need to place the image in a catalog named 'r3'.
 
-<h3 id="servers-only">Servers Only</h3>
+### Servers Only
 
-<p>If your vCloud account does not have the Organization Administrator assigned to it most of the network related configuration in the above examples will be impossible. You will be limited to the creation and modification of virtual machines only. An example YAML for this scenario is:</p>
+If your vCloud account does not have the Organization Administrator assigned to it most of the network related configuration in the above examples will be impossible. You will be limited to the creation and modification of virtual machines only. An example YAML for this scenario is:
 
-<pre><code>---
+```
+---
 name: demo3
 datacenter: r3-jreid2
 
@@ -2967,14 +2755,15 @@ instances:
       name: r3-jreid2-test3-web
       start_ip: 10.1.0.11
 
-</code></pre>
+```
 
-<p>And applying it gives:</p>
+And applying it gives:
 
-<pre><code>$ ernest service apply demo3.yml
-#Environment creation requested
-#Ernest will show you all output from your requested service creation
-#You can cancel at any moment with Ctrl+C, even the service is still #being created, you won't have any output
+```
+$ ernest service apply demo3.yml
+Environment creation requested
+Ernest will show you all output from your requested service creation
+You can cancel at any moment with Ctrl+C, even the service is still being created, you won't have any output
 Starting environment creation
 Creating instances:
  - r3-jreid2-demo3-web-1
@@ -2989,15 +2778,16 @@ Instances successfully updated
 SUCCESS: rules successfully applied
 Your environment endpoint is:
 
-</code></pre>
+```
 
 ## vCloud Director YAML Reference
 
-<p>Environments built and managed with Ernest are defined in YAML format.</p>
+Environments built and managed with Ernest are defined in YAML format.
 
-<h3 id="example">Example</h2>
+### Example
 
-<pre><code>---
+```
+---
 name: demo
 datacenter: r3-jreid2
 bootstrapping: salt
@@ -3005,7 +2795,7 @@ service_ip: 195.3.186.44
 ernest_ip:
   - 31.210.240.161
 
-routers:
+routers: 
   - name: demo
     rules:
     - name: in_out_any
@@ -3055,76 +2845,62 @@ instances:
         - 'sudo apt-get install apache2 -y'
       - shell:
         - #!/bin/sh
-        - if [ x$1 == x&quot;postcustomization&quot; ]; then
+        - if [ x$1 == x"postcustomization" ]; then
         - yum -y install httpd
         - service httpd start
-        - fi
-</code></pre>
+        - fi 
+```
 
-<h3 id="field-reference">Field Reference</h2>
+### Field Reference
 
-<h3 id="service-options">Service Options</h3>
+#### Service Options
 
-<pre><code>name: demo
+```
+name: demo
 datacenter: r3-jreid2
 bootstrapping: salt
 service_ip: 195.3.186.44
 ernest_ip:
   - 31.210.240.161
-</code></pre>
+```
 
-<p>Service Options support the following fields:</p>
+Service Options support the following fields:
 
-<ul>
-<li><p><strong>name</strong></p>
+* **name**
+ * String that defines the name of the service to build.
+ * This field is mandatory.
+ * This field cannot be null or empty.
+ * The value of this field must be 50 characters maximum.
 
-<ul>
-<li>String that defines the name of the service to build.</li>
-<li>This field is mandatory.</li>
-<li>This field cannot be null or empty.</li>
-<li>The value of this field must be 50 characters maximum.</li>
-</ul></li>
+* **datacenter**
+ * String that defines the name of the datacenter where the service is built.
+ * This field is mandatory.
+ * This field cannot be null or empty.
+ * The value of this field must 50 characters maximum.
 
-<li><p><strong>datacenter</strong></p>
 
-<ul>
-<li>String that defines the name of the datacenter where the service is built.</li>
-<li>This field is mandatory.</li>
-<li>This field cannot be null or empty.</li>
-<li>The value of this field must 50 characters maximum.</li>
-</ul></li>
+* **bootstrapping**
+ * String [salt, none] that defines if you’re going to be able to execute commands on the servers
+ * This field is optional.
+ * This field defaults to none.
+ * The value of this is restricted to “salt” or “none”
 
-<li><p><strong>bootstrapping</strong></p>
+* **service_ip**
+ * String that defines the public ip of the router already created on vcloud
+ * This field is optional
+ * This field defaults to none.
+ * The value of this field is an IP, internally defined as https://golang.org/pkg/net/#IP
 
-<ul>
-<li>String [salt, none] that defines if you’re going to be able to execute commands on the servers</li>
-<li>This field is optional.</li>
-<li>This field defaults to none.</li>
-<li>The value of this is restricted to “salt” or “none”</li>
-</ul></li>
+* **ernest_ip**
+ * Array of IPs that defines the ernest instance public ip, so it will be allowed through the created service firewall rules.
+ * The value of this field is an IP, internally defined as https://golang.org/pkg/net/#IP  
+ * This field is mandatory only if you’ve defined bootstrapping as “salt”
+ * This field defaults to an empty array.
 
-<li><p><strong>service_ip</strong></p>
+#### Networking
 
-<ul>
-<li>String that defines the public ip of the router already created on vcloud</li>
-<li>This field is optional</li>
-<li>This field defaults to none.</li>
-<li>The value of this field is an IP, internally defined as <a href="https://golang.org/pkg/net/#IP" target="_blank">https://golang.org/pkg/net/#IP</a></li>
-</ul></li>
-
-<li><p><strong>ernest_ip</strong></p>
-
-<ul>
-<li>Array of IPs that defines the ernest instance public ip, so it will be allowed through the created service firewall rules.</li>
-<li>The value of this field is an IP, internally defined as <a href="https://golang.org/pkg/net/#IP" target="_blank">https://golang.org/pkg/net/#IP</a><br /></li>
-<li>This field is mandatory only if you’ve defined bootstrapping as “salt”</li>
-<li>This field defaults to an empty array.</li>
-</ul></li>
-</ul>
-
-<h3 id="networking">Networking</h3>
-
-<pre><code>routers:
+```
+routers: 
   - name: demo
     rules:
     - name: in_out_any
@@ -3155,150 +2931,102 @@ ernest_ip:
         from_port: '80'
         to_port: '80'
         destination: 10.1.0.11
-</code></pre>
+```
 
-<p>Networking supports the following fields:</p>
+Networking supports the following fields:
 
-<ul>
-<li><strong>name</strong>
+* **name**
+ * String that defines the name of the service to build.
+ * This field is mandatory.
+ * This field cannot be null or empty.
+ * This field must be unique by user & manifest.
+ * The value of this field can be 50 characters maximum.
 
-<ul>
-<li>String that defines the name of the service to build.</li>
-<li>This field is mandatory.</li>
-<li>This field cannot be null or empty.</li>
-<li>This field must be unique by user &amp; manifest.</li>
-<li>The value of this field can be 50 characters maximum.</li>
-</ul></li>
-</ul>
+**rules**
 
-<p><strong>rules</strong></p>
+A firewall rule controls traffic that is allowed to flow between both internal and external routers and networks.
 
-<p>A firewall rule controls traffic that is allowed to flow between both internal and external routers and networks.</p>
+* **name**
+ * String that defines the name of the rule.
+ * This field is mandatory.
+ * This field can’t be null or empty.
 
-<ul>
-<li><p><strong>name</strong></p>
+* **source**
+ * String the source of the network where this firewall acts
+ * This field is mandatory.
+ * Values can be: external | internal | any | named networks | CIDR
 
-<ul>
-<li>String that defines the name of the rule.</li>
-<li>This field is mandatory.</li>
-<li>This field can’t be null or empty.</li>
-</ul></li>
+* **from_port**
+ * Source port numbers
+ * This field is mandatory.
+ * Values can be:  an string ( valid port number, 1 - 65535 ) or any
 
-<li><p><strong>source</strong></p>
+* **destination**
+ * String the destination of the network where this firewall acts
+ * This field is mandatory.
+ * Values can be:  external | internal | any | named networks | CIDR
 
-<ul>
-<li>String the source of the network where this firewall acts</li>
-<li>This field is mandatory.</li>
-<li>Values can be: external | internal | any | named networks | CIDR</li>
-</ul></li>
+* **to_port**
+ * Destination port numbers
+ * This field is mandatory.
+ * Values can be:  an string ( valid port number, 1 - 65535 ) or any
 
-<li><p><strong>from_port</strong></p>
+* **protocol**
+ * String with the protocol we are firewalling
+ * This field is mandatory.
+ * Values can be: tcp | udp | icmp | any | tcp & udp
 
-<ul>
-<li>Source port numbers</li>
-<li>This field is mandatory.</li>
-<li>Values can be:  an string ( valid port number, 1 - 65535 ) or any</li>
-</ul></li>
 
-<li><p><strong>destination</strong></p>
+**networks**
 
-<ul>
-<li>String the destination of the network where this firewall acts</li>
-<li>This field is mandatory.</li>
-<li>Values can be:  external | internal | any | named networks | CIDR</li>
-</ul></li>
+A network is a virtual network that attaches to a router (in vcloud, other providers will differ). This is what allows us to network/isolate VM’s together.
 
-<li><p><strong>to_port</strong></p>
+* **name**
+ * String that defines the name of the service to build.
+ * This field is mandatory.
+ * This field cannot be null or empty.
+ * The value of this field must be 50 characters maximum.
 
-<ul>
-<li>Destination port numbers</li>
-<li>This field is mandatory.</li>
-<li>Values can be:  an string ( valid port number, 1 - 65535 ) or any</li>
-</ul></li>
+* **subnet**
+ * String that defines the name of a network to add to this service.
+ * It must follow CIDR notation as described at: https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing 
+ * This field is mandatory.
+ * This field cannot be null or empty.
+ * This field must be unique for this user & all the networks on the manifest.
 
-<li><p><strong>protocol</strong></p>
+* **dns**
+ * Array of IPs to use as dns servers on this service
+ * It must follow CIDR notation as described at: https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing 
+ * This field is optional.
+ * This field can be empty and it will default to ["8.8.8.8", "8.8.4.4"].
 
-<ul>
-<li>String with the protocol we are firewalling</li>
-<li>This field is mandatory.</li>
-<li>Values can be: tcp | udp | icmp | any | tcp &amp; udp</li>
-</ul></li>
-</ul>
+**port_forwarding**
 
-<p><strong>networks</strong></p>
+A port forward is something that converts translates a request on a port from one IP to another on a different network. Only tcp port forwarding is supported.
 
-<p>A network is a virtual network that attaches to a router (in vcloud, other providers will differ). This is what allows us to network/isolate VM’s together.</p>
+* **from_port**
+ * Source port numbers
+ * Values can be:  an string ( valid port number, 1 - 65535 ) or any
 
-<ul>
-<li><p><strong>name</strong></p>
+* **destination**
+ * String the destination of the IPv4 Address to translate to
+ * Values can be: IPv4
 
-<ul>
-<li>String that defines the name of the service to build.</li>
-<li>This field is mandatory.</li>
-<li>This field cannot be null or empty.</li>
-<li>The value of this field must be 50 characters maximum.</li>
-</ul></li>
+* **to_port**
+ * Destination port numbers
+ * Values can be:  an string ( valid port number, 1 - 65535 ) or any
 
-<li><p><strong>subnet</strong></p>
+* **source**
+ * String that defines the IP from the provider-specified sub-allocated list of IPs of the router.
+ * It must follow CIDR notation as described at: https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing 
+ * This field is optional.
+ * This field can be null or empty, in case a router is created by Ernest it will default to the created one, on the other hand this value will be used.
+ * This field must be unique for this user & all the networks on the manifest.
 
-<ul>
-<li>String that defines the name of a network to add to this service.</li>
-<li>It must follow CIDR notation as described at: <a href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing" target="_blank">https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing</a></li>
-<li>This field is mandatory.</li>
-<li>This field cannot be null or empty.</li>
-<li>This field must be unique for this user &amp; all the networks on the manifest.</li>
-</ul></li>
+#### Instances
 
-<li><p><strong>dns</strong></p>
-
-<ul>
-<li>Array of IPs to use as dns servers on this service</li>
-<li>It must follow CIDR notation as described at: <a href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing" target="_blank">https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing</a></li>
-<li>This field is optional.</li>
-<li>This field can be empty and it will default to [&laquo;8.8.8.8&raquo;, &laquo;8.8.4.4&raquo;].</li>
-</ul></li>
-</ul>
-
-<p><strong>port_forwarding</strong></p>
-
-<p>A port forward is something that converts translates a request on a port from one IP to another on a different network. Only tcp port forwarding is supported.</p>
-
-<ul>
-<li><p><strong>from_port</strong></p>
-
-<ul>
-<li>Source port numbers</li>
-<li>Values can be:  an string ( valid port number, 1 - 65535 ) or any</li>
-</ul></li>
-
-<li><p><strong>destination</strong></p>
-
-<ul>
-<li>String the destination of the IPv4 Address to translate to</li>
-<li>Values can be: IPv4</li>
-</ul></li>
-
-<li><p><strong>to_port</strong></p>
-
-<ul>
-<li>Destination port numbers</li>
-<li>Values can be:  an string ( valid port number, 1 - 65535 ) or any</li>
-</ul></li>
-
-<li><p><strong>source</strong></p>
-
-<ul>
-<li>String that defines the IP from the provider-specified sub-allocated list of IPs of the router.</li>
-<li>It must follow CIDR notation as described at: <a href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing" target="_blank">https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing</a></li>
-<li>This field is optional.</li>
-<li>This field can be null or empty, in case a router is created by Ernest it will default to the created one, on the other hand this value will be used.</li>
-<li>This field must be unique for this user &amp; all the networks on the manifest.</li>
-</ul></li>
-</ul>
-
-<h3 id="instances">Instances</h3>
-
-<pre><code>instances:
+```
+instances:
   - name: web
     image: r3/ubuntu-1404
     cpus: 1
@@ -3316,131 +3044,95 @@ ernest_ip:
         - 'sudo apt-get install apache2 -y'
       - shell:
         - #!/bin/sh
-        - if [ x$1 == x&quot;postcustomization&quot; ]; then
+        - if [ x$1 == x"postcustomization" ]; then
         - yum -y install httpd
         - service httpd start
-        - fi
-</code></pre>
+        - fi 
+```
 
-<p>Instances support the following fields:</p>
+Instances support the following fields:
 
-<ul>
-<li><p><strong>name</strong></p>
+* **name**
+ * String that defines the name of the instance to build.
+ * This field is mandatory.
+ * This field cannot be null or empty.
+ * This field must be unique by user & manifest.
+ * The value of this field must be 50 characters maximum.
 
-<ul>
-<li>String that defines the name of the instance to build.</li>
-<li>This field is mandatory.</li>
-<li>This field cannot be null or empty.</li>
-<li>This field must be unique by user &amp; manifest.</li>
-<li>The value of this field must be 50 characters maximum.</li>
-</ul></li>
+* **image**
+ * String that defines the name of an image to install on the VM.
+ * This field is mandatory.
+ * This field cannot be null or empty.
+ * This field is composed in two parts one for the “catalog” and another one for the “image” separated by a slash “/”
+ * Both “catalog” and “image” are strings and can’t be null.
 
-<li><p><strong>image</strong></p>
+* **cpus**
+ * Integer that defines how many CPUs will have the VM.
+ * This field is mandatory.
+ * This field cannot be null or empty.
+ * This field must be greater or equal than 1
 
-<ul>
-<li>String that defines the name of an image to install on the VM.</li>
-<li>This field is mandatory.</li>
-<li>This field cannot be null or empty.</li>
-<li>This field is composed in two parts one for the “catalog” and another one for the “image” separated by a slash “/”</li>
-<li>Both “catalog” and “image” are strings and can’t be null.</li>
-</ul></li>
+* **memory**
+ * String that defines the name of a load balancer to add to this service.
+ * This field is mandatory.
+ * This field cannot be null or empty.
+ * This field must follow the Binary Prefix format: https://en.wikipedia.org/wiki/Binary_prefix#Computer_memory 
+ * The possible binary prefixes are MB, GB, TB, PB, YB
 
-<li><p><strong>cpus</strong></p>
+* **disks:**
+ * A list of sizes of hard disks that belongs to the VM
+ * This field can be an empty list
+ * This field is a list of strings
+ * Each element of the string must follow the Binary Prefix format: https://en.wikipedia.org/wiki/Binary_prefix#Hard_disk_drives 
+ * The possible binary prefixes are MB, GB, TB, PB, YB
 
-<ul>
-<li>Integer that defines how many CPUs will have the VM.</li>
-<li>This field is mandatory.</li>
-<li>This field cannot be null or empty.</li>
-<li>This field must be greater or equal than 1</li>
-</ul></li>
+* **root_disk**
+ * String that defines the root disk size of the template the instance is based on.
+ * This field is optional.
+ * This field cannot be null or empty.
+ * The value must be larger than the default root disk size of the template.
+ * Each element of the string must follow the Binary Prefix format: https://en.wikipedia.org/wiki/Binary_prefix#Hard_disk_drives 
+ * The possible binary prefixes are MB, GB, TB, PB, YB
 
-<li><p><strong>memory</strong></p>
+* **count**
+ * Integer that defines the number of VM to be created.
+ * This field is mandatory.
+ * This field cannot be null or empty.
+ * This field must be greater or equal that 1
 
-<ul>
-<li>String that defines the name of a load balancer to add to this service.</li>
-<li>This field is mandatory.</li>
-<li>This field cannot be null or empty.</li>
-<li>This field must follow the Binary Prefix format: <a href="https://en.wikipedia.org/wiki/Binary_prefix#Computer_memory" target="_blank">https://en.wikipedia.org/wiki/Binary_prefix#Computer_memory</a></li>
-<li>The possible binary prefixes are MB, GB, TB, PB, YB</li>
-</ul></li>
+**networks**
+Networks is a map with two fields
 
-<li><p><strong>disks:</strong></p>
 
-<ul>
-<li>A list of sizes of hard disks that belongs to the VM</li>
-<li>This field can be an empty list</li>
-<li>This field is a list of strings</li>
-<li>Each element of the string must follow the Binary Prefix format: <a href="https://en.wikipedia.org/wiki/Binary_prefix#Hard_disk_drives" target="_blank">https://en.wikipedia.org/wiki/Binary_prefix#Hard_disk_drives</a></li>
-<li>The possible binary prefixes are MB, GB, TB, PB, YB</li>
-</ul></li>
+* **name**
+ * String that defines the name of a network to attach this instance.
+ * This field is mandatory.
+ * This field cannot be null or empty.
+ * The value of this field should exist on the networks section previously specified.
 
-<li><p><strong>root_disk</strong></p>
 
-<ul>
-<li>String that defines the root disk size of the template the instance is based on.</li>
-<li>This field is optional.</li>
-<li>This field cannot be null or empty.</li>
-<li>The value must be larger than the default root disk size of the template.</li>
-<li>Each element of the string must follow the Binary Prefix format: <a href="https://en.wikipedia.org/wiki/Binary_prefix#Hard_disk_drives" target="_blank">https://en.wikipedia.org/wiki/Binary_prefix#Hard_disk_drives</a></li>
-<li>The possible binary prefixes are MB, GB, TB, PB, YB</li>
-</ul></li>
+* **start_ip**
+ * String that defines the starting IP to allocate the VMs to be built.
+ * This field is mandatory.
+ * This field cannot be null or empty.
+ * This field must be a valid IP.
+ * This IP should belong to the network already defined on the instance.
 
-<li><p><strong>count</strong></p>
 
-<ul>
-<li>Integer that defines the number of VM to be created.</li>
-<li>This field is mandatory.</li>
-<li>This field cannot be null or empty.</li>
-<li>This field must be greater or equal that 1</li>
-</ul></li>
-</ul>
+**provisioner**
 
-<p><strong>networks</strong>
-Networks is a map with two fields</p>
+Provisioner defines the available provisioner mechanisms.
 
-<ul>
-<li><p><strong>name</strong></p>
+* **exec**
+ * Array of strings, any command characters must be escaped with backslashes: (RFC7159, Section 7)
+ * Each command in the exec array is concatenated together and delimited by a semicolon.
+ * This field is optional
+ * If specified as a provisioner type, this array field must contain at least one element
+ * The specified commands will be executed by the SALT master.
 
-<ul>
-<li>String that defines the name of a network to attach this instance.</li>
-<li>This field is mandatory.</li>
-<li>This field cannot be null or empty.</li>
-<li>The value of this field should exist on the networks section previously specified.</li>
-</ul></li>
-
-<li><p><strong>start_ip</strong></p>
-
-<ul>
-<li>String that defines the starting IP to allocate the VMs to be built.</li>
-<li>This field is mandatory.</li>
-<li>This field cannot be null or empty.</li>
-<li>This field must be a valid IP.</li>
-<li>This IP should belong to the network already defined on the instance.</li>
-</ul></li>
-</ul>
-
-<p><strong>provisioner</strong></p>
-
-<p>Provisioner defines the available provisioner mechanisms.</p>
-
-<ul>
-<li><p><strong>exec</strong></p>
-
-<ul>
-<li>Array of strings, any command characters must be escaped with backslashes: (RFC7159, Section 7)</li>
-<li>Each command in the exec array is concatenated together and delimited by a semicolon.</li>
-<li>This field is optional</li>
-<li>If specified as a provisioner type, this array field must contain at least one element</li>
-<li>The specified commands will be executed by the SALT master.</li>
-</ul></li>
-
-<li><p><strong>shell</strong></p>
-
-<ul>
-<li>Array of strings, any command characters must be escaped with backslashes: (RFC7159, Section 7)</li>
-<li>Each command in the exec array is concatenated together and delimited by a semicolon.</li>
-<li>This field is optional</li>
-<li>If specified as a provisioner type, this array field must contain at least one element</li>
-<li>The specified commands will be executed by the vCloud guest customization script.</li>
-</ul></li>
-</ul>
+* **shell**
+ * Array of strings, any command characters must be escaped with backslashes: (RFC7159, Section 7)
+ * Each command in the exec array is concatenated together and delimited by a semicolon.
+ * This field is optional
+ * If specified as a provisioner type, this array field must contain at least one element
+ * The specified commands will be executed by the vCloud guest customization script.

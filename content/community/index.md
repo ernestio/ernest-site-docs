@@ -7,11 +7,11 @@ weight: 40
 ## Discuss
 To discuss all things Ernest with other members of the community:
 
-- join the Ernest [Slack channel](http://ernest.io/slack)
+- join the Ernest [Slack channel](/slack)
 - join the Ernest [Google Group](https://groups.google.com/forum/#!forum/ernestio)
 
 ## Contribute
-Ernest, the Ernest CLI, the VSE Creator Service, and the Ernest Site (this website) are all open source projects under the [Mozilla Public License v2.0](license/). If you would like to help us improve these projects you can do so here:
+Ernest, the Ernest CLI, the VSE Creator Service, and the Ernest Site (this website) are all open source projects under the [Mozilla Public License v2.0](/license/). If you would like to help us improve these projects you can do so here:
 
 <table align="left">
 <thead>
