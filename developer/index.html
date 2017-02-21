@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+  
+  
+  
+  
+   <html class="no-js"> 
+
+  <head lang="en-us">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=10" />
+    <title>Developer - Ernest</title>
+    <meta name="generator" content="Hugo 0.18.1" />
+
+    
+    <meta name="description" content="Developer Driven Orchestration">
+    
+    <link rel="canonical" href="http://docs.ernest.io/developer/">
+    
+    <meta name="author" content="Ernestio">
+    
+
+    <meta property="og:url" content="http://docs.ernest.io/developer/">
+    <meta property="og:title" content="Ernest">
+    <meta property="og:image" content="http://docs.ernest.io/images/dog.png">
+    <meta name="apple-mobile-web-app-title" content="Ernest">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <link rel="shortcut icon" type="image/x-icon" href="http://docs.ernest.io/images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="http://docs.ernest.io/images/favicon.ico">
+
+    <style>
+      @font-face {
+        font-family: 'Icon';
+        src: url('http://docs.ernest.io/fonts/icon.eot');
+        src: url('http://docs.ernest.io/fonts/icon.eot')
+               format('embedded-opentype'),
+             url('http://docs.ernest.io/fonts/icon.woff')
+               format('woff'),
+             url('http://docs.ernest.io/fonts/icon.ttf')
+               format('truetype'),
+             url('http://docs.ernest.io/fonts/icon.svg')
+               format('svg');
+        font-weight: normal;
+        font-style: normal;
+      }
+    </style>
+
+    <link rel="stylesheet" href="http://docs.ernest.io/stylesheets/application.css">
+    <link rel="stylesheet" href="http://docs.ernest.io/stylesheets/temporary.css">
+    <link rel="stylesheet" href="http://docs.ernest.io/stylesheets/palettes.css">
+    <link rel="stylesheet" href="http://docs.ernest.io/stylesheets/highlight/highlight.css">
+
+    
+    
+    
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ubuntu:400,700|Ubuntu&#43;Mono">
+    <style>
+      body, input {
+        font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
+      }
+      pre, code {
+        font-family: 'Ubuntu Mono', 'Courier New', 'Courier', monospace;
+      }
+    </style>
+
+    
+    <script src="http://docs.ernest.io/javascripts/modernizr.js"></script>
+
+    
+
+  </head>
+  <body class="palette-primary-light-blue palette-accent-orange">
+
+
+
+	
+	
+
+
+<div class="backdrop">
+	<div class="backdrop-paper"></div>
+</div>
+
+<input class="toggle" type="checkbox" id="toggle-drawer">
+<input class="toggle" type="checkbox" id="toggle-search">
+<label class="toggle-button overlay" for="toggle-drawer"></label>
+
+<header class="header">
+	<nav aria-label="Header">
+  <div class="bar default">
+    <div class="button button-menu" role="button" aria-label="Menu">
+      <label class="toggle-button icon icon-menu" for="toggle-drawer">
+        <span></span>
+      </label>
+    </div>
+    <div class="stretch">
+      <div class="title">
+        Developer
+      </div>
+    </div>
+
+    
+    <div class="button button-twitter" role="button" aria-label="Twitter">
+       <a href="https://twitter.com/@R3Labs" title="@@R3Labs on Twitter" target="_blank" class="toggle-button icon icon-twitter"></a>
+    </div>
+    
+
+    
+    <div class="button button-github" role="button" aria-label="GitHub">
+      <a href="https://github.com/ernestio" title="@ernestio on GitHub" target="_blank" class="toggle-button icon icon-github"></a>
+    </div>
+    
+    
+        
+  </div>
+  <div class="bar search">
+    <div class="button button-close" role="button" aria-label="Close">
+      <label class="toggle-button icon icon-back" for="toggle-search"></label>
+    </div>
+    <div class="stretch">
+      <div class="field">
+        <input class="query" type="text" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck>
+      </div>
+    </div>
+    <div class="button button-reset" role="button" aria-label="Search">
+      <button class="toggle-button icon icon-close" id="reset-search"></button>
+    </div>
+  </div>
+</nav>
+</header>
+
+<main class="main">
+	<div class="drawer">
+		<nav aria-label="Navigation">
+  <a href="https://github.com/ernestio/ernest" class="project">
+    <div class="banner">
+      
+        <div class="logo">
+          <img src="http://docs.ernest.io/images/dog.png">
+        </div>
+      
+      <div class="name">
+        <strong>Ernest <span class="version">1.11.0</span></strong>
+        
+          <br>
+          ernestio/ernest
+        
+      </div>
+    </div>
+  </a>
+
+  <div class="scrollable">
+    <div class="wrapper">
+      
+        <ul class="repo">
+          <li class="repo-download">
+            <a href="https://github.com/ernestio/ernest/archive/master.zip" target="_blank" title="Download" data-action="download">
+              <i class="icon icon-download"></i> Download
+            </a>
+          </li>
+          <li class="repo-stars">
+            <a href="https://github.com/ernestio/ernest/stargazers" target="_blank" title="Stargazers" data-action="star">
+              <i class="icon icon-star"></i> Stars
+              <span class="count">&ndash;</span>
+            </a>
+          </li>
+        </ul>
+        <hr>
+      
+
+      <div class="toc">
+        
+        <ul>
+          
+
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Ernest" href="http://docs.ernest.io/">
+	
+	Ernest
+</a>
+
+
+
+  
+</li>
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Getting started" href="http://docs.ernest.io/getting-started/">
+	
+	Getting started
+</a>
+
+
+
+  
+</li>
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Documentation" href="http://docs.ernest.io/documentation/">
+	
+	Documentation
+</a>
+
+
+
+  
+</li>
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Downloads" href="http://docs.ernest.io/downloads/">
+	
+	Downloads
+</a>
+
+
+
+  
+</li>
+
+
+
+<li>
+  
+    
+
+
+
+<a class="current" title="Developer" href="http://docs.ernest.io/developer/">
+	
+	Developer
+</a>
+
+
+<ul id="scrollspy">
+</ul>
+
+
+  
+</li>
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Community" href="http://docs.ernest.io/community/">
+	
+	Community
+</a>
+
+
+
+  
+</li>
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Support" href="http://docs.ernest.io/support/">
+	
+	Support
+</a>
+
+
+
+  
+</li>
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="License" href="http://docs.ernest.io/license/">
+	
+	License
+</a>
+
+
+
+  
+</li>
+
+
+        </ul>
+        
+
+        
+        <hr>
+        <span class="section">The author</span>
+        
+        <ul>
+          
+          <li>
+            <a href="https://twitter.com/@R3Labs" target="_blank" title="@@R3Labs on Twitter">
+              @@R3Labs on Twitter
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <a href="https://github.com/ernestio" target="_blank" title="@ernestio on GitHub">
+              @ernestio on GitHub
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <a href="mailto:info@r3labs.io" title="Email of info@r3labs.io">
+              Contact via email
+            </a>
+          </li>
+          
+        </ul>
+        
+      </div>
+    </div>
+  </div>
+</nav>
+
+	</div>
+
+	<article class="article">
+		<div class="wrapper">
+			<h1>Developer </h1>
+
+			
+
+<h2 id="architecture-overview">Architecture overview</h2>
+
+<p>Ernest is based on a microservice oriented architecture. The majority of the services are built using Go, however we still need to maintain some jruby based in order to interact with vCloud.</p>
+
+<h2 id="naming-conventions">Naming conventions</h2>
+
+<p>In order to keep it clean there are some naming conventions you need to follow in order to understand Ernest</p>
+
+<h3 id="service-naming">Service Naming</h3>
+
+<p>Every service family follows an easy to understand naming convention.</p>
+
+<h3 id="mappers">Mappers</h3>
+
+<p>Mappers will be named following the structure -definition-mapper. ‘provider’ is the cloud service it will be mapping, i.e. AWS, vCloud …</p>
+
+<h3 id="adapters">Adapters</h3>
+
+<p>We base the adapters naming on the component they’re representing -adapter. A component can be an instance, a network, an s3 bucket…</p>
+
+<h3 id="connectors">Connectors</h3>
+
+<p>A connector name will look like &mdash;component.</p>
+
+<p>It is basically composed by some variable parts: - component : the component it represents: instances, networks, routers… - action : the action will implement: create, delete, update. Additionally you will find the action «all», which will represent is implementing all possible actions. - provider : the provider is connecting to. AWS, vCloud…</p>
+
+<h3 id="messages-naming">Messages naming</h3>
+
+<p>All services on Ernest are communicating through <a href="https://nats.io/documentation/concepts/nats-messaging/">nats</a> messages. There is a naming convention for any message on the platform, and you can find it in different forms:</p>
+
+<pre><code class="language-sh">&lt;component&gt;.&lt;action&gt;
+
+# These messages are representing the communication between the workflow manager and the builders, and basically they’re managing a list of components to be processed.
+
+&lt;component&gt;.&lt;action&gt;
+
+# A single component to be processed; these messages are managed by builders and adapters.
+
+&lt;component&gt;.&lt;action&gt;.&lt;provider&gt;
+
+# They are sending the necessary info from the adapter to be processed by a specific connector.
+</code></pre>
+
+<p>All these messages are replied with an appended «.done» or «.error» word to the subject, so the sender will know if the action was a success or a failure.</p>
+
+<h2 id="service-structure">Service structure</h2>
+
+<p>The microservices can be categorized into different families:</p>
+
+<ul>
+<li><p>The Public family holds every service with a public or private interface intended to be used by the end user. Api Gateway Monit Logger</p></li>
+
+<li><p>Data stores are a crud over nats interface to interact with persistent data</p></li>
+
+<li><p>Definition Mappers map the input yaml on a valid internal definition</p></li>
+
+<li><p>The Workflow manager takes care of processing the necessary steps to build a service</p></li>
+
+<li><p>Builders are processing lists of components</p></li>
+
+<li><p>Adapters are processing a single component</p></li>
+
+<li><p>Connectors are connecting Ernest with third party providers in order to process a component.</p></li>
+</ul>
+
+<p>Additionally we use ? to group these families into:</p>
+
+<ul>
+<li>Frontend (Public + Stores)</li>
+<li>Backend (Mappers + Core + Builders + Adapters + Connectors)</li>
+</ul>
+
+<h2 id="public">Public</h2>
+
+<h3 id="api-gateway">API Gateway</h3>
+
+<p>The api-gateway is exposing a public REST api, locked with JWT authentication, so every authenticated user can interact with its endpoints</p>
+
+<h3 id="monit">Monit</h3>
+
+<p>This service is sending real time information about service creation to the end user by keeping a stream open with the client.</p>
+
+<p>It is catching all internal messages and decides which ones will fire a new message through the stream</p>
+
+<p>It exposes data streams through SSE(Server Side Events).</p>
+
+<h3 id="logger">Logger</h3>
+
+<p>Logger is listening at all events on the message bus and ofuscating sensible data and sending it to a third party logger system.</p>
+
+<h2 id="data-stores">Data stores</h2>
+
+<p>Microservices in this family are an interface to interact with persistent data. So you can query stored data through nats with messages including:</p>
+
+<pre><code class="language-sh">entity.get
+entity.find
+entity.del
+entity.set
+</code></pre>
+
+<p>There is a microservice for each entity on the system:</p>
+
+<pre><code class="language-sh">datacenter-store
+
+#Implements a nats interface to operate with datacenter stored data
+
+user-store
+
+#Will open a nats interface to operate with user stored data. Additionally it will manage all user sensible data encryption.
+
+service-store
+
+#Implements a nats interface to operate with service stored data
+
+config-store
+
+#Implements a nats interface to operate with system configuration, this configuration is based on a configuration file deployed on Ernest creation.
+
+group-store
+
+#Implements a nats interface to operate with groups stored data. System authorization levels are based on these groups
+</code></pre>
+
+<h2 id="definition-mappers">Definition mappers</h2>
+
+<p>Definition mappers map your input yaml/json file on to a valid internal struct at the time they do an initial validation.</p>
+
+<pre><code class="language-sh">definition-mapper
+
+#Definition mapper service basically decides which provider specific mapper will handle the input mapping.
+
+vcloud-definition-mapper
+
+#Validates and maps the vCloud yaml input on a valid internal service.
+
+aws-definition-mapper
+
+#Validates and maps the AWS yaml input on a valid internal service.
+</code></pre>
+
+<h2 id="workflow-manager">Workflow manager</h2>
+
+<p>Workflow manager is a service to process grouped lists of components. It runs on top of nats.io. Workflow manager provides several key features:</p>
+
+<ul>
+<li>Adaptable workflow definition: Workflow definition is received as part of the entry point, so it is externally defined.</li>
+<li>Templating: You can use the templating system to fill some component details with other component properties.</li>
+
+<li><p>External persistence: Workflow manager will call an external service to persist the current definition.</p>
+
+<h3 id="quick-start">Quick start</h3></li>
+</ul>
+
+<pre><code class="language-sh">#Install with git
+git clone git@github.com:ernestio/workflow-manager.git
+
+make deps &amp;&amp; make install
+
+workflow-manager
+</code></pre>
+
+<h3 id="dependencies">dependencies</h3>
+
+<p>As workflow-manager does not provide any persistence system it directly depends on service-store, and its communcation is through nats.io.</p>
+
+<h3 id="input-definition">Input (definition)</h3>
+
+<p>The input definition is a json input with the following structure:</p>
+
+<pre><code class="language-sh">{
+    &quot;id&quot;: &quot;test-generated-id&quot;,
+    &quot;workflow&quot;: {
+			&quot;arcs&quot;: [{
+				&quot;from&quot;: &quot;created&quot;,
+				&quot;to&quot;: &quot;started&quot;,
+				&quot;event&quot;: &quot;service.create&quot;
+			}, {
+				&quot;from&quot;: &quot;started&quot;,
+				&quot;to&quot;: &quot;creating_components&quot;,
+				&quot;event&quot;: &quot;components.create&quot;
+			}, {
+				&quot;from&quot;: &quot;creating_components&quot;,
+				&quot;to&quot;: &quot;components_created&quot;,
+				&quot;event&quot;: &quot;components.create.done&quot;
+			}, {
+				&quot;from&quot;: &quot;components_created&quot;,
+				&quot;to&quot;: &quot;updating_components&quot;,
+				&quot;event&quot;: &quot;components.update&quot;
+			}, {
+				&quot;from&quot;: &quot;updating_components&quot;,
+				&quot;to&quot;: &quot;components_updated&quot;,
+				&quot;event&quot;: &quot;components.update.done&quot;
+			}, {
+				&quot;from&quot;: &quot;components_updated&quot;,
+				&quot;to&quot;: &quot;deleting_components&quot;,
+				&quot;event&quot;: &quot;components.delete&quot;
+			}, {
+				&quot;from&quot;: &quot;deleting_components&quot;,
+				&quot;to&quot;: &quot;components_deleted&quot;,
+				&quot;event&quot;: &quot;components.delete.done&quot;
+			}, {
+				&quot;from&quot;: &quot;components_deleted&quot;,
+				&quot;to&quot;: &quot;done&quot;,
+				&quot;event&quot;: &quot;service.create.done&quot;
+			}, {
+				&quot;from&quot;: &quot;pre-failed&quot;,
+				&quot;to&quot;: &quot;failed&quot;,
+				&quot;event&quot;: &quot;to_error&quot;
+			}, {
+				&quot;from&quot;: &quot;failed&quot;,
+				&quot;to&quot;: &quot;errored&quot;,
+				&quot;event&quot;: &quot;service.create.error&quot;
+			}]
+    },
+    &quot;components&quot;: {
+      &quot;status&quot;: &quot;&quot;,
+      &quot;started&quot;: &quot;&quot;,
+      &quot;finished&quot;: &quot;&quot;,
+      &quot;items&quot;: [{
+        &quot;service&quot;: &quot;test&quot;,
+        &quot;type&quot;: &quot;vcloud&quot;,
+        &quot;name&quot;: &quot;existing&quot;,
+        &quot;field&quot;: &quot;existing&quot;
+      }]
+    },
+    &quot;components_to_create&quot;: {
+      &quot;status&quot;: &quot;&quot;,
+      &quot;started&quot;: &quot;&quot;,
+      &quot;finished&quot;: &quot;&quot;,
+      &quot;items&quot;: [{
+        &quot;service&quot;: &quot;test&quot;,
+        &quot;type&quot;: &quot;vcloud&quot;,
+        &quot;name&quot;: &quot;added&quot;,
+        &quot;field&quot;: &quot;created&quot;
+      },{
+        &quot;service&quot;: &quot;test&quot;,
+        &quot;type&quot;: &quot;vcloud&quot;,
+        &quot;name&quot;: &quot;updated&quot;,
+        &quot;field&quot;: &quot;created_to_be_updated&quot;
+      }]
+    },
+    &quot;components_to_update&quot;: {
+      &quot;status&quot;: &quot;&quot;,
+      &quot;started&quot;: &quot;&quot;,
+      &quot;finished&quot;: &quot;&quot;,
+      &quot;items&quot;: [{
+        &quot;service&quot;: &quot;test&quot;,
+        &quot;type&quot;: &quot;vcloud&quot;,
+        &quot;name&quot;: &quot;updated&quot;,
+        &quot;field&quot;: &quot;updated&quot;
+      }]
+    },
+    &quot;components_to_delete&quot;: {
+      &quot;status&quot;: &quot;&quot;,
+      &quot;started&quot;: &quot;&quot;,
+      &quot;finished&quot;: &quot;&quot;,
+      &quot;items&quot;: [{
+        &quot;service&quot;: &quot;test&quot;,
+        &quot;type&quot;: &quot;vcloud&quot;,
+        &quot;name&quot;: &quot;existing&quot;
+      }]
+    }
+}
+</code></pre>
+
+<p>You can change, add or remove as many component batches as you want, they will need to be represented as part of the workflow too.</p>
+
+<p>In order to build workflows, you can have a look at <a href="https://github.com/r3labs/workflow">workflow library</a>.</p>
+
+<p>Workflow-manager will send a <b>components.verb</b> for each transition you’ve defined on your workflow, and will wait for <b>component.verb.status</b>, where status can be <b>done</b> or <b>error</b>.</p>
+
+<p>You will find a more up to date documentation on the repo <a href="https://github.com/ernestio/workflow-manager/blob/develop/README.md">README</a></p>
+
+<h2 id="component-builders">Component builders</h2>
+
+<p>A builder is basically a component scheduler. It receives a list of components and processes each component sequentially or in parallel.</p>
+
+<h3 id="sequential-processing">Sequential processing</h3>
+
+<p>In order to process the component sequentially you should set the field «sequential_processing» to true .</p>
+
+<h3 id="dependencies-1">Dependencies</h3>
+
+<p>In order to track the state of all components in a collection, state is stored on redis. When all components have completed, a return event is sent.</p>
+
+<h2 id="adapters-1">Adapters</h2>
+
+<p>An adapter is getting an order for a single component creation and it decides which connector will process this creation.</p>
+
+<p>Some of them use a translator so the internal component structure gets adapted to the connector, however, just as we are doing with builders, we’re trying to deliver as many adapters as possible on top of the generic-adapter.</p>
+
+<h2 id="connectors-1">Connectors</h2>
+
+<p>A connector is a service which is directly interacting with the provider in order to process (get, create, update or delete) a component on the provider.</p>
+
+<h2 id="testing">Testing</h2>
+
+<h3 id="unit-testing">Unit testing</h3>
+
+<p>Each service has its own test suite (per-service tests) based uniquely on how the specific service behaves.</p>
+
+<h3 id="bdd-tests">BDD tests</h3>
+
+<p>In order to test, and keep a live documentation of ernest-cli, we have implemented some end to end tests using <a href="https://github.com/gucumber/gucumber">gucumber</a> and <a href="https://github.com/cucumber/cucumber/wiki/Gherkin">gherkin</a>.</p>
+
+<p>You can find the features definitions describing ernest behaviour <a href="https://github.com/ernestio/ernest-cli/tree/develop/internal/features/cli">here</a></p>
+
+<h3 id="integration-tests">Integration tests</h3>
+
+<p>As Ernest is a distributed system, it’s sometimes hard to have integration tests. This is why some key services have integration tests and per service tests.</p>
+
+<p>These integration tests are building a partial Ernest environment with docker-compose, but they’re mocking all connectors with all-all-fake-connector which responds with what’s expected by the connectors.</p>
+
+
+			<aside class="copyright" role="note">
+				
+				&copy; 2017 Released under the MIT license &ndash;
+				
+				Documentation built with
+				<a href="https://www.gohugo.io" target="_blank">Hugo</a>
+				using the
+				<a href="http://github.com/digitalcraftsman/hugo-material-docs" target="_blank">Material</a> theme.
+			</aside>
+
+			<footer class="footer">
+				
+
+<nav class="pagination" aria-label="Footer">
+  <div class="previous">
+  
+      <a href="http://docs.ernest.io/downloads/" title="Downloads">
+        <span class="direction">
+          Previous
+        </span>
+        <div class="page">
+          <div class="button button-previous" role="button" aria-label="Previous">
+            <i class="icon icon-back"></i>
+          </div>
+          <div class="stretch">
+            <div class="title">
+              Downloads
+            </div>
+          </div>
+        </div>
+      </a>
+  
+  </div>
+
+  <div class="next">
+  
+      <a href="http://docs.ernest.io/community/" title="Community">
+        <span class="direction">
+          Next
+        </span>
+        <div class="page">
+          <div class="stretch">
+            <div class="title">
+              Community
+            </div>
+          </div>
+          <div class="button button-next" role="button" aria-label="Next">
+            <i class="icon icon-forward"></i>
+          </div>
+        </div>
+      </a>
+  
+  </div>
+</nav>
+
+
+
+
+
+			</footer>
+		</div>
+	</article>
+
+	<div class="results" role="status" aria-live="polite">
+		<div class="scrollable">
+			<div class="wrapper">
+				<div class="meta"></div>
+				<div class="list"></div>
+			</div>
+		</div>
+	</div>
+</main>
+
+    <script>
+    
+      var base_url = 'http:\/\/docs.ernest.io\/';
+      var repo_id  = 'ernestio\/ernest';
+    
+    </script>
+
+    <script src="http://docs.ernest.io/javascripts/application.js"></script>
+    
+
+    <script>
+      /* Add headers to scrollspy */
+      var headers   = document.getElementsByTagName("h2");
+      var scrollspy = document.getElementById('scrollspy');
+
+      if(scrollspy) {
+        if(headers.length > 0) {
+          for(var i = 0; i < headers.length; i++) {
+            var li = document.createElement("li");
+            li.setAttribute("class", "anchor");
+
+            var a  = document.createElement("a");
+            a.setAttribute("href", "#" + headers[i].id);
+            a.setAttribute("title", headers[i].innerHTML);
+            a.innerHTML = headers[i].innerHTML;
+
+            li.appendChild(a)
+            scrollspy.appendChild(li);
+          }
+        } else {
+          scrollspy.parentElement.removeChild(scrollspy)
+        }
+
+
+        /* Add permanent link next to the headers */
+        var headers = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
+
+        for(var i = 0; i < headers.length; i++) {
+            var a = document.createElement("a");
+            a.setAttribute("class", "headerlink");
+            a.setAttribute("href", "#" + headers[i].id);
+            a.setAttribute("title", "Permanent link")
+            a.innerHTML = "#";
+            headers[i].appendChild(a);
+        }
+      }
+    </script>
+
+    
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

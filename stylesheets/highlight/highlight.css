@@ -1,0 +1,99 @@
+/* 
+ * overwrite the current primary color of the 
+ * theme that is used as fallback in codeblocks 
+ */
+.article pre code {
+	color: rgba(0, 0, 0, 0.8) !important;
+}
+
+
+/*	
+	HIGHLIGHT.JS THEME 
+
+	tweaked version of the Github theme
+*/
+
+.hljs {
+display:block;
+overflow-x:auto;
+}
+
+.hljs-comment,
+.hljs-quote {
+color:#333;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-subst {
+color:#333;
+}
+
+.hljs-number,
+.hljs-literal,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag .hljs-attr {
+color:#333;
+}
+
+.hljs-string,
+.hljs-doctag {
+color:#333;
+}
+
+.hljs-title,
+.hljs-section,
+.hljs-selector-id {
+color:#333;
+}
+
+.hljs-subst {
+color:#333;
+}
+
+.hljs-type,
+.hljs-class .hljs-title {
+color:#333;
+}
+
+.hljs-tag,
+.hljs-name,
+.hljs-attribute {
+color:#333;
+}
+
+.hljs-regexp,
+.hljs-link {
+color:#333;
+}
+
+.hljs-symbol,
+.hljs-bullet {
+color:#333;
+}
+
+.hljs-built_in,
+.hljs-builtin-name {
+color:#333;
+}
+
+.hljs-meta {
+color:#333;
+}
+
+.hljs-deletion {
+color:#333;
+}
+
+.hljs-addition {
+color:#333;
+}
+
+.hljs-emphasis {
+color:#333;
+}
+
+.hljs-strong {
+color:#333;
+}
