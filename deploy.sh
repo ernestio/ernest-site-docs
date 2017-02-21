@@ -1,20 +1,33 @@
-#!/bin/bash
+#!/bin/sh
 
-echo -e "\033[0;32mDeploying updates to GitHub...\033[0m"
+DIR=$(dirname "$0")
 
-# Build the project.
+cd $DIR
+
+if [[ $(git status -s) ]]
+then
+    echo "The working directory is dirty. Please commit any pending changes."
+    exit 1;
+fi
+
+echo "Deleting old publication"
+rm -rf public
+mkdir public
+git worktree prune
+rm -rf .git/worktrees/public/
+
+echo "Checking out gh-pages branch into public"
+git worktree add -B gh-pages public origin/gh-pages
+
+echo "Removing existing files"
+rm -rf public/*
+
+echo "Generating site"
 hugo
 
-# Add changes to git.
-git add -A
+echo "Updating gh-pages branch"
+cp CNAME public/CNAME
+cd public && git add --all && git commit -m "Publishing to gh-pages (deploy.sh)"
+git push origin gh-pages
 
-# Commit changes.
-msg="rebuilding site `date`"
-if [ $# -eq 1 ]
-  then msg="$1"
-fi
-git commit -m "$msg"
-
-# Push source and build repos.
-git push origin master
-git subtree push --prefix=public git@github.com:ernestio/ernest-site-docs.git gh-pages
+cd .. && git add public && git commit -m "Publishing to gh-pages (deploy.sh)"
