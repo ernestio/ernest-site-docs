@@ -3137,4 +3137,3 @@ Provisioner defines the available provisioner mechanisms.
  * If specified as a provisioner type, this array field must contain at least one element
  * The specified commands will be executed by the vCloud guest customization script.
 
-# Test 1aslhdlkasjhdl
