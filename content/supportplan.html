@@ -10,40 +10,38 @@ title: Support Plan Contact Form
 
 <div class="form-group">
   <label for="firstname">First Name</label>  
-  <input id="firstname" name="entry.706791366" type="text" placeholder="First Name" required="">
+  <input id="firstname" name="entry.706791366" type="text" placeholder="First Name" class="form-control" required="">
 </div>
 
 <div class="form-group">
   <label for="lastname">Last Name</label>  
-  <input id="lastname" name="entry.1072744609" type="text" placeholder="Last Name" required="">
+  <input id="lastname" name="entry.1072744609" type="text" placeholder="Last Name" class="form-control" required="">
 </div>
 
 <div class="form-group">
   <label for="email">Email Address</label>  
-  <input id="email" name="entry.1586474514" type="text" placeholder="Email Address" required="">
+  <input id="email" name="entry.1586474514" type="text" placeholder="Email Address" class="form-control" required="">
 </div>
 
 <div class="form-group">
   <label for="plan">Support Plan</label>
-  <div class="radio">
+  <div>
+    <input type="radio" name="entry.1568716440" id="plan-0" value="Standard" checked="checked">
     <label for="plan-0">
-      <input type="radio" name="entry.1568716440" id="plan-0" value="Standard" checked="checked">
-      Standard
+      <span></span>Standard
     </label>
-	</div>
-  <div class="radio">
+  </div>
+  <div>
+    <input type="radio" name="entry.1568716440" id="plan-1" value="Premium">
     <label for="plan-1">
-      <input type="radio" name="entry.1568716440" id="plan-1" value="Premium">
-      Premium
+      <span></span>Premium
     </label>
-	</div>
+  </div>
 </div>
 
 <div class="form-group">
-  <label class="col-md-4 control-label" for="submit"></label>
-  <div class="col-md-4">
+  <label for="submit"></label>
     <button id="submit" type="submit" class="btn btn-success">Submit</button>
-  </div>
 </div>
 
 </fieldset>
