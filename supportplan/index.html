@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
     <title>Support Plan Contact Form - Ernest</title>
-    <meta name="generator" content="Hugo 0.18.1" />
+    <meta name="generator" content="Hugo 0.16-DEV" />
 
     
     <meta name="description" content="Developer Driven Orchestration">
@@ -65,6 +65,8 @@
       }
     </style>
 
+    
+    <link rel="stylesheet" href="http://docs.ernest.io/forms.css">
     
     <script src="http://docs.ernest.io/javascripts/modernizr.js"></script>
 
@@ -372,40 +374,38 @@
 
 <div class="form-group">
   <label for="firstname">First Name</label>  
-  <input id="firstname" name="entry.706791366" type="text" placeholder="First Name" required="">
+  <input id="firstname" name="entry.706791366" type="text" placeholder="First Name" class="form-control" required="">
 </div>
 
 <div class="form-group">
   <label for="lastname">Last Name</label>  
-  <input id="lastname" name="entry.1072744609" type="text" placeholder="Last Name" required="">
+  <input id="lastname" name="entry.1072744609" type="text" placeholder="Last Name" class="form-control" required="">
 </div>
 
 <div class="form-group">
   <label for="email">Email Address</label>  
-  <input id="email" name="entry.1586474514" type="text" placeholder="Email Address" required="">
+  <input id="email" name="entry.1586474514" type="text" placeholder="Email Address" class="form-control" required="">
 </div>
 
 <div class="form-group">
   <label for="plan">Support Plan</label>
-  <div class="radio">
+  <div>
+    <input type="radio" name="entry.1568716440" id="plan-0" value="Standard" checked="checked">
     <label for="plan-0">
-      <input type="radio" name="entry.1568716440" id="plan-0" value="Standard" checked="checked">
-      Standard
+      <span></span>Standard
     </label>
-	</div>
-  <div class="radio">
+  </div>
+  <div>
+    <input type="radio" name="entry.1568716440" id="plan-1" value="Premium">
     <label for="plan-1">
-      <input type="radio" name="entry.1568716440" id="plan-1" value="Premium">
-      Premium
+      <span></span>Premium
     </label>
-	</div>
+  </div>
 </div>
 
 <div class="form-group">
-  <label class="col-md-4 control-label" for="submit"></label>
-  <div class="col-md-4">
+  <label for="submit"></label>
     <button id="submit" type="submit" class="btn btn-success">Submit</button>
-  </div>
 </div>
 
 </fieldset>
@@ -428,22 +428,6 @@
 
 <nav class="pagination" aria-label="Footer">
   <div class="previous">
-  
-      <a href="http://docs.ernest.io/license/" title="Mozilla Public License Version 2.0">
-        <span class="direction">
-          Previous
-        </span>
-        <div class="page">
-          <div class="button button-previous" role="button" aria-label="Previous">
-            <i class="icon icon-back"></i>
-          </div>
-          <div class="stretch">
-            <div class="title">
-              Mozilla Public License Version 2.0
-            </div>
-          </div>
-        </div>
-      </a>
   
   </div>
 
