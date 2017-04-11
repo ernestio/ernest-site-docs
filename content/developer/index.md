@@ -14,27 +14,14 @@ In order to keep it clean there are some naming conventions you need to follow i
 ### Service Naming
 Every service family follows an easy to understand naming convention.
 
-### Mappers
-Mappers will be named following the structure -definition-mapper. ‘provider’ is the cloud service it will be mapping, i.e. AWS, vCloud …
-
-### Adapters
-We base the adapters naming on the component they’re representing -adapter. A component can be an instance, a network, an s3 bucket…
-
 ### Connectors
-A connector name will look like ---component.
+A connector name will look like component-action-provider-component.
 
-It is basically composed by some variable parts: - component : the component it represents: instances, networks, routers… - action : the action will implement: create, delete, update. Additionally you will find the action «all», which will represent is implementing all possible actions. - provider : the provider is connecting to. AWS, vCloud…
+It is basically composed by some variable parts: - component : the component it represents: instances, networks, routers… - action : the action will implement: create, delete, update. Additionally you will find the action «all», which will represent is implementing all possible actions and component types. - provider : the provider is connecting to. AWS, vCloud…
 
 ### Messages naming
 All services on Ernest are communicating through [nats](https://nats.io/documentation/concepts/nats-messaging/) messages. There is a naming convention for any message on the platform, and you can find it in different forms:
 ```sh
-<component>.<action>
-
-# These messages are representing the communication between the workflow manager and the builders, and basically they’re managing a list of components to be processed.
-
-<component>.<action>
-
-# A single component to be processed; these messages are managed by builders and adapters.
 
 <component>.<action>.<provider>
 
@@ -43,26 +30,35 @@ All services on Ernest are communicating through [nats](https://nats.io/document
 
 All these messages are replied with an appended «.done» or «.error» word to the subject, so the sender will know if the action was a success or a failure.
 
+# Component Message structure
+There are a number of internal fields used by components (always prefixed with `_`) that must be present:
+
+- `_action`:  The action required by the component. This can be one of `create`, `update`, `delete`, `find` or `get`.
+- `_component`:  The component type, i.e. `instance`, `network`, `firewall`.
+- `_component_id`:  The composite ID of the component. This is constructed by a components type and its name, i.e. `instance::web-1`
+- `_provider`:  The type of provider that the component will be provisioned on.
+- `_state`:  The current state of the component. Can be one of `errored`, `waiting`, `running`, `completed`
+
+These fields are leveraged by scheduler to construct the omitted event subject.
+
 ## Service structure
 The microservices can be categorized into different families:
 
-- The Public family holds every service with a public or private interface intended to be used by the end user. Api Gateway Monit Logger
+- The Public family holds every service with a public or private interface intended to be used by the end user [Api Gateway, Monit, Logger].
 
-- Data stores are a crud over nats interface to interact with persistent data
-- Definition Mappers map the input yaml on a valid internal definition
-- The Workflow manager takes care of processing the necessary steps to build a service
-- Builders are processing lists of components
-- Adapters are processing a single component
+- Data stores are a crud over nats interface to interact with persistent data.
+- The Definition Mapper maps the input yaml on a valid internal mapping.
+- The Scheduler takes care of processing the necessary steps to build a service.
 - Connectors are connecting Ernest with third party providers in order to process a component.
 
-Additionally we use ? to group these families into:
+We group these families into:
 
 - Frontend (Public + Stores)
-- Backend (Mappers + Core + Builders + Adapters + Connectors)
+- Backend (Mapper + Core + Connectors)
 
 ## Public
 ### API Gateway
-The api-gateway is exposing a public REST api, locked with JWT authentication, so every authenticated user can interact with its endpoints
+The api-gateway is exposing a public REST api, locked with JWT authentication, so every authenticated user can interact with its endpoints.
 
 ### Monit
 This service is sending real time information about service creation to the end user by keeping a stream open with the client.
@@ -106,163 +102,385 @@ group-store
 
 #Implements a nats interface to operate with groups stored data. System authorization levels are based on these groups
 ```
-## Definition mappers
-Definition mappers map your input yaml/json file on to a valid internal struct at the time they do an initial validation.
+## Definition mapper
+Definition mapper maps your input yaml/json file on to a valid internal struct at the time they do an initial validation.
 
 ```sh
 definition-mapper
 
-#Definition mapper service basically decides which provider specific mapper will handle the input mapping.
-
-vcloud-definition-mapper
-
-#Validates and maps the vCloud yaml input on a valid internal service.
-
-aws-definition-mapper
-
-#Validates and maps the AWS yaml input on a valid internal service.
+#Validates and maps the provider specific yaml input to a valid internal service mapping. It's also is responsible for converting the internal mapping back to an input yaml when importing.
 ```
 
-## Workflow manager
-Workflow manager is a service to process grouped lists of components. It runs on top of nats.io. Workflow manager provides several key features:
+## Scheduler
+Scheduler is a service to process actions associated with a given environment and it's components. It runs on top of nats.io.
 
-- Adaptable workflow definition: Workflow definition is received as part of the entry point, so it is externally defined.
+Scheduler provides several key features:
+
+- Dependency graph scheduling. Each component is scheduled based on its relation to other components and allows independant components to be provisioned in parallel.
 - Templating: You can use the templating system to fill some component details with other component properties.
-- External persistence: Workflow manager will call an external service to persist the current definition.
+- External persistence: Scheduler will call an external service to persist the current state of the service build and its components.
+
 ### Quick start
 
 ```sh
 #Install with git
-git clone git@github.com:ernestio/workflow-manager.git
+git clone git@github.com:ernestio/scheduler.git
 
 make deps && make install
 
-workflow-manager
+scheduler
 ```
-### dependencies
 
-As workflow-manager does not provide any persistence system it directly depends on service-store, and its communcation is through nats.io.
-
-### Input (definition)
-The input definition is a json input with the following structure:
+### Running tests
 
 ```sh
+make dev-deps && make test
+```
+
+### Operation
+
+The scheduler will send a `components.verb.provider` for component. The order is defined by the dependencies specified on `edges` and will wait for `component.verb.provider.status`, where status can be `done` or `error`.
+
+When a completed component event is received, the latest service mapping is retrieved from service store. The state of the component is then updated in both `changes` and `components`. The graph is then inspected for all dependants of the completed component. These dependant components are then scheduled when all of its dependencies are satisfied.
+
+If an errored component is received, scheduler will wait for all other in flight components to complete before sending an error back to the user. No other components will be sent in this errored state.
+
+The graph library utilised by the scheduler can be found at [graph library](https://github.com/r3labs/graph).
+
+### External Dependencies
+
+As scheduler does not provide any persistence system; it directly depends on service-store, and its communication is accomplished through nats.io.
+
+### Input Mapping
+
+The input mapping defines the steps a scheduler must take to complete a build. The required fields for each component are:
+
+- `id`: The id of the service being provisioned.
+- `action`: The action of the service
+- `edges`: The edges define the directed connection between components, as defined by a `source` and a `destination`.
+- `components`: This collection of components represents the _current_ state of the service.
+- `changes`: This collection of components represents the _desired_ state of the service.
+
+This output is generated by defintion-mapper with execution ordering and dependencies configured before being sent to scheduler.
+
+An example of the input json to scheduler:
+
+```json
 {
     "id": "test-generated-id",
-    "workflow": {
-			"arcs": [{
-				"from": "created",
-				"to": "started",
-				"event": "service.create"
-			}, {
-				"from": "started",
-				"to": "creating_components",
-				"event": "components.create"
-			}, {
-				"from": "creating_components",
-				"to": "components_created",
-				"event": "components.create.done"
-			}, {
-				"from": "components_created",
-				"to": "updating_components",
-				"event": "components.update"
-			}, {
-				"from": "updating_components",
-				"to": "components_updated",
-				"event": "components.update.done"
-			}, {
-				"from": "components_updated",
-				"to": "deleting_components",
-				"event": "components.delete"
-			}, {
-				"from": "deleting_components",
-				"to": "components_deleted",
-				"event": "components.delete.done"
-			}, {
-				"from": "components_deleted",
-				"to": "done",
-				"event": "service.create.done"
-			}, {
-				"from": "pre-failed",
-				"to": "failed",
-				"event": "to_error"
-			}, {
-				"from": "failed",
-				"to": "errored",
-				"event": "service.create.error"
-			}]
-    },
-    "components": {
-      "status": "",
-      "started": "",
-      "finished": "",
-      "items": [{
-        "service": "test",
-        "type": "vcloud",
-        "name": "existing",
-        "field": "existing"
-      }]
-    },
-    "components_to_create": {
-      "status": "",
-      "started": "",
-      "finished": "",
-      "items": [{
-        "service": "test",
-        "type": "vcloud",
-        "name": "added",
-        "field": "created"
-      },{
-        "service": "test",
-        "type": "vcloud",
-        "name": "updated",
-        "field": "created_to_be_updated"
-      }]
-    },
-    "components_to_update": {
-      "status": "",
-      "started": "",
-      "finished": "",
-      "items": [{
-        "service": "test",
-        "type": "vcloud",
-        "name": "updated",
-        "field": "updated"
-      }]
-    },
-    "components_to_delete": {
-      "status": "",
-      "started": "",
-      "finished": "",
-      "items": [{
-        "service": "test",
-        "type": "vcloud",
-        "name": "existing"
-      }]
-    }
+    "action": "service.delete",
+    "edges": [
+        {
+            "destination": "vpc::test-vpc",
+            "length": 1,
+            "source": "internet_gateway::test-vpc"
+        },
+        {
+            "destination": "vpc::test-vpc",
+            "length": 1,
+            "source": "firewall::test-vm"
+        },
+        {
+            "destination": "internet_gateway::test-vpc",
+            "length": 1,
+            "source": "network::test-dmz"
+        },
+        {
+            "destination": "vpc::test-vpc",
+            "length": 1,
+            "source": "firewall::test-elb"
+        },
+        {
+            "destination": "firewall::test-vm",
+            "length": 1,
+            "source": "instance::test-web-1"
+        },
+        {
+            "destination": "network::test-dmz",
+            "length": 1,
+            "source": "instance::test-web-1"
+        },
+        {
+            "destination": "firewall::test-elb",
+            "length": 1,
+            "source": "elb::test-elb"
+        },
+        {
+            "destination": "network::test-dmz",
+            "length": 1,
+            "source": "elb::test-elb"
+        },
+        {
+            "destination": "instance::test-web-1",
+            "length": 1,
+            "source": "elb::test-elb"
+        },
+        {
+            "destination": "end",
+            "length": 1,
+            "source": "vpc::test-vpc"
+        },
+        {
+            "destination": "elb::test-elb",
+            "length": 1,
+            "source": "start"
+        }
+    ],
+    "components": [
+        {
+            "_action": "delete",
+            "_component": "vpc",
+            "_component_id": "vpc::test-vpc",
+            "_provider": "aws",
+            "_state": "waiting",
+            "auto_remove": true,
+            "name": "test-vpc",
+            "service": "test-generated-id",
+            "subnet": "10.0.0.0/16",
+            "tags": {
+                "Name": "test-vpc",
+                "ernest.service": "test"
+            },
+            "vpc_aws_id": "vpc-00000000"
+        },
+        {
+            "_action": "delete",
+            "_component": "internet_gateway",
+            "_component_id": "internet_gateway::test-vpc",
+            "_provider": "aws",
+            "_state": "waiting",
+            "internet_gateway_aws_id": "igw-00000000",
+            "name": "test-vpc",
+            "service": "test-generated-id",
+            "tags": {
+                "Name": "test-vpc",
+                "ernest.service": "test"
+            },
+            "vpc": "test-vpc",
+            "vpc_id": "vpc-00000000"
+        },
+        {
+            "_action": "none",
+            "_component": "credentials",
+            "_component_id": "credentials::aws",
+            "_provider": "aws",
+            "_state": "waiting",
+            "name": "test-aws",
+            "region": "eu-west-1"
+        }
+    ],
+    "changes": [
+        {
+            "_action": "delete",
+            "_component": "vpc",
+            "_component_id": "vpc::test-vpc",
+            "_provider": "aws",
+            "_state": "waiting",
+            "auto_remove": true,
+            "name": "test-vpc",
+            "service": "test-generated-id",
+            "subnet": "10.0.0.0/16",
+            "tags": {
+                "Name": "test-vpc",
+                "ernest.service": "test"
+            },
+            "vpc_aws_id": "vpc-00000000"
+        },
+        {
+            "_action": "delete",
+            "_component": "internet_gateway",
+            "_component_id": "internet_gateway::test-vpc",
+            "_provider": "aws",
+            "_state": "running",
+            "internet_gateway_aws_id": "igw-00000000",
+            "name": "test-vpc",
+            "service": "test-generated-id",
+            "tags": {
+                "Name": "test-vpc",
+                "ernest.service": "test"
+            },
+            "vpc": "test-vpc",
+            "vpc_id": "vpc-00000000"
+        },
+        {
+            "_action": "delete",
+            "_component": "firewall",
+            "_component_id": "firewall::test-vm",
+            "_provider": "aws",
+            "_state": "completed",
+            "name": "test-vm",
+            "network_aws_id": null,
+            "rules": {
+                "egress": [
+                    {
+                        "from_port": 0,
+                        "ip": "0.0.0.0/0",
+                        "protocol": "-1",
+                        "to_port": 65535
+                    }
+                ],
+                "ingress": [
+                    {
+                        "from_port": 0,
+                        "ip": "10.0.0.0/16",
+                        "protocol": "tcp",
+                        "to_port": 65535
+                    }
+                ]
+            },
+            "security_group_aws_id": "sg-00000000",
+            "service": "test-generated-id",
+            "tags": {
+                "Name": "test-vm",
+                "ernest.service": "test"
+            },
+            "vpc": "test-vpc",
+            "vpc_id": "vpc-00000000"
+        },
+        {
+            "_action": "delete",
+            "_component": "network",
+            "_component_id": "network::test-dmz",
+            "_provider": "aws",
+            "_state": "completed",
+            "availability_zone": "eu-west-1a",        
+            "internet_gateway": "test-vpc",
+            "internet_gateway_aws_id": "igw-00000000",
+            "is_public": true,
+            "name": "test-dmz",
+            "network_aws_id": "subnet-00000000",
+            "range": "10.0.11.0/24",
+            "service": "test-generated-id",
+            "tags": {
+                "Name": "test-dmz",
+                "ernest.service": "test"
+            },
+            "vpc": "test-vpc",
+            "vpc_id": "vpc-00000000"
+        },
+        {
+            "_action": "delete",
+            "_component": "firewall",
+            "_component_id": "firewall::test-elb",
+            "_provider": "aws",
+            "_state": "completed",
+            "name": "test-elb",
+            "network_aws_id": null,
+            "rules": {
+                "egress": [
+                    {
+                        "from_port": 0,
+                        "ip": "0.0.0.0/0",
+                        "protocol": "-1",
+                        "to_port": 65535
+                    }
+                ],
+                "ingress": [
+                    {
+                        "from_port": 0,
+                        "ip": "10.0.0.0/16",
+                        "protocol": "tcp",
+                        "to_port": 65535
+                    },
+                    {
+                        "from_port": 80,
+                        "ip": "0.0.0.0/0",
+                        "protocol": "tcp",
+                        "to_port": 80
+                    }
+                ]
+            },
+            "security_group_aws_id": "sg-00000000",
+            "service": "test-generated-id",
+            "tags": {
+                "Name": "test-elb",
+                "ernest.service": "test"
+            },
+            "vpc": "test-vpc",
+            "vpc_id": "vpc-00000000"
+        },
+        {
+            "_action": "delete",
+            "_component": "instance",
+            "_component_id": "instance::test-web-1",
+            "_provider": "aws",
+            "_state": "completed",
+            "assign_elastic_ip": false,    
+            "elastic_ip": "",
+            "image": "ami-ed82e39e",
+            "instance_aws_id": "i-00000000000000000",
+            "instance_type": "t2.micro",
+            "ip": "10.0.11.11",
+            "key_pair": "test",
+            "name": "test-web-1",
+            "network_aws_id": "subnet-00000000",
+            "network_is_public": false,
+            "network_name": "test-dmz",
+            "public_ip": "52.48.98.107",
+            "security_group_aws_ids": [
+                "sg-00000000"
+            ],
+            "security_groups": [
+                "test-vm"
+            ],
+            "service": "test-generated-id",
+            "tags": {
+                "Name": "test-web-1",
+                "ernest.instance_group": "test-web",
+                "ernest.service": "test"
+            },
+            "user_data": "",
+            "volumes": null
+        },
+        {
+            "_action": "delete",
+            "_component": "elb",
+            "_component_id": "elb::test-elb",
+            "_provider": "aws",
+            "_state": "completed",
+            "dns_name": "test-elb-1103626973.eu-west-1.elb.amazonaws.com",
+            "instance_aws_ids": [
+                "i-00000000000000000"
+            ],
+            "instance_names": [
+                "test-web-1"
+            ],
+            "instances": [
+                "test-web"
+            ],
+            "is_private": false,
+            "listeners": [
+                {
+                    "from_port": 80,
+                    "protocol": "HTTP",
+                    "ssl_cert": "",
+                    "to_port": 80
+                }
+            ],
+            "name": "test-elb",
+            "network_aws_ids": [
+                "subnet-00000000"
+            ],
+            "networks": [
+                "test-dmz"
+            ],
+            "security_group_aws_ids": [
+                "sg-00000000"
+            ],
+            "security_groups": [
+                "test-elb"
+            ],
+            "service": "test-generated-id",
+            "tags": {
+                "ernest.service": "test"
+            }
+        }
+    ]
 }
 ```
-You can change, add or remove as many component batches as you want, they will need to be represented as part of the workflow too.
 
-In order to build workflows, you can have a look at [workflow library](https://github.com/r3labs/workflow).
+You will find a more up to date documentation on the repo [README](https://github.com/ernestio/scheduler/blob/develop/README.md)
 
-Workflow-manager will send a <b>components.verb</b> for each transition you’ve defined on your workflow, and will wait for <b>component.verb.status</b>, where status can be <b>done</b> or <b>error</b>.
-
-You will find a more up to date documentation on the repo [README](https://github.com/ernestio/workflow-manager/blob/develop/README.md)
-
-## Component builders
-A builder is basically a component scheduler. It receives a list of components and processes each component sequentially or in parallel.
-
-### Sequential processing
-In order to process the component sequentially you should set the field «sequential_processing» to true .
-
-### Dependencies
-In order to track the state of all components in a collection, state is stored on redis. When all components have completed, a return event is sent.
-
-## Adapters
-An adapter is getting an order for a single component creation and it decides which connector will process this creation.
-
-Some of them use a translator so the internal component structure gets adapted to the connector, however, just as we are doing with builders, we’re trying to deliver as many adapters as possible on top of the generic-adapter.
 
 ## Connectors
 A connector is a service which is directly interacting with the provider in order to process (get, create, update or delete) a component on the provider.
