@@ -168,7 +168,7 @@ DESCRIPTION:
 
    Example:
     $ ernest login --user <user> --password <password>
-  
+
 
 OPTIONS:
    --user value      User credentials
@@ -223,7 +223,7 @@ DESCRIPTION:
 
    Example:
     $ ernest user create --email username@example.com <username> <password>
-  
+
 
 OPTIONS:
    --email value  Email for the user
@@ -246,7 +246,7 @@ DESCRIPTION:
     or changing a change-password by being admin:
 
     $ ernest user change-password --user <username> --current-password <current-password> --password <new-password>
-  
+
 
 OPTIONS:
    --user value              The username of the user to change password
@@ -415,7 +415,7 @@ DESCRIPTION:
       vcloud-url: "http://ss.com"
       vse-url: "http://ss.com"
 
-  
+
 
 OPTIONS:
    --user value            Your VCloud valid user name
@@ -450,7 +450,7 @@ DESCRIPTION:
       access_key_id : AKIAIOSFODNN7EXAMPLE
       secret_access_key: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
       region: us-west-2
-   
+
 
 OPTIONS:
    --region value, -r value             Datacenter region
@@ -473,7 +473,7 @@ DESCRIPTION:
 
    Example:
     $ ernest datacenter update vcloud --user <me> --org <org> --password <secret> my_datacenter
-  
+
 
 OPTIONS:
    --user value      Your VCloud valid user name
@@ -494,7 +494,7 @@ DESCRIPTION:
 
    Example:
     $ ernest datacenter update aws --access_key_id AKIAIOSFODNN7EXAMPLE --secret_access_key wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY my_datacenter
-  
+
 
 OPTIONS:
    --access_key_id value      Your AWS access key id
@@ -562,7 +562,7 @@ DESCRIPTION:
 
    Example:
     $ ernest destroy myservice
-  
+
 
 OPTIONS:
    --force, -f  Hard ernest service removal.
@@ -612,7 +612,7 @@ DESCRIPTION:
 
    Example:
     $ ernest service definition myservice
-  
+
 
 OPTIONS:
    --build value  Build ID
@@ -633,7 +633,7 @@ DESCRIPTION:
    Examples:
     $ ernest service definition myservice
     $ ernest service definition myservice --build build1
-  
+
 
 OPTIONS:
    --build value  Build ID
@@ -682,7 +682,7 @@ DESCRIPTION:
 
    Examples:
     $ ernest service import my_datacenter my_service
-  
+
 
 OPTIONS:
    --datacenter value  Datacenter name
@@ -718,7 +718,7 @@ DESCRIPTION:
     $ ernest preferences logger add basic --logfile /tmp/ernest.log
     $ ernest preferences logger add logstash --hostname 10.50.1.1 --port 5000 --timeout 50000
     $ ernest preferences logger add rollbar --token MY_ROLLBAR_TOKEN
-  
+
 
 OPTIONS:
    --logfile value   Specify the path for the loging file
@@ -775,7 +775,7 @@ DESCRIPTION:
 - [ ] link the user to the group
 - [ ] login as the newly created user.
 - [ ] create a new datacenter (optional)
-  
+
 
 OPTIONS:
    --user value, -u value      Admin user
@@ -927,15 +927,20 @@ Our environment is defined in the following YAML:
 ---
 name: demo
 datacenter: my-dc
-vpc_id: vpc-abcdef01
+vpcs:
+  - name: my-vpc
+    id: vpc-abcdef01
+    auto_remove: true
 
 networks:
   - name: public
     subnet: 10.0.10.0/24
+    vpc: my-vpc
     public: true
 
 security_groups:
   - name: public-sg
+    vpc: my-vpc
     egress:
       - ip: 0.0.0.0/0
         protocol: any
@@ -1059,15 +1064,21 @@ $ ernest service definition demo --build 1
 ---
 name: demo
 datacenter: my-dc
-vpc_id: vpc-abcdef01
+
+vpcs:
+  - name: my-vpc
+    id: vpc-abcdef01
+    auto_remove: true
 
 networks:
   - name: public
     subnet: 10.0.10.0/24
+    vpc: my-vpc
     public: true
 
 security_groups:
   - name: public-sg
+    vpc: my-vpc
     egress:
       - ip: 0.0.0.0/0
         protocol: any
@@ -1103,14 +1114,19 @@ Our modified YAML file is:
 ---
 name: demo
 datacenter: my-dc
-vpc_id: vpc-abcdef01
+
+vpcs:
+  - name: my-vpc
+    id: vpc-abcdef01
+    auto_remove: true
 
 networks:
   - name: public
     subnet: 10.0.10.0/24
-    public: true
+    vpc: my-vpc
   - name: private
     subnet: 10.0.11.0/24
+    vpc: my-vpc
     public: false
     nat_gateway: private-nat
 
@@ -1120,6 +1136,7 @@ nat_gateways:
 
 security_groups:
   - name: public-sg
+    vpc: my-vpc
     egress:
       - ip: 0.0.0.0/0
         protocol: any
@@ -1279,14 +1296,19 @@ $ ernest service definition demo --build 2
 ---
 name: demo
 datacenter: my-dc
-vpc_id: vpc-abcdef01
+
+vpcs:
+  - name: my-vpc
+    id: vpc-abcdef01
+    auto_remove: true
 
 networks:
   - name: public
     subnet: 10.0.10.0/24
-    public: true
+    vpc: my-vpc
   - name: private
     subnet: 10.0.11.0/24
+    vpc: my-vpc
     public: false
     nat_gateway: private-nat
 
@@ -1296,6 +1318,7 @@ nat_gateways:
 
 security_groups:
   - name: public-sg
+    vpc: my-vpc
     egress:
       - ip: 0.0.0.0/0
         protocol: any
@@ -1396,19 +1419,26 @@ Environments built and managed with Ernest are defined in YAML format.
 ---
 name: demo
 datacenter: my-dc
-vpc_id: vpc-abcdef01
-vpc_subnet: 10.0.0.0/16
+
+
+vpcs:
+  - name: my-vpc
+    id: vpc-abcdef01
+    auto_remove: true
 
 networks:
   - name: web
     subnet: 10.0.10.0/24
+    vpc: my-vpc
     public: true
   - name: db
     subnet: 10.0.11.0/24
+    vpc: my-vpc
     public: false
     nat_gateway: db-nat
   - name: db-standby
     subnet: 10.0.12.0/24
+    vpc: my-vpc
     public: false
     nat_gateway: db-nat
 
@@ -1418,6 +1448,7 @@ nat_gateways:
 
 security_groups:
   - name: web-sg
+    vpc: my-vpc
     egress:
       - ip: 0.0.0.0/0
         protocol: any
@@ -1433,6 +1464,7 @@ security_groups:
         from_port: '22'
         to_port: '22'
   - name: db-sg
+    vpc: my-vpc
     egress:
       - ip: 0.0.0.0/0
         protocol: any
@@ -1579,17 +1611,6 @@ Service Options support the following fields:
  * This field cannot be null or empty.
  * The value of this field must 50 characters maximum.
 
-* **vpc_id**
- * String that defines the ID of the existing VPC the service will use.
- * This field is mandatory, unless **vpc_subnet** is present.
- * This field cannot be null or empty.
- * The value of this field must be 50 characters maximum.
-
-* **vpc_subnet**
- * String that defines the subnet of the VPC that will be created for the service to use.
- * This field is mandatory, unless **vpc_id** is present.
- * This field cannot be null or empty.
- * The value of this field must 50 characters maximum.
 
 #### Networking
 
@@ -2421,7 +2442,7 @@ datacenter: r3-jreid2
 bootstrapping: none
 service_ip: 195.3.186.42
 
-routers: 
+routers:
   - name: test1
     rules:
     - name: in_out_any
@@ -2561,7 +2582,7 @@ datacenter: r3-jreid2
 bootstrapping: none
 service_ip: 195.3.186.42
 
-routers: 
+routers:
   - name: test1
     rules:
     - name: in_out_any
@@ -2621,7 +2642,7 @@ ernest_ip:
   - 31.210.241.231
   - 31.210.240.171
 
-routers: 
+routers:
   - name: test1
     rules:
     - name: in_out_any
@@ -2646,7 +2667,7 @@ routers:
         dns:
           - 8.8.8.8
           - 8.8.4.4
-          
+
     port_forwarding:
       - source: 195.3.186.42
         from_port: '80'
@@ -2730,7 +2751,7 @@ Your environment endpoint is: 195.3.186.44
 
 Notice that Ernest has automatically created a SALT instance for us on network 10.254.254.0/24. It has also trigged the bootstrapping process that installs the SALT minion on each of our servers, and then run the commands we specified in the provisioner section of each instance defined in the YAML.
 
-You should be able to browse to http://195.3.186.42. Congratulations! 
+You should be able to browse to http://195.3.186.42. Congratulations!
 
 If you wish to change the platform update your YAML to show how you want the platform to look, then re-apply the YAML. Ernest will make the appropriate changes to the platform.
 
@@ -2795,7 +2816,7 @@ service_ip: 195.3.186.44
 ernest_ip:
   - 31.210.240.161
 
-routers: 
+routers:
   - name: demo
     rules:
     - name: in_out_any
@@ -2848,7 +2869,7 @@ instances:
         - if [ x$1 == x"postcustomization" ]; then
         - yum -y install httpd
         - service httpd start
-        - fi 
+        - fi
 ```
 
 ### Field Reference
@@ -2900,7 +2921,7 @@ Service Options support the following fields:
 #### Networking
 
 ```
-routers: 
+routers:
   - name: demo
     rules:
     - name: in_out_any
@@ -2989,14 +3010,14 @@ A network is a virtual network that attaches to a router (in vcloud, other provi
 
 * **subnet**
  * String that defines the name of a network to add to this service.
- * It must follow CIDR notation as described at: https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing 
+ * It must follow CIDR notation as described at: https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing
  * This field is mandatory.
  * This field cannot be null or empty.
  * This field must be unique for this user & all the networks on the manifest.
 
 * **dns**
  * Array of IPs to use as dns servers on this service
- * It must follow CIDR notation as described at: https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing 
+ * It must follow CIDR notation as described at: https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing
  * This field is optional.
  * This field can be empty and it will default to ["8.8.8.8", "8.8.4.4"].
 
@@ -3018,7 +3039,7 @@ A port forward is something that converts translates a request on a port from on
 
 * **source**
  * String that defines the IP from the provider-specified sub-allocated list of IPs of the router.
- * It must follow CIDR notation as described at: https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing 
+ * It must follow CIDR notation as described at: https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing
  * This field is optional.
  * This field can be null or empty, in case a router is created by Ernest it will default to the created one, on the other hand this value will be used.
  * This field must be unique for this user & all the networks on the manifest.
@@ -3047,7 +3068,7 @@ instances:
         - if [ x$1 == x"postcustomization" ]; then
         - yum -y install httpd
         - service httpd start
-        - fi 
+        - fi
 ```
 
 Instances support the following fields:
@@ -3076,14 +3097,14 @@ Instances support the following fields:
  * String that defines the name of a load balancer to add to this service.
  * This field is mandatory.
  * This field cannot be null or empty.
- * This field must follow the Binary Prefix format: https://en.wikipedia.org/wiki/Binary_prefix#Computer_memory 
+ * This field must follow the Binary Prefix format: https://en.wikipedia.org/wiki/Binary_prefix#Computer_memory
  * The possible binary prefixes are MB, GB, TB, PB, YB
 
 * **disks:**
  * A list of sizes of hard disks that belongs to the VM
  * This field can be an empty list
  * This field is a list of strings
- * Each element of the string must follow the Binary Prefix format: https://en.wikipedia.org/wiki/Binary_prefix#Hard_disk_drives 
+ * Each element of the string must follow the Binary Prefix format: https://en.wikipedia.org/wiki/Binary_prefix#Hard_disk_drives
  * The possible binary prefixes are MB, GB, TB, PB, YB
 
 * **root_disk**
@@ -3091,7 +3112,7 @@ Instances support the following fields:
  * This field is optional.
  * This field cannot be null or empty.
  * The value must be larger than the default root disk size of the template.
- * Each element of the string must follow the Binary Prefix format: https://en.wikipedia.org/wiki/Binary_prefix#Hard_disk_drives 
+ * Each element of the string must follow the Binary Prefix format: https://en.wikipedia.org/wiki/Binary_prefix#Hard_disk_drives
  * The possible binary prefixes are MB, GB, TB, PB, YB
 
 * **count**
@@ -3136,4 +3157,3 @@ Provisioner defines the available provisioner mechanisms.
  * This field is optional
  * If specified as a provisioner type, this array field must contain at least one element
  * The specified commands will be executed by the vCloud guest customization script.
-
