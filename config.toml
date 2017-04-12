@@ -10,7 +10,7 @@ googleAnalytics = ""
 [params]
 	# General information
 	author      = "Ernestio"
-	description = "Developer Driven Orchestration!"
+	description = "Developer Driven Orchestration"
 	copyright   = "Released under the MIT license"
 
 	# Repository
