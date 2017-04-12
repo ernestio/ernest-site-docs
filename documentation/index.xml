@@ -2,10 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Documentations on Ernest</title>
-    <link>http://docs.ernest.io/documentation/</link>
+    <link>http://docs.ernest.io/documentation/index.xml</link>
     <description>Recent content in Documentations on Ernest</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <copyright>Released under the MIT license</copyright>
     <lastBuildDate>Wed, 09 Mar 2016 20:08:11 +0100</lastBuildDate>
     <atom:link href="http://docs.ernest.io/documentation/index.xml" rel="self" type="application/rss+xml" />
     
@@ -175,7 +176,7 @@ DESCRIPTION:
 
    Example:
     $ ernest login --user &amp;lt;user&amp;gt; --password &amp;lt;password&amp;gt;
-  
+
 
 OPTIONS:
    --user value      User credentials
@@ -230,7 +231,7 @@ DESCRIPTION:
 
    Example:
     $ ernest user create --email username@example.com &amp;lt;username&amp;gt; &amp;lt;password&amp;gt;
-  
+
 
 OPTIONS:
    --email value  Email for the user
@@ -253,7 +254,7 @@ DESCRIPTION:
     or changing a change-password by being admin:
 
     $ ernest user change-password --user &amp;lt;username&amp;gt; --current-password &amp;lt;current-password&amp;gt; --password &amp;lt;new-password&amp;gt;
-  
+
 
 OPTIONS:
    --user value              The username of the user to change password
@@ -422,7 +423,7 @@ DESCRIPTION:
       vcloud-url: &amp;quot;http://ss.com&amp;quot;
       vse-url: &amp;quot;http://ss.com&amp;quot;
 
-  
+
 
 OPTIONS:
    --user value            Your VCloud valid user name
@@ -457,7 +458,7 @@ DESCRIPTION:
       access_key_id : AKIAIOSFODNN7EXAMPLE
       secret_access_key: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
       region: us-west-2
-   
+
 
 OPTIONS:
    --region value, -r value             Datacenter region
@@ -480,7 +481,7 @@ DESCRIPTION:
 
    Example:
     $ ernest datacenter update vcloud --user &amp;lt;me&amp;gt; --org &amp;lt;org&amp;gt; --password &amp;lt;secret&amp;gt; my_datacenter
-  
+
 
 OPTIONS:
    --user value      Your VCloud valid user name
@@ -501,7 +502,7 @@ DESCRIPTION:
 
    Example:
     $ ernest datacenter update aws --access_key_id AKIAIOSFODNN7EXAMPLE --secret_access_key wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY my_datacenter
-  
+
 
 OPTIONS:
    --access_key_id value      Your AWS access key id
@@ -569,7 +570,7 @@ DESCRIPTION:
 
    Example:
     $ ernest destroy myservice
-  
+
 
 OPTIONS:
    --force, -f  Hard ernest service removal.
@@ -619,7 +620,7 @@ DESCRIPTION:
 
    Example:
     $ ernest service definition myservice
-  
+
 
 OPTIONS:
    --build value  Build ID
@@ -640,7 +641,7 @@ DESCRIPTION:
    Examples:
     $ ernest service definition myservice
     $ ernest service definition myservice --build build1
-  
+
 
 OPTIONS:
    --build value  Build ID
@@ -689,7 +690,7 @@ DESCRIPTION:
 
    Examples:
     $ ernest service import my_datacenter my_service
-  
+
 
 OPTIONS:
    --datacenter value  Datacenter name
@@ -725,7 +726,7 @@ DESCRIPTION:
     $ ernest preferences logger add basic --logfile /tmp/ernest.log
     $ ernest preferences logger add logstash --hostname 10.50.1.1 --port 5000 --timeout 50000
     $ ernest preferences logger add rollbar --token MY_ROLLBAR_TOKEN
-  
+
 
 OPTIONS:
    --logfile value   Specify the path for the loging file
@@ -782,7 +783,7 @@ DESCRIPTION:
 - [ ] link the user to the group
 - [ ] login as the newly created user.
 - [ ] create a new datacenter (optional)
-  
+
 
 OPTIONS:
    --user value, -u value      Admin user
@@ -938,15 +939,20 @@ Datacenter &#39;my-dc&#39; successfully created
 &lt;pre&gt;&lt;code&gt;---
 name: demo
 datacenter: my-dc
-vpc_id: vpc-abcdef01
+vpcs:
+  - name: my-vpc
+    id: vpc-abcdef01
+    auto_remove: true
 
 networks:
   - name: public
     subnet: 10.0.10.0/24
+    vpc: my-vpc
     public: true
 
 security_groups:
   - name: public-sg
+    vpc: my-vpc
     egress:
       - ip: 0.0.0.0/0
         protocol: any
@@ -1065,15 +1071,21 @@ Security groups:
 ---
 name: demo
 datacenter: my-dc
-vpc_id: vpc-abcdef01
+
+vpcs:
+  - name: my-vpc
+    id: vpc-abcdef01
+    auto_remove: true
 
 networks:
   - name: public
     subnet: 10.0.10.0/24
+    vpc: my-vpc
     public: true
 
 security_groups:
   - name: public-sg
+    vpc: my-vpc
     egress:
       - ip: 0.0.0.0/0
         protocol: any
@@ -1107,14 +1119,19 @@ instances:
 &lt;pre&gt;&lt;code&gt;---
 name: demo
 datacenter: my-dc
-vpc_id: vpc-abcdef01
+
+vpcs:
+  - name: my-vpc
+    id: vpc-abcdef01
+    auto_remove: true
 
 networks:
   - name: public
     subnet: 10.0.10.0/24
-    public: true
+    vpc: my-vpc
   - name: private
     subnet: 10.0.11.0/24
+    vpc: my-vpc
     public: false
     nat_gateway: private-nat
 
@@ -1124,6 +1141,7 @@ nat_gateways:
 
 security_groups:
   - name: public-sg
+    vpc: my-vpc
     egress:
       - ip: 0.0.0.0/0
         protocol: any
@@ -1278,14 +1296,19 @@ Security groups:
 ---
 name: demo
 datacenter: my-dc
-vpc_id: vpc-abcdef01
+
+vpcs:
+  - name: my-vpc
+    id: vpc-abcdef01
+    auto_remove: true
 
 networks:
   - name: public
     subnet: 10.0.10.0/24
-    public: true
+    vpc: my-vpc
   - name: private
     subnet: 10.0.11.0/24
+    vpc: my-vpc
     public: false
     nat_gateway: private-nat
 
@@ -1295,6 +1318,7 @@ nat_gateways:
 
 security_groups:
   - name: public-sg
+    vpc: my-vpc
     egress:
       - ip: 0.0.0.0/0
         protocol: any
@@ -1394,19 +1418,26 @@ SUCCESS: your environment has been successfully deleted
 &lt;pre&gt;&lt;code&gt;---
 name: demo
 datacenter: my-dc
-vpc_id: vpc-abcdef01
-vpc_subnet: 10.0.0.0/16
+
+
+vpcs:
+  - name: my-vpc
+    id: vpc-abcdef01
+    auto_remove: true
 
 networks:
   - name: web
     subnet: 10.0.10.0/24
+    vpc: my-vpc
     public: true
   - name: db
     subnet: 10.0.11.0/24
+    vpc: my-vpc
     public: false
     nat_gateway: db-nat
   - name: db-standby
     subnet: 10.0.12.0/24
+    vpc: my-vpc
     public: false
     nat_gateway: db-nat
 
@@ -1416,6 +1447,7 @@ nat_gateways:
 
 security_groups:
   - name: web-sg
+    vpc: my-vpc
     egress:
       - ip: 0.0.0.0/0
         protocol: any
@@ -1431,6 +1463,7 @@ security_groups:
         from_port: &#39;22&#39;
         to_port: &#39;22&#39;
   - name: db-sg
+    vpc: my-vpc
     egress:
       - ip: 0.0.0.0/0
         protocol: any
@@ -1579,24 +1612,6 @@ vpc_subnet: 10.0.0.0/16
 &lt;ul&gt;
 &lt;li&gt;String that defines the name of the datacenter where the service is built.&lt;/li&gt;
 &lt;li&gt;This field is mandatory.&lt;/li&gt;
-&lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
-&lt;li&gt;The value of this field must 50 characters maximum.&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;vpc_id&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;String that defines the ID of the existing VPC the service will use.&lt;/li&gt;
-&lt;li&gt;This field is mandatory, unless &lt;strong&gt;vpc_subnet&lt;/strong&gt; is present.&lt;/li&gt;
-&lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
-&lt;li&gt;The value of this field must be 50 characters maximum.&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;vpc_subnet&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;String that defines the subnet of the VPC that will be created for the service to use.&lt;/li&gt;
-&lt;li&gt;This field is mandatory, unless &lt;strong&gt;vpc_id&lt;/strong&gt; is present.&lt;/li&gt;
 &lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
 &lt;li&gt;The value of this field must 50 characters maximum.&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
@@ -2746,7 +2761,7 @@ datacenter: r3-jreid2
 bootstrapping: none
 service_ip: 195.3.186.42
 
-routers: 
+routers:
   - name: test1
     rules:
     - name: in_out_any
@@ -2882,7 +2897,7 @@ datacenter: r3-jreid2
 bootstrapping: none
 service_ip: 195.3.186.42
 
-routers: 
+routers:
   - name: test1
     rules:
     - name: in_out_any
@@ -2941,7 +2956,7 @@ ernest_ip:
   - 31.210.241.231
   - 31.210.240.171
 
-routers: 
+routers:
   - name: test1
     rules:
     - name: in_out_any
@@ -2966,7 +2981,7 @@ routers:
         dns:
           - 8.8.8.8
           - 8.8.4.4
-          
+
     port_forwarding:
       - source: 195.3.186.42
         from_port: &#39;80&#39;
@@ -3113,7 +3128,7 @@ service_ip: 195.3.186.44
 ernest_ip:
   - 31.210.240.161
 
-routers: 
+routers:
   - name: demo
     rules:
     - name: in_out_any
@@ -3166,7 +3181,7 @@ instances:
         - if [ x$1 == x&amp;quot;postcustomization&amp;quot; ]; then
         - yum -y install httpd
         - service httpd start
-        - fi 
+        - fi
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&#34;field-reference-1&#34;&gt;Field Reference&lt;/h3&gt;
@@ -3232,7 +3247,7 @@ ernest_ip:
 
 &lt;h4 id=&#34;networking-1&#34;&gt;Networking&lt;/h4&gt;
 
-&lt;pre&gt;&lt;code&gt;routers: 
+&lt;pre&gt;&lt;code&gt;routers:
   - name: demo
     rules:
     - name: in_out_any
@@ -3427,7 +3442,7 @@ ernest_ip:
         - if [ x$1 == x&amp;quot;postcustomization&amp;quot; ]; then
         - yum -y install httpd
         - service httpd start
-        - fi 
+        - fi
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Instances support the following fields:&lt;/p&gt;

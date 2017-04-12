@@ -2,180 +2,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ernest</title>
-    <link>http://docs.ernest.io/</link>
+    <link>http://docs.ernest.io/index.xml</link>
     <description>Recent content on Ernest</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 09 Mar 2016 20:08:11 +0100</lastBuildDate>
+    <copyright>Released under the MIT license</copyright>
+    <lastBuildDate>Wed, 09 Mar 2016 00:11:02 +0100</lastBuildDate>
     <atom:link href="http://docs.ernest.io/index.xml" rel="self" type="application/rss+xml" />
-    
-    <item>
-      <title>Support Plan Contact Form</title>
-      <link>http://docs.ernest.io/supportplan/</link>
-      <pubDate>Wed, 09 Mar 2016 20:08:11 +0100</pubDate>
-      
-      <guid>http://docs.ernest.io/supportplan/</guid>
-      <description>&lt;form class=&#34;form-horizontal&#34; id=&#34;input-form&#34; action=&#34;https://docs.google.com/forms/d/1t_F8UU5CebFIWe2rCU7xlBPk-z0ISN_V6v2bcktsoH0/formResponse?&#34; method=&#34;POST&#34; target=&#34;no-target&#34; onSubmit=&#34;alert(&#39;Thank you for your query, we will respond shortly.&#39;);window.location.href = &#39;/support/&#39;;&#34;&gt;
-&lt;fieldset&gt;
-
-&lt;legend&gt;&lt;/legend&gt;
-
-&lt;div class=&#34;form-group&#34;&gt;
-  &lt;label for=&#34;firstname&#34;&gt;First Name&lt;/label&gt;  
-  &lt;input id=&#34;firstname&#34; name=&#34;entry.706791366&#34; type=&#34;text&#34; placeholder=&#34;First Name&#34; class=&#34;form-control&#34; required=&#34;&#34;&gt;
-&lt;/div&gt;
-
-&lt;div class=&#34;form-group&#34;&gt;
-  &lt;label for=&#34;lastname&#34;&gt;Last Name&lt;/label&gt;  
-  &lt;input id=&#34;lastname&#34; name=&#34;entry.1072744609&#34; type=&#34;text&#34; placeholder=&#34;Last Name&#34; class=&#34;form-control&#34; required=&#34;&#34;&gt;
-&lt;/div&gt;
-
-&lt;div class=&#34;form-group&#34;&gt;
-  &lt;label for=&#34;email&#34;&gt;Email Address&lt;/label&gt;  
-  &lt;input id=&#34;email&#34; name=&#34;entry.1586474514&#34; type=&#34;text&#34; placeholder=&#34;Email Address&#34; class=&#34;form-control&#34; required=&#34;&#34;&gt;
-&lt;/div&gt;
-
-&lt;div class=&#34;form-group&#34;&gt;
-  &lt;label for=&#34;plan&#34;&gt;Support Plan&lt;/label&gt;
-  &lt;div&gt;
-    &lt;input type=&#34;radio&#34; name=&#34;entry.1568716440&#34; id=&#34;plan-0&#34; value=&#34;Standard&#34; checked=&#34;checked&#34;&gt;
-    &lt;label for=&#34;plan-0&#34;&gt;
-      &lt;span&gt;&lt;/span&gt;Standard
-    &lt;/label&gt;
-  &lt;/div&gt;
-  &lt;div&gt;
-    &lt;input type=&#34;radio&#34; name=&#34;entry.1568716440&#34; id=&#34;plan-1&#34; value=&#34;Premium&#34;&gt;
-    &lt;label for=&#34;plan-1&#34;&gt;
-      &lt;span&gt;&lt;/span&gt;Premium
-    &lt;/label&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&#34;form-group&#34;&gt;
-  &lt;label for=&#34;submit&#34;&gt;&lt;/label&gt;
-    &lt;button id=&#34;submit&#34; type=&#34;submit&#34; class=&#34;btn btn-success&#34;&gt;Submit&lt;/button&gt;
-&lt;/div&gt;
-
-&lt;/fieldset&gt;
-&lt;/form&gt;
-
-&lt;iframe src=&#34;#&#34; id=&#34;no-target&#34; name=&#34;no-target&#34; style=&#34;visibility:hidden&#34;&gt;&lt;/iframe&gt;</description>
-    </item>
-    
-    <item>
-      <title>vCloud Account Creation Request Form</title>
-      <link>http://docs.ernest.io/vcloud-account/</link>
-      <pubDate>Wed, 09 Mar 2016 20:08:11 +0100</pubDate>
-      
-      <guid>http://docs.ernest.io/vcloud-account/</guid>
-      <description>&lt;form class=&#34;form-horizontal&#34; id=&#34;input-form&#34; action=&#34;https://docs.google.com/forms/d/1VgjUkBjZQw-xSt1-8debb4Wk7FQhDr2vb-jrH3byKd4/formResponse?&#34; method=&#34;POST&#34; target=&#34;no-target&#34; onSubmit=&#34;alert(&#39;Thank you for your request, we will process it shortly.&#39;);window.location.href = &#39;/documentation/#vcloud-director-examples&#39;;&#34;&gt;
-&lt;fieldset&gt;
-
-&lt;legend&gt;&lt;/legend&gt;
-
-&lt;div class=&#34;form-group&#34;&gt;
-  &lt;label for=&#34;firstname&#34;&gt;First Name&lt;/label&gt;  
-  &lt;input id=&#34;firstname&#34; name=&#34;entry.1042863238&#34; type=&#34;text&#34; placeholder=&#34;First Name&#34; class=&#34;form-control&#34; required=&#34;&#34;&gt;
-&lt;/div&gt;
-
-&lt;div class=&#34;form-group&#34;&gt;
-  &lt;label for=&#34;lastname&#34;&gt;Last Name&lt;/label&gt;  
-  &lt;input id=&#34;lastname&#34; name=&#34;entry.893089123&#34; type=&#34;text&#34; placeholder=&#34;Last Name&#34; class=&#34;form-control&#34; required=&#34;&#34;&gt;
-&lt;/div&gt;
-
-&lt;div class=&#34;form-group&#34;&gt;
-  &lt;label class=&#34;col-md-4 control-label&#34; for=&#34;email&#34;&gt;Email Address&lt;/label&gt;  
-  &lt;input id=&#34;email&#34; name=&#34;entry.1081522787&#34; type=&#34;text&#34; placeholder=&#34;Email Address&#34; class=&#34;form-control&#34; required=&#34;&#34;&gt;
-&lt;/div&gt;
-
-&lt;div class=&#34;form-group&#34;&gt;
-  &lt;label for=&#34;submit&#34;&gt;&lt;/label&gt;
-    &lt;button id=&#34;submit&#34; type=&#34;submit&#34; class=&#34;btn btn-success&#34;&gt;Submit&lt;/button&gt;
-&lt;/div&gt;
-
-&lt;/fieldset&gt;
-&lt;/form&gt;
-
-&lt;iframe src=&#34;#&#34; id=&#34;no-target&#34; name=&#34;no-target&#34; style=&#34;visibility:hidden&#34;&gt;&lt;/iframe&gt;</description>
-    </item>
-    
-    <item>
-      <title>Community Slack Channel Access Form</title>
-      <link>http://docs.ernest.io/slack/</link>
-      <pubDate>Wed, 09 Mar 2016 19:56:50 +0100</pubDate>
-      
-      <guid>http://docs.ernest.io/slack/</guid>
-      <description>&lt;form class=&#34;form-horizontal&#34; id=&#34;input-form&#34; action=&#34;https://docs.google.com/forms/d/1t0olvu3MQNBdz3oTKLm_NczBeFzL8AnIeMOrQwfAKF4/formResponse?&#34; method=&#34;POST&#34; target=&#34;no-target&#34; onSubmit=&#34;alert(&#39;Thank you for your request, we will process it shortly.&#39;);window.location.href = &#39;/community/&#39;;&#34;&gt;
-&lt;fieldset&gt;
-
-&lt;legend&gt;&lt;/legend&gt;
-
-&lt;div class=&#34;form-group&#34;&gt;
-  &lt;label for=&#34;firstname&#34;&gt;First Name: &lt;/label&gt;  
-  &lt;input id=&#34;firstname&#34; name=&#34;entry.1042863238&#34; type=&#34;text&#34; class=&#34;form-control&#34; placeholder=&#34;First Name&#34; required=&#34;&#34;&gt;
-&lt;/div&gt;
-
-&lt;div class=&#34;form-group&#34;&gt;
-  &lt;label for=&#34;lastname&#34;&gt;Last Name: &lt;/label&gt;  
-  &lt;input id=&#34;lastname&#34; name=&#34;entry.893089123&#34; type=&#34;text&#34; class=&#34;form-control&#34; placeholder=&#34;Last Name&#34; required=&#34;&#34;&gt;
-&lt;/div&gt;
-
-&lt;div class=&#34;form-group&#34;&gt;
-  &lt;label for=&#34;email&#34;&gt;Email Address: &lt;/label&gt;  
-  &lt;input id=&#34;email&#34; name=&#34;entry.1081522787&#34; type=&#34;text&#34; class=&#34;form-control&#34; placeholder=&#34;Email Address&#34; required=&#34;&#34;&gt;
-&lt;/div&gt;
-
-&lt;div class=&#34;form-group&#34;&gt;
-  &lt;label for=&#34;submit&#34;&gt;&lt;/label&gt;
-  &lt;div&gt;
-    &lt;button id=&#34;submit&#34; type=&#34;submit&#34; class=&#34;btn btn-success&#34;&gt;Submit&lt;/button&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;/fieldset&gt;
-&lt;/form&gt;
-
-&lt;iframe src=&#34;#&#34; id=&#34;no-target&#34; name=&#34;no-target&#34; style=&#34;visibility:hidden&#34;&gt;&lt;/iframe&gt;</description>
-    </item>
-    
-    <item>
-      <title>Ernest</title>
-      <link>http://docs.ernest.io/</link>
-      <pubDate>Wed, 09 Mar 2016 00:11:02 +0100</pubDate>
-      
-      <guid>http://docs.ernest.io/</guid>
-      <description>
-
-&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;Ernest is an application and infrastructure orchestration and automation engine. Ernest takes the complexity and people out of DevOps, simplifying the process of creating and managing even the most complex environments.&lt;/p&gt;
-
-&lt;p&gt;By delivering everything a development team requires to be able to deploy code and manage its lifecycle Ernest de-risks and accelerates the application development/deployment process, helping developers to deliver value back to the business faster and providing increased business agility&lt;/p&gt;
-
-&lt;p&gt;Ernest has been engineered for flexibility, allowing you to design your environment the way you want. You pick the technologies, the cloud and the architecture then overlay your compliance and governance requirements.&lt;/p&gt;
-
-&lt;p&gt;The Cloud is about freedom of choice and mobility. With Ernest you can easily deploy your environment onto the cloud or infrastructure of your choice and the redeploy it to an alternative cloud as business requirements demand.&lt;/p&gt;
-
-&lt;p&gt;Because Ernest is about developing and then using software reliably and reproducibly it ensures consistency and agility throughout the application lifecycle. Ernest brings the same version control, testing and configuration management tooling you use elsewhere in your development process to your platform; allowing you to utilise version controlled, tested, automated deployments of your environment from the development stage, through testing, to production.&lt;/p&gt;
-
-&lt;h2 id=&#34;key-features&#34;&gt;Key features&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;A Continuous Delivery pipeline for Infrastructure as Code&lt;/li&gt;
-&lt;li&gt;An orchestration tool for any configuration manager and any cloud&lt;/li&gt;
-&lt;li&gt;Fully version controlled&lt;/li&gt;
-&lt;li&gt;Fully automated&lt;/li&gt;
-&lt;li&gt;Works with any technology stack&lt;/li&gt;
-&lt;li&gt;Able to manage the full application life cycle&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Ernest is built around the idea that DevOps is not a job title, but a methodology, one which Ernest has enshrined in code. Ernest enables digital and SaaS transformation, while removing the complexity of DevOps by delivering it as-a-Service.&lt;/p&gt;
-
-&lt;h2 id=&#34;next-steps&#34;&gt;Next steps&lt;/h2&gt;
-
-&lt;p&gt;Follow the instructions &lt;a href=&#34;http://docs.ernest.io/downloads/&#34;&gt;here&lt;/a&gt; to get Ernest and the Ernest CLI. Once we have done that we can &lt;a href=&#34;http://docs.ernest.io/getting-started/&#34;&gt;start working&lt;/a&gt; with them.&lt;/p&gt;
-</description>
-    </item>
     
     <item>
       <title>Getting started</title>
@@ -550,7 +383,7 @@ DESCRIPTION:
 
    Example:
     $ ernest login --user &amp;lt;user&amp;gt; --password &amp;lt;password&amp;gt;
-  
+
 
 OPTIONS:
    --user value      User credentials
@@ -605,7 +438,7 @@ DESCRIPTION:
 
    Example:
     $ ernest user create --email username@example.com &amp;lt;username&amp;gt; &amp;lt;password&amp;gt;
-  
+
 
 OPTIONS:
    --email value  Email for the user
@@ -628,7 +461,7 @@ DESCRIPTION:
     or changing a change-password by being admin:
 
     $ ernest user change-password --user &amp;lt;username&amp;gt; --current-password &amp;lt;current-password&amp;gt; --password &amp;lt;new-password&amp;gt;
-  
+
 
 OPTIONS:
    --user value              The username of the user to change password
@@ -797,7 +630,7 @@ DESCRIPTION:
       vcloud-url: &amp;quot;http://ss.com&amp;quot;
       vse-url: &amp;quot;http://ss.com&amp;quot;
 
-  
+
 
 OPTIONS:
    --user value            Your VCloud valid user name
@@ -832,7 +665,7 @@ DESCRIPTION:
       access_key_id : AKIAIOSFODNN7EXAMPLE
       secret_access_key: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
       region: us-west-2
-   
+
 
 OPTIONS:
    --region value, -r value             Datacenter region
@@ -855,7 +688,7 @@ DESCRIPTION:
 
    Example:
     $ ernest datacenter update vcloud --user &amp;lt;me&amp;gt; --org &amp;lt;org&amp;gt; --password &amp;lt;secret&amp;gt; my_datacenter
-  
+
 
 OPTIONS:
    --user value      Your VCloud valid user name
@@ -876,7 +709,7 @@ DESCRIPTION:
 
    Example:
     $ ernest datacenter update aws --access_key_id AKIAIOSFODNN7EXAMPLE --secret_access_key wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY my_datacenter
-  
+
 
 OPTIONS:
    --access_key_id value      Your AWS access key id
@@ -944,7 +777,7 @@ DESCRIPTION:
 
    Example:
     $ ernest destroy myservice
-  
+
 
 OPTIONS:
    --force, -f  Hard ernest service removal.
@@ -994,7 +827,7 @@ DESCRIPTION:
 
    Example:
     $ ernest service definition myservice
-  
+
 
 OPTIONS:
    --build value  Build ID
@@ -1015,7 +848,7 @@ DESCRIPTION:
    Examples:
     $ ernest service definition myservice
     $ ernest service definition myservice --build build1
-  
+
 
 OPTIONS:
    --build value  Build ID
@@ -1064,7 +897,7 @@ DESCRIPTION:
 
    Examples:
     $ ernest service import my_datacenter my_service
-  
+
 
 OPTIONS:
    --datacenter value  Datacenter name
@@ -1100,7 +933,7 @@ DESCRIPTION:
     $ ernest preferences logger add basic --logfile /tmp/ernest.log
     $ ernest preferences logger add logstash --hostname 10.50.1.1 --port 5000 --timeout 50000
     $ ernest preferences logger add rollbar --token MY_ROLLBAR_TOKEN
-  
+
 
 OPTIONS:
    --logfile value   Specify the path for the loging file
@@ -1157,7 +990,7 @@ DESCRIPTION:
 - [ ] link the user to the group
 - [ ] login as the newly created user.
 - [ ] create a new datacenter (optional)
-  
+
 
 OPTIONS:
    --user value, -u value      Admin user
@@ -1313,15 +1146,20 @@ Datacenter &#39;my-dc&#39; successfully created
 &lt;pre&gt;&lt;code&gt;---
 name: demo
 datacenter: my-dc
-vpc_id: vpc-abcdef01
+vpcs:
+  - name: my-vpc
+    id: vpc-abcdef01
+    auto_remove: true
 
 networks:
   - name: public
     subnet: 10.0.10.0/24
+    vpc: my-vpc
     public: true
 
 security_groups:
   - name: public-sg
+    vpc: my-vpc
     egress:
       - ip: 0.0.0.0/0
         protocol: any
@@ -1440,15 +1278,21 @@ Security groups:
 ---
 name: demo
 datacenter: my-dc
-vpc_id: vpc-abcdef01
+
+vpcs:
+  - name: my-vpc
+    id: vpc-abcdef01
+    auto_remove: true
 
 networks:
   - name: public
     subnet: 10.0.10.0/24
+    vpc: my-vpc
     public: true
 
 security_groups:
   - name: public-sg
+    vpc: my-vpc
     egress:
       - ip: 0.0.0.0/0
         protocol: any
@@ -1482,14 +1326,19 @@ instances:
 &lt;pre&gt;&lt;code&gt;---
 name: demo
 datacenter: my-dc
-vpc_id: vpc-abcdef01
+
+vpcs:
+  - name: my-vpc
+    id: vpc-abcdef01
+    auto_remove: true
 
 networks:
   - name: public
     subnet: 10.0.10.0/24
-    public: true
+    vpc: my-vpc
   - name: private
     subnet: 10.0.11.0/24
+    vpc: my-vpc
     public: false
     nat_gateway: private-nat
 
@@ -1499,6 +1348,7 @@ nat_gateways:
 
 security_groups:
   - name: public-sg
+    vpc: my-vpc
     egress:
       - ip: 0.0.0.0/0
         protocol: any
@@ -1653,14 +1503,19 @@ Security groups:
 ---
 name: demo
 datacenter: my-dc
-vpc_id: vpc-abcdef01
+
+vpcs:
+  - name: my-vpc
+    id: vpc-abcdef01
+    auto_remove: true
 
 networks:
   - name: public
     subnet: 10.0.10.0/24
-    public: true
+    vpc: my-vpc
   - name: private
     subnet: 10.0.11.0/24
+    vpc: my-vpc
     public: false
     nat_gateway: private-nat
 
@@ -1670,6 +1525,7 @@ nat_gateways:
 
 security_groups:
   - name: public-sg
+    vpc: my-vpc
     egress:
       - ip: 0.0.0.0/0
         protocol: any
@@ -1769,19 +1625,26 @@ SUCCESS: your environment has been successfully deleted
 &lt;pre&gt;&lt;code&gt;---
 name: demo
 datacenter: my-dc
-vpc_id: vpc-abcdef01
-vpc_subnet: 10.0.0.0/16
+
+
+vpcs:
+  - name: my-vpc
+    id: vpc-abcdef01
+    auto_remove: true
 
 networks:
   - name: web
     subnet: 10.0.10.0/24
+    vpc: my-vpc
     public: true
   - name: db
     subnet: 10.0.11.0/24
+    vpc: my-vpc
     public: false
     nat_gateway: db-nat
   - name: db-standby
     subnet: 10.0.12.0/24
+    vpc: my-vpc
     public: false
     nat_gateway: db-nat
 
@@ -1791,6 +1654,7 @@ nat_gateways:
 
 security_groups:
   - name: web-sg
+    vpc: my-vpc
     egress:
       - ip: 0.0.0.0/0
         protocol: any
@@ -1806,6 +1670,7 @@ security_groups:
         from_port: &#39;22&#39;
         to_port: &#39;22&#39;
   - name: db-sg
+    vpc: my-vpc
     egress:
       - ip: 0.0.0.0/0
         protocol: any
@@ -1954,24 +1819,6 @@ vpc_subnet: 10.0.0.0/16
 &lt;ul&gt;
 &lt;li&gt;String that defines the name of the datacenter where the service is built.&lt;/li&gt;
 &lt;li&gt;This field is mandatory.&lt;/li&gt;
-&lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
-&lt;li&gt;The value of this field must 50 characters maximum.&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;vpc_id&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;String that defines the ID of the existing VPC the service will use.&lt;/li&gt;
-&lt;li&gt;This field is mandatory, unless &lt;strong&gt;vpc_subnet&lt;/strong&gt; is present.&lt;/li&gt;
-&lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
-&lt;li&gt;The value of this field must be 50 characters maximum.&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;vpc_subnet&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;String that defines the subnet of the VPC that will be created for the service to use.&lt;/li&gt;
-&lt;li&gt;This field is mandatory, unless &lt;strong&gt;vpc_id&lt;/strong&gt; is present.&lt;/li&gt;
 &lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
 &lt;li&gt;The value of this field must 50 characters maximum.&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
@@ -3121,7 +2968,7 @@ datacenter: r3-jreid2
 bootstrapping: none
 service_ip: 195.3.186.42
 
-routers: 
+routers:
   - name: test1
     rules:
     - name: in_out_any
@@ -3257,7 +3104,7 @@ datacenter: r3-jreid2
 bootstrapping: none
 service_ip: 195.3.186.42
 
-routers: 
+routers:
   - name: test1
     rules:
     - name: in_out_any
@@ -3316,7 +3163,7 @@ ernest_ip:
   - 31.210.241.231
   - 31.210.240.171
 
-routers: 
+routers:
   - name: test1
     rules:
     - name: in_out_any
@@ -3341,7 +3188,7 @@ routers:
         dns:
           - 8.8.8.8
           - 8.8.4.4
-          
+
     port_forwarding:
       - source: 195.3.186.42
         from_port: &#39;80&#39;
@@ -3488,7 +3335,7 @@ service_ip: 195.3.186.44
 ernest_ip:
   - 31.210.240.161
 
-routers: 
+routers:
   - name: demo
     rules:
     - name: in_out_any
@@ -3541,7 +3388,7 @@ instances:
         - if [ x$1 == x&amp;quot;postcustomization&amp;quot; ]; then
         - yum -y install httpd
         - service httpd start
-        - fi 
+        - fi
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&#34;field-reference-1&#34;&gt;Field Reference&lt;/h3&gt;
@@ -3607,7 +3454,7 @@ ernest_ip:
 
 &lt;h4 id=&#34;networking-1&#34;&gt;Networking&lt;/h4&gt;
 
-&lt;pre&gt;&lt;code&gt;routers: 
+&lt;pre&gt;&lt;code&gt;routers:
   - name: demo
     rules:
     - name: in_out_any
@@ -3802,7 +3649,7 @@ ernest_ip:
         - if [ x$1 == x&amp;quot;postcustomization&amp;quot; ]; then
         - yum -y install httpd
         - service httpd start
-        - fi 
+        - fi
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Instances support the following fields:&lt;/p&gt;
@@ -3992,32 +3839,17 @@ Networks is a map with two fields&lt;/p&gt;
 
 &lt;p&gt;Every service family follows an easy to understand naming convention.&lt;/p&gt;
 
-&lt;h3 id=&#34;mappers&#34;&gt;Mappers&lt;/h3&gt;
-
-&lt;p&gt;Mappers will be named following the structure -definition-mapper. ‘provider’ is the cloud service it will be mapping, i.e. AWS, vCloud …&lt;/p&gt;
-
-&lt;h3 id=&#34;adapters&#34;&gt;Adapters&lt;/h3&gt;
-
-&lt;p&gt;We base the adapters naming on the component they’re representing -adapter. A component can be an instance, a network, an s3 bucket…&lt;/p&gt;
-
 &lt;h3 id=&#34;connectors&#34;&gt;Connectors&lt;/h3&gt;
 
-&lt;p&gt;A connector name will look like &amp;mdash;component.&lt;/p&gt;
+&lt;p&gt;A connector name will look like component-action-provider-component.&lt;/p&gt;
 
-&lt;p&gt;It is basically composed by some variable parts: - component : the component it represents: instances, networks, routers… - action : the action will implement: create, delete, update. Additionally you will find the action «all», which will represent is implementing all possible actions. - provider : the provider is connecting to. AWS, vCloud…&lt;/p&gt;
+&lt;p&gt;It is basically composed by some variable parts: - component : the component it represents: instances, networks, routers… - action : the action will implement: create, delete, update. Additionally you will find the action «all», which will represent is implementing all possible actions and component types. - provider : the provider is connecting to. AWS, vCloud…&lt;/p&gt;
 
 &lt;h3 id=&#34;messages-naming&#34;&gt;Messages naming&lt;/h3&gt;
 
 &lt;p&gt;All services on Ernest are communicating through &lt;a href=&#34;https://nats.io/documentation/concepts/nats-messaging/&#34;&gt;nats&lt;/a&gt; messages. There is a naming convention for any message on the platform, and you can find it in different forms:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;&amp;lt;component&amp;gt;.&amp;lt;action&amp;gt;
-
-# These messages are representing the communication between the workflow manager and the builders, and basically they’re managing a list of components to be processed.
-
-&amp;lt;component&amp;gt;.&amp;lt;action&amp;gt;
-
-# A single component to be processed; these messages are managed by builders and adapters.
-
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;
 &amp;lt;component&amp;gt;.&amp;lt;action&amp;gt;.&amp;lt;provider&amp;gt;
 
 # They are sending the necessary info from the adapter to be processed by a specific connector.
@@ -4025,38 +3857,48 @@ Networks is a map with two fields&lt;/p&gt;
 
 &lt;p&gt;All these messages are replied with an appended «.done» or «.error» word to the subject, so the sender will know if the action was a success or a failure.&lt;/p&gt;
 
+&lt;h1 id=&#34;component-message-structure&#34;&gt;Component Message structure&lt;/h1&gt;
+
+&lt;p&gt;There are a number of internal fields used by components (always prefixed with &lt;code&gt;_&lt;/code&gt;) that must be present:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;_action&lt;/code&gt;:  The action required by the component. This can be one of &lt;code&gt;create&lt;/code&gt;, &lt;code&gt;update&lt;/code&gt;, &lt;code&gt;delete&lt;/code&gt;, &lt;code&gt;find&lt;/code&gt; or &lt;code&gt;get&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;_component&lt;/code&gt;:  The component type, i.e. &lt;code&gt;instance&lt;/code&gt;, &lt;code&gt;network&lt;/code&gt;, &lt;code&gt;firewall&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;_component_id&lt;/code&gt;:  The composite ID of the component. This is constructed by a components type and its name, i.e. &lt;code&gt;instance::web-1&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;_provider&lt;/code&gt;:  The type of provider that the component will be provisioned on.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;_state&lt;/code&gt;:  The current state of the component. Can be one of &lt;code&gt;errored&lt;/code&gt;, &lt;code&gt;waiting&lt;/code&gt;, &lt;code&gt;running&lt;/code&gt;, &lt;code&gt;completed&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;These fields are leveraged by scheduler to construct the omitted event subject.&lt;/p&gt;
+
 &lt;h2 id=&#34;service-structure&#34;&gt;Service structure&lt;/h2&gt;
 
 &lt;p&gt;The microservices can be categorized into different families:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;The Public family holds every service with a public or private interface intended to be used by the end user. Api Gateway Monit Logger&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The Public family holds every service with a public or private interface intended to be used by the end user [Api Gateway, Monit, Logger].&lt;/p&gt;&lt;/li&gt;
 
-&lt;li&gt;&lt;p&gt;Data stores are a crud over nats interface to interact with persistent data&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Data stores are a crud over nats interface to interact with persistent data.&lt;/p&gt;&lt;/li&gt;
 
-&lt;li&gt;&lt;p&gt;Definition Mappers map the input yaml on a valid internal definition&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The Definition Mapper maps the input yaml on a valid internal mapping.&lt;/p&gt;&lt;/li&gt;
 
-&lt;li&gt;&lt;p&gt;The Workflow manager takes care of processing the necessary steps to build a service&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Builders are processing lists of components&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Adapters are processing a single component&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The Scheduler takes care of processing the necessary steps to build a service.&lt;/p&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;Connectors are connecting Ernest with third party providers in order to process a component.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Additionally we use ? to group these families into:&lt;/p&gt;
+&lt;p&gt;We group these families into:&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Frontend (Public + Stores)&lt;/li&gt;
-&lt;li&gt;Backend (Mappers + Core + Builders + Adapters + Connectors)&lt;/li&gt;
+&lt;li&gt;Backend (Mapper + Core + Connectors)&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;public&#34;&gt;Public&lt;/h2&gt;
 
 &lt;h3 id=&#34;api-gateway&#34;&gt;API Gateway&lt;/h3&gt;
 
-&lt;p&gt;The api-gateway is exposing a public REST api, locked with JWT authentication, so every authenticated user can interact with its endpoints&lt;/p&gt;
+&lt;p&gt;The api-gateway is exposing a public REST api, locked with JWT authentication, so every authenticated user can interact with its endpoints.&lt;/p&gt;
 
 &lt;h3 id=&#34;monit&#34;&gt;Monit&lt;/h3&gt;
 
@@ -4103,173 +3945,386 @@ group-store
 #Implements a nats interface to operate with groups stored data. System authorization levels are based on these groups
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;definition-mappers&#34;&gt;Definition mappers&lt;/h2&gt;
+&lt;h2 id=&#34;definition-mapper&#34;&gt;Definition mapper&lt;/h2&gt;
 
-&lt;p&gt;Definition mappers map your input yaml/json file on to a valid internal struct at the time they do an initial validation.&lt;/p&gt;
+&lt;p&gt;Definition mapper maps your input yaml/json file on to a valid internal struct at the time they do an initial validation.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;definition-mapper
 
-#Definition mapper service basically decides which provider specific mapper will handle the input mapping.
-
-vcloud-definition-mapper
-
-#Validates and maps the vCloud yaml input on a valid internal service.
-
-aws-definition-mapper
-
-#Validates and maps the AWS yaml input on a valid internal service.
+#Validates and maps the provider specific yaml input to a valid internal service mapping. It&#39;s also is responsible for converting the internal mapping back to an input yaml when importing.
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;workflow-manager&#34;&gt;Workflow manager&lt;/h2&gt;
+&lt;h2 id=&#34;scheduler&#34;&gt;Scheduler&lt;/h2&gt;
 
-&lt;p&gt;Workflow manager is a service to process grouped lists of components. It runs on top of nats.io. Workflow manager provides several key features:&lt;/p&gt;
+&lt;p&gt;Scheduler is a service to process actions associated with a given environment and it&amp;rsquo;s components. It runs on top of nats.io.&lt;/p&gt;
+
+&lt;p&gt;Scheduler provides several key features:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;Adaptable workflow definition: Workflow definition is received as part of the entry point, so it is externally defined.&lt;/li&gt;
+&lt;li&gt;Dependency graph scheduling. Each component is scheduled based on its relation to other components and allows independant components to be provisioned in parallel.&lt;/li&gt;
 &lt;li&gt;Templating: You can use the templating system to fill some component details with other component properties.&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;External persistence: Workflow manager will call an external service to persist the current definition.&lt;/p&gt;
-
-&lt;h3 id=&#34;quick-start&#34;&gt;Quick start&lt;/h3&gt;&lt;/li&gt;
+&lt;li&gt;External persistence: Scheduler will call an external service to persist the current state of the service build and its components.&lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;h3 id=&#34;quick-start&#34;&gt;Quick start&lt;/h3&gt;
+
 &lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;#Install with git
-git clone git@github.com:ernestio/workflow-manager.git
+git clone git@github.com:ernestio/scheduler.git
 
 make deps &amp;amp;&amp;amp; make install
 
-workflow-manager
+scheduler
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;dependencies&#34;&gt;dependencies&lt;/h3&gt;
+&lt;h3 id=&#34;running-tests&#34;&gt;Running tests&lt;/h3&gt;
 
-&lt;p&gt;As workflow-manager does not provide any persistence system it directly depends on service-store, and its communcation is through nats.io.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;make dev-deps &amp;amp;&amp;amp; make test
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;input-definition&#34;&gt;Input (definition)&lt;/h3&gt;
+&lt;h3 id=&#34;operation&#34;&gt;Operation&lt;/h3&gt;
 
-&lt;p&gt;The input definition is a json input with the following structure:&lt;/p&gt;
+&lt;p&gt;The scheduler will send a &lt;code&gt;components.verb.provider&lt;/code&gt; for component. The order is defined by the dependencies specified on &lt;code&gt;edges&lt;/code&gt; and will wait for &lt;code&gt;component.verb.provider.status&lt;/code&gt;, where status can be &lt;code&gt;done&lt;/code&gt; or &lt;code&gt;error&lt;/code&gt;.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;{
+&lt;p&gt;When a completed component event is received, the latest service mapping is retrieved from service store. The state of the component is then updated in both &lt;code&gt;changes&lt;/code&gt; and &lt;code&gt;components&lt;/code&gt;. The graph is then inspected for all dependants of the completed component. These dependant components are then scheduled when all of its dependencies are satisfied.&lt;/p&gt;
+
+&lt;p&gt;If an errored component is received, scheduler will wait for all other in flight components to complete before sending an error back to the user. No other components will be sent in this errored state.&lt;/p&gt;
+
+&lt;p&gt;The graph library utilised by the scheduler can be found at &lt;a href=&#34;https://github.com/r3labs/graph&#34;&gt;graph library&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;external-dependencies&#34;&gt;External Dependencies&lt;/h3&gt;
+
+&lt;p&gt;As scheduler does not provide any persistence system; it directly depends on service-store, and its communication is accomplished through nats.io.&lt;/p&gt;
+
+&lt;h3 id=&#34;input-mapping&#34;&gt;Input Mapping&lt;/h3&gt;
+
+&lt;p&gt;The input mapping defines the steps a scheduler must take to complete a build. The required fields for each component are:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;id&lt;/code&gt;: The id of the service being provisioned.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;action&lt;/code&gt;: The action of the service&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;edges&lt;/code&gt;: The edges define the directed connection between components, as defined by a &lt;code&gt;source&lt;/code&gt; and a &lt;code&gt;destination&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;components&lt;/code&gt;: This collection of components represents the &lt;em&gt;current&lt;/em&gt; state of the service.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;changes&lt;/code&gt;: This collection of components represents the &lt;em&gt;desired&lt;/em&gt; state of the service.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This output is generated by defintion-mapper with execution ordering and dependencies configured before being sent to scheduler.&lt;/p&gt;
+
+&lt;p&gt;An example of the input json to scheduler:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;{
     &amp;quot;id&amp;quot;: &amp;quot;test-generated-id&amp;quot;,
-    &amp;quot;workflow&amp;quot;: {
-			&amp;quot;arcs&amp;quot;: [{
-				&amp;quot;from&amp;quot;: &amp;quot;created&amp;quot;,
-				&amp;quot;to&amp;quot;: &amp;quot;started&amp;quot;,
-				&amp;quot;event&amp;quot;: &amp;quot;service.create&amp;quot;
-			}, {
-				&amp;quot;from&amp;quot;: &amp;quot;started&amp;quot;,
-				&amp;quot;to&amp;quot;: &amp;quot;creating_components&amp;quot;,
-				&amp;quot;event&amp;quot;: &amp;quot;components.create&amp;quot;
-			}, {
-				&amp;quot;from&amp;quot;: &amp;quot;creating_components&amp;quot;,
-				&amp;quot;to&amp;quot;: &amp;quot;components_created&amp;quot;,
-				&amp;quot;event&amp;quot;: &amp;quot;components.create.done&amp;quot;
-			}, {
-				&amp;quot;from&amp;quot;: &amp;quot;components_created&amp;quot;,
-				&amp;quot;to&amp;quot;: &amp;quot;updating_components&amp;quot;,
-				&amp;quot;event&amp;quot;: &amp;quot;components.update&amp;quot;
-			}, {
-				&amp;quot;from&amp;quot;: &amp;quot;updating_components&amp;quot;,
-				&amp;quot;to&amp;quot;: &amp;quot;components_updated&amp;quot;,
-				&amp;quot;event&amp;quot;: &amp;quot;components.update.done&amp;quot;
-			}, {
-				&amp;quot;from&amp;quot;: &amp;quot;components_updated&amp;quot;,
-				&amp;quot;to&amp;quot;: &amp;quot;deleting_components&amp;quot;,
-				&amp;quot;event&amp;quot;: &amp;quot;components.delete&amp;quot;
-			}, {
-				&amp;quot;from&amp;quot;: &amp;quot;deleting_components&amp;quot;,
-				&amp;quot;to&amp;quot;: &amp;quot;components_deleted&amp;quot;,
-				&amp;quot;event&amp;quot;: &amp;quot;components.delete.done&amp;quot;
-			}, {
-				&amp;quot;from&amp;quot;: &amp;quot;components_deleted&amp;quot;,
-				&amp;quot;to&amp;quot;: &amp;quot;done&amp;quot;,
-				&amp;quot;event&amp;quot;: &amp;quot;service.create.done&amp;quot;
-			}, {
-				&amp;quot;from&amp;quot;: &amp;quot;pre-failed&amp;quot;,
-				&amp;quot;to&amp;quot;: &amp;quot;failed&amp;quot;,
-				&amp;quot;event&amp;quot;: &amp;quot;to_error&amp;quot;
-			}, {
-				&amp;quot;from&amp;quot;: &amp;quot;failed&amp;quot;,
-				&amp;quot;to&amp;quot;: &amp;quot;errored&amp;quot;,
-				&amp;quot;event&amp;quot;: &amp;quot;service.create.error&amp;quot;
-			}]
-    },
-    &amp;quot;components&amp;quot;: {
-      &amp;quot;status&amp;quot;: &amp;quot;&amp;quot;,
-      &amp;quot;started&amp;quot;: &amp;quot;&amp;quot;,
-      &amp;quot;finished&amp;quot;: &amp;quot;&amp;quot;,
-      &amp;quot;items&amp;quot;: [{
-        &amp;quot;service&amp;quot;: &amp;quot;test&amp;quot;,
-        &amp;quot;type&amp;quot;: &amp;quot;vcloud&amp;quot;,
-        &amp;quot;name&amp;quot;: &amp;quot;existing&amp;quot;,
-        &amp;quot;field&amp;quot;: &amp;quot;existing&amp;quot;
-      }]
-    },
-    &amp;quot;components_to_create&amp;quot;: {
-      &amp;quot;status&amp;quot;: &amp;quot;&amp;quot;,
-      &amp;quot;started&amp;quot;: &amp;quot;&amp;quot;,
-      &amp;quot;finished&amp;quot;: &amp;quot;&amp;quot;,
-      &amp;quot;items&amp;quot;: [{
-        &amp;quot;service&amp;quot;: &amp;quot;test&amp;quot;,
-        &amp;quot;type&amp;quot;: &amp;quot;vcloud&amp;quot;,
-        &amp;quot;name&amp;quot;: &amp;quot;added&amp;quot;,
-        &amp;quot;field&amp;quot;: &amp;quot;created&amp;quot;
-      },{
-        &amp;quot;service&amp;quot;: &amp;quot;test&amp;quot;,
-        &amp;quot;type&amp;quot;: &amp;quot;vcloud&amp;quot;,
-        &amp;quot;name&amp;quot;: &amp;quot;updated&amp;quot;,
-        &amp;quot;field&amp;quot;: &amp;quot;created_to_be_updated&amp;quot;
-      }]
-    },
-    &amp;quot;components_to_update&amp;quot;: {
-      &amp;quot;status&amp;quot;: &amp;quot;&amp;quot;,
-      &amp;quot;started&amp;quot;: &amp;quot;&amp;quot;,
-      &amp;quot;finished&amp;quot;: &amp;quot;&amp;quot;,
-      &amp;quot;items&amp;quot;: [{
-        &amp;quot;service&amp;quot;: &amp;quot;test&amp;quot;,
-        &amp;quot;type&amp;quot;: &amp;quot;vcloud&amp;quot;,
-        &amp;quot;name&amp;quot;: &amp;quot;updated&amp;quot;,
-        &amp;quot;field&amp;quot;: &amp;quot;updated&amp;quot;
-      }]
-    },
-    &amp;quot;components_to_delete&amp;quot;: {
-      &amp;quot;status&amp;quot;: &amp;quot;&amp;quot;,
-      &amp;quot;started&amp;quot;: &amp;quot;&amp;quot;,
-      &amp;quot;finished&amp;quot;: &amp;quot;&amp;quot;,
-      &amp;quot;items&amp;quot;: [{
-        &amp;quot;service&amp;quot;: &amp;quot;test&amp;quot;,
-        &amp;quot;type&amp;quot;: &amp;quot;vcloud&amp;quot;,
-        &amp;quot;name&amp;quot;: &amp;quot;existing&amp;quot;
-      }]
-    }
+    &amp;quot;action&amp;quot;: &amp;quot;service.delete&amp;quot;,
+    &amp;quot;edges&amp;quot;: [
+        {
+            &amp;quot;destination&amp;quot;: &amp;quot;vpc::test-vpc&amp;quot;,
+            &amp;quot;length&amp;quot;: 1,
+            &amp;quot;source&amp;quot;: &amp;quot;internet_gateway::test-vpc&amp;quot;
+        },
+        {
+            &amp;quot;destination&amp;quot;: &amp;quot;vpc::test-vpc&amp;quot;,
+            &amp;quot;length&amp;quot;: 1,
+            &amp;quot;source&amp;quot;: &amp;quot;firewall::test-vm&amp;quot;
+        },
+        {
+            &amp;quot;destination&amp;quot;: &amp;quot;internet_gateway::test-vpc&amp;quot;,
+            &amp;quot;length&amp;quot;: 1,
+            &amp;quot;source&amp;quot;: &amp;quot;network::test-dmz&amp;quot;
+        },
+        {
+            &amp;quot;destination&amp;quot;: &amp;quot;vpc::test-vpc&amp;quot;,
+            &amp;quot;length&amp;quot;: 1,
+            &amp;quot;source&amp;quot;: &amp;quot;firewall::test-elb&amp;quot;
+        },
+        {
+            &amp;quot;destination&amp;quot;: &amp;quot;firewall::test-vm&amp;quot;,
+            &amp;quot;length&amp;quot;: 1,
+            &amp;quot;source&amp;quot;: &amp;quot;instance::test-web-1&amp;quot;
+        },
+        {
+            &amp;quot;destination&amp;quot;: &amp;quot;network::test-dmz&amp;quot;,
+            &amp;quot;length&amp;quot;: 1,
+            &amp;quot;source&amp;quot;: &amp;quot;instance::test-web-1&amp;quot;
+        },
+        {
+            &amp;quot;destination&amp;quot;: &amp;quot;firewall::test-elb&amp;quot;,
+            &amp;quot;length&amp;quot;: 1,
+            &amp;quot;source&amp;quot;: &amp;quot;elb::test-elb&amp;quot;
+        },
+        {
+            &amp;quot;destination&amp;quot;: &amp;quot;network::test-dmz&amp;quot;,
+            &amp;quot;length&amp;quot;: 1,
+            &amp;quot;source&amp;quot;: &amp;quot;elb::test-elb&amp;quot;
+        },
+        {
+            &amp;quot;destination&amp;quot;: &amp;quot;instance::test-web-1&amp;quot;,
+            &amp;quot;length&amp;quot;: 1,
+            &amp;quot;source&amp;quot;: &amp;quot;elb::test-elb&amp;quot;
+        },
+        {
+            &amp;quot;destination&amp;quot;: &amp;quot;end&amp;quot;,
+            &amp;quot;length&amp;quot;: 1,
+            &amp;quot;source&amp;quot;: &amp;quot;vpc::test-vpc&amp;quot;
+        },
+        {
+            &amp;quot;destination&amp;quot;: &amp;quot;elb::test-elb&amp;quot;,
+            &amp;quot;length&amp;quot;: 1,
+            &amp;quot;source&amp;quot;: &amp;quot;start&amp;quot;
+        }
+    ],
+    &amp;quot;components&amp;quot;: [
+        {
+            &amp;quot;_action&amp;quot;: &amp;quot;delete&amp;quot;,
+            &amp;quot;_component&amp;quot;: &amp;quot;vpc&amp;quot;,
+            &amp;quot;_component_id&amp;quot;: &amp;quot;vpc::test-vpc&amp;quot;,
+            &amp;quot;_provider&amp;quot;: &amp;quot;aws&amp;quot;,
+            &amp;quot;_state&amp;quot;: &amp;quot;waiting&amp;quot;,
+            &amp;quot;auto_remove&amp;quot;: true,
+            &amp;quot;name&amp;quot;: &amp;quot;test-vpc&amp;quot;,
+            &amp;quot;service&amp;quot;: &amp;quot;test-generated-id&amp;quot;,
+            &amp;quot;subnet&amp;quot;: &amp;quot;10.0.0.0/16&amp;quot;,
+            &amp;quot;tags&amp;quot;: {
+                &amp;quot;Name&amp;quot;: &amp;quot;test-vpc&amp;quot;,
+                &amp;quot;ernest.service&amp;quot;: &amp;quot;test&amp;quot;
+            },
+            &amp;quot;vpc_aws_id&amp;quot;: &amp;quot;vpc-00000000&amp;quot;
+        },
+        {
+            &amp;quot;_action&amp;quot;: &amp;quot;delete&amp;quot;,
+            &amp;quot;_component&amp;quot;: &amp;quot;internet_gateway&amp;quot;,
+            &amp;quot;_component_id&amp;quot;: &amp;quot;internet_gateway::test-vpc&amp;quot;,
+            &amp;quot;_provider&amp;quot;: &amp;quot;aws&amp;quot;,
+            &amp;quot;_state&amp;quot;: &amp;quot;waiting&amp;quot;,
+            &amp;quot;internet_gateway_aws_id&amp;quot;: &amp;quot;igw-00000000&amp;quot;,
+            &amp;quot;name&amp;quot;: &amp;quot;test-vpc&amp;quot;,
+            &amp;quot;service&amp;quot;: &amp;quot;test-generated-id&amp;quot;,
+            &amp;quot;tags&amp;quot;: {
+                &amp;quot;Name&amp;quot;: &amp;quot;test-vpc&amp;quot;,
+                &amp;quot;ernest.service&amp;quot;: &amp;quot;test&amp;quot;
+            },
+            &amp;quot;vpc&amp;quot;: &amp;quot;test-vpc&amp;quot;,
+            &amp;quot;vpc_id&amp;quot;: &amp;quot;vpc-00000000&amp;quot;
+        },
+        {
+            &amp;quot;_action&amp;quot;: &amp;quot;none&amp;quot;,
+            &amp;quot;_component&amp;quot;: &amp;quot;credentials&amp;quot;,
+            &amp;quot;_component_id&amp;quot;: &amp;quot;credentials::aws&amp;quot;,
+            &amp;quot;_provider&amp;quot;: &amp;quot;aws&amp;quot;,
+            &amp;quot;_state&amp;quot;: &amp;quot;waiting&amp;quot;,
+            &amp;quot;name&amp;quot;: &amp;quot;test-aws&amp;quot;,
+            &amp;quot;region&amp;quot;: &amp;quot;eu-west-1&amp;quot;
+        }
+    ],
+    &amp;quot;changes&amp;quot;: [
+        {
+            &amp;quot;_action&amp;quot;: &amp;quot;delete&amp;quot;,
+            &amp;quot;_component&amp;quot;: &amp;quot;vpc&amp;quot;,
+            &amp;quot;_component_id&amp;quot;: &amp;quot;vpc::test-vpc&amp;quot;,
+            &amp;quot;_provider&amp;quot;: &amp;quot;aws&amp;quot;,
+            &amp;quot;_state&amp;quot;: &amp;quot;waiting&amp;quot;,
+            &amp;quot;auto_remove&amp;quot;: true,
+            &amp;quot;name&amp;quot;: &amp;quot;test-vpc&amp;quot;,
+            &amp;quot;service&amp;quot;: &amp;quot;test-generated-id&amp;quot;,
+            &amp;quot;subnet&amp;quot;: &amp;quot;10.0.0.0/16&amp;quot;,
+            &amp;quot;tags&amp;quot;: {
+                &amp;quot;Name&amp;quot;: &amp;quot;test-vpc&amp;quot;,
+                &amp;quot;ernest.service&amp;quot;: &amp;quot;test&amp;quot;
+            },
+            &amp;quot;vpc_aws_id&amp;quot;: &amp;quot;vpc-00000000&amp;quot;
+        },
+        {
+            &amp;quot;_action&amp;quot;: &amp;quot;delete&amp;quot;,
+            &amp;quot;_component&amp;quot;: &amp;quot;internet_gateway&amp;quot;,
+            &amp;quot;_component_id&amp;quot;: &amp;quot;internet_gateway::test-vpc&amp;quot;,
+            &amp;quot;_provider&amp;quot;: &amp;quot;aws&amp;quot;,
+            &amp;quot;_state&amp;quot;: &amp;quot;running&amp;quot;,
+            &amp;quot;internet_gateway_aws_id&amp;quot;: &amp;quot;igw-00000000&amp;quot;,
+            &amp;quot;name&amp;quot;: &amp;quot;test-vpc&amp;quot;,
+            &amp;quot;service&amp;quot;: &amp;quot;test-generated-id&amp;quot;,
+            &amp;quot;tags&amp;quot;: {
+                &amp;quot;Name&amp;quot;: &amp;quot;test-vpc&amp;quot;,
+                &amp;quot;ernest.service&amp;quot;: &amp;quot;test&amp;quot;
+            },
+            &amp;quot;vpc&amp;quot;: &amp;quot;test-vpc&amp;quot;,
+            &amp;quot;vpc_id&amp;quot;: &amp;quot;vpc-00000000&amp;quot;
+        },
+        {
+            &amp;quot;_action&amp;quot;: &amp;quot;delete&amp;quot;,
+            &amp;quot;_component&amp;quot;: &amp;quot;firewall&amp;quot;,
+            &amp;quot;_component_id&amp;quot;: &amp;quot;firewall::test-vm&amp;quot;,
+            &amp;quot;_provider&amp;quot;: &amp;quot;aws&amp;quot;,
+            &amp;quot;_state&amp;quot;: &amp;quot;completed&amp;quot;,
+            &amp;quot;name&amp;quot;: &amp;quot;test-vm&amp;quot;,
+            &amp;quot;network_aws_id&amp;quot;: null,
+            &amp;quot;rules&amp;quot;: {
+                &amp;quot;egress&amp;quot;: [
+                    {
+                        &amp;quot;from_port&amp;quot;: 0,
+                        &amp;quot;ip&amp;quot;: &amp;quot;0.0.0.0/0&amp;quot;,
+                        &amp;quot;protocol&amp;quot;: &amp;quot;-1&amp;quot;,
+                        &amp;quot;to_port&amp;quot;: 65535
+                    }
+                ],
+                &amp;quot;ingress&amp;quot;: [
+                    {
+                        &amp;quot;from_port&amp;quot;: 0,
+                        &amp;quot;ip&amp;quot;: &amp;quot;10.0.0.0/16&amp;quot;,
+                        &amp;quot;protocol&amp;quot;: &amp;quot;tcp&amp;quot;,
+                        &amp;quot;to_port&amp;quot;: 65535
+                    }
+                ]
+            },
+            &amp;quot;security_group_aws_id&amp;quot;: &amp;quot;sg-00000000&amp;quot;,
+            &amp;quot;service&amp;quot;: &amp;quot;test-generated-id&amp;quot;,
+            &amp;quot;tags&amp;quot;: {
+                &amp;quot;Name&amp;quot;: &amp;quot;test-vm&amp;quot;,
+                &amp;quot;ernest.service&amp;quot;: &amp;quot;test&amp;quot;
+            },
+            &amp;quot;vpc&amp;quot;: &amp;quot;test-vpc&amp;quot;,
+            &amp;quot;vpc_id&amp;quot;: &amp;quot;vpc-00000000&amp;quot;
+        },
+        {
+            &amp;quot;_action&amp;quot;: &amp;quot;delete&amp;quot;,
+            &amp;quot;_component&amp;quot;: &amp;quot;network&amp;quot;,
+            &amp;quot;_component_id&amp;quot;: &amp;quot;network::test-dmz&amp;quot;,
+            &amp;quot;_provider&amp;quot;: &amp;quot;aws&amp;quot;,
+            &amp;quot;_state&amp;quot;: &amp;quot;completed&amp;quot;,
+            &amp;quot;availability_zone&amp;quot;: &amp;quot;eu-west-1a&amp;quot;,        
+            &amp;quot;internet_gateway&amp;quot;: &amp;quot;test-vpc&amp;quot;,
+            &amp;quot;internet_gateway_aws_id&amp;quot;: &amp;quot;igw-00000000&amp;quot;,
+            &amp;quot;is_public&amp;quot;: true,
+            &amp;quot;name&amp;quot;: &amp;quot;test-dmz&amp;quot;,
+            &amp;quot;network_aws_id&amp;quot;: &amp;quot;subnet-00000000&amp;quot;,
+            &amp;quot;range&amp;quot;: &amp;quot;10.0.11.0/24&amp;quot;,
+            &amp;quot;service&amp;quot;: &amp;quot;test-generated-id&amp;quot;,
+            &amp;quot;tags&amp;quot;: {
+                &amp;quot;Name&amp;quot;: &amp;quot;test-dmz&amp;quot;,
+                &amp;quot;ernest.service&amp;quot;: &amp;quot;test&amp;quot;
+            },
+            &amp;quot;vpc&amp;quot;: &amp;quot;test-vpc&amp;quot;,
+            &amp;quot;vpc_id&amp;quot;: &amp;quot;vpc-00000000&amp;quot;
+        },
+        {
+            &amp;quot;_action&amp;quot;: &amp;quot;delete&amp;quot;,
+            &amp;quot;_component&amp;quot;: &amp;quot;firewall&amp;quot;,
+            &amp;quot;_component_id&amp;quot;: &amp;quot;firewall::test-elb&amp;quot;,
+            &amp;quot;_provider&amp;quot;: &amp;quot;aws&amp;quot;,
+            &amp;quot;_state&amp;quot;: &amp;quot;completed&amp;quot;,
+            &amp;quot;name&amp;quot;: &amp;quot;test-elb&amp;quot;,
+            &amp;quot;network_aws_id&amp;quot;: null,
+            &amp;quot;rules&amp;quot;: {
+                &amp;quot;egress&amp;quot;: [
+                    {
+                        &amp;quot;from_port&amp;quot;: 0,
+                        &amp;quot;ip&amp;quot;: &amp;quot;0.0.0.0/0&amp;quot;,
+                        &amp;quot;protocol&amp;quot;: &amp;quot;-1&amp;quot;,
+                        &amp;quot;to_port&amp;quot;: 65535
+                    }
+                ],
+                &amp;quot;ingress&amp;quot;: [
+                    {
+                        &amp;quot;from_port&amp;quot;: 0,
+                        &amp;quot;ip&amp;quot;: &amp;quot;10.0.0.0/16&amp;quot;,
+                        &amp;quot;protocol&amp;quot;: &amp;quot;tcp&amp;quot;,
+                        &amp;quot;to_port&amp;quot;: 65535
+                    },
+                    {
+                        &amp;quot;from_port&amp;quot;: 80,
+                        &amp;quot;ip&amp;quot;: &amp;quot;0.0.0.0/0&amp;quot;,
+                        &amp;quot;protocol&amp;quot;: &amp;quot;tcp&amp;quot;,
+                        &amp;quot;to_port&amp;quot;: 80
+                    }
+                ]
+            },
+            &amp;quot;security_group_aws_id&amp;quot;: &amp;quot;sg-00000000&amp;quot;,
+            &amp;quot;service&amp;quot;: &amp;quot;test-generated-id&amp;quot;,
+            &amp;quot;tags&amp;quot;: {
+                &amp;quot;Name&amp;quot;: &amp;quot;test-elb&amp;quot;,
+                &amp;quot;ernest.service&amp;quot;: &amp;quot;test&amp;quot;
+            },
+            &amp;quot;vpc&amp;quot;: &amp;quot;test-vpc&amp;quot;,
+            &amp;quot;vpc_id&amp;quot;: &amp;quot;vpc-00000000&amp;quot;
+        },
+        {
+            &amp;quot;_action&amp;quot;: &amp;quot;delete&amp;quot;,
+            &amp;quot;_component&amp;quot;: &amp;quot;instance&amp;quot;,
+            &amp;quot;_component_id&amp;quot;: &amp;quot;instance::test-web-1&amp;quot;,
+            &amp;quot;_provider&amp;quot;: &amp;quot;aws&amp;quot;,
+            &amp;quot;_state&amp;quot;: &amp;quot;completed&amp;quot;,
+            &amp;quot;assign_elastic_ip&amp;quot;: false,    
+            &amp;quot;elastic_ip&amp;quot;: &amp;quot;&amp;quot;,
+            &amp;quot;image&amp;quot;: &amp;quot;ami-ed82e39e&amp;quot;,
+            &amp;quot;instance_aws_id&amp;quot;: &amp;quot;i-00000000000000000&amp;quot;,
+            &amp;quot;instance_type&amp;quot;: &amp;quot;t2.micro&amp;quot;,
+            &amp;quot;ip&amp;quot;: &amp;quot;10.0.11.11&amp;quot;,
+            &amp;quot;key_pair&amp;quot;: &amp;quot;test&amp;quot;,
+            &amp;quot;name&amp;quot;: &amp;quot;test-web-1&amp;quot;,
+            &amp;quot;network_aws_id&amp;quot;: &amp;quot;subnet-00000000&amp;quot;,
+            &amp;quot;network_is_public&amp;quot;: false,
+            &amp;quot;network_name&amp;quot;: &amp;quot;test-dmz&amp;quot;,
+            &amp;quot;public_ip&amp;quot;: &amp;quot;52.48.98.107&amp;quot;,
+            &amp;quot;security_group_aws_ids&amp;quot;: [
+                &amp;quot;sg-00000000&amp;quot;
+            ],
+            &amp;quot;security_groups&amp;quot;: [
+                &amp;quot;test-vm&amp;quot;
+            ],
+            &amp;quot;service&amp;quot;: &amp;quot;test-generated-id&amp;quot;,
+            &amp;quot;tags&amp;quot;: {
+                &amp;quot;Name&amp;quot;: &amp;quot;test-web-1&amp;quot;,
+                &amp;quot;ernest.instance_group&amp;quot;: &amp;quot;test-web&amp;quot;,
+                &amp;quot;ernest.service&amp;quot;: &amp;quot;test&amp;quot;
+            },
+            &amp;quot;user_data&amp;quot;: &amp;quot;&amp;quot;,
+            &amp;quot;volumes&amp;quot;: null
+        },
+        {
+            &amp;quot;_action&amp;quot;: &amp;quot;delete&amp;quot;,
+            &amp;quot;_component&amp;quot;: &amp;quot;elb&amp;quot;,
+            &amp;quot;_component_id&amp;quot;: &amp;quot;elb::test-elb&amp;quot;,
+            &amp;quot;_provider&amp;quot;: &amp;quot;aws&amp;quot;,
+            &amp;quot;_state&amp;quot;: &amp;quot;completed&amp;quot;,
+            &amp;quot;dns_name&amp;quot;: &amp;quot;test-elb-1103626973.eu-west-1.elb.amazonaws.com&amp;quot;,
+            &amp;quot;instance_aws_ids&amp;quot;: [
+                &amp;quot;i-00000000000000000&amp;quot;
+            ],
+            &amp;quot;instance_names&amp;quot;: [
+                &amp;quot;test-web-1&amp;quot;
+            ],
+            &amp;quot;instances&amp;quot;: [
+                &amp;quot;test-web&amp;quot;
+            ],
+            &amp;quot;is_private&amp;quot;: false,
+            &amp;quot;listeners&amp;quot;: [
+                {
+                    &amp;quot;from_port&amp;quot;: 80,
+                    &amp;quot;protocol&amp;quot;: &amp;quot;HTTP&amp;quot;,
+                    &amp;quot;ssl_cert&amp;quot;: &amp;quot;&amp;quot;,
+                    &amp;quot;to_port&amp;quot;: 80
+                }
+            ],
+            &amp;quot;name&amp;quot;: &amp;quot;test-elb&amp;quot;,
+            &amp;quot;network_aws_ids&amp;quot;: [
+                &amp;quot;subnet-00000000&amp;quot;
+            ],
+            &amp;quot;networks&amp;quot;: [
+                &amp;quot;test-dmz&amp;quot;
+            ],
+            &amp;quot;security_group_aws_ids&amp;quot;: [
+                &amp;quot;sg-00000000&amp;quot;
+            ],
+            &amp;quot;security_groups&amp;quot;: [
+                &amp;quot;test-elb&amp;quot;
+            ],
+            &amp;quot;service&amp;quot;: &amp;quot;test-generated-id&amp;quot;,
+            &amp;quot;tags&amp;quot;: {
+                &amp;quot;ernest.service&amp;quot;: &amp;quot;test&amp;quot;
+            }
+        }
+    ]
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;You can change, add or remove as many component batches as you want, they will need to be represented as part of the workflow too.&lt;/p&gt;
-
-&lt;p&gt;In order to build workflows, you can have a look at &lt;a href=&#34;https://github.com/r3labs/workflow&#34;&gt;workflow library&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Workflow-manager will send a &lt;b&gt;components.verb&lt;/b&gt; for each transition you’ve defined on your workflow, and will wait for &lt;b&gt;component.verb.status&lt;/b&gt;, where status can be &lt;b&gt;done&lt;/b&gt; or &lt;b&gt;error&lt;/b&gt;.&lt;/p&gt;
-
-&lt;p&gt;You will find a more up to date documentation on the repo &lt;a href=&#34;https://github.com/ernestio/workflow-manager/blob/develop/README.md&#34;&gt;README&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;component-builders&#34;&gt;Component builders&lt;/h2&gt;
-
-&lt;p&gt;A builder is basically a component scheduler. It receives a list of components and processes each component sequentially or in parallel.&lt;/p&gt;
-
-&lt;h3 id=&#34;sequential-processing&#34;&gt;Sequential processing&lt;/h3&gt;
-
-&lt;p&gt;In order to process the component sequentially you should set the field «sequential_processing» to true .&lt;/p&gt;
-
-&lt;h3 id=&#34;dependencies-1&#34;&gt;Dependencies&lt;/h3&gt;
-
-&lt;p&gt;In order to track the state of all components in a collection, state is stored on redis. When all components have completed, a return event is sent.&lt;/p&gt;
-
-&lt;h2 id=&#34;adapters-1&#34;&gt;Adapters&lt;/h2&gt;
-
-&lt;p&gt;An adapter is getting an order for a single component creation and it decides which connector will process this creation.&lt;/p&gt;
-
-&lt;p&gt;Some of them use a translator so the internal component structure gets adapted to the connector, however, just as we are doing with builders, we’re trying to deliver as many adapters as possible on top of the generic-adapter.&lt;/p&gt;
+&lt;p&gt;You will find a more up to date documentation on the repo &lt;a href=&#34;https://github.com/ernestio/scheduler/blob/develop/README.md&#34;&gt;README&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;connectors-1&#34;&gt;Connectors&lt;/h2&gt;
 
@@ -4743,6 +4798,174 @@ If it is not possible or desirable to put the notice in a particular file, then 
 &lt;h2 id=&#34;exhibit-b-incompatible-with-secondary-licenses-notice&#34;&gt;Exhibit B - “Incompatible With Secondary Licenses” Notice&lt;/h2&gt;
 
 &lt;p&gt;This Source Code Form is “Incompatible With Secondary Licenses”, as defined by the Mozilla Public License, v. 2.0.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Support Plan Contact Form</title>
+      <link>http://docs.ernest.io/supportplan/</link>
+      <pubDate>Wed, 09 Mar 2016 20:08:11 +0100</pubDate>
+      
+      <guid>http://docs.ernest.io/supportplan/</guid>
+      <description>&lt;form class=&#34;form-horizontal&#34; id=&#34;input-form&#34; action=&#34;https://docs.google.com/forms/d/1t_F8UU5CebFIWe2rCU7xlBPk-z0ISN_V6v2bcktsoH0/formResponse?&#34; method=&#34;POST&#34; target=&#34;no-target&#34; onSubmit=&#34;alert(&#39;Thank you for your query, we will respond shortly.&#39;);window.location.href = &#39;/support/&#39;;&#34;&gt;
+&lt;fieldset&gt;
+
+&lt;legend&gt;&lt;/legend&gt;
+
+&lt;div class=&#34;form-group&#34;&gt;
+  &lt;label for=&#34;firstname&#34;&gt;First Name&lt;/label&gt;  
+  &lt;input id=&#34;firstname&#34; name=&#34;entry.706791366&#34; type=&#34;text&#34; placeholder=&#34;First Name&#34; class=&#34;form-control&#34; required=&#34;&#34;&gt;
+&lt;/div&gt;
+
+&lt;div class=&#34;form-group&#34;&gt;
+  &lt;label for=&#34;lastname&#34;&gt;Last Name&lt;/label&gt;  
+  &lt;input id=&#34;lastname&#34; name=&#34;entry.1072744609&#34; type=&#34;text&#34; placeholder=&#34;Last Name&#34; class=&#34;form-control&#34; required=&#34;&#34;&gt;
+&lt;/div&gt;
+
+&lt;div class=&#34;form-group&#34;&gt;
+  &lt;label for=&#34;email&#34;&gt;Email Address&lt;/label&gt;  
+  &lt;input id=&#34;email&#34; name=&#34;entry.1586474514&#34; type=&#34;text&#34; placeholder=&#34;Email Address&#34; class=&#34;form-control&#34; required=&#34;&#34;&gt;
+&lt;/div&gt;
+
+&lt;div class=&#34;form-group&#34;&gt;
+  &lt;label for=&#34;plan&#34;&gt;Support Plan&lt;/label&gt;
+  &lt;div&gt;
+    &lt;input type=&#34;radio&#34; name=&#34;entry.1568716440&#34; id=&#34;plan-0&#34; value=&#34;Standard&#34; checked=&#34;checked&#34;&gt;
+    &lt;label for=&#34;plan-0&#34;&gt;
+      &lt;span&gt;&lt;/span&gt;Standard
+    &lt;/label&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;input type=&#34;radio&#34; name=&#34;entry.1568716440&#34; id=&#34;plan-1&#34; value=&#34;Premium&#34;&gt;
+    &lt;label for=&#34;plan-1&#34;&gt;
+      &lt;span&gt;&lt;/span&gt;Premium
+    &lt;/label&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&#34;form-group&#34;&gt;
+  &lt;label for=&#34;submit&#34;&gt;&lt;/label&gt;
+    &lt;button id=&#34;submit&#34; type=&#34;submit&#34; class=&#34;btn btn-success&#34;&gt;Submit&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;/fieldset&gt;
+&lt;/form&gt;
+
+&lt;iframe src=&#34;#&#34; id=&#34;no-target&#34; name=&#34;no-target&#34; style=&#34;visibility:hidden&#34;&gt;&lt;/iframe&gt;</description>
+    </item>
+    
+    <item>
+      <title>vCloud Account Creation Request Form</title>
+      <link>http://docs.ernest.io/vcloud-account/</link>
+      <pubDate>Wed, 09 Mar 2016 20:08:11 +0100</pubDate>
+      
+      <guid>http://docs.ernest.io/vcloud-account/</guid>
+      <description>&lt;form class=&#34;form-horizontal&#34; id=&#34;input-form&#34; action=&#34;https://docs.google.com/forms/d/1VgjUkBjZQw-xSt1-8debb4Wk7FQhDr2vb-jrH3byKd4/formResponse?&#34; method=&#34;POST&#34; target=&#34;no-target&#34; onSubmit=&#34;alert(&#39;Thank you for your request, we will process it shortly.&#39;);window.location.href = &#39;/documentation/#vcloud-director-examples&#39;;&#34;&gt;
+&lt;fieldset&gt;
+
+&lt;legend&gt;&lt;/legend&gt;
+
+&lt;div class=&#34;form-group&#34;&gt;
+  &lt;label for=&#34;firstname&#34;&gt;First Name&lt;/label&gt;  
+  &lt;input id=&#34;firstname&#34; name=&#34;entry.1042863238&#34; type=&#34;text&#34; placeholder=&#34;First Name&#34; class=&#34;form-control&#34; required=&#34;&#34;&gt;
+&lt;/div&gt;
+
+&lt;div class=&#34;form-group&#34;&gt;
+  &lt;label for=&#34;lastname&#34;&gt;Last Name&lt;/label&gt;  
+  &lt;input id=&#34;lastname&#34; name=&#34;entry.893089123&#34; type=&#34;text&#34; placeholder=&#34;Last Name&#34; class=&#34;form-control&#34; required=&#34;&#34;&gt;
+&lt;/div&gt;
+
+&lt;div class=&#34;form-group&#34;&gt;
+  &lt;label class=&#34;col-md-4 control-label&#34; for=&#34;email&#34;&gt;Email Address&lt;/label&gt;  
+  &lt;input id=&#34;email&#34; name=&#34;entry.1081522787&#34; type=&#34;text&#34; placeholder=&#34;Email Address&#34; class=&#34;form-control&#34; required=&#34;&#34;&gt;
+&lt;/div&gt;
+
+&lt;div class=&#34;form-group&#34;&gt;
+  &lt;label for=&#34;submit&#34;&gt;&lt;/label&gt;
+    &lt;button id=&#34;submit&#34; type=&#34;submit&#34; class=&#34;btn btn-success&#34;&gt;Submit&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;/fieldset&gt;
+&lt;/form&gt;
+
+&lt;iframe src=&#34;#&#34; id=&#34;no-target&#34; name=&#34;no-target&#34; style=&#34;visibility:hidden&#34;&gt;&lt;/iframe&gt;</description>
+    </item>
+    
+    <item>
+      <title>Community Slack Channel Access Form</title>
+      <link>http://docs.ernest.io/slack/</link>
+      <pubDate>Wed, 09 Mar 2016 19:56:50 +0100</pubDate>
+      
+      <guid>http://docs.ernest.io/slack/</guid>
+      <description>&lt;form class=&#34;form-horizontal&#34; id=&#34;input-form&#34; action=&#34;https://docs.google.com/forms/d/1t0olvu3MQNBdz3oTKLm_NczBeFzL8AnIeMOrQwfAKF4/formResponse?&#34; method=&#34;POST&#34; target=&#34;no-target&#34; onSubmit=&#34;alert(&#39;Thank you for your request, we will process it shortly.&#39;);window.location.href = &#39;/community/&#39;;&#34;&gt;
+&lt;fieldset&gt;
+
+&lt;legend&gt;&lt;/legend&gt;
+
+&lt;div class=&#34;form-group&#34;&gt;
+  &lt;label for=&#34;firstname&#34;&gt;First Name: &lt;/label&gt;  
+  &lt;input id=&#34;firstname&#34; name=&#34;entry.1042863238&#34; type=&#34;text&#34; class=&#34;form-control&#34; placeholder=&#34;First Name&#34; required=&#34;&#34;&gt;
+&lt;/div&gt;
+
+&lt;div class=&#34;form-group&#34;&gt;
+  &lt;label for=&#34;lastname&#34;&gt;Last Name: &lt;/label&gt;  
+  &lt;input id=&#34;lastname&#34; name=&#34;entry.893089123&#34; type=&#34;text&#34; class=&#34;form-control&#34; placeholder=&#34;Last Name&#34; required=&#34;&#34;&gt;
+&lt;/div&gt;
+
+&lt;div class=&#34;form-group&#34;&gt;
+  &lt;label for=&#34;email&#34;&gt;Email Address: &lt;/label&gt;  
+  &lt;input id=&#34;email&#34; name=&#34;entry.1081522787&#34; type=&#34;text&#34; class=&#34;form-control&#34; placeholder=&#34;Email Address&#34; required=&#34;&#34;&gt;
+&lt;/div&gt;
+
+&lt;div class=&#34;form-group&#34;&gt;
+  &lt;label for=&#34;submit&#34;&gt;&lt;/label&gt;
+  &lt;div&gt;
+    &lt;button id=&#34;submit&#34; type=&#34;submit&#34; class=&#34;btn btn-success&#34;&gt;Submit&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/fieldset&gt;
+&lt;/form&gt;
+
+&lt;iframe src=&#34;#&#34; id=&#34;no-target&#34; name=&#34;no-target&#34; style=&#34;visibility:hidden&#34;&gt;&lt;/iframe&gt;</description>
+    </item>
+    
+    <item>
+      <title>Ernest</title>
+      <link>http://docs.ernest.io/</link>
+      <pubDate>Wed, 09 Mar 2016 00:11:02 +0100</pubDate>
+      
+      <guid>http://docs.ernest.io/</guid>
+      <description>
+
+&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;Ernest is an application and infrastructure orchestration and automation engine. Ernest takes the complexity and people out of DevOps, simplifying the process of creating and managing even the most complex environments.&lt;/p&gt;
+
+&lt;p&gt;By delivering everything a development team requires to be able to deploy code and manage its lifecycle Ernest de-risks and accelerates the application development/deployment process, helping developers to deliver value back to the business faster and providing increased business agility&lt;/p&gt;
+
+&lt;p&gt;Ernest has been engineered for flexibility, allowing you to design your environment the way you want. You pick the technologies, the cloud and the architecture then overlay your compliance and governance requirements.&lt;/p&gt;
+
+&lt;p&gt;The Cloud is about freedom of choice and mobility. With Ernest you can easily deploy your environment onto the cloud or infrastructure of your choice and the redeploy it to an alternative cloud as business requirements demand.&lt;/p&gt;
+
+&lt;p&gt;Because Ernest is about developing and then using software reliably and reproducibly it ensures consistency and agility throughout the application lifecycle. Ernest brings the same version control, testing and configuration management tooling you use elsewhere in your development process to your platform; allowing you to utilise version controlled, tested, automated deployments of your environment from the development stage, through testing, to production.&lt;/p&gt;
+
+&lt;h2 id=&#34;key-features&#34;&gt;Key features&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;A Continuous Delivery pipeline for Infrastructure as Code&lt;/li&gt;
+&lt;li&gt;An orchestration tool for any configuration manager and any cloud&lt;/li&gt;
+&lt;li&gt;Fully version controlled&lt;/li&gt;
+&lt;li&gt;Fully automated&lt;/li&gt;
+&lt;li&gt;Works with any technology stack&lt;/li&gt;
+&lt;li&gt;Able to manage the full application life cycle&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Ernest is built around the idea that DevOps is not a job title, but a methodology, one which Ernest has enshrined in code. Ernest enables digital and SaaS transformation, while removing the complexity of DevOps by delivering it as-a-Service.&lt;/p&gt;
+
+&lt;h2 id=&#34;next-steps&#34;&gt;Next steps&lt;/h2&gt;
+
+&lt;p&gt;Follow the instructions &lt;a href=&#34;http://docs.ernest.io/downloads/&#34;&gt;here&lt;/a&gt; to get Ernest and the Ernest CLI. Once we have done that we can &lt;a href=&#34;http://docs.ernest.io/getting-started/&#34;&gt;start working&lt;/a&gt; with them.&lt;/p&gt;
 </description>
     </item>
     
