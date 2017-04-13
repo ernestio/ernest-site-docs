@@ -144,7 +144,7 @@
         </div>
       
       <div class="name">
-        <strong>Ernest <span class="version">1.12.0</span></strong>
+        <strong>Ernest <span class="version">2.0.0</span></strong>
         
           <br>
           ernestio/ernest
@@ -376,10 +376,6 @@
 
 <p>Below are instructions for installing the latest stable release of Ernest (<a href="https://github.com/ernestio/ernest/releases">Release Notes</a>).</p>
 
-<h2 id="docker">Docker</h2>
-
-<p>Ideal for: production Ernest.</p>
-
 <p>Requirements: <a href="https://docs.docker.com/engine/installation/">Docker</a>, <a href="https://docs.docker.com/compose/install/">Docker Compose</a>, <a href="https://www.openssl.org">OpenSSL</a>.</p>
 
 <ol>
@@ -389,7 +385,7 @@
 
 <li><p>Run the setup script: <code>./setup</code></p></li>
 
-<li><p>Enter the hostname when prompted.</p></li>
+<li><p>Enter the hostname, admin username, and admin password when prompted.</p></li>
 </ol>
 
 <p>Once the container is up Ernest will be available on IP of the Docker host.</p>
@@ -400,9 +396,47 @@
 
 <p>After downloading Ernest CLI, unzip it and move the binary to a directory that is on the PATH. See <a href="http://stackoverflow.com/questions/14637979/how-to-permanently-set-path-on-linux">this page</a> for instructions on setting the PATH on Linux and Mac. See <a href="http://stackoverflow.com/questions/1618280/where-can-i-set-path-to-make-exe-on-windows">this</a> page for instructions on setting the PATH in Windows.</p>
 
-<h2 id="get-salt">Get Salt</h2>
+<h2 id="upgrade-ernest">Upgrade Ernest</h2>
 
-<p>The Salt image can be downloaded from <a href="http://download.ernest.io/r3-salt-master.zip">here</a>. For the current version of Ernest it is not possible to specify the vCloud catalog name that Ernest will get the Salt image from, you will need to place the image in a catalog named ‘r3’.</p>
+<h3 id="from-1-x-x-to-1-y-y">From 1.x.x to 1.y.y</h3>
+
+<ol>
+<li><p>Shutdown Ernest: <code>docker-compose down</code></p></li>
+
+<li><p>Pull down the latest version of Ernest: <code>git checkout docker-compose.yml &amp;&amp; git checkout config/nginx/ernest.local &amp;&amp; git checkout master &amp;&amp; git pull</code></p></li>
+
+<li><p>Run the setup script: <code>./setup</code></p></li>
+</ol>
+
+<h3 id="from-1-12-0-to-2-0-0">From 1.12.0 to 2.0.0</h3>
+
+<blockquote>
+<p><strong><em>Ernest 2.0.0 introduces backwards incompatible changes to the internal naming structure for AWS environments. Therefore it is necessary to re-import your existing environments into Ernest once you have upgraded to 2.0.0.</em></strong></p>
+</blockquote>
+
+<ol>
+<li><p>Shutdown Ernest: <code>docker-compose down</code></p></li>
+
+<li><p>Pull down the latest version of Ernest: <code>git checkout docker-compose.yml &amp;&amp; git checkout config/nginx/ernest.local &amp;&amp; git checkout master &amp;&amp; git pull</code></p></li>
+
+<li><p>Run the setup script: <code>./setup</code></p></li>
+
+<li><p>For internet gateways update the &lsquo;Name&rsquo; tag to match the &lsquo;Name&rsquo; tag of the VPC the gateway is attached to. Also add the &lsquo;ernest.service&rsquo; tag to the gateway with a value equal to the service name.</p></li>
+
+<li><p>For instances prepend the &lsquo;ernest.instance_group&rsquo; tag with &lsquo;<dc_name>-<service_name>-&lsquo;.</p></li>
+
+<li><p>For volumes prepend the &lsquo;ernest.volume_group&rsquo; tag with &lsquo;<dc_name>-<service_name>-&lsquo;.</p></li>
+
+<li><p>Unregister each service from Ernest: <code>ernest service destroy &lt;service_name&gt; --force</code></p></li>
+</ol>
+
+<blockquote>
+<p>Note this remove record of the service from Ernest, it does not remove the service from AWS.</p>
+</blockquote>
+
+<ol>
+<li>Import each service into Ernest: <code>ernest service import &lt;dc_name&gt; &lt;service_name&gt;</code></li>
+</ol>
 
 
 			<aside class="copyright" role="note">

@@ -144,7 +144,7 @@
         </div>
       
       <div class="name">
-        <strong>Ernest <span class="version">1.12.0</span></strong>
+        <strong>Ernest <span class="version">2.0.0</span></strong>
         
           <br>
           ernestio/ernest
@@ -1159,73 +1159,6 @@ COMMANDS:
 OPTIONS:
    --help, -h  show help
 </code></pre>
-
-<h2 id="bootstrapping-with-salt">Bootstrapping with Salt</h2>
-
-<p>Once we have created our servers we may want to install and configure software on them (bootstrap them). We can use Ernest to bootstrap the servers for us.</p>
-
-<p>Ernest uses <a href="https://saltstack.com/">Salt</a> for bootstrapping. When you enable Salt bootstrapping in an environment Ernest deploys a small footprint Salt Master into the environment. Ernest then instructs the Salt Master to install the Salt Minion on each server, and have each server register themselves with the Salt Master.</p>
-
-<p>Once the servers have been registered we can securely communicate with them from Ernest, and execute remote commands on them. These commands can be included in the YAML that defines the environment. You can find an example of bootstrapping [here].</p>
-
-<p>If you wish to use Salt bootstrapping the supported OS versions and OS-specific requirements are shown in the following table:</p>
-
-<table>
-<thead>
-<tr>
-<th align="center">OS</th>
-<th align="center">Windows</th>
-<th align="center">CentOS</th>
-<th align="center">Ubuntu</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="center">Supported Versions</td>
-<td align="center">2012r2 and newer</td>
-<td align="center">6.5 and newer</td>
-<td align="center">14.04 and newer</td>
-</tr>
-
-<tr>
-<td align="center">Installation Method</td>
-<td align="center">WinRM</td>
-<td align="center">SSH</td>
-<td align="center">SSH</td>
-</tr>
-
-<tr>
-<td align="center">Username</td>
-<td align="center">ernest</td>
-<td align="center">ernest</td>
-<td align="center">ernest</td>
-</tr>
-
-<tr>
-<td align="center">Password</td>
-<td align="center">b00tStr4pp3rR</td>
-<td align="center">b00tStr4pp3rR</td>
-<td align="center">b00tStr4pp3rR</td>
-</tr>
-
-<tr>
-<td align="center">Privilege Level</td>
-<td align="center">local administrator</td>
-<td align="center">passwordless sudo</td>
-<td align="center">passwordless sudo</td>
-</tr>
-
-<tr>
-<td align="center">Notes</td>
-<td align="center">-</td>
-<td align="center">disable sudo tty req</td>
-<td align="center">disable sudo tty req</td>
-</tr>
-</tbody>
-</table>
-
-<p>You can download the Salt Master image from the <a href="http://docs.ernest.io/downloads/">Download page</a>.</p>
 
 <h2 id="amazon-web-services">Amazon Web Services</h2>
 

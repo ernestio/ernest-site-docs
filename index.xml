@@ -201,11 +201,11 @@
 Target set
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;10.50.1.11 is the IP address Ernest will be on if you are using the Vagrant Box. If you download the OVF or build Ernest from source then Ernest may be run on a different IP.&lt;/p&gt;
+&lt;p&gt;where 10.50.1.11 is the IP address of the host running our Ernest instance.&lt;/p&gt;
 
 &lt;p&gt;Login to Ernest as admin:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ ernest login --user admin --password w4rmR3d
+&lt;pre&gt;&lt;code&gt;$ ernest login --user admin --password abc123
 Welcome back admin
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -248,13 +248,19 @@ Datacenter &#39;my-dc&#39; successfully created
 &lt;pre&gt;&lt;code&gt;---
 name: demo
 datacenter: my-dc
-vpc_id: vpc-abcdef01
+
+vpcs:
+  - name: my-vpc
+    subnet: 10.0.0.0/16
+    auto_remove: true
 
 networks:
   - name: public
+    vpc: my-vpc
     subnet: 10.0.10.0/24
     public: true
   - name: private
+    vpc: my-vpc
     subnet: 10.0.11.0/24
     public: false
     nat_gateway: private-nat
@@ -265,6 +271,7 @@ nat_gateways:
 
 security_groups:
   - name: public-sg
+    vpc: my-vpc
     egress:
       - ip: 0.0.0.0/0
         protocol: any
@@ -276,6 +283,7 @@ security_groups:
         from_port: &#39;22&#39;
         to_port: &#39;22&#39;
   - name: private-sg
+    vpc: my-vpc
     egress:
       - ip: 0.0.0.0/0
         protocol: any
@@ -314,61 +322,40 @@ instances:
 &lt;p&gt;Now we can apply our YAML:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;$ ernest service apply demo.yml
-
 Environment creation requested
 Ernest will show you all output from your requested service creation
 You can cancel at any moment with Ctrl+C, even the service is still being created, you won&#39;t have any output
-
-Starting environment creation
-
-Creating networks:
- - my-dc-demo-public
-   IP     : 10.0.10.0/24
-   AWS ID : subnet-defabc01
+Applying you definition
+ Created VPC 
+   Subnet    : 10.0.0.0/16
+   Status    : completed
+ Created Internet Gateway my-vpc
+   AWS ID : igw-46d2d12f
    Status : completed
- - my-dc-demo-private
-   IP     : 10.0.11.0/24
-   AWS ID : subnet-defabc02
+ Created Network private
+   Subnet : 10.0.11.0/24
+   AWS ID : subnet-ec95dc84
    Status : completed
-Networks successfully created
-
-Creating firewalls:
- - my-dc-demo-public-sg
+ Created Firewall public-sg
    Status    : completed
- - my-dc-demo-private-sg
+ Created Firewall private-sg
    Status    : completed
-Firewalls created
-
-Creating instances:
- - my-dc-demo-public-1
-   IP        : 10.0.10.11
-   AWS ID    : i-abcdef01abcdef011
-   Status    : completed
- - my-dc-demo-private-1
+ Created Network public
+   Subnet : 10.0.10.0/24
+   AWS ID : subnet-2294dd4a
+   Status : completed
+ Created Instance private-1
    IP        : 10.0.11.11
-   AWS ID    : i-abcdef01abcdef012
+   AWS ID    : i-04731288df658cab9
    Status    : completed
-Instances successfully created
-
-Updating instances:
- - my-dc-demo-public-1
+ Created Instance public-1
    IP        : 10.0.10.11
-   PUBLIC IP : 52.210.179.96
-   AWS ID    : i-abcdef01abcdef011
+   PUBLIC IP : 52.58.250.234
+   AWS ID    : i-0a9f811ea1242adc1
    Status    : completed
- - my-dc-demo-private-1
-   IP        : 10.0.11.11
-   PUBLIC IP :
-   AWS ID    : i-abcdef01abcdef012
+ Created Nat private-nat
    Status    : completed
-Instances successfully updated
-
-Creating nats:
- - my-dc-demo-private-nat
-   Status    : completed
-Nats created
 SUCCESS: rules successfully applied
-Your environment endpoint is:
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Congratulations you have built something with Ernest!&lt;/p&gt;
@@ -1179,73 +1166,6 @@ COMMANDS:
 OPTIONS:
    --help, -h  show help
 &lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;bootstrapping-with-salt&#34;&gt;Bootstrapping with Salt&lt;/h2&gt;
-
-&lt;p&gt;Once we have created our servers we may want to install and configure software on them (bootstrap them). We can use Ernest to bootstrap the servers for us.&lt;/p&gt;
-
-&lt;p&gt;Ernest uses &lt;a href=&#34;https://saltstack.com/&#34;&gt;Salt&lt;/a&gt; for bootstrapping. When you enable Salt bootstrapping in an environment Ernest deploys a small footprint Salt Master into the environment. Ernest then instructs the Salt Master to install the Salt Minion on each server, and have each server register themselves with the Salt Master.&lt;/p&gt;
-
-&lt;p&gt;Once the servers have been registered we can securely communicate with them from Ernest, and execute remote commands on them. These commands can be included in the YAML that defines the environment. You can find an example of bootstrapping [here].&lt;/p&gt;
-
-&lt;p&gt;If you wish to use Salt bootstrapping the supported OS versions and OS-specific requirements are shown in the following table:&lt;/p&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&#34;center&#34;&gt;OS&lt;/th&gt;
-&lt;th align=&#34;center&#34;&gt;Windows&lt;/th&gt;
-&lt;th align=&#34;center&#34;&gt;CentOS&lt;/th&gt;
-&lt;th align=&#34;center&#34;&gt;Ubuntu&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align=&#34;center&#34;&gt;Supported Versions&lt;/td&gt;
-&lt;td align=&#34;center&#34;&gt;2012r2 and newer&lt;/td&gt;
-&lt;td align=&#34;center&#34;&gt;6.5 and newer&lt;/td&gt;
-&lt;td align=&#34;center&#34;&gt;14.04 and newer&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;center&#34;&gt;Installation Method&lt;/td&gt;
-&lt;td align=&#34;center&#34;&gt;WinRM&lt;/td&gt;
-&lt;td align=&#34;center&#34;&gt;SSH&lt;/td&gt;
-&lt;td align=&#34;center&#34;&gt;SSH&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;center&#34;&gt;Username&lt;/td&gt;
-&lt;td align=&#34;center&#34;&gt;ernest&lt;/td&gt;
-&lt;td align=&#34;center&#34;&gt;ernest&lt;/td&gt;
-&lt;td align=&#34;center&#34;&gt;ernest&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;center&#34;&gt;Password&lt;/td&gt;
-&lt;td align=&#34;center&#34;&gt;b00tStr4pp3rR&lt;/td&gt;
-&lt;td align=&#34;center&#34;&gt;b00tStr4pp3rR&lt;/td&gt;
-&lt;td align=&#34;center&#34;&gt;b00tStr4pp3rR&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;center&#34;&gt;Privilege Level&lt;/td&gt;
-&lt;td align=&#34;center&#34;&gt;local administrator&lt;/td&gt;
-&lt;td align=&#34;center&#34;&gt;passwordless sudo&lt;/td&gt;
-&lt;td align=&#34;center&#34;&gt;passwordless sudo&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;center&#34;&gt;Notes&lt;/td&gt;
-&lt;td align=&#34;center&#34;&gt;-&lt;/td&gt;
-&lt;td align=&#34;center&#34;&gt;disable sudo tty req&lt;/td&gt;
-&lt;td align=&#34;center&#34;&gt;disable sudo tty req&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;You can download the Salt Master image from the &lt;a href=&#34;http://docs.ernest.io/downloads/&#34;&gt;Download page&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2 id=&#34;amazon-web-services&#34;&gt;Amazon Web Services&lt;/h2&gt;
 
@@ -3956,10 +3876,6 @@ Networks is a map with two fields&lt;/p&gt;
 
 &lt;p&gt;Below are instructions for installing the latest stable release of Ernest (&lt;a href=&#34;https://github.com/ernestio/ernest/releases&#34;&gt;Release Notes&lt;/a&gt;).&lt;/p&gt;
 
-&lt;h2 id=&#34;docker&#34;&gt;Docker&lt;/h2&gt;
-
-&lt;p&gt;Ideal for: production Ernest.&lt;/p&gt;
-
 &lt;p&gt;Requirements: &lt;a href=&#34;https://docs.docker.com/engine/installation/&#34;&gt;Docker&lt;/a&gt;, &lt;a href=&#34;https://docs.docker.com/compose/install/&#34;&gt;Docker Compose&lt;/a&gt;, &lt;a href=&#34;https://www.openssl.org&#34;&gt;OpenSSL&lt;/a&gt;.&lt;/p&gt;
 
 &lt;ol&gt;
@@ -3969,7 +3885,7 @@ Networks is a map with two fields&lt;/p&gt;
 
 &lt;li&gt;&lt;p&gt;Run the setup script: &lt;code&gt;./setup&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
 
-&lt;li&gt;&lt;p&gt;Enter the hostname when prompted.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Enter the hostname, admin username, and admin password when prompted.&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;Once the container is up Ernest will be available on IP of the Docker host.&lt;/p&gt;
@@ -3980,9 +3896,47 @@ Networks is a map with two fields&lt;/p&gt;
 
 &lt;p&gt;After downloading Ernest CLI, unzip it and move the binary to a directory that is on the PATH. See &lt;a href=&#34;http://stackoverflow.com/questions/14637979/how-to-permanently-set-path-on-linux&#34;&gt;this page&lt;/a&gt; for instructions on setting the PATH on Linux and Mac. See &lt;a href=&#34;http://stackoverflow.com/questions/1618280/where-can-i-set-path-to-make-exe-on-windows&#34;&gt;this&lt;/a&gt; page for instructions on setting the PATH in Windows.&lt;/p&gt;
 
-&lt;h2 id=&#34;get-salt&#34;&gt;Get Salt&lt;/h2&gt;
+&lt;h2 id=&#34;upgrade-ernest&#34;&gt;Upgrade Ernest&lt;/h2&gt;
 
-&lt;p&gt;The Salt image can be downloaded from &lt;a href=&#34;http://download.ernest.io/r3-salt-master.zip&#34;&gt;here&lt;/a&gt;. For the current version of Ernest it is not possible to specify the vCloud catalog name that Ernest will get the Salt image from, you will need to place the image in a catalog named ‘r3’.&lt;/p&gt;
+&lt;h3 id=&#34;from-1-x-x-to-1-y-y&#34;&gt;From 1.x.x to 1.y.y&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Shutdown Ernest: &lt;code&gt;docker-compose down&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Pull down the latest version of Ernest: &lt;code&gt;git checkout docker-compose.yml &amp;amp;&amp;amp; git checkout config/nginx/ernest.local &amp;amp;&amp;amp; git checkout master &amp;amp;&amp;amp; git pull&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Run the setup script: &lt;code&gt;./setup&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;from-1-12-0-to-2-0-0&#34;&gt;From 1.12.0 to 2.0.0&lt;/h3&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Ernest 2.0.0 introduces backwards incompatible changes to the internal naming structure for AWS environments. Therefore it is necessary to re-import your existing environments into Ernest once you have upgraded to 2.0.0.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Shutdown Ernest: &lt;code&gt;docker-compose down&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Pull down the latest version of Ernest: &lt;code&gt;git checkout docker-compose.yml &amp;amp;&amp;amp; git checkout config/nginx/ernest.local &amp;amp;&amp;amp; git checkout master &amp;amp;&amp;amp; git pull&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Run the setup script: &lt;code&gt;./setup&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;For internet gateways update the &amp;lsquo;Name&amp;rsquo; tag to match the &amp;lsquo;Name&amp;rsquo; tag of the VPC the gateway is attached to. Also add the &amp;lsquo;ernest.service&amp;rsquo; tag to the gateway with a value equal to the service name.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;For instances prepend the &amp;lsquo;ernest.instance_group&amp;rsquo; tag with &amp;lsquo;&lt;dc_name&gt;-&lt;service_name&gt;-&amp;lsquo;.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;For volumes prepend the &amp;lsquo;ernest.volume_group&amp;rsquo; tag with &amp;lsquo;&lt;dc_name&gt;-&lt;service_name&gt;-&amp;lsquo;.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Unregister each service from Ernest: &lt;code&gt;ernest service destroy &amp;lt;service_name&amp;gt; --force&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Note this remove record of the service from Ernest, it does not remove the service from AWS.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Import each service into Ernest: &lt;code&gt;ernest service import &amp;lt;dc_name&amp;gt; &amp;lt;service_name&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
 </description>
     </item>
     
