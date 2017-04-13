@@ -18,12 +18,12 @@ $ ernest target https://10.50.1.11
 Target set
 ```
 
-10.50.1.11 is the IP address Ernest will be on if you are using the Vagrant Box. If you download the OVF or build Ernest from source then Ernest may be run on a different IP.
+where 10.50.1.11 is the IP address of the host running our Ernest instance.
 
 Login to Ernest as admin:
 
 ```
-$ ernest login --user admin --password w4rmR3d
+$ ernest login --user admin --password abc123
 Welcome back admin
 ```
 
@@ -72,13 +72,19 @@ We will use this YAML (demo.yml) to create our environment:
 ---
 name: demo
 datacenter: my-dc
-vpc_id: vpc-abcdef01
+
+vpcs:
+  - name: my-vpc
+    subnet: 10.0.0.0/16
+    auto_remove: true
 
 networks:
   - name: public
+    vpc: my-vpc
     subnet: 10.0.10.0/24
     public: true
   - name: private
+    vpc: my-vpc
     subnet: 10.0.11.0/24
     public: false
     nat_gateway: private-nat
@@ -89,6 +95,7 @@ nat_gateways:
 
 security_groups:
   - name: public-sg
+    vpc: my-vpc
     egress:
       - ip: 0.0.0.0/0
         protocol: any
@@ -100,6 +107,7 @@ security_groups:
         from_port: '22'
         to_port: '22'
   - name: private-sg
+    vpc: my-vpc
     egress:
       - ip: 0.0.0.0/0
         protocol: any
@@ -139,61 +147,40 @@ Now we can apply our YAML:
 
 ```
 $ ernest service apply demo.yml
-
 Environment creation requested
 Ernest will show you all output from your requested service creation
 You can cancel at any moment with Ctrl+C, even the service is still being created, you won't have any output
-
-Starting environment creation
-
-Creating networks:
- - my-dc-demo-public
-   IP     : 10.0.10.0/24
-   AWS ID : subnet-defabc01
+Applying you definition
+ Created VPC 
+   Subnet    : 10.0.0.0/16
+   Status    : completed
+ Created Internet Gateway my-vpc
+   AWS ID : igw-46d2d12f
    Status : completed
- - my-dc-demo-private
-   IP     : 10.0.11.0/24
-   AWS ID : subnet-defabc02
+ Created Network private
+   Subnet : 10.0.11.0/24
+   AWS ID : subnet-ec95dc84
    Status : completed
-Networks successfully created
-
-Creating firewalls:
- - my-dc-demo-public-sg
+ Created Firewall public-sg
    Status    : completed
- - my-dc-demo-private-sg
+ Created Firewall private-sg
    Status    : completed
-Firewalls created
-
-Creating instances:
- - my-dc-demo-public-1
-   IP        : 10.0.10.11
-   AWS ID    : i-abcdef01abcdef011
-   Status    : completed
- - my-dc-demo-private-1
+ Created Network public
+   Subnet : 10.0.10.0/24
+   AWS ID : subnet-2294dd4a
+   Status : completed
+ Created Instance private-1
    IP        : 10.0.11.11
-   AWS ID    : i-abcdef01abcdef012
+   AWS ID    : i-04731288df658cab9
    Status    : completed
-Instances successfully created
-
-Updating instances:
- - my-dc-demo-public-1
+ Created Instance public-1
    IP        : 10.0.10.11
-   PUBLIC IP : 52.210.179.96
-   AWS ID    : i-abcdef01abcdef011
+   PUBLIC IP : 52.58.250.234
+   AWS ID    : i-0a9f811ea1242adc1
    Status    : completed
- - my-dc-demo-private-1
-   IP        : 10.0.11.11
-   PUBLIC IP :
-   AWS ID    : i-abcdef01abcdef012
+ Created Nat private-nat
    Status    : completed
-Instances successfully updated
-
-Creating nats:
- - my-dc-demo-private-nat
-   Status    : completed
-Nats created
 SUCCESS: rules successfully applied
-Your environment endpoint is:
 ```
 
 Congratulations you have built something with Ernest!
