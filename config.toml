@@ -19,7 +19,7 @@ googleAnalytics = "UA-86033085-1"
 
 	version = "2.0.0"
 	logo    = "images/dog.png"
-	favicon = ""
+	favicon = "images/dog.ico"
 
 	permalink = "#"
 
