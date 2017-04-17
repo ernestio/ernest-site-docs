@@ -69,7 +69,7 @@ Welcome back user1
 
 &lt;p&gt;Configure the datacenter on Ernest using your Access Key, Secret Key, and VPC ID:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ ernest datacenter create aws --region eu-west-1 --secret_access_key XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX --access_key_id YYYYYYYYYYYYYYYYYYYY my-dc
+&lt;pre&gt;&lt;code&gt;$ ernest datacenter create aws --region eu-central-1 --secret_access_key XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX --access_key_id YYYYYYYYYYYYYYYYYYYY my-dc
 Datacenter &#39;my-dc&#39; successfully created
 &lt;/code&gt;&lt;/pre&gt;
 
