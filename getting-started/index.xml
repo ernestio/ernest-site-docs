@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Getting-starteds on Ernest</title>
+    <link>http://docs.ernest.io/getting-started/</link>
+    <description>Recent content in Getting-starteds on Ernest</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 09 Mar 2016 00:11:02 +0100</lastBuildDate>
+    <atom:link href="http://docs.ernest.io/getting-started/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Getting started</title>
+      <link>http://docs.ernest.io/getting-started/</link>
+      <pubDate>Wed, 09 Mar 2016 00:11:02 +0100</pubDate>
+      
+      <guid>http://docs.ernest.io/getting-started/</guid>
+      <description>
+
+&lt;h2 id=&#34;setup-ernest&#34;&gt;Setup Ernest&lt;/h2&gt;
+
+&lt;p&gt;In this quickstart guide we will build a simple environment consisting of a public server and private server on AWS, and allow SSH access from our IP. You will need a working copy of Ernest and the Ernest CLI, your AWS Access Key and Secret Key, and an AWS VPC.&lt;/p&gt;
+
+&lt;h3 id=&#34;get-ernest&#34;&gt;Get Ernest&lt;/h3&gt;
+
+&lt;p&gt;Follow the instructions &lt;a href=&#34;http://docs.ernest.io/downloads/&#34;&gt;here&lt;/a&gt; to get Ernest and the Ernest CLI.&lt;/p&gt;
+
+&lt;h3 id=&#34;setup-your-user&#34;&gt;Setup Your User&lt;/h3&gt;
+
+&lt;p&gt;Target your Ernest instance:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ ernest target https://10.50.1.11
+Target set
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;where 10.50.1.11 is the IP address of the host running our Ernest instance.&lt;/p&gt;
+
+&lt;p&gt;Login to Ernest as admin:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ ernest login --user admin --password abc123
+Welcome back admin
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Create a user:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ ernest user create user1 abc123
+User user1 successfully created
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Create a group:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ ernest group create group1
+Group &#39;group1&#39; successfully created, you can add users with &#39;ernest group add-user username group1&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Add the user to the group:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ ernest group add-user user1 group1
+User &#39;user1&#39; is now assigned to group &#39;group1&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;setup-your-datacenter&#34;&gt;Setup Your Datacenter&lt;/h3&gt;
+
+&lt;p&gt;Login as the user:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ ernest login --user user1 --password abc123
+Welcome back user1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Configure the datacenter on Ernest using your Access Key, Secret Key, and VPC ID:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ ernest datacenter create aws --region eu-west-1 --secret_access_key XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX --access_key_id YYYYYYYYYYYYYYYYYYYY my-dc
+Datacenter &#39;my-dc&#39; successfully created
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;create-your-environment&#34;&gt;Create Your Environment&lt;/h2&gt;
+
+&lt;p&gt;We will use this YAML (demo.yml) to create our environment:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;---
+name: demo
+datacenter: my-dc
+
+vpcs:
+  - name: my-vpc
+    subnet: 10.0.0.0/16
+    auto_remove: true
+
+networks:
+  - name: public
+    vpc: my-vpc
+    subnet: 10.0.10.0/24
+    public: true
+  - name: private
+    vpc: my-vpc
+    subnet: 10.0.11.0/24
+    public: false
+    nat_gateway: private-nat
+
+nat_gateways:
+  - name: private-nat
+    public_network: public
+
+security_groups:
+  - name: public-sg
+    vpc: my-vpc
+    egress:
+      - ip: 0.0.0.0/0
+        protocol: any
+        from_port: &#39;0&#39;
+        to_port: &#39;65535&#39;
+    ingress:
+      - ip: 52.211.19.211/32
+        protocol: tcp
+        from_port: &#39;22&#39;
+        to_port: &#39;22&#39;
+  - name: private-sg
+    vpc: my-vpc
+    egress:
+      - ip: 0.0.0.0/0
+        protocol: any
+        from_port: &#39;0&#39;
+        to_port: &#39;65535&#39;
+    ingress:
+      - ip: 10.0.0.0/16
+        protocol: tcp
+        from_port: &#39;22&#39;
+        to_port: &#39;22&#39;
+
+instances:
+  - name: public
+    elastic_ip: true
+    type: t2.micro
+    image: ami-ed82e39e
+    network: public
+    start_ip: 10.0.10.11
+    count: 1
+    key_pair: my-key
+    security_groups:
+      - public-sg
+
+  - name: private
+    type: t2.micro
+    image: ami-ed82e39e
+    network: private
+    start_ip: 10.0.11.11
+    count: 1
+    key_pair: my-key
+    security_groups:
+      - private-sg
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now we can apply our YAML:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ ernest service apply demo.yml
+Environment creation requested
+Ernest will show you all output from your requested service creation
+You can cancel at any moment with Ctrl+C, even the service is still being created, you won&#39;t have any output
+Applying you definition
+ Created VPC 
+   Subnet    : 10.0.0.0/16
+   Status    : completed
+ Created Internet Gateway my-vpc
+   AWS ID : igw-46d2d12f
+   Status : completed
+ Created Network private
+   Subnet : 10.0.11.0/24
+   AWS ID : subnet-ec95dc84
+   Status : completed
+ Created Firewall public-sg
+   Status    : completed
+ Created Firewall private-sg
+   Status    : completed
+ Created Network public
+   Subnet : 10.0.10.0/24
+   AWS ID : subnet-2294dd4a
+   Status : completed
+ Created Instance private-1
+   IP        : 10.0.11.11
+   AWS ID    : i-04731288df658cab9
+   Status    : completed
+ Created Instance public-1
+   IP        : 10.0.10.11
+   PUBLIC IP : 52.58.250.234
+   AWS ID    : i-0a9f811ea1242adc1
+   Status    : completed
+ Created Nat private-nat
+   Status    : completed
+SUCCESS: rules successfully applied
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Congratulations you have built something with Ernest!&lt;/p&gt;
+
+&lt;h3 id=&#34;next-steps&#34;&gt;Next Steps&lt;/h3&gt;
+
+&lt;p&gt;Find out how to use the CLI &lt;a href=&#34;http://docs.ernest.io/documentation/&#34;&gt;here&lt;/a&gt;. Then dive into the detailed examples for the supported providers:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Amazon Web Services&lt;/li&gt;
+&lt;li&gt;vCloud Director&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
