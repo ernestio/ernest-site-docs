@@ -421,21 +421,17 @@
 
 <li><p>Run the setup script: <code>./setup</code></p></li>
 
+<li><p>Reapply the datacenter credentials: <code>ernest datacenter update aws --access_key_id &lt;access_key_id&gt; --secret_access_key &lt;secret_access_key&gt; &lt;dc_name&gt;</code></p></li>
+
 <li><p>For internet gateways update the &lsquo;Name&rsquo; tag to match the &lsquo;Name&rsquo; tag of the VPC the gateway is attached to. Also add the &lsquo;ernest.service&rsquo; tag to the gateway with a value equal to the service name.</p></li>
 
-<li><p>For instances prepend the &lsquo;ernest.instance_group&rsquo; tag with &lsquo;<dc_name>-<service_name>-&lsquo;.</p></li>
+<li><p>For instances prepend the &lsquo;ernest.instance_group&rsquo; tag with <code>&lt;dc_name&gt;-&lt;service_name&gt;-</code>.</p></li>
 
-<li><p>For volumes prepend the &lsquo;ernest.volume_group&rsquo; tag with &lsquo;<dc_name>-<service_name>-&lsquo;.</p></li>
+<li><p>For volumes prepend the &lsquo;ernest.volume_group&rsquo; tag with <code>&lt;dc_name&gt;-&lt;service_name&gt;-</code>.</p></li>
 
 <li><p>Unregister each service from Ernest: <code>ernest service destroy &lt;service_name&gt; --force</code></p></li>
-</ol>
 
-<blockquote>
-<p>Note this remove record of the service from Ernest, it does not remove the service from AWS.</p>
-</blockquote>
-
-<ol>
-<li>Import each service into Ernest: <code>ernest service import &lt;dc_name&gt; &lt;service_name&gt;</code></li>
+<li><p>Import each service into Ernest: <code>ernest service import &lt;dc_name&gt; &lt;service_name&gt;</code></p></li>
 </ol>
 
 
