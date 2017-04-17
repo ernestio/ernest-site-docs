@@ -72,7 +72,7 @@ Current user : <user>
 Ernest uses the concept of a datacenter to specify an infrastructure service provider, the provider API endpoint, credentials to access the provider API, and information specific to certain provider types. An example of creating a datacenter in Ernest for Amazon Web Services is:
 
 ```
-$ ernest datacenter create aws --region region --secret_access_key secret_access_key --access_key_id access_key_id <dc name>
+$ ernest datacenter create aws --region region --secret_access_key <secret_access_key> --access_key_id <access_key_id> <dc_name>
 ```
 
 ### Services
@@ -798,6 +798,26 @@ OPTIONS:
    --help, -h  show help
 ```
 
+### ernest log
+```
+NAME:
+   ernest log - Inline display of ernest logs.
+
+USAGE:
+   ernest log [command options]
+
+DESCRIPTION:
+   Display ernest server logs inline
+
+   Example:
+    $ ernest log
+    $ ernest log --raw
+  
+
+OPTIONS:
+   --raw  Raw output will be displayed instead of pretty-printed
+```
+
 ## Amazon Web Services
 ### Introduction
 Amazon Web Services (AWS) is a secure cloud services platform, offering compute power, database storage, content delivery and other functionality to help businesses scale and grow.
@@ -843,7 +863,7 @@ Welcome back user1
 Once we have logged in to Ernest we can setup the AWS datacenter and credentials that Ernest will use to create our infrastructure:
 
 ```
-$ ernest datacenter create aws --region eu-west-1 --secret_access_key XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX --access_key_id YYYYYYYYYYYYYYYYYYYY my-dc
+$ ernest datacenter create aws --region eu-central-1 --secret_access_key XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX --access_key_id YYYYYYYYYYYYYYYYYYYY my-dc
 Datacenter 'my-dc' successfully created
 ```
 
@@ -859,15 +879,16 @@ Our environment is defined in the following YAML:
 ---
 name: demo
 datacenter: my-dc
+
 vpcs:
   - name: my-vpc
-    id: vpc-abcdef01
+    subnet: 10.0.0.0/16
     auto_remove: true
 
 networks:
   - name: public
-    subnet: 10.0.10.0/24
     vpc: my-vpc
+    subnet: 10.0.10.0/24
     public: true
 
 security_groups:
@@ -888,7 +909,7 @@ instances:
   - name: public
     elastic_ip: true
     type: t2.micro
-    image: ami-ed82e39e
+    image: ami-3f1bd150
     network: public
     start_ip: 10.0.10.11
     count: 1
@@ -903,45 +924,37 @@ Lets apply our definition:
 $ ernest service apply demo.yml
 Environment creation requested
 Ernest will show you all output from your requested service creation
-You can cancel at any moment with Ctrl+C, even the service is still #being created, you won't have any output
-Starting environment creation
-
-Creating networks:
- - my-dc-demo-public
-   IP     : 10.0.10.0/24
-   AWS ID : subnet-defabc01
+You can cancel at any moment with Ctrl+C, even the service is still being created, you won't have any output
+Applying you definition
+ Created VPC 
+   Subnet    : 10.0.0.0/16
+   Status    : completed
+ Created Internet Gateway my-vpc
+   AWS ID : igw-136d607a
    Status : completed
-Networks successfully created
-
-Creating firewalls:
- - my-dc-demo-public-sg
+ Created Firewall public-sg
    Status    : completed
-Firewalls created
-
-Creating instances:
- - my-dc-demo-public-1
+ Created Network public
+   Subnet : 10.0.10.0/24
+   AWS ID : subnet-d13f75b9
+   Status : completed
+ Created Instance public-1
    IP        : 10.0.10.11
-   AWS ID    : i-abcdef01abcdef011
+   PUBLIC IP : 52.57.235.194
+   AWS ID    : i-07159adf41870eb1f
    Status    : completed
-Instances successfully created
-
-Updating instances:
- - my-dc-demo-public-1
-   IP        : 10.0.10.11
-   PUBLIC IP : 52.210.179.96
-   AWS ID    : i-abcdef01abcdef011
-   Status    : completed
-Instances successfully updated
 SUCCESS: rules successfully applied
-Your environment endpoint is:
 ```
 
 We can list the services we have built:
 
 ```
 $ ernest service list
-NAME  UPDATED         STATUS  ENDPOINT
-demo  2016-09-12 15:57:46.195942 +0000 UTC  done
++------+--------+----------+-----------------------------+-------+
+| NAME | STATUS | ENDPOINT |         LAST BUILD          | USER  |
++------+--------+----------+-----------------------------+-------+
+| demo | done   |          | 2017-04-17T12:47:20.805675Z | user1 |
++------+--------+----------+-----------------------------+-------+
 ```
 
 We can see detailed provider-generated information related to our service:
@@ -949,32 +962,50 @@ We can see detailed provider-generated information related to our service:
 ```
 $ ernest service info demo
 Name : demo
-VPC : vpc-abcdef01
+Status : done
+Date : 2017-04-17 12:47:20.805675 +0000 UTC
+
+VPCs:
++--------+--------------+--------+
+|  NAME  |      ID      | SUBNET |
++--------+--------------+--------+
+| my-vpc | vpc-c3fc74ab |        |
++--------+--------------+--------+
 
 ELBs (empty)
 
+
 Networks:
-+---------------------------+-----------------+
-|           NAME            |       ID        |
-+---------------------------+-----------------+
-| my-dc-demo-public         | subnet-defabc01 |
-+---------------------------+-----------------+
++--------+-----------------+-------------------+
+|  NAME  |       ID        | AVAILABILITY ZONE |
++--------+-----------------+-------------------+
+| public | subnet-d13f75b9 |                   |
++--------+-----------------+-------------------+
 
 Instances:
-+-----------------------------+---------------------+---------------+------------+
-|            NAME             |         ID          |   PUBLIC IP   | PRIVATE IP |
-+-----------------------------+---------------------+---------------+------------+
-| my-dc-demo-public-1         | i-abcdef01abcdef011 | 52.210.179.96 | 10.0.10.11 |
-+-----------------------------+---------------------+---------------+------------+
++----------+---------------------+---------------+------------+
+|   NAME   |         ID          |   PUBLIC IP   | PRIVATE IP |
++----------+---------------------+---------------+------------+
+| public-1 | i-07159adf41870eb1f | 52.57.235.194 | 10.0.10.11 |
++----------+---------------------+---------------+------------+
 
 NAT gateways (empty)
 
+
 Security groups:
-+------------------------------+-------------+
-|             NAME             |  GROUP ID   |
-+------------------------------+-------------+
-| my-dc-demo-public-sg         | sg-01234567 |
-+------------------------------+-------------+
++-----------+-------------+
+|   NAME    |  GROUP ID   |
++-----------+-------------+
+| public-sg | sg-a146f2ca |
++-----------+-------------+
+
+RDS Clusters (empty)
+
+
+RDS Instances (empty)
+
+
+EBS Volumes (empty)
 ```
 
 We can view the history of applies for our service:
@@ -984,7 +1015,7 @@ $ ernest service history demo
 +----+------+----------+--------------------------------+-------+
 | ID | NAME | BUILD ID |             STATUS             | USER  |
 +----+------+----------+--------------------------------+-------+
-|  1 | demo | done     | 2016-09-12 15:57:46.195942     | user1 |
+|  1 | demo | done     | 2017-04-17 12:47:20.805675     | user1 |
 |    |      |          | +0000 UTC                      |       |
 +----+------+----------+--------------------------------+-------+
 ```
@@ -993,46 +1024,41 @@ For our service we can show the definition applied for a given Build ID:
 
 ```
 $ ernest service definition demo --build 1
----
 name: demo
 datacenter: my-dc
-
 vpcs:
-  - name: my-vpc
-    id: vpc-abcdef01
-    auto_remove: true
-
+- name: my-vpc
+  subnet: 10.0.0.0/16
+  auto_remove: true
 networks:
-  - name: public
-    subnet: 10.0.10.0/24
-    vpc: my-vpc
-    public: true
-
+- name: public
+  vpc: my-vpc
+  subnet: 10.0.10.0/24
+  public: true
 security_groups:
-  - name: public-sg
-    vpc: my-vpc
-    egress:
-      - ip: 0.0.0.0/0
-        protocol: any
-        from_port: '0'
-        to_port: '65535'
-    ingress:
-      - ip: 52.211.19.211/32
-        protocol: tcp
-        from_port: '22'
-        to_port: '22'
-
+- name: public-sg
+  vpc: my-vpc
+  egress:
+  - ip: 0.0.0.0/0
+    protocol: any
+    from_port: "0"
+    to_port: "65535"
+  ingress:
+  - ip: 52.211.19.211/32
+    protocol: tcp
+    from_port: "22"
+    to_port: "22"
 instances:
-  - name: public
-    elastic_ip: true
-    type: t2.micro
-    image: ami-ed82e39e
-    network: public
-    start_ip: 10.0.10.11
-    count: 1
-    key_pair: my-key
-    security_groups:
-      - public-sg
+- name: public
+  elastic_ip: true
+  type: t2.micro
+  image: ami-3f1bd150
+  network: public
+  start_ip: 10.0.10.11
+  count: 1
+  key_pair: my-key
+  security_groups:
+  - public-sg
 ```
 
 ### Modifying a Service
@@ -1049,13 +1075,14 @@ datacenter: my-dc
 
 vpcs:
   - name: my-vpc
-    id: vpc-abcdef01
+    subnet: 10.0.0.0/16
     auto_remove: true
 
 networks:
   - name: public
-    subnet: 10.0.10.0/24
     vpc: my-vpc
+    subnet: 10.0.10.0/24
+    public: true
   - name: private
     subnet: 10.0.11.0/24
     vpc: my-vpc
@@ -1080,6 +1107,7 @@ security_groups:
         from_port: '22'
         to_port: '22'
   - name: private-sg
+    vpc: my-vpc
     egress:
       - ip: 0.0.0.0/0
         protocol: any
@@ -1095,7 +1123,7 @@ instances:
   - name: public
     elastic_ip: true
     type: t2.micro
-    image: ami-ed82e39e
+    image: ami-3f1bd150
     network: public
     start_ip: 10.0.10.11
     count: 1
@@ -1105,7 +1133,7 @@ instances:
 
   - name: private
     type: t2.micro
-    image: ami-ed82e39e
+    image: ami-3f1bd150
     network: private
     start_ip: 10.0.11.11
     count: 1
@@ -1120,50 +1148,32 @@ When we apply this YAML we can see Ernest make the necessary changes:
 $ ernest service apply demo.yml
 Environment creation requested
 Ernest will show you all output from your requested service creation
-You can cancel at any moment with Ctrl+C, even the service is still #being created, you won't have any output
-Starting environment creation
-
-Creating networks:
- - my-dc-demo-private
-   IP     : 10.0.11.0/24
-   AWS ID : subnet-defabc02
+You can cancel at any moment with Ctrl+C, even the service is still being created, you won't have any output
+Applying you definition
+ Created Network private
+   Subnet : 10.0.11.0/24
+   AWS ID : subnet-f43e749c
    Status : completed
-Networks successfully created
-
-Creating firewalls:
- - my-dc-demo-private-sg
+ Created Firewall private-sg
    Status    : completed
-Firewalls created
-
-Creating instances:
- - my-dc-demo-private-1
+ Created Instance private-1
    IP        : 10.0.11.11
-   AWS ID    : i-abcdef01abcdef012
+   AWS ID    : i-0c156ad400811c1fe
    Status    : completed
-Instances successfully created
-
-Updating instances:
- - my-dc-demo-private-1
-   IP        : 10.0.11.11
-   PUBLIC IP :
-   AWS ID    : i-abcdef01abcdef012
+ Created Nat private-nat
    Status    : completed
-Instances successfully updated
-
-Creating nats:
- - my-dc-demo-private-nat
-   Status    : completed
-Nats created
 SUCCESS: rules successfully applied
-Your environment endpoint is:
 ```
 
 We can see our service in the list, with the most recent update time:
 
 ```
 $ ernest service list
-NAME  UPDATED         STATUS  ENDPOINT
-demo  2016-09-12 16:03:40.195942 +0000 UTC  done
++------+--------+----------+-----------------------------+-------+
+| NAME | STATUS | ENDPOINT |         LAST BUILD          | USER  |
++------+--------+----------+-----------------------------+-------+
+| demo | done   |          | 2017-04-17T12:50:34.583482Z | user1 |
++------+--------+----------+-----------------------------+-------+
 ```
 
 The service info has also updated with the new information:
@@ -1171,40 +1181,53 @@ The service info has also updated with the new information:
 ```
 $ ernest service info demo
 Name : demo
-VPC : vpc-abcdef01
+Status : done
+Date : 2017-04-17 12:50:34.583482 +0000 UTC
+
+VPCs:
++--------+--------------+--------+
+|  NAME  |      ID      | SUBNET |
++--------+--------------+--------+
+| my-vpc | vpc-c3fc74ab |        |
++--------+--------------+--------+
 
 ELBs (empty)
 
+
 Networks:
-+---------------------------+-----------------+
-|           NAME            |       ID        |
-+---------------------------+-----------------+
-| my-dc-demo-public         | subnet-defabc01 |
-| my-dc-demo-private        | subnet-defabc02 |
-+---------------------------+-----------------+
++---------+-----------------+-------------------+
+|  NAME   |       ID        | AVAILABILITY ZONE |
++---------+-----------------+-------------------+
+| public  | subnet-d13f75b9 |                   |
+| private | subnet-f43e749c |                   |
++---------+-----------------+-------------------+
 
 Instances:
-+-----------------------------+---------------------+---------------+------------+
-|            NAME             |         ID          |   PUBLIC IP   | PRIVATE IP |
-+-----------------------------+---------------------+---------------+------------+
-| my-dc-demo-public-1         | i-abcdef01abcdef011 | 52.210.179.96 | 10.0.10.11 |
-| my-dc-demo-private-1        | i-abcdef01abcdef012 |               | 10.0.11.11 |
-+-----------------------------+---------------------+---------------+------------+
++-----------+---------------------+---------------+------------+
+|   NAME    |         ID          |   PUBLIC IP   | PRIVATE IP |
++-----------+---------------------+---------------+------------+
+| public-1  | i-07159adf41870eb1f | 52.57.235.194 | 10.0.10.11 |
+| private-1 | i-0c156ad400811c1fe |               | 10.0.11.11 |
++-----------+---------------------+---------------+------------+
 
-NAT gateways:
-+-------------------------------+-----------------------+
-|             NAME              |       GROUP ID        |
-+-------------------------------+-----------------------+
-| my-dc-demo-private-nat        | nat-abcdef01abcdef013 |
-+-------------------------------+-----------------------+
+NAT gateways (empty)
+
 
 Security groups:
-+------------------------------+-------------+
-|             NAME             |  GROUP ID   |
-+------------------------------+-------------+
-| my-dc-demo-public-sg         | sg-01234567 |
-| my-dc-demo-private-sg        | sg-89012345 |
-+------------------------------+-------------+
++------------+-------------+
+|    NAME    |  GROUP ID   |
++------------+-------------+
+| public-sg  | sg-a146f2ca |
+| private-sg | sg-bc46f2d7 |
++------------+-------------+
+
+RDS Clusters (empty)
+
+
+RDS Instances (empty)
+
+
+EBS Volumes (empty)
 ```
 
 The history shows both of the applies we have done for this service:
@@ -1214,9 +1237,9 @@ $ ernest service history demo
 +----+------+----------+--------------------------------+-------+
 | ID | NAME | BUILD ID |             STATUS             | USER  |
 +----+------+----------+--------------------------------+-------+
-|  2 | jr26 | done     | 2016-09-12 16:03:40.235144     | user1 |
+|  2 | demo | done     | 2017-04-17 12:50:34.583482     | user1 |
 |    |      |          | +0000 UTC                      |       |
-|  1 | jr26 | done     | 2016-09-12 15:57:46.195942     | user1 |
+|  1 | demo | done     | 2017-04-17 12:47:20.805675     | user1 |
 |    |      |          | +0000 UTC                      |       |
 +----+------+----------+--------------------------------+-------+
 ```
@@ -1225,75 +1248,70 @@ The definition for the most recent build can be displayed:
 
 ```
 $ ernest service definition demo --build 2
----
 name: demo
 datacenter: my-dc
-
 vpcs:
-  - name: my-vpc
-    id: vpc-abcdef01
-    auto_remove: true
-
+- name: my-vpc
+  subnet: 10.0.0.0/16
+  auto_remove: true
 networks:
-  - name: public
-    subnet: 10.0.10.0/24
-    vpc: my-vpc
-  - name: private
-    subnet: 10.0.11.0/24
-    vpc: my-vpc
-    public: false
-    nat_gateway: private-nat
-
+- name: public
+  vpc: my-vpc
+  subnet: 10.0.10.0/24
+  public: true
+- name: private
+  subnet: 10.0.11.0/24
+  vpc: my-vpc
+  public: false
+  nat_gateway: private-nat
 nat_gateways:
-  - name: private-nat
-    public_network: public
-
+- name: private-nat
+  public_network: public
 security_groups:
-  - name: public-sg
-    vpc: my-vpc
-    egress:
-      - ip: 0.0.0.0/0
-        protocol: any
-        from_port: '0'
-        to_port: '65535'
-    ingress:
-      - ip: 52.211.19.211/32
-        protocol: tcp
-        from_port: '22'
-        to_port: '22'
-  - name: private-sg
-    egress:
-      - ip: 0.0.0.0/0
-        protocol: any
-        from_port: '0'
-        to_port: '65535'
-    ingress:
-      - ip: 10.0.0.0/16
-        protocol: tcp
-        from_port: '22'
-        to_port: '22'
-
+- name: public-sg
+  vpc: my-vpc
+  egress:
+  - ip: 0.0.0.0/0
+    protocol: any
+    from_port: "0"
+    to_port: "65535"
+  ingress:
+  - ip: 52.211.19.211/32
+    protocol: tcp
+    from_port: "22"
+    to_port: "22"
+- name: private-sg
+  vpc: my-vpc
+  egress:
+  - ip: 0.0.0.0/0
+    protocol: any
+    from_port: "0"
+    to_port: "65535"
+  ingress:
+  - ip: 10.0.0.0/16
+    protocol: tcp
+    from_port: "22"
+    to_port: "22"
 instances:
-  - name: public
-    elastic_ip: true
-    type: t2.micro
-    image: ami-ed82e39e
-    network: public
-    start_ip: 10.0.10.11
-    count: 1
-    key_pair: my-key
-    security_groups:
-      - public-sg
-
-  - name: private
-    type: t2.micro
-    image: ami-ed82e39e
-    network: private
-    start_ip: 10.0.11.11
-    count: 1
-    key_pair: my-key
-    security_groups:
-      - private-sg
+- name: public
+  elastic_ip: true
+  type: t2.micro
+  image: ami-3f1bd150
+  network: public
+  start_ip: 10.0.10.11
+  count: 1
+  key_pair: my-key
+  security_groups:
+  - public-sg
+- name: private
+  type: t2.micro
+  image: ami-3f1bd150
+  network: private
+  start_ip: 10.0.11.11
+  count: 1
+  key_pair: my-key
+  security_groups:
+  - private-sg
 ```
 
 ### Clean-up
@@ -1301,43 +1319,36 @@ After we have finished with our service we can remove it:
 
 ```
 $ ernest service destroy demo
-Are you sure? Please type yes or no and then press enter: yes
-
-Deleting nats:
- - my-dc-demo-private-nat
+Do you really want to destroy this service? (Y/n)Y
+ Deleted Nat private-nat
    Status    : completed
-Nats deleted
-
-Deleting instances:
- - my-dc-demo-public-1
+ Deleted Instance public-1
    IP        : 10.0.10.11
-   PUBLIC IP : 52.210.179.96
-   AWS ID    : i-abcdef01abcdef011
+   PUBLIC IP : 52.57.235.194
+   AWS ID    : i-07159adf41870eb1f
    Status    : completed
- - my-dc-demo-private-1
+ Deleted Firewall public-sg
+   Status    : completed
+ Deleted Network public
+   Subnet : 10.0.10.0/24
+   AWS ID : subnet-d13f75b9
+   Status : completed
+ Deleted Internet Gateway my-vpc
+   AWS ID : igw-136d607a
+   Status : completed
+ Deleted Instance private-1
    IP        : 10.0.11.11
-   PUBLIC IP :
-   AWS ID    : i-abcdef01abcdef012
+   AWS ID    : i-0c156ad400811c1fe
    Status    : completed
-Instances deleted
-
-Deleting networks:
- - my-dc-demo-public
-   IP     : 10.0.10.0/24
-   AWS ID : subnet-defabc01
+ Deleted Firewall private-sg
+   Status    : completed
+ Deleted Network private
+   Subnet : 10.0.11.0/24
+   AWS ID : subnet-f43e749c
    Status : completed
- - my-dc-demo-private
-   IP     : 10.0.11.0/24
-   AWS ID : subnet-defabc02
-   Status : completed
-Networks deleted
-
-Deleting firewalls:
- - my-dc-demo-public-sg
+ Deleted VPC 
+   Subnet    : 10.0.0.0/16
    Status    : completed
- - my-dc-demo-private-sg
-   Status    : completed
-Firewalls deleted
 SUCCESS: your environment has been successfully deleted
 ```
 
@@ -1356,6 +1367,7 @@ datacenter: my-dc
 vpcs:
   - name: my-vpc
     id: vpc-abcdef01
+    subnet: 10.0.0.0/16
     auto_remove: true
 
 networks:
@@ -2319,22 +2331,21 @@ If you would like to try Ernest but do not have access to vCloud you can request
 
 Before we get started we will need the following information:
 
-* Ernest IP address (31.210.241.231)
+* Ernest IP address (10.50.0.11)
 * Ernest username/password (user1/xxxxxx)
 * vCloud URL (myvdc.carrenza.net)
 * vCloud organisation (r3labs-development)
 * vCloud datacenter (r3-jreid2)
 * vCloud network (DVS-VCD-EXT-665)
 * vCloud username/password (jreid/xxxxxx)
-* vCloud router name (test1)
-* vCloud sub-allocated IP (195.3.186.42)
+* vCloud router name (test2)
 
 *The values in brackets are what we will use for this example. Your service provider can provide you with the vCloud information.*
 
 The first step is to set the IP address of Ernest:
 
 ```
-$ ernest target https://31.210.241.231
+$ ernest target https://10.50.0.11
 Target set
 
 ```
@@ -2354,7 +2365,6 @@ Once we have logged in to Ernest we can setup the vCloud datacenter and credenti
 ```
 $ ernest datacenter create vcloud --user jreid --password xxxxxx --org r3labs-development --vcloud-url https://myvdc.carrenza.net --public-network DVS-VCD-EXT-665 r3-jreid2
 Datacenter 'r3-jreid2' successfully created
-
 ```
 
 Now that we have our datacenter created in Ernest we can start building stuff. Below we will show examples for:
@@ -2363,19 +2373,17 @@ Now that we have our datacenter created in Ernest we can start building stuff. B
 * creating infrastructure and configuring the servers
 * creating the servers only
 
-### Infrastructure Only
+### Infrastructure
 
 For our example we will deploy a single Ubuntu server from a catalog image (image: r3/ubuntu-1404) and configure our networking to permit SSH access to the server. Our YAML for this example is:
 
 ```
 ---
-name: demo1
+name: vcloud
 datacenter: r3-jreid2
-bootstrapping: none
-service_ip: 195.3.186.42
 
-routers:
-  - name: test1
+routers: 
+  - name: test2
     rules:
     - name: in_out_any
       source: internal
@@ -2396,26 +2404,21 @@ routers:
     networks:
       - name: web
         subnet: 10.1.0.0/24
-        dns:
-          - 8.8.8.8
-          - 8.8.4.4
 
     port_forwarding:
-      - source: 195.3.186.42
+      - source: 195.3.186.44
         from_port: '22'
         to_port: '22'
         destination: 10.1.0.11
 
 instances:
   - name: web
-    image: r3/ubuntu-1404
+    image: r3-ssd/ubuntu-1404
     cpus: 1
     memory: 1GB
     count: 1
-    networks:
-      name: web
-      start_ip: 10.1.0.11
-
+    network: web
+    start_ip: 10.1.0.11
 ```
 
 Now that we have defined our infrastructure we are ready to apply our definition:
@@ -2425,35 +2428,19 @@ $ ernest service apply demo1.yml
 Environment creation requested
 Ernest will show you all output from your requested service creation
 You can cancel at any moment with Ctrl+C, even the service is still being created, you won't have any output
-Starting environment creation
-Creating networks:
- - r3-jreid2-demo1-web
-   IP     : 10.1.0.0/24
+Applying you definition
+ Configured Router test2
+   Status    : completed
+ Created Network web
+   Subnet : 10.1.0.0/24
    Status : completed
-Networks successfully created
-Creating instances:
- - r3-jreid2-demo1-web-1
+ Created Instance web-1
    IP        : 10.1.0.11
    Status    : completed
-Instances successfully created
-Updating instances:
- - r3-jreid2-demo1-web-1
-   IP        : 10.1.0.11
-   Status    : completed
-Instances successfully updated
-Creating firewalls:
- - r3-jreid2-demo1-test2
-   Status    : completed
-Firewalls created
-Creating nats:
- - r3-jreid2-demo1-test2
-   Status    : completed
-Nats created
 SUCCESS: rules successfully applied
-Your environment endpoint is: 195.3.186.42
-
 ```
-Congratulations! You have built your first infrastructure with Ernest. You can now SSH to the server on IP 195.3.186.42 to install and configure your software.
+
+Congratulations! You have built your first infrastructure with Ernest. You can now SSH to the server on IP 195.3.186.44 to install and configure your software.
 
 If you wish to change the infrastructure update your YAML to show how you want the infrastructure to look, then re-apply the YAML. Ernest will make the appropriate changes to the infrastructure.
 
@@ -2464,230 +2451,78 @@ $ ernest service apply demo1.yml
 Environment creation requested
 Ernest will show you all output from your requested service creation
 You can cancel at any moment with Ctrl+C, even the service is still being created, you won't have any output
-Starting environment creation
-Creating instances:
- - r3-jreid2-demo1-web-2
+Applying you definition
+ Created Instance web-2
    IP        : 10.1.0.12
    Status    : completed
-Instances successfully created
-Updating instances:
- - r3-jreid2-demo1-web-2
-   IP        : 10.1.0.12
-   Status    : completed
-Instances successfully updated
 SUCCESS: rules successfully applied
-Your environment endpoint is: 195.3.186.42
-
 ```
 
 We can list the services we created:
 
 ```
 $ ernest service list
-NAME  UPDATED       STATUS  ENDPOINT
-demo1 2016-05-29 14:52:13 +0100 BST done  195.3.186.42
-
++--------+--------+----------+-----------------------------+-------+
+|  NAME  | STATUS | ENDPOINT |         LAST BUILD          | USER  |
++--------+--------+----------+-----------------------------+-------+
+| vcloud | done   |          | 2017-04-17T13:14:28.499472Z | user1 |
++--------+--------+----------+-----------------------------+-------+
 ```
 
 For a given service we can see the history:
 
 ```
-$ ernest service history demo1
-+----+-------+----------+--------------------------------+-------+
-| ID | NAME  | BUILD ID |             STATUS             | USER  |
-+----+-------+----------+--------------------------------+-------+
-|  2 | demo1 | done     | 2016-05-29 14:52:13.93758      | user1 |
-|    |       |          | +0000 UTC                      |       |
-|  1 | demo1 | done     | 2016-05-29 14:39:56.45893      | user1 |
-|    |       |          | +0000 UTC                      |       |
-+----+-------+----------+--------------------------------+-------+
-
+$ ernest service history vcloud
++----+--------+----------+--------------------------------+-------+
+| ID |  NAME  | BUILD ID |             STATUS             | USER  |
++----+--------+----------+--------------------------------+-------+
+|  2 | vcloud | done     | 2017-04-17 13:14:28.499472     | user1 |
+|    |        |          | +0000 UTC                      |       |
+|  1 | vcloud | done     | 2017-04-17 13:08:47.075994     | user1 |
+|    |        |          | +0000 UTC                      |       |
++----+--------+----------+--------------------------------+-------+
 ```
 
 For a given service and build ID we can see the definition we applied:
 
 ```
-$ ernest service definition demo1 --build 2
----
-name: demo1
+$ ernest service definition vcloud --build 2
+name: vcloud
 datacenter: r3-jreid2
-bootstrapping: none
-service_ip: 195.3.186.42
-
 routers:
-  - name: test1
-    rules:
-    - name: in_out_any
-      source: internal
-      from_port: any
-      destination: external
-      to_port: any
-      protocol: any
-      action: allow
-
-    - name: out_in_22
-      source: any
-      from_port: any
-      destination: internal
-      to_port: '22'
-      protocol: tcp
-      action: allow
-
-    networks:
-      - name: web
-        subnet: 10.1.0.0/24
-        dns:
-          - 8.8.8.8
-          - 8.8.4.4
-
-    port_forwarding:
-      - source: 195.3.186.42
-        from_port: '22'
-        to_port: '22'
-        destination: 10.1.0.11
-
-instances:
+- name: test2
+  rules:
+  - name: in_out_any
+    source: internal
+    from_port: any
+    destination: external
+    to_port: any
+    protocol: any
+    action: allow
+  - name: out_in_22
+    source: any
+    from_port: any
+    destination: internal
+    to_port: "22"
+    protocol: tcp
+    action: allow
+  networks:
   - name: web
-    image: r3/ubuntu-1404
-    cpus: 1
-    memory: 1GB
-    count: 2
-    networks:
-      name: web
-      start_ip: 10.1.0.11
-
-```
-
-### Infrastructure and Server Configuration
-
-In the above example the task of installing and configuring software was left to the user to do. In this example we will bootstrap the servers and install our software directly from the YAML.
-
-The new YAML is shown here:
-
-```
----
-name: demo2
-datacenter: r3-jreid2
-bootstrapping: salt
-service_ip: 195.3.186.42
-ernest_ip:
-  - 31.210.241.231
-  - 31.210.240.171
-
-routers:
-  - name: test1
-    rules:
-    - name: in_out_any
-      source: internal
-      from_port: any
-      destination: external
-      to_port: any
-      protocol: any
-      action: allow
-
-    - name: out_in_80
-      source: any
-      from_port: any
-      destination: internal
-      to_port: '80'
-      protocol: tcp
-      action: allow
-
-    networks:
-      - name: web
-        subnet: 10.1.0.0/24
-        dns:
-          - 8.8.8.8
-          - 8.8.4.4
-
-    port_forwarding:
-      - source: 195.3.186.42
-        from_port: '80'
-        to_port: '80'
-        destination: 10.1.0.11
-
+    subnet: 10.1.0.0/24
+  port_forwarding:
+  - source: 195.3.186.44
+    from_port: "22"
+    to_port: "22"
+    destination: 10.1.0.11
 instances:
-  - name: web
-    image: r3/ubuntu-1404
-    cpus: 1
-    memory: 1GB
-    count: 1
-    networks:
-      name: web
-      start_ip: 10.1.0.11
-    provisioner:
-      - exec:
-        - 'sudo apt-get update'
-        - 'sudo apt-get install apache2 -y'
-
+- name: web
+  image: r3-ssd/ubuntu-1404
+  cpus: 1
+  memory: 1GB
+  count: 2
+  network: web
+  start_ip: 10.1.0.11
 ```
-
-The first thing to notice is that we have changed 'bootstrapping' from 'none' to 'salt'. This will result in Ernest deploying a SALT instance that we can use to manage our environment. Note that the 'bootstrapping' option must be specified when an environment is created and cannot be changed for that environment.
-
-The next thing we have changed are the firewall and port-forwarding configuration. We have removed the sections needed for SSH access to the server since we are now able to run commands directly from the YAML.
-
-Finally, we have added a provisioner section to the instance that will install the Apache HTTP Server.
-
-Now that we have defined our platform we are ready to create it:
-
-```
-$ ernest service apply demo2.yml
-Environment creation requested
-Ernest will show you all output from your requested service creation
-You can cancel at any moment with Ctrl+C, even the service is still being created, you won't have any output
-Starting environment creation
-Creating networks:
- - r3-jreid2-demo2-salt
-   IP     : 10.254.254.0/24
-   Status : completed
- - r3-jreid2-demo2-web
-   IP     : 10.1.0.0/24
-   Status : completed
-Networks successfully created
-Creating instances:
- - r3-jreid2-demo2-salt-master
-   IP        : 10.254.254.100
-   Status    : completed
- - r3-jreid2-demo2-web-1
-   IP        : 10.1.0.11
-   Status    : completed
-Instances successfully created
-Updating instances:
- - r3-jreid2-demo2-salt-master
-   IP        : 10.254.254.100
-   Status    : completed
- - r3-jreid2-demo2-web-1
-   IP        : 10.1.0.11
-   Status    : completed
-Instances successfully updated
-Creating firewalls:
- - r3-jreid2-demo2-test2
-   Status    : completed
-Firewalls created
-Creating nats:
- - r3-jreid2-demo2-test2
-   Status    : completed
-Nats created
-Running bootstraps:
- - Bootstrap r3-jreid2-demo2-web-1
-   Status    : completed
-Bootstrap ran
-Running executions:
- - Execution web 1
-   Status    : completed
-Executions ran
-SUCCESS: rules successfully applied
-Your environment endpoint is: 195.3.186.44
-
-```
-
-Notice that Ernest has automatically created a SALT instance for us on network 10.254.254.0/24. It has also trigged the bootstrapping process that installs the SALT minion on each of our servers, and then run the commands we specified in the provisioner section of each instance defined in the YAML.
-
-You should be able to browse to http://195.3.186.42. Congratulations!
-
-If you wish to change the platform update your YAML to show how you want the platform to look, then re-apply the YAML. Ernest will make the appropriate changes to the platform.
-
-> The SALT image can be downloaded from [here](http://download.ernest.io/r3-salt-master.zip). For the current version of Ernest (1.0) it is not possible to specify the catalog name that Ernest will get the SALT image from, you will need to place the image in a catalog named 'r3'.
 
 ### Servers Only
 
@@ -2695,42 +2530,31 @@ If your vCloud account does not have the Organization Administrator assigned to 
 
 ```
 ---
-name: demo3
+name: test
 datacenter: r3-jreid2
 
 instances:
-  - name: web
-    image: r3/ubuntu-1404
+  - name: dev
+    image: r3-ssd/ubuntu-1404
     cpus: 1
     memory: 1GB
     count: 1
-    networks:
-      name: r3-jreid2-test3-web
-      start_ip: 10.1.0.11
-
+    network: web
+    start_ip: 10.1.0.90
 ```
 
 And applying it gives:
 
 ```
-$ ernest service apply demo3.yml
+$ ernest service apply test.yml
 Environment creation requested
 Ernest will show you all output from your requested service creation
 You can cancel at any moment with Ctrl+C, even the service is still being created, you won't have any output
-Starting environment creation
-Creating instances:
- - r3-jreid2-demo3-web-1
-   IP        : 10.1.0.11
+Applying you definition
+ Created Instance dev-1
+   IP        : 10.1.0.90
    Status    : completed
-Instances successfully created
-Updating instances:
- - r3-jreid2-demo3-web-1
-   IP        : 10.1.0.11
-   Status    : completed
-Instances successfully updated
 SUCCESS: rules successfully applied
-Your environment endpoint is:
-
 ```
 
 ## vCloud Director YAML Reference
