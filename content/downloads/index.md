@@ -44,14 +44,14 @@ After downloading Ernest CLI, unzip it and move the binary to a directory that i
 
 3. Run the setup script: `./setup`
 
-4. For internet gateways update the 'Name' tag to match the 'Name' tag of the VPC the gateway is attached to. Also add the 'ernest.service' tag to the gateway with a value equal to the service name.
+4. Reapply the datacenter credentials: `ernest datacenter update aws --access_key_id <access_key_id> --secret_access_key <secret_access_key> <dc_name>`
 
-5. For instances prepend the 'ernest.instance_group' tag with '<dc_name>-<service_name>-'.
+5. For internet gateways update the 'Name' tag to match the 'Name' tag of the VPC the gateway is attached to. Also add the 'ernest.service' tag to the gateway with a value equal to the service name.
 
-6. For volumes prepend the 'ernest.volume_group' tag with '<dc_name>-<service_name>-'.
+6. For instances prepend the 'ernest.instance_group' tag with `<dc_name>-<service_name>-`.
 
-7. Unregister each service from Ernest: `ernest service destroy <service_name> --force`
+7. For volumes prepend the 'ernest.volume_group' tag with `<dc_name>-<service_name>-`.
 
-> Note this remove record of the service from Ernest, it does not remove the service from AWS.
+8. Unregister each service from Ernest: `ernest service destroy <service_name> --force`
 
-8. Import each service into Ernest: `ernest service import <dc_name> <service_name>`
+9. Import each service into Ernest: `ernest service import <dc_name> <service_name>`
