@@ -1187,6 +1187,31 @@ OPTIONS:
    --raw  Raw output will be displayed instead of pretty-printed
 &lt;/code&gt;&lt;/pre&gt;
 
+&lt;h3 id=&#34;ernest-usage&#34;&gt;ernest usage&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;NAME:
+   ernest usage - Exports an usage report to the current folder
+
+USAGE:
+   ernest usage [command options]  
+
+DESCRIPTION:
+   
+
+   Example:
+    $ ernest usage --from 2017-01-01 --to 2017-02-01 --output=report.log
+      A file named report.log has been exported to the current folder
+
+    Example 2:
+    $ ernest usage &amp;gt; myreport.log
+  
+
+OPTIONS:
+   --from value    the from date the report will be calculated from. Format YYYY-MM-DD
+   --to value      the to date the report will be caluclutated to. Format YYYY-MM-DD
+   --output value  the file path to store the report
+&lt;/code&gt;&lt;/pre&gt;
+
 &lt;h2 id=&#34;amazon-web-services&#34;&gt;Amazon Web Services&lt;/h2&gt;
 
 &lt;h3 id=&#34;introduction&#34;&gt;Introduction&lt;/h3&gt;
