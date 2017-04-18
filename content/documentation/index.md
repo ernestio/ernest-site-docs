@@ -818,6 +818,31 @@ OPTIONS:
    --raw  Raw output will be displayed instead of pretty-printed
 ```
 
+### ernest usage
+```
+NAME:
+   ernest usage - Exports an usage report to the current folder
+
+USAGE:
+   ernest usage [command options]  
+
+DESCRIPTION:
+   
+
+   Example:
+    $ ernest usage --from 2017-01-01 --to 2017-02-01 --output=report.log
+      A file named report.log has been exported to the current folder
+
+    Example 2:
+    $ ernest usage > myreport.log
+  
+
+OPTIONS:
+   --from value    the from date the report will be calculated from. Format YYYY-MM-DD
+   --to value      the to date the report will be caluclutated to. Format YYYY-MM-DD
+   --output value  the file path to store the report
+```
+
 ## Amazon Web Services
 ### Introduction
 Amazon Web Services (AWS) is a secure cloud services platform, offering compute power, database storage, content delivery and other functionality to help businesses scale and grow.
