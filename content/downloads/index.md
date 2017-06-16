@@ -55,3 +55,11 @@ After downloading Ernest CLI, unzip it and move the binary to a directory that i
 8. Unregister each service from Ernest: `ernest service destroy <service_name> --force`
 
 9. Import each service into Ernest: `ernest service import <dc_name> <service_name>`
+
+### From 2.x.x to 2.y.y
+
+1. Shutdown Ernest: `docker-compose down`
+
+2. Pull down the latest version of Ernest: `git checkout docker-compose.yml && git checkout config/nginx/ernest.local && git checkout master && git pull`
+
+3. Run the setup script: `./upgrade`
