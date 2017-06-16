@@ -58,4 +58,4 @@ After downloading Ernest CLI, unzip it and move the binary to a directory that i
 
 ### From 2.x.x to 2.y.y
 
-1. Run the setup script: `./upgrade`
+1. Run the upgrade script: `./upgrade`
