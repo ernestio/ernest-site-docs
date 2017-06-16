@@ -2,10 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Downloads on Ernest</title>
-    <link>http://docs.ernest.io/downloads/</link>
+    <link>http://docs.ernest.io/downloads/index.xml</link>
     <description>Recent content in Downloads on Ernest</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <copyright>Released under the MIT license</copyright>
     <lastBuildDate>Wed, 09 Mar 2016 20:08:11 +0100</lastBuildDate>
     <atom:link href="http://docs.ernest.io/downloads/index.xml" rel="self" type="application/rss+xml" />
     

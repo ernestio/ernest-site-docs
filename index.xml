@@ -2,180 +2,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ernest</title>
-    <link>http://docs.ernest.io/</link>
+    <link>http://docs.ernest.io/index.xml</link>
     <description>Recent content on Ernest</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 09 Mar 2016 20:08:11 +0100</lastBuildDate>
+    <copyright>Released under the MIT license</copyright>
+    <lastBuildDate>Wed, 09 Mar 2016 00:11:02 +0100</lastBuildDate>
     <atom:link href="http://docs.ernest.io/index.xml" rel="self" type="application/rss+xml" />
-    
-    <item>
-      <title>Support Plan Contact Form</title>
-      <link>http://docs.ernest.io/supportplan/</link>
-      <pubDate>Wed, 09 Mar 2016 20:08:11 +0100</pubDate>
-      
-      <guid>http://docs.ernest.io/supportplan/</guid>
-      <description>&lt;form class=&#34;form-horizontal&#34; id=&#34;input-form&#34; action=&#34;https://docs.google.com/forms/d/1t_F8UU5CebFIWe2rCU7xlBPk-z0ISN_V6v2bcktsoH0/formResponse?&#34; method=&#34;POST&#34; target=&#34;no-target&#34; onSubmit=&#34;alert(&#39;Thank you for your query, we will respond shortly.&#39;);window.location.href = &#39;/support/&#39;;&#34;&gt;
-&lt;fieldset&gt;
-
-&lt;legend&gt;&lt;/legend&gt;
-
-&lt;div class=&#34;form-group&#34;&gt;
-  &lt;label for=&#34;firstname&#34;&gt;First Name&lt;/label&gt;  
-  &lt;input id=&#34;firstname&#34; name=&#34;entry.706791366&#34; type=&#34;text&#34; placeholder=&#34;First Name&#34; class=&#34;form-control&#34; required=&#34;&#34;&gt;
-&lt;/div&gt;
-
-&lt;div class=&#34;form-group&#34;&gt;
-  &lt;label for=&#34;lastname&#34;&gt;Last Name&lt;/label&gt;  
-  &lt;input id=&#34;lastname&#34; name=&#34;entry.1072744609&#34; type=&#34;text&#34; placeholder=&#34;Last Name&#34; class=&#34;form-control&#34; required=&#34;&#34;&gt;
-&lt;/div&gt;
-
-&lt;div class=&#34;form-group&#34;&gt;
-  &lt;label for=&#34;email&#34;&gt;Email Address&lt;/label&gt;  
-  &lt;input id=&#34;email&#34; name=&#34;entry.1586474514&#34; type=&#34;text&#34; placeholder=&#34;Email Address&#34; class=&#34;form-control&#34; required=&#34;&#34;&gt;
-&lt;/div&gt;
-
-&lt;div class=&#34;form-group&#34;&gt;
-  &lt;label for=&#34;plan&#34;&gt;Support Plan&lt;/label&gt;
-  &lt;div&gt;
-    &lt;input type=&#34;radio&#34; name=&#34;entry.1568716440&#34; id=&#34;plan-0&#34; value=&#34;Standard&#34; checked=&#34;checked&#34;&gt;
-    &lt;label for=&#34;plan-0&#34;&gt;
-      &lt;span&gt;&lt;/span&gt;Standard
-    &lt;/label&gt;
-  &lt;/div&gt;
-  &lt;div&gt;
-    &lt;input type=&#34;radio&#34; name=&#34;entry.1568716440&#34; id=&#34;plan-1&#34; value=&#34;Premium&#34;&gt;
-    &lt;label for=&#34;plan-1&#34;&gt;
-      &lt;span&gt;&lt;/span&gt;Premium
-    &lt;/label&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&#34;form-group&#34;&gt;
-  &lt;label for=&#34;submit&#34;&gt;&lt;/label&gt;
-    &lt;button id=&#34;submit&#34; type=&#34;submit&#34; class=&#34;btn btn-success&#34;&gt;Submit&lt;/button&gt;
-&lt;/div&gt;
-
-&lt;/fieldset&gt;
-&lt;/form&gt;
-
-&lt;iframe src=&#34;#&#34; id=&#34;no-target&#34; name=&#34;no-target&#34; style=&#34;visibility:hidden&#34;&gt;&lt;/iframe&gt;</description>
-    </item>
-    
-    <item>
-      <title>vCloud Account Creation Request Form</title>
-      <link>http://docs.ernest.io/vcloud-account/</link>
-      <pubDate>Wed, 09 Mar 2016 20:08:11 +0100</pubDate>
-      
-      <guid>http://docs.ernest.io/vcloud-account/</guid>
-      <description>&lt;form class=&#34;form-horizontal&#34; id=&#34;input-form&#34; action=&#34;https://docs.google.com/forms/d/1VgjUkBjZQw-xSt1-8debb4Wk7FQhDr2vb-jrH3byKd4/formResponse?&#34; method=&#34;POST&#34; target=&#34;no-target&#34; onSubmit=&#34;alert(&#39;Thank you for your request, we will process it shortly.&#39;);window.location.href = &#39;/documentation/#vcloud-director-examples&#39;;&#34;&gt;
-&lt;fieldset&gt;
-
-&lt;legend&gt;&lt;/legend&gt;
-
-&lt;div class=&#34;form-group&#34;&gt;
-  &lt;label for=&#34;firstname&#34;&gt;First Name&lt;/label&gt;  
-  &lt;input id=&#34;firstname&#34; name=&#34;entry.1042863238&#34; type=&#34;text&#34; placeholder=&#34;First Name&#34; class=&#34;form-control&#34; required=&#34;&#34;&gt;
-&lt;/div&gt;
-
-&lt;div class=&#34;form-group&#34;&gt;
-  &lt;label for=&#34;lastname&#34;&gt;Last Name&lt;/label&gt;  
-  &lt;input id=&#34;lastname&#34; name=&#34;entry.893089123&#34; type=&#34;text&#34; placeholder=&#34;Last Name&#34; class=&#34;form-control&#34; required=&#34;&#34;&gt;
-&lt;/div&gt;
-
-&lt;div class=&#34;form-group&#34;&gt;
-  &lt;label class=&#34;col-md-4 control-label&#34; for=&#34;email&#34;&gt;Email Address&lt;/label&gt;  
-  &lt;input id=&#34;email&#34; name=&#34;entry.1081522787&#34; type=&#34;text&#34; placeholder=&#34;Email Address&#34; class=&#34;form-control&#34; required=&#34;&#34;&gt;
-&lt;/div&gt;
-
-&lt;div class=&#34;form-group&#34;&gt;
-  &lt;label for=&#34;submit&#34;&gt;&lt;/label&gt;
-    &lt;button id=&#34;submit&#34; type=&#34;submit&#34; class=&#34;btn btn-success&#34;&gt;Submit&lt;/button&gt;
-&lt;/div&gt;
-
-&lt;/fieldset&gt;
-&lt;/form&gt;
-
-&lt;iframe src=&#34;#&#34; id=&#34;no-target&#34; name=&#34;no-target&#34; style=&#34;visibility:hidden&#34;&gt;&lt;/iframe&gt;</description>
-    </item>
-    
-    <item>
-      <title>Community Slack Channel Access Form</title>
-      <link>http://docs.ernest.io/slack/</link>
-      <pubDate>Wed, 09 Mar 2016 19:56:50 +0100</pubDate>
-      
-      <guid>http://docs.ernest.io/slack/</guid>
-      <description>&lt;form class=&#34;form-horizontal&#34; id=&#34;input-form&#34; action=&#34;https://docs.google.com/forms/d/1t0olvu3MQNBdz3oTKLm_NczBeFzL8AnIeMOrQwfAKF4/formResponse?&#34; method=&#34;POST&#34; target=&#34;no-target&#34; onSubmit=&#34;alert(&#39;Thank you for your request, we will process it shortly.&#39;);window.location.href = &#39;/community/&#39;;&#34;&gt;
-&lt;fieldset&gt;
-
-&lt;legend&gt;&lt;/legend&gt;
-
-&lt;div class=&#34;form-group&#34;&gt;
-  &lt;label for=&#34;firstname&#34;&gt;First Name: &lt;/label&gt;  
-  &lt;input id=&#34;firstname&#34; name=&#34;entry.1042863238&#34; type=&#34;text&#34; class=&#34;form-control&#34; placeholder=&#34;First Name&#34; required=&#34;&#34;&gt;
-&lt;/div&gt;
-
-&lt;div class=&#34;form-group&#34;&gt;
-  &lt;label for=&#34;lastname&#34;&gt;Last Name: &lt;/label&gt;  
-  &lt;input id=&#34;lastname&#34; name=&#34;entry.893089123&#34; type=&#34;text&#34; class=&#34;form-control&#34; placeholder=&#34;Last Name&#34; required=&#34;&#34;&gt;
-&lt;/div&gt;
-
-&lt;div class=&#34;form-group&#34;&gt;
-  &lt;label for=&#34;email&#34;&gt;Email Address: &lt;/label&gt;  
-  &lt;input id=&#34;email&#34; name=&#34;entry.1081522787&#34; type=&#34;text&#34; class=&#34;form-control&#34; placeholder=&#34;Email Address&#34; required=&#34;&#34;&gt;
-&lt;/div&gt;
-
-&lt;div class=&#34;form-group&#34;&gt;
-  &lt;label for=&#34;submit&#34;&gt;&lt;/label&gt;
-  &lt;div&gt;
-    &lt;button id=&#34;submit&#34; type=&#34;submit&#34; class=&#34;btn btn-success&#34;&gt;Submit&lt;/button&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;/fieldset&gt;
-&lt;/form&gt;
-
-&lt;iframe src=&#34;#&#34; id=&#34;no-target&#34; name=&#34;no-target&#34; style=&#34;visibility:hidden&#34;&gt;&lt;/iframe&gt;</description>
-    </item>
-    
-    <item>
-      <title>Ernest</title>
-      <link>http://docs.ernest.io/</link>
-      <pubDate>Wed, 09 Mar 2016 00:11:02 +0100</pubDate>
-      
-      <guid>http://docs.ernest.io/</guid>
-      <description>
-
-&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
-
-&lt;p&gt;Ernest is an application and infrastructure orchestration and automation engine. Ernest takes the complexity and people out of DevOps, simplifying the process of creating and managing even the most complex environments.&lt;/p&gt;
-
-&lt;p&gt;By delivering everything a development team requires to be able to deploy code and manage its lifecycle Ernest de-risks and accelerates the application development/deployment process, helping developers to deliver value back to the business faster and providing increased business agility&lt;/p&gt;
-
-&lt;p&gt;Ernest has been engineered for flexibility, allowing you to design your environment the way you want. You pick the technologies, the cloud and the architecture then overlay your compliance and governance requirements.&lt;/p&gt;
-
-&lt;p&gt;The Cloud is about freedom of choice and mobility. With Ernest you can easily deploy your environment onto the cloud or infrastructure of your choice and the redeploy it to an alternative cloud as business requirements demand.&lt;/p&gt;
-
-&lt;p&gt;Because Ernest is about developing and then using software reliably and reproducibly it ensures consistency and agility throughout the application lifecycle. Ernest brings the same version control, testing and configuration management tooling you use elsewhere in your development process to your platform; allowing you to utilise version controlled, tested, automated deployments of your environment from the development stage, through testing, to production.&lt;/p&gt;
-
-&lt;h2 id=&#34;key-features&#34;&gt;Key features&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;A Continuous Delivery pipeline for Infrastructure as Code&lt;/li&gt;
-&lt;li&gt;An orchestration tool for any configuration manager and any cloud&lt;/li&gt;
-&lt;li&gt;Fully version controlled&lt;/li&gt;
-&lt;li&gt;Fully automated&lt;/li&gt;
-&lt;li&gt;Works with any technology stack&lt;/li&gt;
-&lt;li&gt;Able to manage the full application life cycle&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Ernest is built around the idea that DevOps is not a job title, but a methodology, one which Ernest has enshrined in code. Ernest enables digital and SaaS transformation, while removing the complexity of DevOps by delivering it as-a-Service.&lt;/p&gt;
-
-&lt;h2 id=&#34;next-steps&#34;&gt;Next steps&lt;/h2&gt;
-
-&lt;p&gt;Follow the instructions &lt;a href=&#34;http://docs.ernest.io/downloads/&#34;&gt;here&lt;/a&gt; to get Ernest and the Ernest CLI. Once we have done that we can &lt;a href=&#34;http://docs.ernest.io/getting-started/&#34;&gt;start working&lt;/a&gt; with them.&lt;/p&gt;
-</description>
-    </item>
     
     <item>
       <title>Getting started</title>
@@ -3709,6 +3542,1206 @@ Networks is a map with two fields&lt;/p&gt;
 &lt;li&gt;The specified commands will be executed by the vCloud guest customization script.&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;h2 id=&#34;azure&#34;&gt;Azure&lt;/h2&gt;
+
+&lt;h3 id=&#34;introduction-1&#34;&gt;Introduction&lt;/h3&gt;
+
+&lt;p&gt;Microsoft Azure is an open, flexible, enterprise-grade cloud computing platform. Move faster, do more and save money with IaaS + PaaS.&lt;/p&gt;
+
+&lt;h3 id=&#34;supported-services-1&#34;&gt;Supported Services&lt;/h3&gt;
+
+&lt;p&gt;The following Azure services are supported by ernest&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Availability sets&lt;/li&gt;
+&lt;li&gt;Load balancers&lt;/li&gt;
+&lt;li&gt;Network gateways&lt;/li&gt;
+&lt;li&gt;Network interfaces&lt;/li&gt;
+&lt;li&gt;Public IP&lt;/li&gt;
+&lt;li&gt;Resource groups&lt;/li&gt;
+&lt;li&gt;Security groups&lt;/li&gt;
+&lt;li&gt;SQL servers&lt;/li&gt;
+&lt;li&gt;SQL databases&lt;/li&gt;
+&lt;li&gt;SQL firewall rules&lt;/li&gt;
+&lt;li&gt;Storage accounts&lt;/li&gt;
+&lt;li&gt;Storage containers&lt;/li&gt;
+&lt;li&gt;Subnets&lt;/li&gt;
+&lt;li&gt;Virtual machines&lt;/li&gt;
+&lt;li&gt;Virtual networks&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;azure-examples&#34;&gt;Azure Examples&lt;/h2&gt;
+
+&lt;h3 id=&#34;setup-1&#34;&gt;Setup&lt;/h3&gt;
+
+&lt;p&gt;Before start using ernest with azure you&amp;rsquo;ll need some Azure information:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Azure subscription ID&lt;/li&gt;
+&lt;li&gt;Azure client ID&lt;/li&gt;
+&lt;li&gt;Azure client secret&lt;/li&gt;
+&lt;li&gt;Azure tenant ID&lt;/li&gt;
+&lt;li&gt;Azure environment&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The first step is to setup the ernest target (where ernest is installed)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ ernest target https://ernest.local
+Target set
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Next we will login&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ ernest login
+Username: user1
+Password: ******
+Welcome back user1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Once we have a open session on ernest we will need to create an azure datacenter, you&amp;rsquo;ll be doing that by running the command:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ ernest datacenter create azure --subscription_id ************ --client_id *********** --client_secret *********** --region westus --tenant_id ********** --environment ********* my-dc
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;azure-yaml-references&#34;&gt;Azure YAML References&lt;/h2&gt;
+
+&lt;p&gt;Environments built and managed with Ernest are defined in YAML format&lt;/p&gt;
+
+&lt;h3 id=&#34;example-2&#34;&gt;Example&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;name: demo
+datacenter: my-dc
+
+resource_groups:
+  - name: rg1
+    location: eastus
+
+    security_groups:
+      - name: sg1
+        rules:
+          - name: rule1
+            description: &amp;quot;awesome rule&amp;quot;
+            priority: 101
+            direction: Inbound
+            access: Allow
+            protocol: Tcp
+            source_port_range: 100-4096
+            destination_port_range: 100-4096
+            source_address_prefix: VirtualNetwork
+            destination_address_prefix: VirtualNetwork
+        tags:
+          environment: staging
+
+    virtual_networks:
+      - name: vn_test
+        address_spaces:
+          - 10.0.0.0/16
+        subnets:
+          - name: sub_test
+            address_prefix: 10.0.1.0/24
+            security_group: sg1
+
+    virtual_machines:
+      - name: vm_test
+        count: 2
+        size: Standard_A0
+        image: Canonical:UbuntuServer:14.04.2-LTS:latest
+        network_interfaces:
+          - name: ni_test
+            ip_configurations:
+              - name: config_1
+                subnet: vn_test:sub_test
+                private_ip_address_allocation: dynamic
+        authentication:
+          admin_username: testadmin
+          admin_password: Password1234!
+        storage_os_disk:
+          name: myosdiskaOne
+          storage_account: safest12354
+          storage_container: scfestla
+          caching: ReadWrite
+          create_option: FromImage
+        storage_data_disk:
+          name: myosdiskaTwo
+          storage_account: safest12354
+          storage_container: scfestla
+          disk_size_gb: 1023
+          create_option: empty
+          lun: 0
+        os_profile:
+          computer_name: test
+
+    storage_accounts:
+      - name: safest12354
+        account_type: Standard_LRS
+        containers:
+          - name: scfestla
+            access_type: private
+
+    sql_servers:
+      - name: ernestserver01
+        version: &amp;quot;12.0&amp;quot;
+        administrator_login: mradministrator
+        administrator_login_password: P4ssw0rd
+        databases:
+          - name: mydb
+
+    public_ips:
+      - name: my_ip
+
+    loadbalancers:
+      - name: lb1
+        frontend_ip_configurations:
+          - name: fic1
+            subnet: sub_test
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;field-reference-2&#34;&gt;Field Reference&lt;/h3&gt;
+
+&lt;h4 id=&#34;service-options-2&#34;&gt;Service Options&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;name: demo
+datacenter: my-dc
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Service Options support the following fields:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;name&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String that defines the name of the service to build.&lt;/li&gt;
+&lt;li&gt;This field is mandatory.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
+&lt;li&gt;The value of this field must be 50 characters maximum.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;datacenter&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String that defines the name of the datacenter where the service is built.&lt;/li&gt;
+&lt;li&gt;This field is mandatory.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
+&lt;li&gt;The value of this field must 50 characters maximum.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;resource-groups&#34;&gt;Resource groups&lt;/h3&gt;
+
+&lt;p&gt;Resource groups are supporting the following fields:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;name&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String defining the resource group&lt;/li&gt;
+&lt;li&gt;This field is mandatory.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;location&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : the location where the resource group will be created.&lt;/li&gt;
+&lt;li&gt;This field is mandatory.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
+&lt;li&gt;List of valid locations (here)[&lt;a href=&#34;http://azure.microsoft.com/en-us/regions/&#34;&gt;http://azure.microsoft.com/en-us/regions/&lt;/a&gt;]&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;security_groups&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;A security_group block is described below&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;virtual_networks&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;A virtual_network block is described below&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;virtual_machines&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;A virtual_machine block is described below&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;storage_accounts&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;A storage_account block is described below&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;sql_servers&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;A sql_server block is described below&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;public_ips&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;A public_ip block is described below&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;loadbalancers&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;A loadbalancer block is described below&lt;/p&gt;
+
+&lt;h3 id=&#34;security-group&#34;&gt;Security Group&lt;/h3&gt;
+
+&lt;p&gt;Security groups are supporting the following fields:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;name&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : the name of the security group&lt;/li&gt;
+&lt;li&gt;This field is mandatory.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;rules&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;name&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : the name of the security group rule&lt;/li&gt;
+&lt;li&gt;This field is mandatory.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;description&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : A description for this rule. Restricted to 140 characters.&lt;/li&gt;
+&lt;li&gt;This field is optional.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;priority&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Specifies the priority of the rule. The value can be between 100 and 4096. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.&lt;/li&gt;
+&lt;li&gt;This field is mandatory.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;direction&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : The direction specifies if rule will be evaluated on incoming or outgoing traffic. Possible values are “Inbound” and “Outbound”.&lt;/li&gt;
+&lt;li&gt;This field is mandatory.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;access&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Specifies whether network traffic is allowed or denied. Possible values are “Allow” and “Deny”.&lt;/li&gt;
+&lt;li&gt;This field is mandatory.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;protocol&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Network protocol this rule applies to. Can be Tcp, Udp or * to match both.&lt;/li&gt;
+&lt;li&gt;This field is mandatory.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;source_port_range&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Integer or range between 0 and 65535 or * to match any.&lt;/li&gt;
+&lt;li&gt;This field is mandatory.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;destination_port_range&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Integer or range between 0 and 65535 or * to match any.&lt;/li&gt;
+&lt;li&gt;This field is mandatory.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;source_address_prefix&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : CIDR or source IP range or * to match any IP. Tags such as ‘VirtualNetwork’, ‘AzureLoadBalancer’ and ‘Internet’ can also be used.&lt;/li&gt;
+&lt;li&gt;This field is mandatory.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;destination_address_prefix&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : CIDR or destination IP range or * to match any IP. Tags such as ‘VirtualNetwork’, ‘AzureLoadBalancer’ and ‘Internet’ can also be used.&lt;/li&gt;
+&lt;li&gt;This field is mandatory.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;tags&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;List String : tags to assign to the resource&lt;/li&gt;
+&lt;li&gt;This field is optional.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;storage-accounts&#34;&gt;Storage Accounts&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;name&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Specifies the name of the storage account. Changing this forces a new resource to be created. This must be unique across the entire Azure service, not just within the resource group.&lt;/li&gt;
+&lt;li&gt;This field is mandatory.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;account_type&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Defines the type of storage account to be created. Valid options are &lt;strong&gt;Standard_LRS&lt;/strong&gt;, &lt;strong&gt;Standard_ZRS&lt;/strong&gt;, &lt;strong&gt;Standard_GRS&lt;/strong&gt;, &lt;strong&gt;Standard_RAGRS&lt;/strong&gt;, &lt;strong&gt;Premium_LRS&lt;/strong&gt;. Changing this is sometimes valid - see the Azure documentation for more information on which types of accounts can be converted into other types.&lt;/li&gt;
+&lt;li&gt;This field is mandatory.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;account_kind&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Defines the Kind of account. Valid options are &lt;strong&gt;Storage&lt;/strong&gt; and &lt;strong&gt;BlobStorage&lt;/strong&gt;. Changing this forces a new resource to be created. Defaults to &lt;strong&gt;Storage&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;This field is optional.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;enable_blob_encryption&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Boolean : Boolean flag which controls if Encryption Services are enabled for Blob storage, see here for more information.&lt;/li&gt;
+&lt;li&gt;This field is optional.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;containers&lt;/strong&gt; A list of Storage Account Containers as described below
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;name&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Specifies the name of the storage account. Changing this forces a new resource to be created. This must be unique across the entire Azure service, not just within the resource group.&lt;/li&gt;
+&lt;li&gt;This field is mandatory.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;access_type&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : The &amp;lsquo;interface&amp;rsquo; for access the container provides. Can be either &lt;strong&gt;blob&lt;/strong&gt;, &lt;strong&gt;container&lt;/strong&gt; or &lt;strong&gt;private&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;This field is mandatory.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;tags&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;List String : tags to assign to the resource&lt;/li&gt;
+&lt;li&gt;This field is optional.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;virtual-networks&#34;&gt;Virtual Networks&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;name&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : The name of the virtual network. Changing this forces a new resource to be created.&lt;/li&gt;
+&lt;li&gt;This field is mandatory.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;address_spaces&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : The address space that is used the virtual network. You can supply more than one address space. Changing this forces a new resource to be created.&lt;/li&gt;
+&lt;li&gt;This field is mandatory.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;dns_servers&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : List of IP addresses of DNS servers&lt;/li&gt;
+&lt;li&gt;This field is optional.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;subnets&lt;/strong&gt;
+A list of Subnets as described below&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;subnet&#34;&gt;Subnet&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;name&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : The name of the virtual network. Changing this forces a new resource to be created.&lt;/li&gt;
+&lt;li&gt;This field is mandatory.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;address_prefix&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : The address prefix to use for the subnet.&lt;/li&gt;
+&lt;li&gt;This field is mandatory.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;security_group&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : The name of the Security Group to associate with the subnet.&lt;/li&gt;
+&lt;li&gt;This field is mandatory.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;sql-servers&#34;&gt;SQL Servers&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;name&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : The name of the sql server. Changing this forces a new resource to be created.&lt;/li&gt;
+&lt;li&gt;This field is mandatory.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;version&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : The version for the new server. Valid values are: 2.0 (for v11 server) and 12.0 (for v12 server).&lt;/li&gt;
+&lt;li&gt;This field is mandatory.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;administrator_login&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : The administrator login name for the new server.&lt;/li&gt;
+&lt;li&gt;This field is mandatory.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;administrator_login_password&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : The password for the new AdministratorLogin. Please following Azures Password Policy&lt;/li&gt;
+&lt;li&gt;This field is mandatory.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;tags&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;List String : tags to assign to the resource&lt;/li&gt;
+&lt;li&gt;This field is optional.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;databases&lt;/strong&gt;
+A list of SQL Databases as described below&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;name&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : The name of the database.&lt;/li&gt;
+&lt;li&gt;This field is mandatory.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;create_mode&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Specifies the type of database to create.&lt;/li&gt;
+&lt;li&gt;This field is optional.&lt;/li&gt;
+&lt;li&gt;Defaults to Default.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;source_database_id&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : The URI of the source database if create_mode value is not Default.&lt;/li&gt;
+&lt;li&gt;This field is optional.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;restore_point_in_time&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : The point in time for the restore. Only applies if create_mode is PointInTimeRestore e.g. 2013-11-08T22:00:40Z&lt;/li&gt;
+&lt;li&gt;This field is optional.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;edition&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : The edition of the database to be created. Applies only if create_mode is Default. Valid values are: Basic, Standard, Premium, or DataWarehouse. Please see Azure SQL Database Service Tiers.&lt;/li&gt;
+&lt;li&gt;This field is optional.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;collation&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : The name of the collation. Applies only if create_mode is Default. Azure default is SQL_LATIN1_GENERAL_CP1_CI_AS&lt;/li&gt;
+&lt;li&gt;This field is optional.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;max_size_bytes&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : The maximum size that the database can grow to. Applies only if create_mode is Default. Please see Azure SQL Database Service Tiers.&lt;/li&gt;
+&lt;li&gt;This field is optional.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;requested_service_objective_id&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Use requested_service_objective_id or requested_service_objective_name to set the performance level for the database. Valid values are: S0, S1, S2, S3, P1, P2, P4, P6, P11 and ElasticPool. Please see Azure SQL Database Service Tiers.&lt;/li&gt;
+&lt;li&gt;This field is optional.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;requested_service_objective_name&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Use requested_service_objective_name or requested_service_objective_id to set the performance level for the database. Please see Azure SQL Database Service Tiers.&lt;/li&gt;
+&lt;li&gt;This field is optional.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;source_database_deletion_date&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : The deletion date time of the source database. Only applies to deleted databases where create_mode is PointInTimeRestore.&lt;/li&gt;
+&lt;li&gt;This field is optional.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;tags&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;List String : tags to assign to the resource&lt;/li&gt;
+&lt;li&gt;This field is optional.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;rules&lt;/strong&gt;
+A list of SQL Firewall Rules as described below&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;name&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : The name of the SQL Firewall Rule.&lt;/li&gt;
+&lt;li&gt;This field is mandatory.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;start_ip_address&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String :  The starting IP address to allow through the firewall for this rule.&lt;/li&gt;
+&lt;li&gt;This field is mandatory.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;end_ip_address&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : The ending IP address to allow through the firewall for this rule.&lt;/li&gt;
+&lt;li&gt;This field is mandatory.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;load-balancers-1&#34;&gt;Load Balancers&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;name&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Specifies the name of the LoadBalancer.&lt;/li&gt;
+&lt;li&gt;This field is mandatory.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;location&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Specifies the supported Azure location where the resource exists.&lt;/li&gt;
+&lt;li&gt;This field is mandatory.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;backend_address_pools&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;List of strings : With names of the backend address pools&lt;/li&gt;
+&lt;li&gt;This field is mandatory.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;frontend_ip_configurations&lt;/strong&gt;
+A list of Frontend IP Configurations as described below&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;name&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Specifies the name of the frontend ip configuration.&lt;/li&gt;
+&lt;li&gt;This field is mandatory.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;subnet&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Reference to subnet associated with the IP Configuration.&lt;/li&gt;
+&lt;li&gt;This field is optional.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;public_ip_address_allocation&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Defines how a public IP address is assigned. Options are Static or Dynamic.&lt;/li&gt;
+&lt;li&gt;This field is optional.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;private_ip_address&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Private IP Address to assign to the Load Balancer. The last one and first four IPs in any range are reserved and cannot be manually assigned.&lt;/li&gt;
+&lt;li&gt;This field is optional.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;private_ip_address_allocation&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Defines how a private IP address is assigned. Options are Static or Dynamic.&lt;/li&gt;
+&lt;li&gt;This field is optional.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;rules&lt;/strong&gt;
+A list of Load balancer Rules as described below
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;name&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Specifies the name of the Rule.&lt;/li&gt;
+&lt;li&gt;This field is mandatory.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;protocol&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : The transport protocol for the external endpoint. Possible values are Udp or Tcp.&lt;/li&gt;
+&lt;li&gt;This field is mandatory.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;frontend_port&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String :  The port for the external endpoint. Port numbers for each Rule must be unique within the Load Balancer. Possible values range between 1 and 65534, inclusive.&lt;/li&gt;
+&lt;li&gt;This field is mandatory.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;backend_port&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : The port used for internal connections on the endpoint. Possible values range between 1 and 65535, inclusive.&lt;/li&gt;
+&lt;li&gt;This field is mandatory.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;backend_address_pool&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String :  A reference to a Backend Address Pool over which this Load Balancing Rule operates.&lt;/li&gt;
+&lt;li&gt;This field is optional.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;probe&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : A reference to a Probe used by this Load Balancing Rule.&lt;/li&gt;
+&lt;li&gt;This field is optional.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;floating_ip&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Floating IP is pertinent to failover scenarios: a &amp;ldquo;floating” IP is reassigned to a secondary server in case the primary server fails. Floating IP is required for SQL AlwaysOn.&lt;/li&gt;
+&lt;li&gt;This field is optional.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;idle_timeout&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Specifies the timeout for the Tcp idle connection. The value can be set between 4 and 30 minutes. The default value is 4 minutes. This element is only used when the protocol is set to Tcp.&lt;/li&gt;
+&lt;li&gt;This field is optional.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;load_distribution&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Specifies the load balancing distribution type to be used by the Load Balancer. Possible values are: Default – The load balancer is configured to use a 5 tuple hash to map traffic to available servers. SourceIP – The load balancer is configured to use a 2 tuple hash to map traffic to available servers. SourceIPProtocol – The load balancer is configured to use a 3 tuple hash to map traffic to available servers.&lt;/li&gt;
+&lt;li&gt;This field is optional.
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;probes&lt;/strong&gt;
+A list of Load Balancer Probe as described below&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;name&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Specifies the name of the Probe.&lt;/li&gt;
+&lt;li&gt;This field is mandatory.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;port&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Port on which the Probe queries the backend endpoint. Possible values range from 1 to 65535, inclusive.&lt;/li&gt;
+&lt;li&gt;This field is mandatory.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;protocol&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Specifies the protocol of the end point. Possible values are Http or Tcp. If Tcp is specified, a received ACK is required for the probe to be successful. If Http is specified, a 200 OK response from the specified URI is required for the probe to be successful.&lt;/li&gt;
+&lt;li&gt;This field is optional.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;request_path&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : The URI used for requesting health status from the backend endpoint. Required if protocol is set to Http. Otherwise, it is not allowed.&lt;/li&gt;
+&lt;li&gt;This field is optional.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;interval&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : The interval, in seconds between probes to the backend endpoint for health status. The default value is 15, the minimum value is 5.&lt;/li&gt;
+&lt;li&gt;This field is optional.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;max_failures&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : The number of failed probe attempts after which the backend endpoint is removed from rotation. The default value is 2. NumberOfProbes multiplied by intervalInSeconds value must be greater or equal to 10.Endpoints are returned to rotation when at least one probe is successful.&lt;/li&gt;
+&lt;li&gt;This field is optional.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;tags&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;List String : tags to assign to the resource&lt;/li&gt;
+&lt;li&gt;This field is optional.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;virtual-machines&#34;&gt;Virtual Machines&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;name&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Specifies the name of the virtual machine resource. Changing this forces a new resource to be created.&lt;/li&gt;
+&lt;li&gt;This field is mandatory.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;count&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Integer : Number of virtual machines to be created&lt;/li&gt;
+&lt;li&gt;This field is optional.&lt;/li&gt;
+&lt;li&gt;Defaults to 1&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;size&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Specifies the size of the virtual machine.&lt;/li&gt;
+&lt;li&gt;This field is mandatory.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;image&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : String like &lt;code&gt;Canonical:UbuntuServer:14.04.2-LTS:latest&lt;/code&gt; composed by:&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Canonical&lt;/code&gt; publisher : Specifies the publisher of the image used to create the virtual machine.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;UbuntuServer&lt;/code&gt; offer : Specifies the offer of the image used to create the virtual machine.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;14.04.2-LTS&lt;/code&gt; sku : Specifies the SKU of the image used to create the virtual machine.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;latest&lt;/code&gt; version : Specifies the version of the image used to create the virtual machine.&lt;/li&gt;
+&lt;li&gt;This field is optional.&lt;/li&gt;
+&lt;li&gt;Changing this forces a new resource to be created.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;availability_set&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Availability set name&lt;/li&gt;
+&lt;li&gt;This field is optional.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;authentication&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;disable_password_authentication&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Boolean : Specifies whether password authentication should be disabled.&lt;/li&gt;
+&lt;li&gt;This field is mandatory.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;admin_username&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Admin username to be set up on the vm&lt;/li&gt;
+&lt;li&gt;This field is optional, depending on disable_password_authentication.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;admin_password&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Admin password to be set up on the vm&lt;/li&gt;
+&lt;li&gt;This field is optional, depending on disable_password_authentication.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;ssh_keys&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : A key/value list of ssh keys to be set on the vm&lt;/li&gt;
+&lt;li&gt;This field is optional.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;storage_os_disk&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;name&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Name of the storage OS disk to be used&lt;/li&gt;
+&lt;li&gt;This field is mandatory.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;storage_account&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Related storage account name&lt;/li&gt;
+&lt;li&gt;This field is optional.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;storage_container&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Related storage container name.&lt;/li&gt;
+&lt;li&gt;This field is optional.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;create_option&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Specifies how the virtual machine should be created. Possible values are attach and FromImage.&lt;/li&gt;
+&lt;li&gt;This field is mandatory.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;caching&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Specifies the caching requirements.&lt;/li&gt;
+&lt;li&gt;This field is optional.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;image_uri&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Specifies the image_uri in the form publisherName:offer:skus:version. image_uri can also specify the VHD uri of a custom VM image to clone. When cloning a custom disk image the os_type documented below becomes required.&lt;/li&gt;
+&lt;li&gt;This field is optional.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;os_type&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Specifies the operating system Type, valid values are windows, linux.&lt;/li&gt;
+&lt;li&gt;This field is optional.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;disk_size_gb&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Specifies the size of the data disk in gigabytes.&lt;/li&gt;
+&lt;li&gt;This field is optional.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;managed_disk_type&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : When provided it creates an attached managed disk.&lt;/li&gt;
+&lt;li&gt;This field is optional.&lt;/li&gt;
+&lt;li&gt;Allowable values are Standard_LRS or Premium_LRS.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;os_profile&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;computer_name&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Specifies the name of the virtual machine.&lt;/li&gt;
+&lt;li&gt;This field is mandatory.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;custom_data&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Specifies a base-64 encoded string of custom data. The base-64 encoded string is decoded to a binary array that is saved as a file on the Virtual Machine. The maximum length of the binary array is 65535 bytes.&lt;/li&gt;
+&lt;li&gt;This field is optional.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;os_profile_windows_config&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;provision_vm_agent&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String :&lt;/li&gt;
+&lt;li&gt;This field is optional.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;enable_automatic_upgrades&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Boolean : enables automatic upgrades&lt;/li&gt;
+&lt;li&gt;This field is optional.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;winrm&lt;/strong&gt; (Optional) A collection of WinRM configuration blocks.
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;protocol&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Specifies the protocol of listener&lt;/li&gt;
+&lt;li&gt;This field is mandatory.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;certificate_url&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Specifies URL of the certificate with which new Virtual Machines is provisioned.&lt;/li&gt;
+&lt;li&gt;This field is optional.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;additional_unattend_config&lt;/strong&gt; (Optional)
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;pass&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Specifies the name of the pass that the content applies to. The only allowable value is oobeSystem.&lt;/li&gt;
+&lt;li&gt;This field is mandatory.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;component&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Specifies the name of the component to configure with the added content. The only allowable value is Microsoft-Windows-Shell-Setup.&lt;/li&gt;
+&lt;li&gt;This field is mandatory.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;setting_name&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Specifies the name of the setting to which the content applies. Possible values are: FirstLogonCommands and AutoLogon.&lt;/li&gt;
+&lt;li&gt;This field is mandatory.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;content&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Specifies the base-64 encoded XML formatted content that is added to the unattend.xml file for the specified path and component.&lt;/li&gt;
+&lt;li&gt;This field is optional.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;network_interfaces&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;name&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : The name of the network interface. Changing this forces a new resource to be created.&lt;/li&gt;
+&lt;li&gt;This field is mandatory.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;security_group&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : The name of the Network Security Group to associate with the network interface.&lt;/li&gt;
+&lt;li&gt;This field is optional.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;internal_dns_name_label&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Relative DNS name for this NIC used for internal communications between VMs in the same VNet&lt;/li&gt;
+&lt;li&gt;This field is optional.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;enable_ip_forwarding&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Enables IP Forwarding on the NIC. Defaults to false.&lt;/li&gt;
+&lt;li&gt;This field is optional.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;dns_servers&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String List : List of DNS servers IP addresses to use for this NIC, overrides the VNet-level server list&lt;/li&gt;
+&lt;li&gt;This field is optional.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;ip_configurations&lt;/strong&gt; (Optional) Collection of ipConfigurations associated with this NIC.
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;name&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : User-defined name of the IP.&lt;/li&gt;
+&lt;li&gt;This field is mandatory.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;subnet&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Reference to a subnet in which this NIC has been created.&lt;/li&gt;
+&lt;li&gt;This field is mandatory.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;public_ip_address_allocation&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Defines how a public IP address is assigned. Options are Static or Dynamic.&lt;/li&gt;
+&lt;li&gt;This field is required.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;private_ip_address_allocation&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Defines how a private IP address is assigned. Options are Static or Dynamic.&lt;/li&gt;
+&lt;li&gt;This field is mandatory.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;private_ip_address&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Reference to a Public IP Address to associate with this NIC&lt;/li&gt;
+&lt;li&gt;This field is optional.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;load_balancer_backend_address_pools&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String :&lt;/li&gt;
+&lt;li&gt;This field is mandatory.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;tags&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String List : List of Load Balancer Backend Address Pool names references to which this NIC belongs&lt;/li&gt;
+&lt;li&gt;This field is mandatory.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;plan&lt;/strong&gt; (Optional)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;name&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Specifies the name of the image from the marketplace.&lt;/li&gt;
+&lt;li&gt;This field is mandatory.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;publisher&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : pecifies the publisher of the image.&lt;/li&gt;
+&lt;li&gt;This field is optional.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;product&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Specifies the product of the image from the marketplace.&lt;/li&gt;
+&lt;li&gt;This field is optional.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;boot_diagnostics&lt;/strong&gt; (Optional)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;enabled&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Whether to enable boot diagnostics for the virtual machine.&lt;/li&gt;
+&lt;li&gt;This field is mandatory.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;storage_uri&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Blob endpoint for the storage account to hold the virtual machine&amp;rsquo;s diagnostic files. This must be the root of a storage account, and not a storage container.&lt;/li&gt;
+&lt;li&gt;This field is mandatory.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;storage_data_disk&lt;/strong&gt; (Optional)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;name&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Specifies the name of the data disk.&lt;/li&gt;
+&lt;li&gt;This field is mandatory.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;storage_account&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Related storage account name&lt;/li&gt;
+&lt;li&gt;This field is optional.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;storage_container&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Related storage container name.&lt;/li&gt;
+&lt;li&gt;This field is optional.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;managed_disk_type&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : When provided it creates an attached managed disk.&lt;/li&gt;
+&lt;li&gt;This field is optional.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;create_option&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Specifies how the virtual machine should be created. Possible values are attach and FromImage.&lt;/li&gt;
+&lt;li&gt;This field is mandatory.&lt;/li&gt;
+&lt;li&gt;This field cannot be null or empty.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;caching&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Specifies the caching requirements.&lt;/li&gt;
+&lt;li&gt;This field is optional.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;image_uri&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Specifies the image_uri in the form publisherName:offer:skus:version. image_uri can also specify the VHD uri of a custom VM image to clone. When cloning a custom disk image the os_type documented below becomes required.&lt;/li&gt;
+&lt;li&gt;This field is optional.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;os_type&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Specifies the operating system Type, valid values are windows, linux.&lt;/li&gt;
+&lt;li&gt;This field is optional.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;delete_os_disk_on_termination&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Flag to enable deletion of the OS Disk VHD blob when the VM is deleted, defaults to false&lt;/li&gt;
+&lt;li&gt;This field is optional.&lt;/li&gt;
+&lt;li&gt;Defaults to false&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;delete_data_disks_on_termination&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Flag to enable deletion of Storage Disk VHD blobs when the VM is deleted, defaults to false&lt;/li&gt;
+&lt;li&gt;This field is optional.&lt;/li&gt;
+&lt;li&gt;Defaults to false&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;license_type&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;String : Specifies the Windows OS license type. The only allowable value, if supplied, is Windows_Server.&lt;/li&gt;
+&lt;li&gt;This field is optional, when a windows machine.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;tags&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;List String : tags to assign to the resource&lt;/li&gt;
+&lt;li&gt;This field is optional.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </description>
     </item>
     
@@ -4763,6 +5796,174 @@ If it is not possible or desirable to put the notice in a particular file, then 
 &lt;h2 id=&#34;exhibit-b-incompatible-with-secondary-licenses-notice&#34;&gt;Exhibit B - “Incompatible With Secondary Licenses” Notice&lt;/h2&gt;
 
 &lt;p&gt;This Source Code Form is “Incompatible With Secondary Licenses”, as defined by the Mozilla Public License, v. 2.0.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Support Plan Contact Form</title>
+      <link>http://docs.ernest.io/supportplan/</link>
+      <pubDate>Wed, 09 Mar 2016 20:08:11 +0100</pubDate>
+      
+      <guid>http://docs.ernest.io/supportplan/</guid>
+      <description>&lt;form class=&#34;form-horizontal&#34; id=&#34;input-form&#34; action=&#34;https://docs.google.com/forms/d/1t_F8UU5CebFIWe2rCU7xlBPk-z0ISN_V6v2bcktsoH0/formResponse?&#34; method=&#34;POST&#34; target=&#34;no-target&#34; onSubmit=&#34;alert(&#39;Thank you for your query, we will respond shortly.&#39;);window.location.href = &#39;/support/&#39;;&#34;&gt;
+&lt;fieldset&gt;
+
+&lt;legend&gt;&lt;/legend&gt;
+
+&lt;div class=&#34;form-group&#34;&gt;
+  &lt;label for=&#34;firstname&#34;&gt;First Name&lt;/label&gt;  
+  &lt;input id=&#34;firstname&#34; name=&#34;entry.706791366&#34; type=&#34;text&#34; placeholder=&#34;First Name&#34; class=&#34;form-control&#34; required=&#34;&#34;&gt;
+&lt;/div&gt;
+
+&lt;div class=&#34;form-group&#34;&gt;
+  &lt;label for=&#34;lastname&#34;&gt;Last Name&lt;/label&gt;  
+  &lt;input id=&#34;lastname&#34; name=&#34;entry.1072744609&#34; type=&#34;text&#34; placeholder=&#34;Last Name&#34; class=&#34;form-control&#34; required=&#34;&#34;&gt;
+&lt;/div&gt;
+
+&lt;div class=&#34;form-group&#34;&gt;
+  &lt;label for=&#34;email&#34;&gt;Email Address&lt;/label&gt;  
+  &lt;input id=&#34;email&#34; name=&#34;entry.1586474514&#34; type=&#34;text&#34; placeholder=&#34;Email Address&#34; class=&#34;form-control&#34; required=&#34;&#34;&gt;
+&lt;/div&gt;
+
+&lt;div class=&#34;form-group&#34;&gt;
+  &lt;label for=&#34;plan&#34;&gt;Support Plan&lt;/label&gt;
+  &lt;div&gt;
+    &lt;input type=&#34;radio&#34; name=&#34;entry.1568716440&#34; id=&#34;plan-0&#34; value=&#34;Standard&#34; checked=&#34;checked&#34;&gt;
+    &lt;label for=&#34;plan-0&#34;&gt;
+      &lt;span&gt;&lt;/span&gt;Standard
+    &lt;/label&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;input type=&#34;radio&#34; name=&#34;entry.1568716440&#34; id=&#34;plan-1&#34; value=&#34;Premium&#34;&gt;
+    &lt;label for=&#34;plan-1&#34;&gt;
+      &lt;span&gt;&lt;/span&gt;Premium
+    &lt;/label&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&#34;form-group&#34;&gt;
+  &lt;label for=&#34;submit&#34;&gt;&lt;/label&gt;
+    &lt;button id=&#34;submit&#34; type=&#34;submit&#34; class=&#34;btn btn-success&#34;&gt;Submit&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;/fieldset&gt;
+&lt;/form&gt;
+
+&lt;iframe src=&#34;#&#34; id=&#34;no-target&#34; name=&#34;no-target&#34; style=&#34;visibility:hidden&#34;&gt;&lt;/iframe&gt;</description>
+    </item>
+    
+    <item>
+      <title>vCloud Account Creation Request Form</title>
+      <link>http://docs.ernest.io/vcloud-account/</link>
+      <pubDate>Wed, 09 Mar 2016 20:08:11 +0100</pubDate>
+      
+      <guid>http://docs.ernest.io/vcloud-account/</guid>
+      <description>&lt;form class=&#34;form-horizontal&#34; id=&#34;input-form&#34; action=&#34;https://docs.google.com/forms/d/1VgjUkBjZQw-xSt1-8debb4Wk7FQhDr2vb-jrH3byKd4/formResponse?&#34; method=&#34;POST&#34; target=&#34;no-target&#34; onSubmit=&#34;alert(&#39;Thank you for your request, we will process it shortly.&#39;);window.location.href = &#39;/documentation/#vcloud-director-examples&#39;;&#34;&gt;
+&lt;fieldset&gt;
+
+&lt;legend&gt;&lt;/legend&gt;
+
+&lt;div class=&#34;form-group&#34;&gt;
+  &lt;label for=&#34;firstname&#34;&gt;First Name&lt;/label&gt;  
+  &lt;input id=&#34;firstname&#34; name=&#34;entry.1042863238&#34; type=&#34;text&#34; placeholder=&#34;First Name&#34; class=&#34;form-control&#34; required=&#34;&#34;&gt;
+&lt;/div&gt;
+
+&lt;div class=&#34;form-group&#34;&gt;
+  &lt;label for=&#34;lastname&#34;&gt;Last Name&lt;/label&gt;  
+  &lt;input id=&#34;lastname&#34; name=&#34;entry.893089123&#34; type=&#34;text&#34; placeholder=&#34;Last Name&#34; class=&#34;form-control&#34; required=&#34;&#34;&gt;
+&lt;/div&gt;
+
+&lt;div class=&#34;form-group&#34;&gt;
+  &lt;label class=&#34;col-md-4 control-label&#34; for=&#34;email&#34;&gt;Email Address&lt;/label&gt;  
+  &lt;input id=&#34;email&#34; name=&#34;entry.1081522787&#34; type=&#34;text&#34; placeholder=&#34;Email Address&#34; class=&#34;form-control&#34; required=&#34;&#34;&gt;
+&lt;/div&gt;
+
+&lt;div class=&#34;form-group&#34;&gt;
+  &lt;label for=&#34;submit&#34;&gt;&lt;/label&gt;
+    &lt;button id=&#34;submit&#34; type=&#34;submit&#34; class=&#34;btn btn-success&#34;&gt;Submit&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;/fieldset&gt;
+&lt;/form&gt;
+
+&lt;iframe src=&#34;#&#34; id=&#34;no-target&#34; name=&#34;no-target&#34; style=&#34;visibility:hidden&#34;&gt;&lt;/iframe&gt;</description>
+    </item>
+    
+    <item>
+      <title>Community Slack Channel Access Form</title>
+      <link>http://docs.ernest.io/slack/</link>
+      <pubDate>Wed, 09 Mar 2016 19:56:50 +0100</pubDate>
+      
+      <guid>http://docs.ernest.io/slack/</guid>
+      <description>&lt;form class=&#34;form-horizontal&#34; id=&#34;input-form&#34; action=&#34;https://docs.google.com/forms/d/1t0olvu3MQNBdz3oTKLm_NczBeFzL8AnIeMOrQwfAKF4/formResponse?&#34; method=&#34;POST&#34; target=&#34;no-target&#34; onSubmit=&#34;alert(&#39;Thank you for your request, we will process it shortly.&#39;);window.location.href = &#39;/community/&#39;;&#34;&gt;
+&lt;fieldset&gt;
+
+&lt;legend&gt;&lt;/legend&gt;
+
+&lt;div class=&#34;form-group&#34;&gt;
+  &lt;label for=&#34;firstname&#34;&gt;First Name: &lt;/label&gt;  
+  &lt;input id=&#34;firstname&#34; name=&#34;entry.1042863238&#34; type=&#34;text&#34; class=&#34;form-control&#34; placeholder=&#34;First Name&#34; required=&#34;&#34;&gt;
+&lt;/div&gt;
+
+&lt;div class=&#34;form-group&#34;&gt;
+  &lt;label for=&#34;lastname&#34;&gt;Last Name: &lt;/label&gt;  
+  &lt;input id=&#34;lastname&#34; name=&#34;entry.893089123&#34; type=&#34;text&#34; class=&#34;form-control&#34; placeholder=&#34;Last Name&#34; required=&#34;&#34;&gt;
+&lt;/div&gt;
+
+&lt;div class=&#34;form-group&#34;&gt;
+  &lt;label for=&#34;email&#34;&gt;Email Address: &lt;/label&gt;  
+  &lt;input id=&#34;email&#34; name=&#34;entry.1081522787&#34; type=&#34;text&#34; class=&#34;form-control&#34; placeholder=&#34;Email Address&#34; required=&#34;&#34;&gt;
+&lt;/div&gt;
+
+&lt;div class=&#34;form-group&#34;&gt;
+  &lt;label for=&#34;submit&#34;&gt;&lt;/label&gt;
+  &lt;div&gt;
+    &lt;button id=&#34;submit&#34; type=&#34;submit&#34; class=&#34;btn btn-success&#34;&gt;Submit&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/fieldset&gt;
+&lt;/form&gt;
+
+&lt;iframe src=&#34;#&#34; id=&#34;no-target&#34; name=&#34;no-target&#34; style=&#34;visibility:hidden&#34;&gt;&lt;/iframe&gt;</description>
+    </item>
+    
+    <item>
+      <title>Ernest</title>
+      <link>http://docs.ernest.io/</link>
+      <pubDate>Wed, 09 Mar 2016 00:11:02 +0100</pubDate>
+      
+      <guid>http://docs.ernest.io/</guid>
+      <description>
+
+&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;Ernest is an application and infrastructure orchestration and automation engine. Ernest takes the complexity and people out of DevOps, simplifying the process of creating and managing even the most complex environments.&lt;/p&gt;
+
+&lt;p&gt;By delivering everything a development team requires to be able to deploy code and manage its lifecycle Ernest de-risks and accelerates the application development/deployment process, helping developers to deliver value back to the business faster and providing increased business agility&lt;/p&gt;
+
+&lt;p&gt;Ernest has been engineered for flexibility, allowing you to design your environment the way you want. You pick the technologies, the cloud and the architecture then overlay your compliance and governance requirements.&lt;/p&gt;
+
+&lt;p&gt;The Cloud is about freedom of choice and mobility. With Ernest you can easily deploy your environment onto the cloud or infrastructure of your choice and the redeploy it to an alternative cloud as business requirements demand.&lt;/p&gt;
+
+&lt;p&gt;Because Ernest is about developing and then using software reliably and reproducibly it ensures consistency and agility throughout the application lifecycle. Ernest brings the same version control, testing and configuration management tooling you use elsewhere in your development process to your platform; allowing you to utilise version controlled, tested, automated deployments of your environment from the development stage, through testing, to production.&lt;/p&gt;
+
+&lt;h2 id=&#34;key-features&#34;&gt;Key features&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;A Continuous Delivery pipeline for Infrastructure as Code&lt;/li&gt;
+&lt;li&gt;An orchestration tool for any configuration manager and any cloud&lt;/li&gt;
+&lt;li&gt;Fully version controlled&lt;/li&gt;
+&lt;li&gt;Fully automated&lt;/li&gt;
+&lt;li&gt;Works with any technology stack&lt;/li&gt;
+&lt;li&gt;Able to manage the full application life cycle&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Ernest is built around the idea that DevOps is not a job title, but a methodology, one which Ernest has enshrined in code. Ernest enables digital and SaaS transformation, while removing the complexity of DevOps by delivering it as-a-Service.&lt;/p&gt;
+
+&lt;h2 id=&#34;next-steps&#34;&gt;Next steps&lt;/h2&gt;
+
+&lt;p&gt;Follow the instructions &lt;a href=&#34;http://docs.ernest.io/downloads/&#34;&gt;here&lt;/a&gt; to get Ernest and the Ernest CLI. Once we have done that we can &lt;a href=&#34;http://docs.ernest.io/getting-started/&#34;&gt;start working&lt;/a&gt; with them.&lt;/p&gt;
 </description>
     </item>
     

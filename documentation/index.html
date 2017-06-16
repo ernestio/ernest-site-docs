@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
     <title>Documentation - Ernest</title>
-    <meta name="generator" content="Hugo 0.16-DEV" />
+    <meta name="generator" content="Hugo 0.19" />
 
     
     <meta name="description" content="Developer Driven Orchestration">
@@ -186,24 +186,6 @@
 
 
 
-<a  title="Ernest" href="http://docs.ernest.io/">
-	
-	Ernest
-</a>
-
-
-
-  
-</li>
-
-
-
-<li>
-  
-    
-
-
-
 <a  title="Getting started" href="http://docs.ernest.io/getting-started/">
 	
 	Getting started
@@ -318,6 +300,24 @@
 <a  title="License" href="http://docs.ernest.io/license/">
 	
 	License
+</a>
+
+
+
+  
+</li>
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Ernest" href="http://docs.ernest.io/">
+	
+	Ernest
 </a>
 
 
@@ -3703,6 +3703,1206 @@ Networks is a map with two fields</p>
 </ul></li>
 </ul>
 
+<h2 id="azure">Azure</h2>
+
+<h3 id="introduction-1">Introduction</h3>
+
+<p>Microsoft Azure is an open, flexible, enterprise-grade cloud computing platform. Move faster, do more and save money with IaaS + PaaS.</p>
+
+<h3 id="supported-services-1">Supported Services</h3>
+
+<p>The following Azure services are supported by ernest</p>
+
+<ul>
+<li>Availability sets</li>
+<li>Load balancers</li>
+<li>Network gateways</li>
+<li>Network interfaces</li>
+<li>Public IP</li>
+<li>Resource groups</li>
+<li>Security groups</li>
+<li>SQL servers</li>
+<li>SQL databases</li>
+<li>SQL firewall rules</li>
+<li>Storage accounts</li>
+<li>Storage containers</li>
+<li>Subnets</li>
+<li>Virtual machines</li>
+<li>Virtual networks</li>
+</ul>
+
+<h2 id="azure-examples">Azure Examples</h2>
+
+<h3 id="setup-1">Setup</h3>
+
+<p>Before start using ernest with azure you&rsquo;ll need some Azure information:</p>
+
+<ul>
+<li>Azure subscription ID</li>
+<li>Azure client ID</li>
+<li>Azure client secret</li>
+<li>Azure tenant ID</li>
+<li>Azure environment</li>
+</ul>
+
+<p>The first step is to setup the ernest target (where ernest is installed)</p>
+
+<pre><code>$ ernest target https://ernest.local
+Target set
+</code></pre>
+
+<p>Next we will login</p>
+
+<pre><code>$ ernest login
+Username: user1
+Password: ******
+Welcome back user1
+</code></pre>
+
+<p>Once we have a open session on ernest we will need to create an azure datacenter, you&rsquo;ll be doing that by running the command:</p>
+
+<pre><code>$ ernest datacenter create azure --subscription_id ************ --client_id *********** --client_secret *********** --region westus --tenant_id ********** --environment ********* my-dc
+</code></pre>
+
+<h2 id="azure-yaml-references">Azure YAML References</h2>
+
+<p>Environments built and managed with Ernest are defined in YAML format</p>
+
+<h3 id="example-2">Example</h3>
+
+<pre><code>name: demo
+datacenter: my-dc
+
+resource_groups:
+  - name: rg1
+    location: eastus
+
+    security_groups:
+      - name: sg1
+        rules:
+          - name: rule1
+            description: &quot;awesome rule&quot;
+            priority: 101
+            direction: Inbound
+            access: Allow
+            protocol: Tcp
+            source_port_range: 100-4096
+            destination_port_range: 100-4096
+            source_address_prefix: VirtualNetwork
+            destination_address_prefix: VirtualNetwork
+        tags:
+          environment: staging
+
+    virtual_networks:
+      - name: vn_test
+        address_spaces:
+          - 10.0.0.0/16
+        subnets:
+          - name: sub_test
+            address_prefix: 10.0.1.0/24
+            security_group: sg1
+
+    virtual_machines:
+      - name: vm_test
+        count: 2
+        size: Standard_A0
+        image: Canonical:UbuntuServer:14.04.2-LTS:latest
+        network_interfaces:
+          - name: ni_test
+            ip_configurations:
+              - name: config_1
+                subnet: vn_test:sub_test
+                private_ip_address_allocation: dynamic
+        authentication:
+          admin_username: testadmin
+          admin_password: Password1234!
+        storage_os_disk:
+          name: myosdiskaOne
+          storage_account: safest12354
+          storage_container: scfestla
+          caching: ReadWrite
+          create_option: FromImage
+        storage_data_disk:
+          name: myosdiskaTwo
+          storage_account: safest12354
+          storage_container: scfestla
+          disk_size_gb: 1023
+          create_option: empty
+          lun: 0
+        os_profile:
+          computer_name: test
+
+    storage_accounts:
+      - name: safest12354
+        account_type: Standard_LRS
+        containers:
+          - name: scfestla
+            access_type: private
+
+    sql_servers:
+      - name: ernestserver01
+        version: &quot;12.0&quot;
+        administrator_login: mradministrator
+        administrator_login_password: P4ssw0rd
+        databases:
+          - name: mydb
+
+    public_ips:
+      - name: my_ip
+
+    loadbalancers:
+      - name: lb1
+        frontend_ip_configurations:
+          - name: fic1
+            subnet: sub_test
+</code></pre>
+
+<h3 id="field-reference-2">Field Reference</h3>
+
+<h4 id="service-options-2">Service Options</h4>
+
+<pre><code>name: demo
+datacenter: my-dc
+</code></pre>
+
+<p>Service Options support the following fields:</p>
+
+<ul>
+<li><p><strong>name</strong></p>
+
+<ul>
+<li>String that defines the name of the service to build.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+<li>The value of this field must be 50 characters maximum.</li>
+</ul></li>
+
+<li><p><strong>datacenter</strong></p>
+
+<ul>
+<li>String that defines the name of the datacenter where the service is built.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+<li>The value of this field must 50 characters maximum.</li>
+</ul></li>
+</ul>
+
+<h3 id="resource-groups">Resource groups</h3>
+
+<p>Resource groups are supporting the following fields:</p>
+
+<ul>
+<li><p><strong>name</strong></p>
+
+<ul>
+<li>String defining the resource group</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+
+<li><p><strong>location</strong></p>
+
+<ul>
+<li>String : the location where the resource group will be created.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+<li>List of valid locations (here)[<a href="http://azure.microsoft.com/en-us/regions/">http://azure.microsoft.com/en-us/regions/</a>]</li>
+</ul></li>
+
+<li><p><strong>security_groups</strong></p></li>
+</ul>
+
+<p>A security_group block is described below</p>
+
+<ul>
+<li><strong>virtual_networks</strong></li>
+</ul>
+
+<p>A virtual_network block is described below</p>
+
+<ul>
+<li><strong>virtual_machines</strong></li>
+</ul>
+
+<p>A virtual_machine block is described below</p>
+
+<ul>
+<li><strong>storage_accounts</strong></li>
+</ul>
+
+<p>A storage_account block is described below</p>
+
+<ul>
+<li><strong>sql_servers</strong></li>
+</ul>
+
+<p>A sql_server block is described below</p>
+
+<ul>
+<li><strong>public_ips</strong></li>
+</ul>
+
+<p>A public_ip block is described below</p>
+
+<ul>
+<li><strong>loadbalancers</strong></li>
+</ul>
+
+<p>A loadbalancer block is described below</p>
+
+<h3 id="security-group">Security Group</h3>
+
+<p>Security groups are supporting the following fields:</p>
+
+<ul>
+<li><p><strong>name</strong></p>
+
+<ul>
+<li>String : the name of the security group</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+
+<li><p><strong>rules</strong></p>
+
+<ul>
+<li><strong>name</strong>
+
+<ul>
+<li>String : the name of the security group rule</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>description</strong>
+
+<ul>
+<li>String : A description for this rule. Restricted to 140 characters.</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>priority</strong>
+
+<ul>
+<li>String : Specifies the priority of the rule. The value can be between 100 and 4096. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>direction</strong>
+
+<ul>
+<li>String : The direction specifies if rule will be evaluated on incoming or outgoing traffic. Possible values are “Inbound” and “Outbound”.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>access</strong>
+
+<ul>
+<li>String : Specifies whether network traffic is allowed or denied. Possible values are “Allow” and “Deny”.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>protocol</strong>
+
+<ul>
+<li>String : Network protocol this rule applies to. Can be Tcp, Udp or * to match both.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>source_port_range</strong>
+
+<ul>
+<li>String : Integer or range between 0 and 65535 or * to match any.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>destination_port_range</strong>
+
+<ul>
+<li>String : Integer or range between 0 and 65535 or * to match any.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>source_address_prefix</strong>
+
+<ul>
+<li>String : CIDR or source IP range or * to match any IP. Tags such as ‘VirtualNetwork’, ‘AzureLoadBalancer’ and ‘Internet’ can also be used.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>destination_address_prefix</strong>
+
+<ul>
+<li>String : CIDR or destination IP range or * to match any IP. Tags such as ‘VirtualNetwork’, ‘AzureLoadBalancer’ and ‘Internet’ can also be used.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+</ul></li>
+
+<li><p><strong>tags</strong></p>
+
+<ul>
+<li>List String : tags to assign to the resource</li>
+<li>This field is optional.</li>
+</ul></li>
+</ul>
+
+<h3 id="storage-accounts">Storage Accounts</h3>
+
+<ul>
+<li><strong>name</strong>
+
+<ul>
+<li>String : Specifies the name of the storage account. Changing this forces a new resource to be created. This must be unique across the entire Azure service, not just within the resource group.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>account_type</strong>
+
+<ul>
+<li>String : Defines the type of storage account to be created. Valid options are <strong>Standard_LRS</strong>, <strong>Standard_ZRS</strong>, <strong>Standard_GRS</strong>, <strong>Standard_RAGRS</strong>, <strong>Premium_LRS</strong>. Changing this is sometimes valid - see the Azure documentation for more information on which types of accounts can be converted into other types.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>account_kind</strong>
+
+<ul>
+<li>String : Defines the Kind of account. Valid options are <strong>Storage</strong> and <strong>BlobStorage</strong>. Changing this forces a new resource to be created. Defaults to <strong>Storage</strong>.</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>enable_blob_encryption</strong>
+
+<ul>
+<li>Boolean : Boolean flag which controls if Encryption Services are enabled for Blob storage, see here for more information.</li>
+<li>This field is optional.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>containers</strong> A list of Storage Account Containers as described below
+
+<ul>
+<li><strong>name</strong>
+
+<ul>
+<li>String : Specifies the name of the storage account. Changing this forces a new resource to be created. This must be unique across the entire Azure service, not just within the resource group.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>access_type</strong>
+
+<ul>
+<li>String : The &lsquo;interface&rsquo; for access the container provides. Can be either <strong>blob</strong>, <strong>container</strong> or <strong>private</strong>.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+</ul></li>
+<li><strong>tags</strong>
+
+<ul>
+<li>List String : tags to assign to the resource</li>
+<li>This field is optional.</li>
+</ul></li>
+</ul>
+
+<h3 id="virtual-networks">Virtual Networks</h3>
+
+<ul>
+<li><strong>name</strong>
+
+<ul>
+<li>String : The name of the virtual network. Changing this forces a new resource to be created.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>address_spaces</strong>
+
+<ul>
+<li>String : The address space that is used the virtual network. You can supply more than one address space. Changing this forces a new resource to be created.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>dns_servers</strong>
+
+<ul>
+<li>String : List of IP addresses of DNS servers</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>subnets</strong>
+A list of Subnets as described below</li>
+</ul>
+
+<h3 id="subnet">Subnet</h3>
+
+<ul>
+<li><strong>name</strong>
+
+<ul>
+<li>String : The name of the virtual network. Changing this forces a new resource to be created.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>address_prefix</strong>
+
+<ul>
+<li>String : The address prefix to use for the subnet.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>security_group</strong>
+
+<ul>
+<li>String : The name of the Security Group to associate with the subnet.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+</ul>
+
+<h3 id="sql-servers">SQL Servers</h3>
+
+<ul>
+<li><strong>name</strong>
+
+<ul>
+<li>String : The name of the sql server. Changing this forces a new resource to be created.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>version</strong>
+
+<ul>
+<li>String : The version for the new server. Valid values are: 2.0 (for v11 server) and 12.0 (for v12 server).</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>administrator_login</strong>
+
+<ul>
+<li>String : The administrator login name for the new server.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>administrator_login_password</strong>
+
+<ul>
+<li>String : The password for the new AdministratorLogin. Please following Azures Password Policy</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>tags</strong>
+
+<ul>
+<li>List String : tags to assign to the resource</li>
+<li>This field is optional.</li>
+</ul></li>
+
+<li><p><strong>databases</strong>
+A list of SQL Databases as described below</p>
+
+<ul>
+<li><strong>name</strong>
+
+<ul>
+<li>String : The name of the database.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>create_mode</strong>
+
+<ul>
+<li>String : Specifies the type of database to create.</li>
+<li>This field is optional.</li>
+<li>Defaults to Default.</li>
+</ul></li>
+<li><strong>source_database_id</strong>
+
+<ul>
+<li>String : The URI of the source database if create_mode value is not Default.</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>restore_point_in_time</strong>
+
+<ul>
+<li>String : The point in time for the restore. Only applies if create_mode is PointInTimeRestore e.g. 2013-11-08T22:00:40Z</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>edition</strong>
+
+<ul>
+<li>String : The edition of the database to be created. Applies only if create_mode is Default. Valid values are: Basic, Standard, Premium, or DataWarehouse. Please see Azure SQL Database Service Tiers.</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>collation</strong>
+
+<ul>
+<li>String : The name of the collation. Applies only if create_mode is Default. Azure default is SQL_LATIN1_GENERAL_CP1_CI_AS</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>max_size_bytes</strong>
+
+<ul>
+<li>String : The maximum size that the database can grow to. Applies only if create_mode is Default. Please see Azure SQL Database Service Tiers.</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>requested_service_objective_id</strong>
+
+<ul>
+<li>String : Use requested_service_objective_id or requested_service_objective_name to set the performance level for the database. Valid values are: S0, S1, S2, S3, P1, P2, P4, P6, P11 and ElasticPool. Please see Azure SQL Database Service Tiers.</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>requested_service_objective_name</strong>
+
+<ul>
+<li>String : Use requested_service_objective_name or requested_service_objective_id to set the performance level for the database. Please see Azure SQL Database Service Tiers.</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>source_database_deletion_date</strong>
+
+<ul>
+<li>String : The deletion date time of the source database. Only applies to deleted databases where create_mode is PointInTimeRestore.</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>tags</strong>
+
+<ul>
+<li>List String : tags to assign to the resource</li>
+<li>This field is optional.</li>
+</ul></li>
+</ul></li>
+
+<li><p><strong>rules</strong>
+A list of SQL Firewall Rules as described below</p>
+
+<ul>
+<li><strong>name</strong>
+
+<ul>
+<li>String : The name of the SQL Firewall Rule.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>start_ip_address</strong>
+
+<ul>
+<li>String :  The starting IP address to allow through the firewall for this rule.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>end_ip_address</strong>
+
+<ul>
+<li>String : The ending IP address to allow through the firewall for this rule.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h3 id="load-balancers-1">Load Balancers</h3>
+
+<ul>
+<li><strong>name</strong>
+
+<ul>
+<li>String : Specifies the name of the LoadBalancer.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>location</strong>
+
+<ul>
+<li>String : Specifies the supported Azure location where the resource exists.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>backend_address_pools</strong>
+
+<ul>
+<li>List of strings : With names of the backend address pools</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+
+<li><p><strong>frontend_ip_configurations</strong>
+A list of Frontend IP Configurations as described below</p>
+
+<ul>
+<li><strong>name</strong>
+
+<ul>
+<li>String : Specifies the name of the frontend ip configuration.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>subnet</strong>
+
+<ul>
+<li>String : Reference to subnet associated with the IP Configuration.</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>public_ip_address_allocation</strong>
+
+<ul>
+<li>String : Defines how a public IP address is assigned. Options are Static or Dynamic.</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>private_ip_address</strong>
+
+<ul>
+<li>String : Private IP Address to assign to the Load Balancer. The last one and first four IPs in any range are reserved and cannot be manually assigned.</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>private_ip_address_allocation</strong>
+
+<ul>
+<li>String : Defines how a private IP address is assigned. Options are Static or Dynamic.</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>rules</strong>
+A list of Load balancer Rules as described below
+
+<ul>
+<li><strong>name</strong>
+
+<ul>
+<li>String : Specifies the name of the Rule.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.<br /></li>
+</ul></li>
+<li><strong>protocol</strong>
+
+<ul>
+<li>String : The transport protocol for the external endpoint. Possible values are Udp or Tcp.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.<br /></li>
+</ul></li>
+<li><strong>frontend_port</strong>
+
+<ul>
+<li>String :  The port for the external endpoint. Port numbers for each Rule must be unique within the Load Balancer. Possible values range between 1 and 65534, inclusive.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.<br /></li>
+</ul></li>
+<li><strong>backend_port</strong>
+
+<ul>
+<li>String : The port used for internal connections on the endpoint. Possible values range between 1 and 65535, inclusive.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.<br /></li>
+</ul></li>
+<li><strong>backend_address_pool</strong>
+
+<ul>
+<li>String :  A reference to a Backend Address Pool over which this Load Balancing Rule operates.</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>probe</strong>
+
+<ul>
+<li>String : A reference to a Probe used by this Load Balancing Rule.</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>floating_ip</strong>
+
+<ul>
+<li>String : Floating IP is pertinent to failover scenarios: a &ldquo;floating” IP is reassigned to a secondary server in case the primary server fails. Floating IP is required for SQL AlwaysOn.</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>idle_timeout</strong>
+
+<ul>
+<li>String : Specifies the timeout for the Tcp idle connection. The value can be set between 4 and 30 minutes. The default value is 4 minutes. This element is only used when the protocol is set to Tcp.</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>load_distribution</strong>
+
+<ul>
+<li>String : Specifies the load balancing distribution type to be used by the Load Balancer. Possible values are: Default – The load balancer is configured to use a 5 tuple hash to map traffic to available servers. SourceIP – The load balancer is configured to use a 2 tuple hash to map traffic to available servers. SourceIPProtocol – The load balancer is configured to use a 3 tuple hash to map traffic to available servers.</li>
+<li>This field is optional.
+<br /></li>
+</ul></li>
+</ul></li>
+</ul></li>
+
+<li><p><strong>probes</strong>
+A list of Load Balancer Probe as described below</p>
+
+<ul>
+<li><strong>name</strong>
+
+<ul>
+<li>String : Specifies the name of the Probe.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.<br /></li>
+</ul></li>
+<li><strong>port</strong>
+
+<ul>
+<li>String : Port on which the Probe queries the backend endpoint. Possible values range from 1 to 65535, inclusive.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.<br /></li>
+</ul></li>
+<li><strong>protocol</strong>
+
+<ul>
+<li>String : Specifies the protocol of the end point. Possible values are Http or Tcp. If Tcp is specified, a received ACK is required for the probe to be successful. If Http is specified, a 200 OK response from the specified URI is required for the probe to be successful.</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>request_path</strong>
+
+<ul>
+<li>String : The URI used for requesting health status from the backend endpoint. Required if protocol is set to Http. Otherwise, it is not allowed.</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>interval</strong>
+
+<ul>
+<li>String : The interval, in seconds between probes to the backend endpoint for health status. The default value is 15, the minimum value is 5.</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>max_failures</strong>
+
+<ul>
+<li>String : The number of failed probe attempts after which the backend endpoint is removed from rotation. The default value is 2. NumberOfProbes multiplied by intervalInSeconds value must be greater or equal to 10.Endpoints are returned to rotation when at least one probe is successful.</li>
+<li>This field is optional.</li>
+</ul></li>
+</ul></li>
+
+<li><p><strong>tags</strong></p>
+
+<ul>
+<li>List String : tags to assign to the resource</li>
+<li>This field is optional.</li>
+</ul></li>
+</ul>
+
+<h3 id="virtual-machines">Virtual Machines</h3>
+
+<ul>
+<li><strong>name</strong>
+
+<ul>
+<li>String : Specifies the name of the virtual machine resource. Changing this forces a new resource to be created.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.<br /></li>
+</ul></li>
+<li><strong>count</strong>
+
+<ul>
+<li>Integer : Number of virtual machines to be created</li>
+<li>This field is optional.</li>
+<li>Defaults to 1</li>
+</ul></li>
+<li><strong>size</strong>
+
+<ul>
+<li>String : Specifies the size of the virtual machine.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.<br /></li>
+</ul></li>
+<li><strong>image</strong>
+
+<ul>
+<li>String : String like <code>Canonical:UbuntuServer:14.04.2-LTS:latest</code> composed by:</li>
+<li><code>Canonical</code> publisher : Specifies the publisher of the image used to create the virtual machine.</li>
+<li><code>UbuntuServer</code> offer : Specifies the offer of the image used to create the virtual machine.</li>
+<li><code>14.04.2-LTS</code> sku : Specifies the SKU of the image used to create the virtual machine.</li>
+<li><code>latest</code> version : Specifies the version of the image used to create the virtual machine.</li>
+<li>This field is optional.</li>
+<li>Changing this forces a new resource to be created.</li>
+</ul></li>
+<li><strong>availability_set</strong>
+
+<ul>
+<li>String : Availability set name</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>authentication</strong>
+
+<ul>
+<li><strong>disable_password_authentication</strong>
+
+<ul>
+<li>Boolean : Specifies whether password authentication should be disabled.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>admin_username</strong>
+
+<ul>
+<li>String : Admin username to be set up on the vm</li>
+<li>This field is optional, depending on disable_password_authentication.</li>
+</ul></li>
+<li><strong>admin_password</strong>
+
+<ul>
+<li>String : Admin password to be set up on the vm</li>
+<li>This field is optional, depending on disable_password_authentication.</li>
+</ul></li>
+<li><strong>ssh_keys</strong>
+
+<ul>
+<li>String : A key/value list of ssh keys to be set on the vm</li>
+<li>This field is optional.</li>
+</ul></li>
+</ul></li>
+<li><strong>storage_os_disk</strong>
+
+<ul>
+<li><strong>name</strong>
+
+<ul>
+<li>String : Name of the storage OS disk to be used</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>storage_account</strong>
+
+<ul>
+<li>String : Related storage account name</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>storage_container</strong>
+
+<ul>
+<li>String : Related storage container name.</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>create_option</strong>
+
+<ul>
+<li>String : Specifies how the virtual machine should be created. Possible values are attach and FromImage.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>caching</strong>
+
+<ul>
+<li>String : Specifies the caching requirements.</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>image_uri</strong>
+
+<ul>
+<li>String : Specifies the image_uri in the form publisherName:offer:skus:version. image_uri can also specify the VHD uri of a custom VM image to clone. When cloning a custom disk image the os_type documented below becomes required.</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>os_type</strong>
+
+<ul>
+<li>String : Specifies the operating system Type, valid values are windows, linux.</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>disk_size_gb</strong>
+
+<ul>
+<li>String : Specifies the size of the data disk in gigabytes.</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>managed_disk_type</strong>
+
+<ul>
+<li>String : When provided it creates an attached managed disk.</li>
+<li>This field is optional.</li>
+<li>Allowable values are Standard_LRS or Premium_LRS.</li>
+</ul></li>
+</ul></li>
+<li><strong>os_profile</strong>
+
+<ul>
+<li><strong>computer_name</strong>
+
+<ul>
+<li>String : Specifies the name of the virtual machine.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>custom_data</strong>
+
+<ul>
+<li>String : Specifies a base-64 encoded string of custom data. The base-64 encoded string is decoded to a binary array that is saved as a file on the Virtual Machine. The maximum length of the binary array is 65535 bytes.</li>
+<li>This field is optional.</li>
+</ul></li>
+</ul></li>
+
+<li><p><strong>os_profile_windows_config</strong></p>
+
+<ul>
+<li><strong>provision_vm_agent</strong>
+
+<ul>
+<li>String :</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>enable_automatic_upgrades</strong>
+
+<ul>
+<li>Boolean : enables automatic upgrades</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>winrm</strong> (Optional) A collection of WinRM configuration blocks.
+
+<ul>
+<li><strong>protocol</strong>
+
+<ul>
+<li>String : Specifies the protocol of listener</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>certificate_url</strong>
+
+<ul>
+<li>String : Specifies URL of the certificate with which new Virtual Machines is provisioned.</li>
+<li>This field is optional.</li>
+</ul></li>
+</ul></li>
+<li><strong>additional_unattend_config</strong> (Optional)
+
+<ul>
+<li><strong>pass</strong>
+
+<ul>
+<li>String : Specifies the name of the pass that the content applies to. The only allowable value is oobeSystem.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>component</strong>
+
+<ul>
+<li>String : Specifies the name of the component to configure with the added content. The only allowable value is Microsoft-Windows-Shell-Setup.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>setting_name</strong>
+
+<ul>
+<li>String : Specifies the name of the setting to which the content applies. Possible values are: FirstLogonCommands and AutoLogon.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>content</strong>
+
+<ul>
+<li>String : Specifies the base-64 encoded XML formatted content that is added to the unattend.xml file for the specified path and component.</li>
+<li>This field is optional.</li>
+</ul></li>
+</ul></li>
+</ul></li>
+
+<li><p><strong>network_interfaces</strong></p>
+
+<ul>
+<li><strong>name</strong>
+
+<ul>
+<li>String : The name of the network interface. Changing this forces a new resource to be created.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>security_group</strong>
+
+<ul>
+<li>String : The name of the Network Security Group to associate with the network interface.</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>internal_dns_name_label</strong>
+
+<ul>
+<li>String : Relative DNS name for this NIC used for internal communications between VMs in the same VNet</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>enable_ip_forwarding</strong>
+
+<ul>
+<li>String : Enables IP Forwarding on the NIC. Defaults to false.</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>dns_servers</strong>
+
+<ul>
+<li>String List : List of DNS servers IP addresses to use for this NIC, overrides the VNet-level server list</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>ip_configurations</strong> (Optional) Collection of ipConfigurations associated with this NIC.
+
+<ul>
+<li><strong>name</strong>
+
+<ul>
+<li>String : User-defined name of the IP.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>subnet</strong>
+
+<ul>
+<li>String : Reference to a subnet in which this NIC has been created.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>public_ip_address_allocation</strong>
+
+<ul>
+<li>String : Defines how a public IP address is assigned. Options are Static or Dynamic.</li>
+<li>This field is required.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>private_ip_address_allocation</strong>
+
+<ul>
+<li>String : Defines how a private IP address is assigned. Options are Static or Dynamic.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>private_ip_address</strong>
+
+<ul>
+<li>String : Reference to a Public IP Address to associate with this NIC</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>load_balancer_backend_address_pools</strong>
+
+<ul>
+<li>String :</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+</ul></li>
+<li><strong>tags</strong>
+
+<ul>
+<li>String List : List of Load Balancer Backend Address Pool names references to which this NIC belongs</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+</ul></li>
+
+<li><p><strong>plan</strong> (Optional)</p>
+
+<ul>
+<li><strong>name</strong>
+
+<ul>
+<li>String : Specifies the name of the image from the marketplace.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>publisher</strong>
+
+<ul>
+<li>String : pecifies the publisher of the image.</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>product</strong>
+
+<ul>
+<li>String : Specifies the product of the image from the marketplace.</li>
+<li>This field is optional.</li>
+</ul></li>
+</ul></li>
+
+<li><p><strong>boot_diagnostics</strong> (Optional)</p>
+
+<ul>
+<li><strong>enabled</strong>
+
+<ul>
+<li>String : Whether to enable boot diagnostics for the virtual machine.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>storage_uri</strong>
+
+<ul>
+<li>String : Blob endpoint for the storage account to hold the virtual machine&rsquo;s diagnostic files. This must be the root of a storage account, and not a storage container.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+</ul></li>
+
+<li><p><strong>storage_data_disk</strong> (Optional)</p>
+
+<ul>
+<li><strong>name</strong>
+
+<ul>
+<li>String : Specifies the name of the data disk.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>storage_account</strong>
+
+<ul>
+<li>String : Related storage account name</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>storage_container</strong>
+
+<ul>
+<li>String : Related storage container name.</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>managed_disk_type</strong>
+
+<ul>
+<li>String : When provided it creates an attached managed disk.</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>create_option</strong>
+
+<ul>
+<li>String : Specifies how the virtual machine should be created. Possible values are attach and FromImage.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>caching</strong>
+
+<ul>
+<li>String : Specifies the caching requirements.</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>image_uri</strong>
+
+<ul>
+<li>String : Specifies the image_uri in the form publisherName:offer:skus:version. image_uri can also specify the VHD uri of a custom VM image to clone. When cloning a custom disk image the os_type documented below becomes required.</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>os_type</strong>
+
+<ul>
+<li>String : Specifies the operating system Type, valid values are windows, linux.</li>
+<li>This field is optional.</li>
+</ul></li>
+</ul></li>
+
+<li><p><strong>delete_os_disk_on_termination</strong></p>
+
+<ul>
+<li>String : Flag to enable deletion of the OS Disk VHD blob when the VM is deleted, defaults to false</li>
+<li>This field is optional.</li>
+<li>Defaults to false</li>
+</ul></li>
+
+<li><p><strong>delete_data_disks_on_termination</strong></p>
+
+<ul>
+<li>String : Flag to enable deletion of Storage Disk VHD blobs when the VM is deleted, defaults to false</li>
+<li>This field is optional.</li>
+<li>Defaults to false</li>
+</ul></li>
+
+<li><p><strong>license_type</strong></p>
+
+<ul>
+<li>String : Specifies the Windows OS license type. The only allowable value, if supplied, is Windows_Server.</li>
+<li>This field is optional, when a windows machine.</li>
+</ul></li>
+
+<li><p><strong>tags</strong></p>
+
+<ul>
+<li>List String : tags to assign to the resource</li>
+<li>This field is optional.</li>
+</ul></li>
+</ul>
+
 
 			<aside class="copyright" role="note">
 				
@@ -3867,7 +5067,7 @@ Networks is a map with two fields</p>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
 ga('create', 'UA-86033085-1', 'auto');
 ga('send', 'pageview');
