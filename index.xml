@@ -4985,7 +4985,7 @@ A list of Load Balancer Probe as described below&lt;/p&gt;
 &lt;h3 id=&#34;from-2-x-x-to-2-y-y&#34;&gt;From 2.x.x to 2.y.y&lt;/h3&gt;
 
 &lt;ol&gt;
-&lt;li&gt;Run the setup script: &lt;code&gt;./upgrade&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Run the upgrade script: &lt;code&gt;./upgrade&lt;/code&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </description>
     </item>
