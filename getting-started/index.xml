@@ -2,11 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Getting-starteds on Ernest</title>
-    <link>http://docs.ernest.io/getting-started/index.xml</link>
+    <link>http://docs.ernest.io/getting-started/</link>
     <description>Recent content in Getting-starteds on Ernest</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>Released under the MIT license</copyright>
     <lastBuildDate>Wed, 09 Mar 2016 00:11:02 +0100</lastBuildDate>
     <atom:link href="http://docs.ernest.io/getting-started/index.xml" rel="self" type="application/rss+xml" />
     

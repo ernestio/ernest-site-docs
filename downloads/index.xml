@@ -2,11 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Downloads on Ernest</title>
-    <link>http://docs.ernest.io/downloads/index.xml</link>
+    <link>http://docs.ernest.io/downloads/</link>
     <description>Recent content in Downloads on Ernest</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>Released under the MIT license</copyright>
     <lastBuildDate>Wed, 09 Mar 2016 20:08:11 +0100</lastBuildDate>
     <atom:link href="http://docs.ernest.io/downloads/index.xml" rel="self" type="application/rss+xml" />
     
@@ -78,6 +77,16 @@
 &lt;li&gt;&lt;p&gt;Unregister each service from Ernest: &lt;code&gt;ernest service destroy &amp;lt;service_name&amp;gt; --force&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;Import each service into Ernest: &lt;code&gt;ernest service import &amp;lt;dc_name&amp;gt; &amp;lt;service_name&amp;gt;&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;from-2-x-x-to-2-y-y&#34;&gt;From 2.x.x to 2.y.y&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Shutdown Ernest: &lt;code&gt;docker-compose down&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Pull down the latest version of Ernest: &lt;code&gt;git checkout docker-compose.yml &amp;amp;&amp;amp; git checkout config/nginx/ernest.local &amp;amp;&amp;amp; git checkout master &amp;amp;&amp;amp; git pull&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Run the setup script: &lt;code&gt;./upgrade&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </description>
     </item>
