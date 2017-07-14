@@ -812,7 +812,7 @@ DESCRIPTION:
    Example:
     $ ernest log
     $ ernest log --raw
-  
+
 
 OPTIONS:
    --raw  Raw output will be displayed instead of pretty-printed
@@ -827,7 +827,7 @@ USAGE:
    ernest usage [command options]  
 
 DESCRIPTION:
-   
+
 
    Example:
     $ ernest usage --from 2017-01-01 --to 2017-02-01 --output=report.log
@@ -835,7 +835,7 @@ DESCRIPTION:
 
     Example 2:
     $ ernest usage > myreport.log
-  
+
 
 OPTIONS:
    --from value    the from date the report will be calculated from. Format YYYY-MM-DD
@@ -857,6 +857,7 @@ The following AWS services are supported by Ernest:
 - Route53
 - RDS
 - EBS
+- IAM
 
 ## AWS Examples
 ### Setup
@@ -951,7 +952,7 @@ Environment creation requested
 Ernest will show you all output from your requested service creation
 You can cancel at any moment with Ctrl+C, even the service is still being created, you won't have any output
 Applying you definition
- Created VPC 
+ Created VPC
    Subnet    : 10.0.0.0/16
    Status    : completed
  Created Internet Gateway my-vpc
@@ -1371,7 +1372,7 @@ Do you really want to destroy this service? (Y/n)Y
    Subnet : 10.0.11.0/24
    AWS ID : subnet-f43e749c
    Status : completed
- Deleted VPC 
+ Deleted VPC
    Subnet    : 10.0.0.0/16
    Status    : completed
 SUCCESS: your environment has been successfully deleted
@@ -1797,6 +1798,13 @@ Instances support the following fields:
  * Array that contains security groups that will be applied to the instances.
  * This field is optional.
  * This field can be empty.
+
+* **iam_profile**
+ * (string) The iam instance profile that you want to associate to the instance.
+ * This must specify an instance profile defined on the sane service yaml.
+ * This field is optional.
+ * This field can be empty.
+
 
   **volumes**
 
@@ -2338,6 +2346,117 @@ Backup configuration.
  * (string) The kms key id to use when encrypting data on the volume.
  * This field is mandatory, only if encryption is set to true.
 
+
+#### IAM Roles
+
+```
+iam_roles:
+  - name: test-role
+    path: '/'
+    policies:
+      - test-policy
+    assume_policy_document:
+      Version: '2012-10-17'
+      Statement:
+        - Effect: Allow
+      Principal:
+         Service: ec2.amazonaws.com
+      Action: sts:AssumeRole
+```
+
+
+* **name**
+ * (string) The name of the iam role.
+ * This field is mandatory.
+ * This field cannot be null or empty.
+ * This field must be unique by user &amp; manifest.
+
+* **description**
+ * (string) A description of the iam role.
+ * This field is not mandatory.
+
+* **path**
+ * (String) Defines the path associated with this role.
+ * This field is mandatory.
+ * This field cannot be null or empty.
+
+* **policies**
+ * Array of (string) The policies that you want to attach to this role.
+ * This field is not mandatory.
+ * Must be a policy specified on the same service yaml
+
+* **assume_policy_document**
+ * (Hash) The trust policy that is associated with this role.
+ * This field is mandatory.
+
+
+#### IAM Policies
+
+```
+iam_policies:
+  - name: test-policy
+    path: '/'
+    description: 'test policy'
+    policy_document:
+      Version: '2012-10-17'
+      Statement:
+      - Sid: Stmt1431095274000
+        Effect: Allow
+        Action:
+          - ec2:StartInstances
+          - ec2:StopInstances
+        Resource:
+          - "*"
+
+```
+
+
+* **name**
+ * (string) The name of the iam role.
+ * This field is mandatory.
+ * This field cannot be null or empty.
+ * This field must be unique by user &amp; manifest.
+
+* **description**
+ * (string) A description of the iam policy.
+ * This field is not mandatory.
+
+* **path**
+ * (String) Defines the path associated with this policy.
+ * This field is mandatory.
+ * This field cannot be null or empty.
+
+* **policy_document**
+ * (Hash) The iam policy that is associated with this policy.
+ * This field is mandatory.
+
+#### IAM Instance Profiles
+
+```
+iam_instance_profiles:
+  - name: test-instance-profile
+    path: '/'
+    roles:
+      - test-role
+```
+
+* **name**
+ * (string) The name of the iam instance profile.
+ * This field is mandatory.
+ * This field cannot be null or empty.
+ * This field must be unique by user &amp; manifest.
+
+* **path**
+ * (String) Defines the path associated with this iam instance profile.
+ * This field is mandatory.
+ * This field cannot be null or empty.
+
+* **roles**
+ * Array of (string) The roles that you want to attach to this instance profile.
+ * This field is not mandatory.
+ * Must be a role specified on the same service yaml  
+
+
 ## vCloud Director
 vCloud Director (vCD) is cloud management tool from VMWare that acts as an overlay on top of vSphere, providing users with a self-service GUI and API. vCloud Director enables service providers to offer Infrastructure as a Service to their customers by providing users with direct control of virtual machine provisioning, and some aspects of networking.
 
@@ -2407,7 +2526,7 @@ For our example we will deploy a single Ubuntu server from a catalog image (imag
 name: vcloud
 datacenter: r3-jreid2
 
-routers: 
+routers:
   - name: test2
     rules:
     - name: in_out_any
@@ -3378,19 +3497,19 @@ A list of Frontend IP Configurations as described below
 		* **name**
 		 * String : Specifies the name of the Rule.
 		 * This field is mandatory.
-		 * This field cannot be null or empty.	
+		 * This field cannot be null or empty.
 		* **protocol**
 		 * String : The transport protocol for the external endpoint. Possible values are Udp or Tcp.
 		 * This field is mandatory.
-		 * This field cannot be null or empty.	
+		 * This field cannot be null or empty.
 		* **frontend_port**
 		 * String :  The port for the external endpoint. Port numbers for each Rule must be unique within the Load Balancer. Possible values range between 1 and 65534, inclusive.
 		 * This field is mandatory.
-		 * This field cannot be null or empty.	
+		 * This field cannot be null or empty.
 		* **backend_port**
 		 * String : The port used for internal connections on the endpoint. Possible values range between 1 and 65535, inclusive.
 		 * This field is mandatory.
-		 * This field cannot be null or empty.	
+		 * This field cannot be null or empty.
 		* **backend_address_pool**
 		 * String :  A reference to a Backend Address Pool over which this Load Balancing Rule operates.
 		 * This field is optional.
@@ -3406,17 +3525,17 @@ A list of Frontend IP Configurations as described below
 		* **load_distribution**
 		 * String : Specifies the load balancing distribution type to be used by the Load Balancer. Possible values are: Default – The load balancer is configured to use a 5 tuple hash to map traffic to available servers. SourceIP – The load balancer is configured to use a 2 tuple hash to map traffic to available servers. SourceIPProtocol – The load balancer is configured to use a 3 tuple hash to map traffic to available servers.
 		 * This field is optional.
-		
+
 * **probes**
 A list of Load Balancer Probe as described below
 	* **name**
 	 * String : Specifies the name of the Probe.
 	 * This field is mandatory.
-	 * This field cannot be null or empty.	
+	 * This field cannot be null or empty.
 	* **port**
 	 * String : Port on which the Probe queries the backend endpoint. Possible values range from 1 to 65535, inclusive.
 	 * This field is mandatory.
-	 * This field cannot be null or empty.	
+	 * This field cannot be null or empty.
 	* **protocol**
 	 * String : Specifies the protocol of the end point. Possible values are Http or Tcp. If Tcp is specified, a received ACK is required for the probe to be successful. If Http is specified, a 200 OK response from the specified URI is required for the probe to be successful.
 	 * This field is optional.
@@ -3438,7 +3557,7 @@ A list of Load Balancer Probe as described below
 * **name**
  * String : Specifies the name of the virtual machine resource. Changing this forces a new resource to be created.
  * This field is mandatory.
- * This field cannot be null or empty.	
+ * This field cannot be null or empty.
 * **count**
  * Integer : Number of virtual machines to be created
  * This field is optional.
@@ -3446,13 +3565,13 @@ A list of Load Balancer Probe as described below
 * **size**
  * String : Specifies the size of the virtual machine.
  * This field is mandatory.
- * This field cannot be null or empty.	
+ * This field cannot be null or empty.
 * **image**
- * String : String like `Canonical:UbuntuServer:14.04.2-LTS:latest` composed by: 
+ * String : String like `Canonical:UbuntuServer:14.04.2-LTS:latest` composed by:
 	* `Canonical` publisher : Specifies the publisher of the image used to create the virtual machine.
 	* `UbuntuServer` offer : Specifies the offer of the image used to create the virtual machine.
 	* `14.04.2-LTS` sku : Specifies the SKU of the image used to create the virtual machine.
-	* `latest` version : Specifies the version of the image used to create the virtual machine. 
+	* `latest` version : Specifies the version of the image used to create the virtual machine.
  * This field is optional.
  * Changing this forces a new resource to be created.
 * **availability_set**
@@ -3513,7 +3632,7 @@ A list of Load Balancer Probe as described below
 	 * This field is optional.
 * **os_profile_windows_config**
 	* **provision_vm_agent**
-	 * String : 
+	 * String :
 	 * This field is optional.
 	* **enable_automatic_upgrades**
 	 * Boolean : enables automatic upgrades
@@ -3581,7 +3700,7 @@ A list of Load Balancer Probe as described below
 		 * String : Reference to a Public IP Address to associate with this NIC
 		 * This field is optional.
 		* **load_balancer_backend_address_pools**
-		 * String : 
+		 * String :
 		 * This field is mandatory.
 		 * This field cannot be null or empty.
 	* **tags**
@@ -3649,4 +3768,3 @@ A list of Load Balancer Probe as described below
 * **tags**
  * List String : tags to assign to the resource
  * This field is optional.
-
