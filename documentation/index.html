@@ -144,7 +144,7 @@
         </div>
       
       <div class="name">
-        <strong>Ernest <span class="version">2.0.0</span></strong>
+        <strong>Ernest <span class="version">2.2.0</span></strong>
         
           <br>
           ernestio/ernest
@@ -1174,7 +1174,7 @@ DESCRIPTION:
    Example:
     $ ernest log
     $ ernest log --raw
-  
+
 
 OPTIONS:
    --raw  Raw output will be displayed instead of pretty-printed
@@ -1189,7 +1189,7 @@ USAGE:
    ernest usage [command options]  
 
 DESCRIPTION:
-   
+
 
    Example:
     $ ernest usage --from 2017-01-01 --to 2017-02-01 --output=report.log
@@ -1197,7 +1197,7 @@ DESCRIPTION:
 
     Example 2:
     $ ernest usage &gt; myreport.log
-  
+
 
 OPTIONS:
    --from value    the from date the report will be calculated from. Format YYYY-MM-DD
@@ -1223,6 +1223,7 @@ OPTIONS:
 <li>Route53</li>
 <li>RDS</li>
 <li>EBS</li>
+<li>IAM</li>
 </ul>
 
 <h2 id="aws-examples">AWS Examples</h2>
@@ -1317,7 +1318,7 @@ Environment creation requested
 Ernest will show you all output from your requested service creation
 You can cancel at any moment with Ctrl+C, even the service is still being created, you won't have any output
 Applying you definition
- Created VPC 
+ Created VPC
    Subnet    : 10.0.0.0/16
    Status    : completed
  Created Internet Gateway my-vpc
@@ -1726,7 +1727,7 @@ Do you really want to destroy this service? (Y/n)Y
    Subnet : 10.0.11.0/24
    AWS ID : subnet-f43e749c
    Status : completed
- Deleted VPC 
+ Deleted VPC
    Subnet    : 10.0.0.0/16
    Status    : completed
 SUCCESS: your environment has been successfully deleted
@@ -2234,6 +2235,15 @@ nat_gateways:
 
 <ul>
 <li>Array that contains security groups that will be applied to the instances.</li>
+<li>This field is optional.</li>
+<li>This field can be empty.</li>
+</ul></li>
+
+<li><p><strong>iam_profile</strong></p>
+
+<ul>
+<li>(string) The iam instance profile that you want to associate to the instance.</li>
+<li>This must specify an instance profile defined on the sane service yaml.</li>
 <li>This field is optional.</li>
 <li>This field can be empty.</li>
 </ul></li>
@@ -3008,6 +3018,151 @@ nat_gateways:
 </ul></li>
 </ul>
 
+<h4 id="iam-roles">IAM Roles</h4>
+
+<pre><code>iam_roles:
+  - name: test-role
+    path: '/'
+    policies:
+      - test-policy
+    assume_policy_document:
+      Version: '2012-10-17'
+      Statement:
+        - Effect: Allow
+      Principal:
+         Service: ec2.amazonaws.com
+      Action: sts:AssumeRole
+</code></pre>
+
+<ul>
+<li><p><strong>name</strong></p>
+
+<ul>
+<li>(string) The name of the iam role.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+<li>This field must be unique by user &amp; manifest.</li>
+</ul></li>
+
+<li><p><strong>description</strong></p>
+
+<ul>
+<li>(string) A description of the iam role.</li>
+<li>This field is not mandatory.</li>
+</ul></li>
+
+<li><p><strong>path</strong></p>
+
+<ul>
+<li>(String) Defines the path associated with this role.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+
+<li><p><strong>policies</strong></p>
+
+<ul>
+<li>Array of (string) The policies that you want to attach to this role.</li>
+<li>This field is not mandatory.</li>
+<li>Must be a policy specified on the same service yaml</li>
+</ul></li>
+
+<li><p><strong>assume_policy_document</strong></p>
+
+<ul>
+<li>(Hash) The trust policy that is associated with this role.</li>
+<li>This field is mandatory.</li>
+</ul></li>
+</ul>
+
+<h4 id="iam-policies">IAM Policies</h4>
+
+<pre><code>iam_policies:
+  - name: test-policy
+    path: '/'
+    description: 'test policy'
+    policy_document:
+      Version: '2012-10-17'
+      Statement:
+      - Sid: Stmt1431095274000
+        Effect: Allow
+        Action:
+          - ec2:StartInstances
+          - ec2:StopInstances
+        Resource:
+          - &quot;*&quot;
+
+</code></pre>
+
+<ul>
+<li><p><strong>name</strong></p>
+
+<ul>
+<li>(string) The name of the iam role.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+<li>This field must be unique by user &amp; manifest.</li>
+</ul></li>
+
+<li><p><strong>description</strong></p>
+
+<ul>
+<li>(string) A description of the iam policy.</li>
+<li>This field is not mandatory.</li>
+</ul></li>
+
+<li><p><strong>path</strong></p>
+
+<ul>
+<li>(String) Defines the path associated with this policy.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+
+<li><p><strong>policy_document</strong></p>
+
+<ul>
+<li>(Hash) The iam policy that is associated with this policy.</li>
+<li>This field is mandatory.</li>
+</ul></li>
+</ul>
+
+<h4 id="iam-instance-profiles">IAM Instance Profiles</h4>
+
+<pre><code>iam_instance_profiles:
+  - name: test-instance-profile
+    path: '/'
+    roles:
+      - test-role
+</code></pre>
+
+<ul>
+<li><p><strong>name</strong></p>
+
+<ul>
+<li>(string) The name of the iam instance profile.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+<li>This field must be unique by user &amp; manifest.</li>
+</ul></li>
+
+<li><p><strong>path</strong></p>
+
+<ul>
+<li>(String) Defines the path associated with this iam instance profile.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+
+<li><p><strong>roles</strong></p>
+
+<ul>
+<li>Array of (string) The roles that you want to attach to this instance profile.</li>
+<li>This field is not mandatory.</li>
+<li>Must be a role specified on the same service yaml<br /></li>
+</ul></li>
+</ul>
+
 <h2 id="vcloud-director">vCloud Director</h2>
 
 <p>vCloud Director (vCD) is cloud management tool from VMWare that acts as an overlay on top of vSphere, providing users with a self-service GUI and API. vCloud Director enables service providers to offer Infrastructure as a Service to their customers by providing users with direct control of virtual machine provisioning, and some aspects of networking.</p>
@@ -3081,7 +3236,7 @@ Datacenter 'r3-jreid2' successfully created
 name: vcloud
 datacenter: r3-jreid2
 
-routers: 
+routers:
   - name: test2
     rules:
     - name: in_out_any
@@ -4363,28 +4518,28 @@ A list of Load balancer Rules as described below
 <ul>
 <li>String : Specifies the name of the Rule.</li>
 <li>This field is mandatory.</li>
-<li>This field cannot be null or empty.<br /></li>
+<li>This field cannot be null or empty.</li>
 </ul></li>
 <li><strong>protocol</strong>
 
 <ul>
 <li>String : The transport protocol for the external endpoint. Possible values are Udp or Tcp.</li>
 <li>This field is mandatory.</li>
-<li>This field cannot be null or empty.<br /></li>
+<li>This field cannot be null or empty.</li>
 </ul></li>
 <li><strong>frontend_port</strong>
 
 <ul>
 <li>String :  The port for the external endpoint. Port numbers for each Rule must be unique within the Load Balancer. Possible values range between 1 and 65534, inclusive.</li>
 <li>This field is mandatory.</li>
-<li>This field cannot be null or empty.<br /></li>
+<li>This field cannot be null or empty.</li>
 </ul></li>
 <li><strong>backend_port</strong>
 
 <ul>
 <li>String : The port used for internal connections on the endpoint. Possible values range between 1 and 65535, inclusive.</li>
 <li>This field is mandatory.</li>
-<li>This field cannot be null or empty.<br /></li>
+<li>This field cannot be null or empty.</li>
 </ul></li>
 <li><strong>backend_address_pool</strong>
 
@@ -4414,8 +4569,7 @@ A list of Load balancer Rules as described below
 
 <ul>
 <li>String : Specifies the load balancing distribution type to be used by the Load Balancer. Possible values are: Default – The load balancer is configured to use a 5 tuple hash to map traffic to available servers. SourceIP – The load balancer is configured to use a 2 tuple hash to map traffic to available servers. SourceIPProtocol – The load balancer is configured to use a 3 tuple hash to map traffic to available servers.</li>
-<li>This field is optional.
-<br /></li>
+<li>This field is optional.</li>
 </ul></li>
 </ul></li>
 </ul></li>
@@ -4429,14 +4583,14 @@ A list of Load Balancer Probe as described below</p>
 <ul>
 <li>String : Specifies the name of the Probe.</li>
 <li>This field is mandatory.</li>
-<li>This field cannot be null or empty.<br /></li>
+<li>This field cannot be null or empty.</li>
 </ul></li>
 <li><strong>port</strong>
 
 <ul>
 <li>String : Port on which the Probe queries the backend endpoint. Possible values range from 1 to 65535, inclusive.</li>
 <li>This field is mandatory.</li>
-<li>This field cannot be null or empty.<br /></li>
+<li>This field cannot be null or empty.</li>
 </ul></li>
 <li><strong>protocol</strong>
 
@@ -4480,7 +4634,7 @@ A list of Load Balancer Probe as described below</p>
 <ul>
 <li>String : Specifies the name of the virtual machine resource. Changing this forces a new resource to be created.</li>
 <li>This field is mandatory.</li>
-<li>This field cannot be null or empty.<br /></li>
+<li>This field cannot be null or empty.</li>
 </ul></li>
 <li><strong>count</strong>
 
@@ -4494,7 +4648,7 @@ A list of Load Balancer Probe as described below</p>
 <ul>
 <li>String : Specifies the size of the virtual machine.</li>
 <li>This field is mandatory.</li>
-<li>This field cannot be null or empty.<br /></li>
+<li>This field cannot be null or empty.</li>
 </ul></li>
 <li><strong>image</strong>
 
