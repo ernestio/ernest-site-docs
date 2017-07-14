@@ -37,13 +37,15 @@ Target set
 
 &lt;p&gt;Login to Ernest as admin:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ ernest login --user admin --password abc123
+&lt;pre&gt;&lt;code&gt;$ ernest login
+Username: admin
+Password: *********
 Welcome back admin
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Create a user:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ ernest user create user1 abc123
+&lt;pre&gt;&lt;code&gt;$ ernest user create user1 xxx111YYY
 User user1 successfully created
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -63,7 +65,9 @@ User &#39;user1&#39; is now assigned to group &#39;group1&#39;
 
 &lt;p&gt;Login as the user:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ ernest login --user user1 --password abc123
+&lt;pre&gt;&lt;code&gt;$ ernest login
+Username: user1
+Password: *********
 Welcome back user1
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -78,116 +82,101 @@ Datacenter &#39;my-dc&#39; successfully created
 &lt;p&gt;We will use this YAML (demo.yml) to create our environment:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;---
-name: demo
+name: quick-start
 datacenter: my-dc
 
 vpcs:
-  - name: my-vpc
+  - name: demo-vpc
     subnet: 10.0.0.0/16
     auto_remove: true
 
 networks:
-  - name: public
-    vpc: my-vpc
-    subnet: 10.0.10.0/24
-    public: true
-  - name: private
-    vpc: my-vpc
+  - name: demo-net
+    vpc: demo-vpc
     subnet: 10.0.11.0/24
-    public: false
-    nat_gateway: private-nat
-
-nat_gateways:
-  - name: private-nat
-    public_network: public
+    availability_zone: eu-central-1a
+    public: true
 
 security_groups:
-  - name: public-sg
-    vpc: my-vpc
+  - name: demo-sg
+    vpc: demo-vpc
     egress:
       - ip: 0.0.0.0/0
         protocol: any
         from_port: &#39;0&#39;
         to_port: &#39;65535&#39;
     ingress:
-      - ip: 52.211.19.211/32
+      - ip: 80.184.194.73/32
         protocol: tcp
-        from_port: &#39;22&#39;
-        to_port: &#39;22&#39;
-  - name: private-sg
-    vpc: my-vpc
-    egress:
-      - ip: 0.0.0.0/0
-        protocol: any
-        from_port: &#39;0&#39;
-        to_port: &#39;65535&#39;
-    ingress:
-      - ip: 10.0.0.0/16
+        from_port: &#39;80&#39;
+        to_port: &#39;80&#39;
+      - ip: 80.184.194.73/32
         protocol: tcp
         from_port: &#39;22&#39;
         to_port: &#39;22&#39;
 
 instances:
-  - name: public
-    elastic_ip: true
+  - name: demo-ec2
     type: t2.micro
-    image: ami-ed82e39e
-    network: public
-    start_ip: 10.0.10.11
-    count: 1
-    key_pair: my-key
-    security_groups:
-      - public-sg
-
-  - name: private
-    type: t2.micro
-    image: ami-ed82e39e
-    network: private
+    image: ami-3f1bd150
+    network: demo-net
     start_ip: 10.0.11.11
     count: 1
     key_pair: my-key
     security_groups:
-      - private-sg
-
+      - demo-sg
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Now we can apply our YAML:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ ernest service apply demo.yml
-Environment creation requested
-Ernest will show you all output from your requested service creation
-You can cancel at any moment with Ctrl+C, even the service is still being created, you won&#39;t have any output
-Applying you definition
- Created VPC 
-   Subnet    : 10.0.0.0/16
-   Status    : completed
- Created Internet Gateway my-vpc
-   AWS ID : igw-46d2d12f
-   Status : completed
- Created Network private
-   Subnet : 10.0.11.0/24
-   AWS ID : subnet-ec95dc84
-   Status : completed
- Created Firewall public-sg
-   Status    : completed
- Created Firewall private-sg
-   Status    : completed
- Created Network public
-   Subnet : 10.0.10.0/24
-   AWS ID : subnet-2294dd4a
-   Status : completed
- Created Instance private-1
-   IP        : 10.0.11.11
-   AWS ID    : i-04731288df658cab9
-   Status    : completed
- Created Instance public-1
-   IP        : 10.0.10.11
-   PUBLIC IP : 52.58.250.234
-   AWS ID    : i-0a9f811ea1242adc1
-   Status    : completed
- Created Nat private-nat
-   Status    : completed
-SUCCESS: rules successfully applied
+&lt;pre&gt;&lt;code&gt;$ ernest service apply jr4.yml
+
+Service Name: quick-start
+Service ID: 30001e65-362d-4fd9-500f-03ecb416b11c
+
+Firewalls           1/1   Created
+Instances           1/1   Created
+Internet Gateways   1/1   Created
+Networks            1/1   Created
+Vpcs                1/1   Created
+
+Status: Applied
+
+================
+Platform Details
+================
+
+Name : quick-start
+Status : done
+Date : 2017-07-14 18:21:54.399942 +0000 UTC
+
+VPCs:
++----------+--------------+--------+
+|   NAME   |      ID      | SUBNET |
++----------+--------------+--------+
+| demo-vpc | vpc-b92f54d1 |        |
++----------+--------------+--------+
+
+Networks:
++----------+-----------------+-------------------+
+|   NAME   |       ID        | AVAILABILITY ZONE |
++----------+-----------------+-------------------+
+| demo-net | subnet-f8b3b390 | eu-central-1a     |
++----------+-----------------+-------------------+
+
+Instances:
++------------+---------------------+------------+------------+
+|    NAME    |         ID          | PUBLIC IP  | PRIVATE IP |
++------------+---------------------+------------+------------+
+| demo-ec2-1 | i-0cc3e0b9917f465a9 | 52.58.85.0 | 10.0.11.11 |
++------------+---------------------+------------+------------+
+
+Security groups:
++---------+-------------+
+|  NAME   |  GROUP ID   |
++---------+-------------+
+| demo-sg | sg-a3e5b5c8 |
++---------+-------------+
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Congratulations you have built something with Ernest!&lt;/p&gt;
