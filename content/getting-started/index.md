@@ -122,7 +122,7 @@ instances:
 Now we can apply our YAML:
 
 ```
-$ ernest service apply jr4.yml
+$ ernest service apply demo.yml
 
 Service Name: quick-start
 Service ID: 30001e65-362d-4fd9-500f-03ecb416b11c
