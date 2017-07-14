@@ -812,7 +812,7 @@ DESCRIPTION:
    Example:
     $ ernest log
     $ ernest log --raw
-  
+
 
 OPTIONS:
    --raw  Raw output will be displayed instead of pretty-printed
@@ -827,7 +827,7 @@ USAGE:
    ernest usage [command options]  
 
 DESCRIPTION:
-   
+
 
    Example:
     $ ernest usage --from 2017-01-01 --to 2017-02-01 --output=report.log
@@ -835,7 +835,7 @@ DESCRIPTION:
 
     Example 2:
     $ ernest usage > myreport.log
-  
+
 
 OPTIONS:
    --from value    the from date the report will be calculated from. Format YYYY-MM-DD
@@ -952,7 +952,7 @@ Environment creation requested
 Ernest will show you all output from your requested service creation
 You can cancel at any moment with Ctrl+C, even the service is still being created, you won't have any output
 Applying you definition
- Created VPC 
+ Created VPC
    Subnet    : 10.0.0.0/16
    Status    : completed
  Created Internet Gateway my-vpc
@@ -1372,7 +1372,7 @@ Do you really want to destroy this service? (Y/n)Y
    Subnet : 10.0.11.0/24
    AWS ID : subnet-f43e749c
    Status : completed
- Deleted VPC 
+ Deleted VPC
    Subnet    : 10.0.0.0/16
    Status    : completed
 SUCCESS: your environment has been successfully deleted
@@ -2526,13 +2526,8 @@ For our example we will deploy a single Ubuntu server from a catalog image (imag
 name: vcloud
 datacenter: r3-jreid2
 
-<<<<<<< HEAD
 routers:
-  - name: test1
-=======
-routers: 
   - name: test2
->>>>>>> master
     rules:
     - name: in_out_any
       source: internal
@@ -2638,103 +2633,6 @@ For a given service and build ID we can see the definition we applied:
 $ ernest service definition vcloud --build 2
 name: vcloud
 datacenter: r3-jreid2
-<<<<<<< HEAD
-bootstrapping: none
-service_ip: 195.3.186.42
-
-routers:
-  - name: test1
-    rules:
-    - name: in_out_any
-      source: internal
-      from_port: any
-      destination: external
-      to_port: any
-      protocol: any
-      action: allow
-
-    - name: out_in_22
-      source: any
-      from_port: any
-      destination: internal
-      to_port: '22'
-      protocol: tcp
-      action: allow
-
-    networks:
-      - name: web
-        subnet: 10.1.0.0/24
-        dns:
-          - 8.8.8.8
-          - 8.8.4.4
-
-    port_forwarding:
-      - source: 195.3.186.42
-        from_port: '22'
-        to_port: '22'
-        destination: 10.1.0.11
-
-instances:
-  - name: web
-    image: r3/ubuntu-1404
-    cpus: 1
-    memory: 1GB
-    count: 2
-    networks:
-      name: web
-      start_ip: 10.1.0.11
-
-```
-
-### Infrastructure and Server Configuration
-
-In the above example the task of installing and configuring software was left to the user to do. In this example we will bootstrap the servers and install our software directly from the YAML.
-
-The new YAML is shown here:
-
-```
----
-name: demo2
-datacenter: r3-jreid2
-bootstrapping: salt
-service_ip: 195.3.186.42
-ernest_ip:
-  - 31.210.241.231
-  - 31.210.240.171
-
-routers:
-  - name: test1
-    rules:
-    - name: in_out_any
-      source: internal
-      from_port: any
-      destination: external
-      to_port: any
-      protocol: any
-      action: allow
-
-    - name: out_in_80
-      source: any
-      from_port: any
-      destination: internal
-      to_port: '80'
-      protocol: tcp
-      action: allow
-
-    networks:
-      - name: web
-        subnet: 10.1.0.0/24
-        dns:
-          - 8.8.8.8
-          - 8.8.4.4
-
-    port_forwarding:
-      - source: 195.3.186.42
-        from_port: '80'
-        to_port: '80'
-        destination: 10.1.0.11
-
-=======
 routers:
 - name: test2
   rules:
@@ -2760,7 +2658,6 @@ routers:
     from_port: "22"
     to_port: "22"
     destination: 10.1.0.11
->>>>>>> master
 instances:
 - name: web
   image: r3-ssd/ubuntu-1404
@@ -2771,76 +2668,6 @@ instances:
   start_ip: 10.1.0.11
 ```
 
-<<<<<<< HEAD
-The first thing to notice is that we have changed 'bootstrapping' from 'none' to 'salt'. This will result in Ernest deploying a SALT instance that we can use to manage our environment. Note that the 'bootstrapping' option must be specified when an environment is created and cannot be changed for that environment.
-
-The next thing we have changed are the firewall and port-forwarding configuration. We have removed the sections needed for SSH access to the server since we are now able to run commands directly from the YAML.
-
-Finally, we have added a provisioner section to the instance that will install the Apache HTTP Server.
-
-Now that we have defined our platform we are ready to create it:
-
-```
-$ ernest service apply demo2.yml
-Environment creation requested
-Ernest will show you all output from your requested service creation
-You can cancel at any moment with Ctrl+C, even the service is still being created, you won't have any output
-Starting environment creation
-Creating networks:
- - r3-jreid2-demo2-salt
-   IP     : 10.254.254.0/24
-   Status : completed
- - r3-jreid2-demo2-web
-   IP     : 10.1.0.0/24
-   Status : completed
-Networks successfully created
-Creating instances:
- - r3-jreid2-demo2-salt-master
-   IP        : 10.254.254.100
-   Status    : completed
- - r3-jreid2-demo2-web-1
-   IP        : 10.1.0.11
-   Status    : completed
-Instances successfully created
-Updating instances:
- - r3-jreid2-demo2-salt-master
-   IP        : 10.254.254.100
-   Status    : completed
- - r3-jreid2-demo2-web-1
-   IP        : 10.1.0.11
-   Status    : completed
-Instances successfully updated
-Creating firewalls:
- - r3-jreid2-demo2-test2
-   Status    : completed
-Firewalls created
-Creating nats:
- - r3-jreid2-demo2-test2
-   Status    : completed
-Nats created
-Running bootstraps:
- - Bootstrap r3-jreid2-demo2-web-1
-   Status    : completed
-Bootstrap ran
-Running executions:
- - Execution web 1
-   Status    : completed
-Executions ran
-SUCCESS: rules successfully applied
-Your environment endpoint is: 195.3.186.44
-
-```
-
-Notice that Ernest has automatically created a SALT instance for us on network 10.254.254.0/24. It has also trigged the bootstrapping process that installs the SALT minion on each of our servers, and then run the commands we specified in the provisioner section of each instance defined in the YAML.
-
-You should be able to browse to http://195.3.186.42. Congratulations!
-
-If you wish to change the platform update your YAML to show how you want the platform to look, then re-apply the YAML. Ernest will make the appropriate changes to the platform.
-
-> The SALT image can be downloaded from [here](http://download.ernest.io/r3-salt-master.zip). For the current version of Ernest (1.0) it is not possible to specify the catalog name that Ernest will get the SALT image from, you will need to place the image in a catalog named 'r3'.
-
-=======
->>>>>>> master
 ### Servers Only
 
 If your vCloud account does not have the Organization Administrator assigned to it most of the network related configuration in the above examples will be impossible. You will be limited to the creation and modification of virtual machines only. An example YAML for this scenario is:
@@ -3230,8 +3057,6 @@ Provisioner defines the available provisioner mechanisms.
  * This field is optional
  * If specified as a provisioner type, this array field must contain at least one element
  * The specified commands will be executed by the vCloud guest customization script.
-<<<<<<< HEAD
-=======
 
 
 ## Azure
@@ -3672,19 +3497,19 @@ A list of Frontend IP Configurations as described below
 		* **name**
 		 * String : Specifies the name of the Rule.
 		 * This field is mandatory.
-		 * This field cannot be null or empty.	
+		 * This field cannot be null or empty.
 		* **protocol**
 		 * String : The transport protocol for the external endpoint. Possible values are Udp or Tcp.
 		 * This field is mandatory.
-		 * This field cannot be null or empty.	
+		 * This field cannot be null or empty.
 		* **frontend_port**
 		 * String :  The port for the external endpoint. Port numbers for each Rule must be unique within the Load Balancer. Possible values range between 1 and 65534, inclusive.
 		 * This field is mandatory.
-		 * This field cannot be null or empty.	
+		 * This field cannot be null or empty.
 		* **backend_port**
 		 * String : The port used for internal connections on the endpoint. Possible values range between 1 and 65535, inclusive.
 		 * This field is mandatory.
-		 * This field cannot be null or empty.	
+		 * This field cannot be null or empty.
 		* **backend_address_pool**
 		 * String :  A reference to a Backend Address Pool over which this Load Balancing Rule operates.
 		 * This field is optional.
@@ -3700,17 +3525,17 @@ A list of Frontend IP Configurations as described below
 		* **load_distribution**
 		 * String : Specifies the load balancing distribution type to be used by the Load Balancer. Possible values are: Default – The load balancer is configured to use a 5 tuple hash to map traffic to available servers. SourceIP – The load balancer is configured to use a 2 tuple hash to map traffic to available servers. SourceIPProtocol – The load balancer is configured to use a 3 tuple hash to map traffic to available servers.
 		 * This field is optional.
-		
+
 * **probes**
 A list of Load Balancer Probe as described below
 	* **name**
 	 * String : Specifies the name of the Probe.
 	 * This field is mandatory.
-	 * This field cannot be null or empty.	
+	 * This field cannot be null or empty.
 	* **port**
 	 * String : Port on which the Probe queries the backend endpoint. Possible values range from 1 to 65535, inclusive.
 	 * This field is mandatory.
-	 * This field cannot be null or empty.	
+	 * This field cannot be null or empty.
 	* **protocol**
 	 * String : Specifies the protocol of the end point. Possible values are Http or Tcp. If Tcp is specified, a received ACK is required for the probe to be successful. If Http is specified, a 200 OK response from the specified URI is required for the probe to be successful.
 	 * This field is optional.
@@ -3732,7 +3557,7 @@ A list of Load Balancer Probe as described below
 * **name**
  * String : Specifies the name of the virtual machine resource. Changing this forces a new resource to be created.
  * This field is mandatory.
- * This field cannot be null or empty.	
+ * This field cannot be null or empty.
 * **count**
  * Integer : Number of virtual machines to be created
  * This field is optional.
@@ -3740,13 +3565,13 @@ A list of Load Balancer Probe as described below
 * **size**
  * String : Specifies the size of the virtual machine.
  * This field is mandatory.
- * This field cannot be null or empty.	
+ * This field cannot be null or empty.
 * **image**
- * String : String like `Canonical:UbuntuServer:14.04.2-LTS:latest` composed by: 
+ * String : String like `Canonical:UbuntuServer:14.04.2-LTS:latest` composed by:
 	* `Canonical` publisher : Specifies the publisher of the image used to create the virtual machine.
 	* `UbuntuServer` offer : Specifies the offer of the image used to create the virtual machine.
 	* `14.04.2-LTS` sku : Specifies the SKU of the image used to create the virtual machine.
-	* `latest` version : Specifies the version of the image used to create the virtual machine. 
+	* `latest` version : Specifies the version of the image used to create the virtual machine.
  * This field is optional.
  * Changing this forces a new resource to be created.
 * **availability_set**
@@ -3807,7 +3632,7 @@ A list of Load Balancer Probe as described below
 	 * This field is optional.
 * **os_profile_windows_config**
 	* **provision_vm_agent**
-	 * String : 
+	 * String :
 	 * This field is optional.
 	* **enable_automatic_upgrades**
 	 * Boolean : enables automatic upgrades
@@ -3875,7 +3700,7 @@ A list of Load Balancer Probe as described below
 		 * String : Reference to a Public IP Address to associate with this NIC
 		 * This field is optional.
 		* **load_balancer_backend_address_pools**
-		 * String : 
+		 * String :
 		 * This field is mandatory.
 		 * This field cannot be null or empty.
 	* **tags**
@@ -3943,5 +3768,3 @@ A list of Load Balancer Probe as described below
 * **tags**
  * List String : tags to assign to the resource
  * This field is optional.
-
->>>>>>> master
