@@ -250,7 +250,7 @@ Datacenter &#39;my-dc&#39; successfully created
 &lt;p&gt;We will use this YAML (demo.yml) to create our environment:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;---
-name: quick-start
+name: demo
 datacenter: my-dc
 
 vpcs:
@@ -299,8 +299,8 @@ instances:
 
 &lt;pre&gt;&lt;code&gt;$ ernest service apply demo.yml
 
-Service Name: quick-start
-Service ID: 30001e65-362d-4fd9-500f-03ecb416b11c
+Service Name: demo
+Service ID: 9bd5f6d9-7d85-4d04-648d-8f4877d59627
 
 Firewalls           1/1   Created
 Instances           1/1   Created
@@ -314,36 +314,36 @@ Status: Applied
 Platform Details
 ================
 
-Name : quick-start
+Name : demo
 Status : done
-Date : 2017-07-14 18:21:54.399942 +0000 UTC
+Date : 2017-07-15 06:08:47.714407 +0000 UTC
 
 VPCs:
 +----------+--------------+--------+
 |   NAME   |      ID      | SUBNET |
 +----------+--------------+--------+
-| demo-vpc | vpc-b92f54d1 |        |
+| demo-vpc | vpc-6e6e1506 |        |
 +----------+--------------+--------+
 
 Networks:
 +----------+-----------------+-------------------+
 |   NAME   |       ID        | AVAILABILITY ZONE |
 +----------+-----------------+-------------------+
-| demo-net | subnet-f8b3b390 | eu-central-1a     |
+| demo-net | subnet-1f7e7d77 | eu-central-1a     |
 +----------+-----------------+-------------------+
 
 Instances:
-+------------+---------------------+------------+------------+
-|    NAME    |         ID          | PUBLIC IP  | PRIVATE IP |
-+------------+---------------------+------------+------------+
-| demo-ec2-1 | i-0cc3e0b9917f465a9 | 52.58.85.0 | 10.0.11.11 |
-+------------+---------------------+------------+------------+
++------------+---------------------+---------------+------------+
+|    NAME    |         ID          |   PUBLIC IP   | PRIVATE IP |
++------------+---------------------+---------------+------------+
+| demo-ec2-1 | i-0aead4f9f8c5c38df | 35.158.17.162 | 10.0.11.11 |
++------------+---------------------+---------------+------------+
 
 Security groups:
 +---------+-------------+
 |  NAME   |  GROUP ID   |
 +---------+-------------+
-| demo-sg | sg-a3e5b5c8 |
+| demo-sg | sg-df90c3b4 |
 +---------+-------------+
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -1270,68 +1270,97 @@ name: demo
 datacenter: my-dc
 
 vpcs:
-  - name: my-vpc
+  - name: demo-vpc
     subnet: 10.0.0.0/16
     auto_remove: true
 
 networks:
-  - name: public
-    vpc: my-vpc
-    subnet: 10.0.10.0/24
+  - name: demo-net
+    vpc: demo-vpc
+    subnet: 10.0.11.0/24
+    availability_zone: eu-central-1a
     public: true
 
 security_groups:
-  - name: public-sg
-    vpc: my-vpc
+  - name: demo-sg
+    vpc: demo-vpc
     egress:
       - ip: 0.0.0.0/0
         protocol: any
         from_port: &#39;0&#39;
         to_port: &#39;65535&#39;
     ingress:
-      - ip: 52.211.19.211/32
+      - ip: 80.184.194.73/32
+        protocol: tcp
+        from_port: &#39;80&#39;
+        to_port: &#39;80&#39;
+      - ip: 80.184.194.73/32
         protocol: tcp
         from_port: &#39;22&#39;
         to_port: &#39;22&#39;
 
 instances:
-  - name: public
-    elastic_ip: true
+  - name: demo-ec2
     type: t2.micro
     image: ami-3f1bd150
-    network: public
-    start_ip: 10.0.10.11
+    network: demo-net
+    start_ip: 10.0.11.11
     count: 1
     key_pair: my-key
     security_groups:
-      - public-sg
+      - demo-sg
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Lets apply our definition:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;$ ernest service apply demo.yml
-Environment creation requested
-Ernest will show you all output from your requested service creation
-You can cancel at any moment with Ctrl+C, even the service is still being created, you won&#39;t have any output
-Applying you definition
- Created VPC
-   Subnet    : 10.0.0.0/16
-   Status    : completed
- Created Internet Gateway my-vpc
-   AWS ID : igw-136d607a
-   Status : completed
- Created Firewall public-sg
-   Status    : completed
- Created Network public
-   Subnet : 10.0.10.0/24
-   AWS ID : subnet-d13f75b9
-   Status : completed
- Created Instance public-1
-   IP        : 10.0.10.11
-   PUBLIC IP : 52.57.235.194
-   AWS ID    : i-07159adf41870eb1f
-   Status    : completed
-SUCCESS: rules successfully applied
+
+Service Name: demo
+Service ID: 9bd5f6d9-7d85-4d04-648d-8f4877d59627
+
+Firewalls           1/1   Created
+Instances           1/1   Created
+Internet Gateways   1/1   Created
+Networks            1/1   Created
+Vpcs                1/1   Created
+
+Status: Applied
+
+================
+Platform Details
+================
+
+Name : demo
+Status : done
+Date : 2017-07-15 06:08:47.714407 +0000 UTC
+
+VPCs:
++----------+--------------+--------+
+|   NAME   |      ID      | SUBNET |
++----------+--------------+--------+
+| demo-vpc | vpc-6e6e1506 |        |
++----------+--------------+--------+
+
+Networks:
++----------+-----------------+-------------------+
+|   NAME   |       ID        | AVAILABILITY ZONE |
++----------+-----------------+-------------------+
+| demo-net | subnet-1f7e7d77 | eu-central-1a     |
++----------+-----------------+-------------------+
+
+Instances:
++------------+---------------------+---------------+------------+
+|    NAME    |         ID          |   PUBLIC IP   | PRIVATE IP |
++------------+---------------------+---------------+------------+
+| demo-ec2-1 | i-0aead4f9f8c5c38df | 35.158.17.162 | 10.0.11.11 |
++------------+---------------------+---------------+------------+
+
+Security groups:
++---------+-------------+
+|  NAME   |  GROUP ID   |
++---------+-------------+
+| demo-sg | sg-df90c3b4 |
++---------+-------------+
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;We can list the services we have built:&lt;/p&gt;
@@ -1340,7 +1369,7 @@ SUCCESS: rules successfully applied
 +------+--------+----------+-----------------------------+-------+
 | NAME | STATUS | ENDPOINT |         LAST BUILD          | USER  |
 +------+--------+----------+-----------------------------+-------+
-| demo | done   |          | 2017-04-17T12:47:20.805675Z | user1 |
+| demo | done   |          | 2017-07-15T06:08:47.714407Z | user1 |
 +------+--------+----------+-----------------------------+-------+
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -1349,60 +1378,46 @@ SUCCESS: rules successfully applied
 &lt;pre&gt;&lt;code&gt;$ ernest service info demo
 Name : demo
 Status : done
-Date : 2017-04-17 12:47:20.805675 +0000 UTC
+Date : 2017-07-15 06:08:47.714407 +0000 UTC
 
 VPCs:
-+--------+--------------+--------+
-|  NAME  |      ID      | SUBNET |
-+--------+--------------+--------+
-| my-vpc | vpc-c3fc74ab |        |
-+--------+--------------+--------+
-
-ELBs (empty)
-
++----------+--------------+--------+
+|   NAME   |      ID      | SUBNET |
++----------+--------------+--------+
+| demo-vpc | vpc-6e6e1506 |        |
++----------+--------------+--------+
 
 Networks:
-+--------+-----------------+-------------------+
-|  NAME  |       ID        | AVAILABILITY ZONE |
-+--------+-----------------+-------------------+
-| public | subnet-d13f75b9 |                   |
-+--------+-----------------+-------------------+
++----------+-----------------+-------------------+
+|   NAME   |       ID        | AVAILABILITY ZONE |
++----------+-----------------+-------------------+
+| demo-net | subnet-1f7e7d77 | eu-central-1a     |
++----------+-----------------+-------------------+
 
 Instances:
-+----------+---------------------+---------------+------------+
-|   NAME   |         ID          |   PUBLIC IP   | PRIVATE IP |
-+----------+---------------------+---------------+------------+
-| public-1 | i-07159adf41870eb1f | 52.57.235.194 | 10.0.10.11 |
-+----------+---------------------+---------------+------------+
-
-NAT gateways (empty)
-
++------------+---------------------+---------------+------------+
+|    NAME    |         ID          |   PUBLIC IP   | PRIVATE IP |
++------------+---------------------+---------------+------------+
+| demo-ec2-1 | i-0aead4f9f8c5c38df | 35.158.17.162 | 10.0.11.11 |
++------------+---------------------+---------------+------------+
 
 Security groups:
-+-----------+-------------+
-|   NAME    |  GROUP ID   |
-+-----------+-------------+
-| public-sg | sg-a146f2ca |
-+-----------+-------------+
-
-RDS Clusters (empty)
-
-
-RDS Instances (empty)
-
-
-EBS Volumes (empty)
++---------+-------------+
+|  NAME   |  GROUP ID   |
++---------+-------------+
+| demo-sg | sg-df90c3b4 |
++---------+-------------+
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;We can view the history of applies for our service:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;$ ernest service history demo
-+----+------+----------+--------------------------------+-------+
-| ID | NAME | BUILD ID |             STATUS             | USER  |
-+----+------+----------+--------------------------------+-------+
-|  1 | demo | done     | 2017-04-17 12:47:20.805675     | user1 |
-|    |      |          | +0000 UTC                      |       |
-+----+------+----------+--------------------------------+-------+
++----+------+--------+--------------------------------+-------+
+| ID | NAME | STATUS |            VERSION             | USER  |
++----+------+--------+--------------------------------+-------+
+|  1 | demo | done   | 2017-07-15 06:08:47.714407     | user1 |
+|    |      |        | +0000 UTC                      |       |
++----+------+--------+--------------------------------+-------+
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;For our service we can show the definition applied for a given Build ID:&lt;/p&gt;
@@ -1411,43 +1426,47 @@ EBS Volumes (empty)
 name: demo
 datacenter: my-dc
 vpcs:
-- name: my-vpc
+- name: demo-vpc
   subnet: 10.0.0.0/16
   auto_remove: true
 networks:
-- name: public
-  vpc: my-vpc
-  subnet: 10.0.10.0/24
+- name: demo-net
+  vpc: demo-vpc
+  subnet: 10.0.11.0/24
+  availability_zone: eu-central-1a
   public: true
 security_groups:
-- name: public-sg
-  vpc: my-vpc
+- name: demo-sg
+  vpc: demo-vpc
   egress:
   - ip: 0.0.0.0/0
     protocol: any
     from_port: &amp;quot;0&amp;quot;
     to_port: &amp;quot;65535&amp;quot;
   ingress:
-  - ip: 52.211.19.211/32
+  - ip: 80.184.194.73/32
+    protocol: tcp
+    from_port: &amp;quot;80&amp;quot;
+    to_port: &amp;quot;80&amp;quot;
+  - ip: 80.184.194.73/32
     protocol: tcp
     from_port: &amp;quot;22&amp;quot;
     to_port: &amp;quot;22&amp;quot;
 instances:
-- name: public
-  elastic_ip: true
+- name: demo-ec2
   type: t2.micro
   image: ami-3f1bd150
-  network: public
-  start_ip: 10.0.10.11
+  network: demo-net
+  start_ip: 10.0.11.11
   count: 1
   key_pair: my-key
   security_groups:
-  - public-sg
+  - demo-sg
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&#34;modifying-a-service&#34;&gt;Modifying a Service&lt;/h3&gt;
 
-&lt;p&gt;Lets modify the service we create above. We will add a private network with a server on it and a NAT gateway attached to it.&lt;/p&gt;
+&lt;p&gt;Lets modify the service we create above. We will add a server and change a security group.&lt;/p&gt;
 
 &lt;p&gt;Our modified YAML file is:&lt;/p&gt;
 
@@ -1456,94 +1475,106 @@ name: demo
 datacenter: my-dc
 
 vpcs:
-  - name: my-vpc
+  - name: demo-vpc
     subnet: 10.0.0.0/16
     auto_remove: true
 
 networks:
-  - name: public
-    vpc: my-vpc
-    subnet: 10.0.10.0/24
-    public: true
-  - name: private
+  - name: demo-net
+    vpc: demo-vpc
     subnet: 10.0.11.0/24
-    vpc: my-vpc
-    public: false
-    nat_gateway: private-nat
-
-nat_gateways:
-  - name: private-nat
-    public_network: public
+    availability_zone: eu-central-1a
+    public: true
 
 security_groups:
-  - name: public-sg
-    vpc: my-vpc
+  - name: demo-sg
+    vpc: demo-vpc
     egress:
       - ip: 0.0.0.0/0
         protocol: any
         from_port: &#39;0&#39;
         to_port: &#39;65535&#39;
     ingress:
-      - ip: 52.211.19.211/32
+      - ip: 80.184.194.73/32
         protocol: tcp
-        from_port: &#39;22&#39;
-        to_port: &#39;22&#39;
-  - name: private-sg
-    vpc: my-vpc
-    egress:
-      - ip: 0.0.0.0/0
-        protocol: any
-        from_port: &#39;0&#39;
-        to_port: &#39;65535&#39;
-    ingress:
-      - ip: 10.0.0.0/16
+        from_port: &#39;8080&#39;
+        to_port: &#39;8080&#39;
+      - ip: 80.184.194.73/32
         protocol: tcp
         from_port: &#39;22&#39;
         to_port: &#39;22&#39;
 
 instances:
-  - name: public
-    elastic_ip: true
+  - name: demo-ec2
     type: t2.micro
     image: ami-3f1bd150
-    network: public
-    start_ip: 10.0.10.11
-    count: 1
-    key_pair: my-key
-    security_groups:
-      - public-sg
-
-  - name: private
-    type: t2.micro
-    image: ami-3f1bd150
-    network: private
+    network: demo-net
     start_ip: 10.0.11.11
-    count: 1
+    count: 2
     key_pair: my-key
     security_groups:
-      - private-sg
+      - demo-sg
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Before we apply our YAML was can check what changes Ernest will make:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ ernest service apply demo.yml --dry
+Applying this definition will:
+
+ - Create a instance named demo-ec2-2
+ - Update a firewall named demo-sg
+
+If you&#39;re agree with these changes please rerun apply without --dry option
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;When we apply this YAML we can see Ernest make the necessary changes:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;$ ernest service apply demo.yml
-Environment creation requested
-Ernest will show you all output from your requested service creation
-You can cancel at any moment with Ctrl+C, even the service is still being created, you won&#39;t have any output
-Applying you definition
- Created Network private
-   Subnet : 10.0.11.0/24
-   AWS ID : subnet-f43e749c
-   Status : completed
- Created Firewall private-sg
-   Status    : completed
- Created Instance private-1
-   IP        : 10.0.11.11
-   AWS ID    : i-0c156ad400811c1fe
-   Status    : completed
- Created Nat private-nat
-   Status    : completed
-SUCCESS: rules successfully applied
+
+Service Name: demo
+Service ID: 73479b60-5397-49db-5e8d-980db1eb98ec
+
+Firewalls   1/1   Updated
+Instances   1/1   Created
+
+Status: Applied
+
+================
+Platform Details
+================
+
+Name : demo
+Status : done
+Date : 2017-07-15 06:15:12.382275 +0000 UTC
+
+VPCs:
++----------+--------------+--------+
+|   NAME   |      ID      | SUBNET |
++----------+--------------+--------+
+| demo-vpc | vpc-6e6e1506 |        |
++----------+--------------+--------+
+
+Networks:
++----------+-----------------+-------------------+
+|   NAME   |       ID        | AVAILABILITY ZONE |
++----------+-----------------+-------------------+
+| demo-net | subnet-1f7e7d77 | eu-central-1a     |
++----------+-----------------+-------------------+
+
+Instances:
++------------+---------------------+---------------+------------+
+|    NAME    |         ID          |   PUBLIC IP   | PRIVATE IP |
++------------+---------------------+---------------+------------+
+| demo-ec2-1 | i-0aead4f9f8c5c38df | 35.158.17.162 | 10.0.11.11 |
+| demo-ec2-2 | i-06b9d3e89720f7322 | 52.58.14.190  | 10.0.11.12 |
++------------+---------------------+---------------+------------+
+
+Security groups:
++---------+-------------+
+|  NAME   |  GROUP ID   |
++---------+-------------+
+| demo-sg | sg-df90c3b4 |
++---------+-------------+
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;We can see our service in the list, with the most recent update time:&lt;/p&gt;
@@ -1552,74 +1583,21 @@ SUCCESS: rules successfully applied
 +------+--------+----------+-----------------------------+-------+
 | NAME | STATUS | ENDPOINT |         LAST BUILD          | USER  |
 +------+--------+----------+-----------------------------+-------+
-| demo | done   |          | 2017-04-17T12:50:34.583482Z | user1 |
+| demo | done   |          | 2017-07-15T06:15:12.382275Z | user1 |
 +------+--------+----------+-----------------------------+-------+
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The service info has also updated with the new information:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ ernest service info demo
-Name : demo
-Status : done
-Date : 2017-04-17 12:50:34.583482 +0000 UTC
-
-VPCs:
-+--------+--------------+--------+
-|  NAME  |      ID      | SUBNET |
-+--------+--------------+--------+
-| my-vpc | vpc-c3fc74ab |        |
-+--------+--------------+--------+
-
-ELBs (empty)
-
-
-Networks:
-+---------+-----------------+-------------------+
-|  NAME   |       ID        | AVAILABILITY ZONE |
-+---------+-----------------+-------------------+
-| public  | subnet-d13f75b9 |                   |
-| private | subnet-f43e749c |                   |
-+---------+-----------------+-------------------+
-
-Instances:
-+-----------+---------------------+---------------+------------+
-|   NAME    |         ID          |   PUBLIC IP   | PRIVATE IP |
-+-----------+---------------------+---------------+------------+
-| public-1  | i-07159adf41870eb1f | 52.57.235.194 | 10.0.10.11 |
-| private-1 | i-0c156ad400811c1fe |               | 10.0.11.11 |
-+-----------+---------------------+---------------+------------+
-
-NAT gateways (empty)
-
-
-Security groups:
-+------------+-------------+
-|    NAME    |  GROUP ID   |
-+------------+-------------+
-| public-sg  | sg-a146f2ca |
-| private-sg | sg-bc46f2d7 |
-+------------+-------------+
-
-RDS Clusters (empty)
-
-
-RDS Instances (empty)
-
-
-EBS Volumes (empty)
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;The history shows both of the applies we have done for this service:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;$ ernest service history demo
-+----+------+----------+--------------------------------+-------+
-| ID | NAME | BUILD ID |             STATUS             | USER  |
-+----+------+----------+--------------------------------+-------+
-|  2 | demo | done     | 2017-04-17 12:50:34.583482     | user1 |
-|    |      |          | +0000 UTC                      |       |
-|  1 | demo | done     | 2017-04-17 12:47:20.805675     | user1 |
-|    |      |          | +0000 UTC                      |       |
-+----+------+----------+--------------------------------+-------+
++----+------+--------+--------------------------------+-------+
+| ID | NAME | STATUS |            VERSION             | USER  |
++----+------+--------+--------------------------------+-------+
+|  2 | demo | done   | 2017-07-15 06:15:12.382275     | user1 |
+|    |      |        | +0000 UTC                      |       |
+|  1 | demo | done   | 2017-07-15 06:08:47.714407     | user1 |
+|    |      |        | +0000 UTC                      |       |
++----+------+--------+--------------------------------+-------+
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;The definition for the most recent build can be displayed:&lt;/p&gt;
@@ -1628,67 +1606,42 @@ EBS Volumes (empty)
 name: demo
 datacenter: my-dc
 vpcs:
-- name: my-vpc
+- name: demo-vpc
   subnet: 10.0.0.0/16
   auto_remove: true
 networks:
-- name: public
-  vpc: my-vpc
-  subnet: 10.0.10.0/24
-  public: true
-- name: private
+- name: demo-net
+  vpc: demo-vpc
   subnet: 10.0.11.0/24
-  vpc: my-vpc
-  public: false
-  nat_gateway: private-nat
-nat_gateways:
-- name: private-nat
-  public_network: public
+  availability_zone: eu-central-1a
+  public: true
 security_groups:
-- name: public-sg
-  vpc: my-vpc
+- name: demo-sg
+  vpc: demo-vpc
   egress:
   - ip: 0.0.0.0/0
     protocol: any
     from_port: &amp;quot;0&amp;quot;
     to_port: &amp;quot;65535&amp;quot;
   ingress:
-  - ip: 52.211.19.211/32
+  - ip: 80.184.194.73/32
     protocol: tcp
-    from_port: &amp;quot;22&amp;quot;
-    to_port: &amp;quot;22&amp;quot;
-- name: private-sg
-  vpc: my-vpc
-  egress:
-  - ip: 0.0.0.0/0
-    protocol: any
-    from_port: &amp;quot;0&amp;quot;
-    to_port: &amp;quot;65535&amp;quot;
-  ingress:
-  - ip: 10.0.0.0/16
+    from_port: &amp;quot;8080&amp;quot;
+    to_port: &amp;quot;8080&amp;quot;
+  - ip: 80.184.194.73/32
     protocol: tcp
     from_port: &amp;quot;22&amp;quot;
     to_port: &amp;quot;22&amp;quot;
 instances:
-- name: public
-  elastic_ip: true
+- name: demo-ec2
   type: t2.micro
   image: ami-3f1bd150
-  network: public
-  start_ip: 10.0.10.11
-  count: 1
-  key_pair: my-key
-  security_groups:
-  - public-sg
-- name: private
-  type: t2.micro
-  image: ami-3f1bd150
-  network: private
+  network: demo-net
   start_ip: 10.0.11.11
-  count: 1
+  count: 2
   key_pair: my-key
   security_groups:
-  - private-sg
+  - demo-sg
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&#34;clean-up&#34;&gt;Clean-up&lt;/h3&gt;
@@ -1696,37 +1649,20 @@ instances:
 &lt;p&gt;After we have finished with our service we can remove it:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;$ ernest service destroy demo
-Do you really want to destroy this service? (Y/n)Y
- Deleted Nat private-nat
-   Status    : completed
- Deleted Instance public-1
-   IP        : 10.0.10.11
-   PUBLIC IP : 52.57.235.194
-   AWS ID    : i-07159adf41870eb1f
-   Status    : completed
- Deleted Firewall public-sg
-   Status    : completed
- Deleted Network public
-   Subnet : 10.0.10.0/24
-   AWS ID : subnet-d13f75b9
-   Status : completed
- Deleted Internet Gateway my-vpc
-   AWS ID : igw-136d607a
-   Status : completed
- Deleted Instance private-1
-   IP        : 10.0.11.11
-   AWS ID    : i-0c156ad400811c1fe
-   Status    : completed
- Deleted Firewall private-sg
-   Status    : completed
- Deleted Network private
-   Subnet : 10.0.11.0/24
-   AWS ID : subnet-f43e749c
-   Status : completed
- Deleted VPC
-   Subnet    : 10.0.0.0/16
-   Status    : completed
-SUCCESS: your environment has been successfully deleted
+Do you really want to destroy this service? (Y/n) Y
+
+Service Name: demo
+Service ID: 73479b60-5397-49db-5e8d-980db1eb98ec
+
+Firewalls           1/1   Deleted
+Instances           2/2   Deleted
+Internet Gateways   1/1   Deleted
+Networks            1/1   Deleted
+Vpcs                1/1   Deleted
+
+Status: Destroyed
+
+Service successfully removed
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;aws-yaml-reference&#34;&gt;AWS YAML Reference&lt;/h2&gt;
@@ -3273,132 +3209,41 @@ instances:
 
 &lt;p&gt;Now that we have defined our infrastructure we are ready to apply our definition:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ ernest service apply demo1.yml
-Environment creation requested
-Ernest will show you all output from your requested service creation
-You can cancel at any moment with Ctrl+C, even the service is still being created, you won&#39;t have any output
-Applying you definition
- Configured Router test2
-   Status    : completed
- Created Network web
-   Subnet : 10.1.0.0/24
-   Status : completed
- Created Instance web-1
-   IP        : 10.1.0.11
-   Status    : completed
-SUCCESS: rules successfully applied
+&lt;pre&gt;&lt;code&gt;$ ernest service apply demo.yml
+
+Service Name: vcloud
+Service ID: 48ad30a4-451e-4571-640d-605d97f966d0
+
+Instances   1/1   Created
+Networks    1/1   Created
+Routers     1/1   Created
+
+Status: Applied
+
+================
+Platform Details
+================
+
+Name : vcloud
+Status : done
+Date : 2017-07-15 06:25:37.752431 +0000 UTC
+
+Networks:
++------+----+-------------------+
+| NAME | ID | AVAILABILITY ZONE |
++------+----+-------------------+
+| web  |    |                   |
++------+----+-------------------+
+
+Instances:
++-------+----+-----------+------------+
+| NAME  | ID | PUBLIC IP | PRIVATE IP |
++-------+----+-----------+------------+
+| web-1 |    |           | 10.1.0.11  |
++-------+----+-----------+------------+
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Congratulations! You have built your first infrastructure with Ernest. You can now SSH to the server on IP 195.3.186.44 to install and configure your software.&lt;/p&gt;
-
-&lt;p&gt;If you wish to change the infrastructure update your YAML to show how you want the infrastructure to look, then re-apply the YAML. Ernest will make the appropriate changes to the infrastructure.&lt;/p&gt;
-
-&lt;p&gt;For example if we increase the &amp;lsquo;web&amp;rsquo; instance count from 1 to 2 and re-apply the YAML a new server is created:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ ernest service apply demo1.yml
-Environment creation requested
-Ernest will show you all output from your requested service creation
-You can cancel at any moment with Ctrl+C, even the service is still being created, you won&#39;t have any output
-Applying you definition
- Created Instance web-2
-   IP        : 10.1.0.12
-   Status    : completed
-SUCCESS: rules successfully applied
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;We can list the services we created:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ ernest service list
-+--------+--------+----------+-----------------------------+-------+
-|  NAME  | STATUS | ENDPOINT |         LAST BUILD          | USER  |
-+--------+--------+----------+-----------------------------+-------+
-| vcloud | done   |          | 2017-04-17T13:14:28.499472Z | user1 |
-+--------+--------+----------+-----------------------------+-------+
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;For a given service we can see the history:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ ernest service history vcloud
-+----+--------+----------+--------------------------------+-------+
-| ID |  NAME  | BUILD ID |             STATUS             | USER  |
-+----+--------+----------+--------------------------------+-------+
-|  2 | vcloud | done     | 2017-04-17 13:14:28.499472     | user1 |
-|    |        |          | +0000 UTC                      |       |
-|  1 | vcloud | done     | 2017-04-17 13:08:47.075994     | user1 |
-|    |        |          | +0000 UTC                      |       |
-+----+--------+----------+--------------------------------+-------+
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;For a given service and build ID we can see the definition we applied:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ ernest service definition vcloud --build 2
-name: vcloud
-datacenter: r3-jreid2
-routers:
-- name: test2
-  rules:
-  - name: in_out_any
-    source: internal
-    from_port: any
-    destination: external
-    to_port: any
-    protocol: any
-    action: allow
-  - name: out_in_22
-    source: any
-    from_port: any
-    destination: internal
-    to_port: &amp;quot;22&amp;quot;
-    protocol: tcp
-    action: allow
-  networks:
-  - name: web
-    subnet: 10.1.0.0/24
-  port_forwarding:
-  - source: 195.3.186.44
-    from_port: &amp;quot;22&amp;quot;
-    to_port: &amp;quot;22&amp;quot;
-    destination: 10.1.0.11
-instances:
-- name: web
-  image: r3-ssd/ubuntu-1404
-  cpus: 1
-  memory: 1GB
-  count: 2
-  network: web
-  start_ip: 10.1.0.11
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;servers-only&#34;&gt;Servers Only&lt;/h3&gt;
-
-&lt;p&gt;If your vCloud account does not have the Organization Administrator assigned to it most of the network related configuration in the above examples will be impossible. You will be limited to the creation and modification of virtual machines only. An example YAML for this scenario is:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;---
-name: test
-datacenter: r3-jreid2
-
-instances:
-  - name: dev
-    image: r3-ssd/ubuntu-1404
-    cpus: 1
-    memory: 1GB
-    count: 1
-    network: web
-    start_ip: 10.1.0.90
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;And applying it gives:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ ernest service apply test.yml
-Environment creation requested
-Ernest will show you all output from your requested service creation
-You can cancel at any moment with Ctrl+C, even the service is still being created, you won&#39;t have any output
-Applying you definition
- Created Instance dev-1
-   IP        : 10.1.0.90
-   Status    : completed
-SUCCESS: rules successfully applied
-&lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;vcloud-director-yaml-reference&#34;&gt;vCloud Director YAML Reference&lt;/h2&gt;
 

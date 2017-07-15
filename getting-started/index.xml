@@ -82,7 +82,7 @@ Datacenter &#39;my-dc&#39; successfully created
 &lt;p&gt;We will use this YAML (demo.yml) to create our environment:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;---
-name: quick-start
+name: demo
 datacenter: my-dc
 
 vpcs:
@@ -131,8 +131,8 @@ instances:
 
 &lt;pre&gt;&lt;code&gt;$ ernest service apply demo.yml
 
-Service Name: quick-start
-Service ID: 30001e65-362d-4fd9-500f-03ecb416b11c
+Service Name: demo
+Service ID: 9bd5f6d9-7d85-4d04-648d-8f4877d59627
 
 Firewalls           1/1   Created
 Instances           1/1   Created
@@ -146,36 +146,36 @@ Status: Applied
 Platform Details
 ================
 
-Name : quick-start
+Name : demo
 Status : done
-Date : 2017-07-14 18:21:54.399942 +0000 UTC
+Date : 2017-07-15 06:08:47.714407 +0000 UTC
 
 VPCs:
 +----------+--------------+--------+
 |   NAME   |      ID      | SUBNET |
 +----------+--------------+--------+
-| demo-vpc | vpc-b92f54d1 |        |
+| demo-vpc | vpc-6e6e1506 |        |
 +----------+--------------+--------+
 
 Networks:
 +----------+-----------------+-------------------+
 |   NAME   |       ID        | AVAILABILITY ZONE |
 +----------+-----------------+-------------------+
-| demo-net | subnet-f8b3b390 | eu-central-1a     |
+| demo-net | subnet-1f7e7d77 | eu-central-1a     |
 +----------+-----------------+-------------------+
 
 Instances:
-+------------+---------------------+------------+------------+
-|    NAME    |         ID          | PUBLIC IP  | PRIVATE IP |
-+------------+---------------------+------------+------------+
-| demo-ec2-1 | i-0cc3e0b9917f465a9 | 52.58.85.0 | 10.0.11.11 |
-+------------+---------------------+------------+------------+
++------------+---------------------+---------------+------------+
+|    NAME    |         ID          |   PUBLIC IP   | PRIVATE IP |
++------------+---------------------+---------------+------------+
+| demo-ec2-1 | i-0aead4f9f8c5c38df | 35.158.17.162 | 10.0.11.11 |
++------------+---------------------+---------------+------------+
 
 Security groups:
 +---------+-------------+
 |  NAME   |  GROUP ID   |
 +---------+-------------+
-| demo-sg | sg-a3e5b5c8 |
+| demo-sg | sg-df90c3b4 |
 +---------+-------------+
 &lt;/code&gt;&lt;/pre&gt;
 
