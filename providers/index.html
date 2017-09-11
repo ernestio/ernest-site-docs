@@ -1,0 +1,3694 @@
+<!DOCTYPE html>
+  
+  
+  
+  
+   <html class="no-js"> 
+
+  <head lang="en-us">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=10" />
+    <title>Providers - Ernest</title>
+    <meta name="generator" content="Hugo 0.16-DEV" />
+
+    
+    <meta name="description" content="Developer Driven Orchestration">
+    
+    <link rel="canonical" href="http://docs.ernest.io/providers/">
+    
+    <meta name="author" content="Ernestio">
+    
+
+    <meta property="og:url" content="http://docs.ernest.io/providers/">
+    <meta property="og:title" content="Ernest">
+    <meta property="og:image" content="http://docs.ernest.io/images/dog.png">
+    <meta name="apple-mobile-web-app-title" content="Ernest">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <link rel="shortcut icon" type="image/x-icon" href="http://docs.ernest.io/images/dog.ico">
+    <link rel="icon" type="image/x-icon" href="http://docs.ernest.io/images/dog.ico">
+
+    <style>
+      @font-face {
+        font-family: 'Icon';
+        src: url('http://docs.ernest.io/fonts/icon.eot');
+        src: url('http://docs.ernest.io/fonts/icon.eot')
+               format('embedded-opentype'),
+             url('http://docs.ernest.io/fonts/icon.woff')
+               format('woff'),
+             url('http://docs.ernest.io/fonts/icon.ttf')
+               format('truetype'),
+             url('http://docs.ernest.io/fonts/icon.svg')
+               format('svg');
+        font-weight: normal;
+        font-style: normal;
+      }
+    </style>
+
+    <link rel="stylesheet" href="http://docs.ernest.io/stylesheets/application.css">
+    <link rel="stylesheet" href="http://docs.ernest.io/stylesheets/temporary.css">
+    <link rel="stylesheet" href="http://docs.ernest.io/stylesheets/palettes.css">
+    <link rel="stylesheet" href="http://docs.ernest.io/stylesheets/highlight/highlight.css">
+
+    
+    
+    
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ubuntu:400,700|Ubuntu&#43;Mono">
+    <style>
+      body, input {
+        font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
+      }
+      pre, code {
+        font-family: 'Ubuntu Mono', 'Courier New', 'Courier', monospace;
+      }
+    </style>
+
+    
+    <link rel="stylesheet" href="http://docs.ernest.io/forms.css">
+    
+    <script src="http://docs.ernest.io/javascripts/modernizr.js"></script>
+
+    
+
+  </head>
+  <body class="palette-primary-light-blue palette-accent-orange">
+
+
+
+	
+	
+
+
+<div class="backdrop">
+	<div class="backdrop-paper"></div>
+</div>
+
+<input class="toggle" type="checkbox" id="toggle-drawer">
+<input class="toggle" type="checkbox" id="toggle-search">
+<label class="toggle-button overlay" for="toggle-drawer"></label>
+
+<header class="header">
+	<nav aria-label="Header">
+  <div class="bar default">
+    <div class="button button-menu" role="button" aria-label="Menu">
+      <label class="toggle-button icon icon-menu" for="toggle-drawer">
+        <span></span>
+      </label>
+    </div>
+    <div class="stretch">
+      <div class="title">
+        Providers
+      </div>
+    </div>
+
+    
+    <div class="button button-twitter" role="button" aria-label="Twitter">
+       <a href="https://twitter.com/R3Labs" title="@R3Labs on Twitter" target="_blank" class="toggle-button icon icon-twitter"></a>
+    </div>
+    
+
+    
+    <div class="button button-github" role="button" aria-label="GitHub">
+      <a href="https://github.com/ernestio" title="@ernestio on GitHub" target="_blank" class="toggle-button icon icon-github"></a>
+    </div>
+    
+    
+        
+  </div>
+  <div class="bar search">
+    <div class="button button-close" role="button" aria-label="Close">
+      <label class="toggle-button icon icon-back" for="toggle-search"></label>
+    </div>
+    <div class="stretch">
+      <div class="field">
+        <input class="query" type="text" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck>
+      </div>
+    </div>
+    <div class="button button-reset" role="button" aria-label="Search">
+      <button class="toggle-button icon icon-close" id="reset-search"></button>
+    </div>
+  </div>
+</nav>
+</header>
+
+<main class="main">
+	<div class="drawer">
+		<nav aria-label="Navigation">
+  <a href="https://github.com/ernestio/ernest" class="project">
+    <div class="banner">
+      
+        <div class="logo">
+          <img src="http://docs.ernest.io/images/dog.png">
+        </div>
+      
+      <div class="name">
+        <strong>Ernest <span class="version">3.0.0</span></strong>
+        
+          <br>
+          ernestio/ernest
+        
+      </div>
+    </div>
+  </a>
+
+  <div class="scrollable">
+    <div class="wrapper">
+      
+        <ul class="repo">
+          <li class="repo-download">
+            <a href="http://docs.ernest.io/downloads/" target="_blank" title="Download" data-action="download">
+              <i class="icon icon-download"></i> Download
+            </a>
+          </li>
+          <li class="repo-stars">
+            <a href="https://github.com/ernestio/ernest/stargazers" target="_blank" title="Stargazers" data-action="star">
+              <i class="icon icon-star"></i> Stars
+              <span class="count">&ndash;</span>
+            </a>
+          </li>
+        </ul>
+        <hr>
+      
+
+      <div class="toc">
+        
+        <ul>
+          
+
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Ernest" href="http://docs.ernest.io/">
+	
+	Ernest
+</a>
+
+
+
+  
+</li>
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Getting started" href="http://docs.ernest.io/getting-started/">
+	
+	Getting started
+</a>
+
+
+
+  
+</li>
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Commands (CLI)" href="http://docs.ernest.io/commands/">
+	
+	Commands (CLI)
+</a>
+
+
+
+  
+</li>
+
+
+
+<li>
+  
+    
+
+
+
+<a class="current" title="Providers" href="http://docs.ernest.io/providers/">
+	
+	Providers
+</a>
+
+
+<ul id="scrollspy">
+</ul>
+
+
+  
+</li>
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Downloads" href="http://docs.ernest.io/downloads/">
+	
+	Downloads
+</a>
+
+
+
+  
+</li>
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Developer" href="http://docs.ernest.io/developer/">
+	
+	Developer
+</a>
+
+
+
+  
+</li>
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Community" href="http://docs.ernest.io/community/">
+	
+	Community
+</a>
+
+
+
+  
+</li>
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Support" href="http://docs.ernest.io/support/">
+	
+	Support
+</a>
+
+
+
+  
+</li>
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="License" href="http://docs.ernest.io/license/">
+	
+	License
+</a>
+
+
+
+  
+</li>
+
+
+        </ul>
+        
+
+        
+        <hr>
+        <span class="section">The author</span>
+        
+        <ul>
+          
+          <li>
+            <a href="https://twitter.com/R3Labs" target="_blank" title="@R3Labs on Twitter">
+              @R3Labs on Twitter
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <a href="https://github.com/ernestio" target="_blank" title="@ernestio on GitHub">
+              @ernestio on GitHub
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <a href="mailto:info@r3labs.io" title="Email of info@r3labs.io">
+              Contact via email
+            </a>
+          </li>
+          
+        </ul>
+        
+      </div>
+    </div>
+  </div>
+</nav>
+
+	</div>
+
+	<article class="article">
+		<div class="wrapper">
+			<h1>Providers </h1>
+
+			
+
+<h2 id="amazon-web-services">Amazon Web Services</h2>
+
+<p>Amazon Web Services (AWS) is a secure cloud services platform, offering compute power, database storage, content delivery and other functionality to help businesses scale and grow.</p>
+
+<p>The following AWS services are supported by Ernest:</p>
+
+<ul>
+<li>EC2</li>
+<li>VPC</li>
+<li>ELB</li>
+<li>S3</li>
+<li>Route53</li>
+<li>RDS</li>
+<li>EBS</li>
+<li>IAM</li>
+</ul>
+
+<h3 id="example-yaml">Example YAML</h3>
+
+<pre><code>---
+name: demo
+project: my-dc
+
+
+vpcs:
+  - name: my-vpc
+    id: vpc-abcdef01
+    subnet: 10.0.0.0/16
+    auto_remove: true
+
+networks:
+  - name: web
+    subnet: 10.0.10.0/24
+    vpc: my-vpc
+    public: true
+  - name: db
+    subnet: 10.0.11.0/24
+    vpc: my-vpc
+    public: false
+    nat_gateway: db-nat
+  - name: db-standby
+    subnet: 10.0.12.0/24
+    vpc: my-vpc
+    public: false
+    nat_gateway: db-nat
+
+nat_gateways:
+  - name: db-nat
+    public_network: web
+
+security_groups:
+  - name: web-sg
+    vpc: my-vpc
+    egress:
+      - ip: 0.0.0.0/0
+        protocol: any
+        from_port: '0'
+        to_port: '65535'
+    ingress:
+      - ip: 10.0.0.0/16
+        protocol: any
+        from_port: '0'
+        to_port: '65535'
+      - ip: 52.211.19.211/32
+        protocol: tcp
+        from_port: '22'
+        to_port: '22'
+  - name: db-sg
+    vpc: my-vpc
+    egress:
+      - ip: 0.0.0.0/0
+        protocol: any
+        from_port: '0'
+        to_port: '65535'
+    ingress:
+      - ip: 10.0.0.0/16
+        protocol: any
+        from_port: '0'
+        to_port: '65535'
+      - ip: 52.211.19.211/32
+        protocol: tcp
+        from_port: '22'
+        to_port: '22'
+
+instances:
+  - name: web
+    elastic_ip: true
+    type: t2.micro
+    image: ami-ed82e39e
+    network: web
+    start_ip: 10.0.10.11
+    count: 1
+    key_pair: web-key
+    security_groups:
+      - web-sg
+
+  - name: db
+    type: t2.micro
+    image: ami-ed82e39e
+    network: db
+    start_ip: 10.0.11.11
+    count: 1
+    key_pair: db-key
+    iam_profile: test-iam
+    security_groups:
+      - db-sg
+    volumes:
+      - volume: database-vol
+        device: /dev/sdx
+
+ebs_volumes:
+  - name: database-vol
+    type: io1
+    size: 100
+    iops: 10000
+    count: 1
+    availability_zone: eu-west-1a
+
+loadbalancers:
+  - name: elb-1
+    private: false
+    networks:
+      - web
+    instances:
+      - web
+    listeners:
+      - from_port: 80
+        to_port: 80
+        protocol: http
+      - from_port: 443
+        to_port: 443
+        protocol: https
+        ssl_cert: ssl-cert-id
+    security_groups:
+      - web-sg
+
+s3_buckets:
+  - name: bucket-1
+    acl: private
+    bucket_location: eu-west-1
+    grantees:
+      - id: foo
+        type: emailaddress, id, uri
+        permissions: full, read, read-acl, write-acl
+
+route53_zones:
+  - name: example.com
+    private: false
+    records:
+      - entry: one.example.com
+        type: A
+        ttl: 3600
+        instances:
+          - web-1
+      - entry: two.example.com
+        type: CNAME
+        ttl: 3600
+        loadbalancers:
+          - elb-1
+      - entry: three.example.com
+        type: MX
+        ttl: 3600
+        values:
+          - 8.8.8.8
+          - 8.8.4.4
+      - entry: db.example.com
+        type: CNAME
+        ttl: 3600
+        rds_clusters:
+          - rds-aurora
+
+rds_clusters:
+  - name: rds-aurora
+    engine: aurora
+    port: 3306
+    networks:
+      - db
+      - db-standby
+    security_groups:
+      - db-sg-1
+    database_name: test
+    database_username: test
+    database_password: testpass-2
+
+rds_instances:
+  - name: rds-test-1
+    cluster: rds-test
+    size: db.r3.xlarge
+
+iam_policies:
+  - name: test-iam
+    path: '/'
+    description: 'test policy'
+    policy_document_raw: |-
+      {
+          &quot;Version&quot;: &quot;2012-10-17&quot;,
+          &quot;Statement&quot;: [
+              {
+                  &quot;Sid&quot;: &quot;Stmt1431095274000&quot;,
+                  &quot;Effect&quot;: &quot;Allow&quot;,
+                  &quot;Action&quot;: [
+                      &quot;iam:RemoveRoleFromInstanceProfile&quot;,
+                      &quot;iam:DeleteInstanceProfile&quot;,
+                      &quot;cloudformation:DescribeStacks&quot;,
+                      &quot;cloudformation:DescribeStackResources&quot;,
+                      &quot;ec2:AllocateAddress&quot;,
+                      &quot;ec2:AssignPrivateIpAddresses&quot;,
+                      &quot;ec2:AssociateAddress&quot;,
+                      &quot;ec2:CreateVolume&quot;,
+                      &quot;ec2:DescribeNetworkAcls&quot;,
+                      &quot;ec2:CreateTags&quot;,
+                      &quot;ec2:DescribeAddresses&quot;,
+                      &quot;ec2:DescribeAvailabilityZones&quot;,
+                      &quot;ec2:DescribeInstanceAttribute&quot;,
+                      &quot;ec2:DescribeInstanceStatus&quot;,
+                      &quot;ec2:DescribeInstances&quot;,
+                      &quot;ec2:DescribeInternetGateways&quot;,
+                      &quot;ec2:DescribeInternetGatewaysResult&quot;,
+                      &quot;ec2:DescribeKeyPairs&quot;,
+                      &quot;ec2:DescribeRouteTables&quot;,
+                      &quot;ec2:DescribeRegions&quot;,
+                      &quot;ec2:DescribeSecurityGroups&quot;,
+                      &quot;ec2:DescribeSubnets&quot;,
+                      &quot;ec2:DescribeTags&quot;,
+                      &quot;ec2:DescribeVolumeAttribute&quot;,
+                      &quot;ec2:DescribeVolumeStatus&quot;,
+                      &quot;ec2:DescribeVolumes&quot;,
+                      &quot;ec2:DescribeVpcs&quot;,
+                      &quot;ec2:ReplaceNetworkAclAssociation&quot;,
+                      &quot;ec2:RunInstances&quot;,
+                      &quot;ec2:StartInstances&quot;,
+                      &quot;ec2:StopInstances&quot;,
+                      &quot;ec2:TerminateInstances&quot;,
+                      &quot;ec2:UnassignPrivateIpAddresses&quot;,
+                      &quot;ec2:DescribeImages&quot;,
+                      &quot;ec2:GetPasswordData&quot;,
+                      &quot;ec2:GetConsoleOutput&quot;
+                  ],
+                  &quot;Resource&quot;: [
+                      &quot;*&quot;
+                  ]
+              }
+          ]
+      }
+
+iam_instance_profiles:
+  - name: test-iam
+    path: '/'
+    roles:
+      - test-iam
+
+iam_roles:
+  - name: test-iam
+    path: '/'
+    policies:
+      - test-iam
+    assume_policy_document:
+      Version: '2012-10-17'
+      Statement:
+        - Effect: Allow
+          Principal:
+            Service: ec2.amazonaws.com
+          Action: sts:AssumeRole
+</code></pre>
+
+<h3 id="field-reference">Field Reference</h3>
+
+<h4 id="environment-options">Environment Options</h4>
+
+<pre><code>name: demo
+project: my-dc
+</code></pre>
+
+<p>Environment Options support the following fields:</p>
+
+<ul>
+<li><p><strong>name</strong></p>
+
+<ul>
+<li>String that defines the name of the environment to build.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+<li>The value of this field must be 50 characters maximum.</li>
+</ul></li>
+
+<li><p><strong>project</strong></p>
+
+<ul>
+<li>String that defines the name of the project where the environment is built.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+<li>The value of this field must 50 characters maximum.</li>
+</ul></li>
+</ul>
+
+<h4 id="networking">Networking</h4>
+
+<pre><code>networks:
+  - name: web
+    subnet: 10.0.10.0/24
+    public: true
+  - name: db
+    subnet: 10.0.11.0/24
+    public: false
+    nat_gateway: db-nat
+
+nat_gateways:
+  - name: db-nat
+    public_network: web
+
+</code></pre>
+
+<p>Networking supports the following fields:</p>
+
+<p><strong>networks</strong></p>
+
+<p>A network is a subnet that our instances can connect to. This is what allows us to network/isolate VM’s together.</p>
+
+<ul>
+<li><p><strong>name</strong></p>
+
+<ul>
+<li>String that defines the name of the subnet to build.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+<li>The value of this field must be 50 characters maximum.</li>
+</ul></li>
+
+<li><p><strong>subnet</strong></p>
+
+<ul>
+<li>String that defines the IP address range of the subnet.</li>
+<li>It must follow CIDR notation as described at: <a href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing">https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing</a></li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+<li>This field must be unique for this user &amp; all the networks on the manifest.</li>
+</ul></li>
+
+<li><p><strong>public</strong></p>
+
+<ul>
+<li>String that defines if the subnet will be public or private.</li>
+<li>This field is optional.</li>
+<li>Values can be: “true“ or “false“.</li>
+<li>This field will default to “false“.</li>
+</ul></li>
+
+<li><p><strong>nat_gateway</strong></p>
+
+<ul>
+<li>String that defines the name of the NAT gateway to use for this subnet.</li>
+<li>This field is optional.</li>
+<li>This field can be empty.</li>
+</ul></li>
+</ul>
+
+<p><strong>nat_gateways</strong></p>
+
+<p>NAT gateways enable instances in a private subnet to connect to the Internet or other AWS services, but prevent the Internet from initiating a connection with those instances.</p>
+
+<ul>
+<li><p><strong>name</strong></p>
+
+<ul>
+<li>String that defines the name of the NAT gateway to build.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+<li>The value of this field must be 50 characters maximum.</li>
+</ul></li>
+
+<li><p><strong>public_network</strong></p>
+
+<ul>
+<li>String that defines the name of the public network the NAT gateway will reside.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+<li>The value of this field must be 50 characters maximum.</li>
+</ul></li>
+</ul>
+
+<h4 id="security-groups">Security Groups</h4>
+
+<pre><code>security_groups:
+  - name: web-sg
+    egress:
+      - ip: 0.0.0.0/0
+        protocol: any
+        from_port: '0'
+        to_port: '65535'
+    ingress:
+      - ip: 10.0.0.0/16
+        protocol: any
+        from_port: '0'
+        to_port: '65535'
+
+</code></pre>
+
+<p>Security Groups support the following fields:</p>
+
+<ul>
+<li><strong>name</strong>
+
+<ul>
+<li>String that defines the name of the security group to build.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+<li>The value of this field must be 50 characters maximum.</li>
+</ul></li>
+</ul>
+
+<p><strong>egress</strong></p>
+
+<p>Security group egress rules.</p>
+
+<ul>
+<li><p><strong>ip</strong></p>
+
+<ul>
+<li>String that defines the IP address range for this rule.</li>
+<li>It must follow CIDR notation as described at: <a href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing">https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing</a></li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+
+<li><p><strong>protocol</strong></p>
+
+<ul>
+<li>String that defines the protocol for this rule.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+<li>Values can be: tcp | udp | icmp | any</li>
+</ul></li>
+
+<li><p><strong>from_port</strong></p>
+
+<ul>
+<li>Starting port-range number.</li>
+<li>This field is mandatory.</li>
+<li>Values can be: 0 - 65535.</li>
+</ul></li>
+
+<li><p><strong>to_port</strong></p>
+
+<ul>
+<li>Ending port-range number.</li>
+<li>This field is mandatory.</li>
+<li>Values can be: 0 - 65535.</li>
+</ul></li>
+</ul>
+
+<p><strong>ingress</strong></p>
+
+<p>Security group ingress rules.</p>
+
+<ul>
+<li><p><strong>ip</strong></p>
+
+<ul>
+<li>String that defines the IP address range for this rule.</li>
+<li>It must follow CIDR notation as described at: <a href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing">https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing</a></li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+
+<li><p><strong>protocol</strong></p>
+
+<ul>
+<li>String that defines the protocol for this rule.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+<li>Values can be: tcp | udp | icmp | any</li>
+</ul></li>
+
+<li><p><strong>from_port</strong></p>
+
+<ul>
+<li>Starting port-range number.</li>
+<li>This field is mandatory.</li>
+<li>Values can be: 0 - 65535.</li>
+</ul></li>
+
+<li><p><strong>to_port</strong></p>
+
+<ul>
+<li>Ending port-range number.</li>
+<li>This field is mandatory.</li>
+<li>Values can be: 0 - 65535.</li>
+</ul></li>
+</ul>
+
+<h4 id="instances">Instances</h4>
+
+<pre><code>instances:
+  - name: web
+    elastic_ip: true
+    type: t2.micro
+    image: ami-ed82e39e
+    network: web
+    start_ip: 10.0.10.11
+    count: 1
+    key_pair: web-key
+    security_groups:
+      - web-sg
+    volumes:
+      - volume: big-vol
+        device: /dev/sdx
+
+</code></pre>
+
+<p>Instances support the following fields:</p>
+
+<ul>
+<li><p><strong>name</strong></p>
+
+<ul>
+<li>String that defines the name of the instance to build.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+<li>This field must be unique by user &amp; manifest.</li>
+<li>The value of this field must be 50 characters maximum.</li>
+</ul></li>
+
+<li><p><strong>elastic_ip</strong></p>
+
+<ul>
+<li>String that defines if the instance will be assigned an elastic IP.</li>
+<li>This field is optional.</li>
+<li>Values can be: “true“ or “false“.</li>
+<li>This field will default to “false“.</li>
+</ul></li>
+
+<li><p><strong>type</strong></p>
+
+<ul>
+<li>String that defines the instance size.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+<li>This field must be a valid AWS EC2 size.</li>
+</ul></li>
+
+<li><p><strong>image</strong></p>
+
+<ul>
+<li>String that defines the name of an AMI to install.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+
+<li><p><strong>network:</strong></p>
+
+<ul>
+<li>String that defines the name of a network to attach this instance.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+<li>The value of this field should exist on the networks section previously specified.</li>
+</ul></li>
+
+<li><p><strong>start_ip:</strong></p>
+
+<ul>
+<li>String that defines the starting IP to allocate the VMs to be built.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+<li>This field must be a valid IP.</li>
+<li>This IP should belong to the network already defined on the instance.</li>
+</ul></li>
+
+<li><p><strong>count</strong></p>
+
+<ul>
+<li>Integer that defines the number of instances to be created.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+<li>This field must be greater or equal that 1</li>
+</ul></li>
+
+<li><p><strong>key_pair</strong></p>
+
+<ul>
+<li>String that specifies the key pair to be used to login to the instances.</li>
+<li>This field is optional.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+
+<li><p><strong>security_groups</strong></p>
+
+<ul>
+<li>Array that contains security groups that will be applied to the instances.</li>
+<li>This field is optional.</li>
+<li>This field can be empty.</li>
+</ul></li>
+
+<li><p><strong>iam_profile</strong></p>
+
+<ul>
+<li>(string) The iam instance profile that you want to associate to the instance.</li>
+<li>This must specify an instance profile defined on the same environment yaml.</li>
+<li>This field is optional.</li>
+<li>This field can be empty.</li>
+</ul></li>
+</ul>
+
+<p><strong>volumes</strong></p>
+
+<p>EBS volumes to be attached to the vm. Please note that the count of the EBS volume must be greater or equal to the amount of instances specified.</p>
+
+<ul>
+<li><strong>volume</strong></li>
+<li>String that references the name of an EBS volume specidied on the yaml</li>
+<li>This field is mandatory</li>
+
+<li><p>This field cannot be empty or null</p></li>
+
+<li><p><strong>device</strong></p></li>
+
+<li><p>String that defines what device name is exposed to the instance</p></li>
+
+<li><p>This field is mandatory</p></li>
+
+<li><p>This field cannot be empty or null</p></li>
+</ul>
+
+<h4 id="load-balancers">Load Balancers</h4>
+
+<pre><code>loadbalancers:
+  - name: elb-1
+    private: false
+    subnets:
+      - web-subnet
+    instances:
+      - web
+    listeners:
+      - from_port: 80
+        to_port: 80
+        protocol: http
+      - from_port: 443
+        to_port: 443
+        protocol: https
+        ssl_cert: ssl-cert-id
+    security_groups:
+      - web-sg
+
+</code></pre>
+
+<p>Loadbalancers support the following fields:</p>
+
+<ul>
+<li><p><strong>name</strong></p>
+
+<ul>
+<li>String that defines the name of the instance to build.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+<li>This field must be unique by user &amp; manifest.</li>
+<li>The value of this field must be 50 characters maximum.</li>
+</ul></li>
+
+<li><p><strong>private</strong></p>
+
+<ul>
+<li>Boolean that defines if the loadbalancer will be private or public.</li>
+<li>This field is optional.</li>
+<li>Values can be: “true“ or “false“.</li>
+
+<li><p>This field will default to “false“.</p></li>
+
+<li><p><strong>networks</strong></p></li>
+
+<li><p>Array of String&rsquo;s that defines which public network/subnet to attach to the ELB.</p></li>
+
+<li><p>This field is mandatory if private is set to false.</p></li>
+
+<li><p>This field cannot be null or empty.</p></li>
+
+<li><p>This field must specify a network/subnet that exists on the yaml.</p></li>
+
+<li><p>Only one subnet can be deployed per availablilty zone. It is advised that you specify an AZ when defining a network/subnet.</p></li>
+</ul></li>
+
+<li><p><strong>instances</strong></p>
+
+<ul>
+<li>Array of String&rsquo;s that defines which group of instances to add to the ELB.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+<li>This field must specify an instance group that exists on the yaml.</li>
+</ul></li>
+
+<li><p><strong>security_groups</strong></p>
+
+<ul>
+<li>Array of String&rsquo;s that defines which security groups to apply to the ELB.</li>
+<li>This field not is mandatory.</li>
+<li>This field must specify a security group that exists on the yaml.</li>
+</ul></li>
+</ul>
+
+<p><strong>listeners</strong></p>
+
+<p>ELB Listeners.</p>
+
+<ul>
+<li><p><strong>protocol</strong></p>
+
+<ul>
+<li>String that defines the protocol for this rule.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+<li>Values can be: http | https | ssl | tcp</li>
+<li>If https or ssl is specified, an ssl_cert must be specified.</li>
+</ul></li>
+
+<li><p><strong>from_port</strong></p>
+
+<ul>
+<li>Starting port-range number.</li>
+<li>This field is mandatory.</li>
+<li>Values can be: 1 - 65535.</li>
+</ul></li>
+
+<li><p><strong>to_port</strong></p>
+
+<ul>
+<li>Ending port-range number.</li>
+<li>This field is mandatory.</li>
+<li>Values can be: 1 - 65535.</li>
+</ul></li>
+
+<li><p><strong>ssl_cert</strong></p>
+
+<ul>
+<li>The ssl certificate ID of a valid AWS Certificate Manager (ACM) cert.</li>
+<li>This field is mandatory only if protocol is set to https or ssl.</li>
+</ul></li>
+</ul>
+
+<h4 id="s3-buckets">S3 Buckets</h4>
+
+<pre><code>s3_buckets:
+  - name: bucket-1
+    acl: private
+    bucket_location: eu-west-1
+    grantees:
+      - id: foo
+        type: emailaddress, id, uri
+        permissions: full, read, read-acl, write-acl
+</code></pre>
+
+<p>S3 support the following fields:</p>
+
+<ul>
+<li><p><strong>name</strong></p>
+
+<ul>
+<li>(string) name of the bucket.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+<li>This field must be unique by user &amp; manifest.</li>
+<li>The value of this field must be 50 characters maximum.</li>
+</ul></li>
+
+<li><p><strong>acl</strong></p>
+
+<ul>
+<li>(string) the canned ACL to apply to the bucket.</li>
+<li>The value of this field can be private, public-read, public-read-write</li>
+<li>or authenticated-read</li>
+</ul></li>
+
+<li><p><strong>bucket_location</strong></p>
+
+<ul>
+<li>(string) the location constraint</li>
+<li>The value of this field can be EU, eu-west-1, us-west-1, us-west-2,</li>
+<li>ap-south-1, ap-southeast-2, ap-northeast-1, sa-east-1, cn-north-1 or</li>
+<li>eu-central-1</li>
+</ul></li>
+
+<li><p><strong>grantees</strong></p>
+
+<ul>
+<li>(collection) List of permissions on the bucket.</li>
+</ul></li>
+
+<li><p><strong>id</strong></p>
+
+<ul>
+<li>(string) Grantee name</li>
+</ul></li>
+
+<li><p><strong>type</strong></p>
+
+<ul>
+<li>(string) Grantee type</li>
+<li>Possible values : email address, id or uri</li>
+</ul></li>
+
+<li><p><strong>permissions</strong></p>
+
+<ul>
+<li>(string) Permissions for this grantee on the bucket</li>
+<li>Possible values: full, read, read-acl and write-acl</li>
+</ul></li>
+</ul>
+
+<p>#### Route53 Zones</p>
+
+<pre><code> route53_zones:
+   - name: example.com
+     private: false
+     records:
+       - entry: one.example.com
+         type: A
+         ttl: 3600
+         values:
+           - 8.8.8.8
+</code></pre>
+
+<p>S3 support the following fields:</p>
+
+<ul>
+<li><p><strong>name</strong></p>
+
+<ul>
+<li>(string) The domain name of the zone.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+<li>This field must be unique by user &amp; manifest.</li>
+</ul></li>
+
+<li><p><strong>private</strong></p>
+
+<ul>
+<li>(boolean) sets the zone to be private hosted zone.</li>
+<li>The value of this field can be true or false. Default is false.</li>
+</ul></li>
+</ul>
+
+<p><strong>records</strong></p>
+
+<p>The collection of DNS entries you want to host.</p>
+
+<ul>
+<li><p><strong>entry</strong></p>
+
+<ul>
+<li>(string) the full domain record entry</li>
+<li>The value of this field should be an F.Q.D.N (fully qualified domain name)</li>
+</ul></li>
+
+<li><p><strong>Type</strong></p></li>
+
+<li><p>(string) the full domain record entry</p></li>
+
+<li><p>The value of this field should be one of &lsquo;A&rsquo;, &lsquo;AAAA&rsquo;, &lsquo;CNAME&rsquo;, &lsquo;MX&rsquo;, &lsquo;PTR&rsquo;, &lsquo;TXT&rsquo;, &lsquo;SRV&rsquo;, &lsquo;SPF&rsquo;, &lsquo;NAPTR&rsquo;, &lsquo;NS&rsquo;, &lsquo;SOA&rsquo;</p></li>
+
+<li><p><strong>TTL</strong></p></li>
+
+<li><p>(int) the expiration period of the entry.</p></li>
+
+<li><p>The value of this field should be greater than 0</p></li>
+
+<li><p><strong>values</strong></p>
+
+<ul>
+<li>Array of strings. The values the entry will return</li>
+<li>These values must be valid for the type of record you have selected.</li>
+</ul></li>
+
+<li><p><strong>Loadbalancers</strong></p>
+
+<ul>
+<li>Array of strings. The loadbalancers you wish the entry to resolve to.</li>
+<li>The type of record must be set to CNAME</li>
+<li>You must specify only loadbalancers or instances, not both.</li>
+</ul></li>
+
+<li><p><strong>instances</strong></p>
+
+<ul>
+<li>Array of strings. The loadbalancers you wish the entry to resolve to.</li>
+<li>The type of record must be set to A</li>
+<li>This must target the individual instance, including the instances number, i.e. web-1</li>
+<li>You must specify only loadbalancers or instances, not both.</li>
+</ul></li>
+</ul>
+
+<h4 id="rds-clusters">RDS Clusters</h4>
+
+<pre><code>rds_clusters:
+  - name: aurora-test
+    engine: aurora
+    engine_version: 1.9
+    public: false
+    port: 3306
+    availablily_zones:
+      - eu-west-1a
+      - eu-west-1b
+      - eu-west-1c
+    security_groups:
+      - sg-1
+    networks:
+      - db-nw
+    database_name: aurora-test
+    database_username: username
+    database_password: password
+    backups:
+      window: Mon:21:30-Mon:22:00
+      rentention_period: 1
+    maintenance_window: Mon:21:30-Mon:22:00
+    final_snapshot: true
+</code></pre>
+
+<p>RDS Clusters support the following fields:</p>
+
+<ul>
+<li><p><strong>name</strong></p>
+
+<ul>
+<li>(string) The name of the rds cluster.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+<li>This field must be unique by user &amp; manifest.</li>
+</ul></li>
+
+<li><p><strong>engine</strong></p>
+
+<ul>
+<li>(string) The engine type of the rds cluster.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+<li>Currently only &lsquo;aurora&rsquo; is supported as a value.</li>
+</ul></li>
+
+<li><p><strong>engine_version</strong></p>
+
+<ul>
+<li>(string) The engine_version of the rds cluster.</li>
+<li>This field is not mandatory.</li>
+</ul></li>
+
+<li><p><strong>port</strong></p>
+
+<ul>
+<li>(int) The port exposed by the rds cluster.</li>
+<li>This field not is mandatory.</li>
+<li>This field must be between 1150 - 65535 (default: 3306).</li>
+</ul></li>
+
+<li><p><strong>public</strong></p>
+
+<ul>
+<li>(boolean) Sets the rds cluster to be publicly accessible.</li>
+<li>This field not is mandatory.</li>
+<li>The value of this field can be true or alse. Default is false.</li>
+</ul></li>
+
+<li><p><strong>availability_zones</strong></p>
+
+<ul>
+<li>Array of strings. The availability zones to deploy the rds cluster to.</li>
+<li>This field not is mandatory.</li>
+<li>The availability zone must be in the same region as the vpc it is deployed to.</li>
+<li>If the rds cluster is set to private, there must be networks specified for each availability zone.</li>
+</ul></li>
+
+<li><p><strong>security_groups</strong></p>
+
+<ul>
+<li>Array of String&rsquo;s that defines which security groups to apply to the rds cluster.</li>
+<li>This field not is mandatory.</li>
+<li>This field must specify a security group that exists on the yaml.</li>
+</ul></li>
+
+<li><p><strong>networks</strong></p>
+
+<ul>
+<li>Array of String&rsquo;s that defines which networks to expose the rds cluster to.</li>
+<li>This field not is mandatory (if public is set to true).</li>
+<li>This field must specify a security group that exists on the yaml.</li>
+</ul></li>
+
+<li><p><strong>database_name</strong></p>
+
+<ul>
+<li>(string) The database name of the rds cluster.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+
+<li><p><strong>database_username</strong></p>
+
+<ul>
+<li>(string) The database username of the rds cluster.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+
+<li><p><strong>database_username</strong></p>
+
+<ul>
+<li>(string) The database password of the rds cluster.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+
+<li><p><strong>maintenance_window</strong></p>
+
+<ul>
+<li>(string) The time period at which any maintenance tasks will occur.</li>
+<li>This field is not mandatory.</li>
+<li>Format must be a range in the structure of DDD:HH::MM-DDD:HH::MM (Day:Hour:Minute)</li>
+</ul></li>
+
+<li><p><strong>replication_source</strong></p>
+
+<ul>
+<li>(string) The target rds cluster or mysql instance to replicate from.</li>
+<li>Must be a valid ARN (Amazon Resource Name).</li>
+<li><a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html</a></li>
+</ul></li>
+
+<li><p><strong>final_snapshot</strong></p>
+
+<ul>
+<li>(boolean) Performs a final snapshot when the rds cluster is deleted.</li>
+<li>This field not is mandatory.</li>
+<li>The value of this field can be true or alse. Default is false.</li>
+</ul></li>
+</ul>
+
+<p><strong>backups</strong></p>
+
+<p>Backup configuration.</p>
+
+<ul>
+<li><p><strong>window</strong></p>
+
+<ul>
+<li>(string) The time period at which backups will occur.</li>
+<li>This field is not mandatory.</li>
+<li>Format must be a range in the structure of DDD:HH::MM-DDD:HH::MM (Day:Hour:Minute)</li>
+</ul></li>
+
+<li><p><strong>retention</strong></p>
+
+<ul>
+<li>(int) The amount of time in days that backups will be retained for.</li>
+<li>This field is not mandatory.</li>
+<li>Must be between 1 - 35 days</li>
+</ul></li>
+</ul>
+
+<h4 id="rds-instances">RDS Instances</h4>
+
+<pre><code>rds_instances:
+  - name: rds-test-1
+    size: db.r3.xlarge
+    engine: mysql
+    engine_version: 5.7
+    port: 3306
+    public: true
+    multi_az: true
+    storage:
+      type: gp2
+      size: 100
+      iops: 5000
+    auto_upgrade: true
+    final_snapshot: true
+    license: bring-your-own-license
+    database_name: aurora-test
+    database_username: username
+    database_password: password
+    backups:
+      window: Mon:21:30-Mon:22:00
+      rentention_period: 1
+    maintenance_window: Mon:21:30-Mon:22:00
+    final_snapshot: true
+</code></pre>
+
+<p>RDS Instances support the following fields:</p>
+
+<ul>
+<li><p><strong>name</strong></p>
+
+<ul>
+<li>(string) The name of the rds instance.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+<li>This field must be unique by user &amp; manifest.</li>
+</ul></li>
+
+<li><p><strong>engine</strong></p>
+
+<ul>
+<li>(string) The engine type of the rds instance.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+<li>Currently only &lsquo;aurora&rsquo; is supported as a value.</li>
+</ul></li>
+
+<li><p><strong>engine_version</strong></p>
+
+<ul>
+<li>(string) The engine_version of the rds instance.</li>
+<li>This field is not mandatory.</li>
+</ul></li>
+
+<li><p><strong>port</strong></p>
+
+<ul>
+<li>(int) The port exposed by the rds instance.</li>
+<li>This field not is mandatory.</li>
+<li>This field must be between 1150 - 65535 (default: 3306).</li>
+</ul></li>
+
+<li><p><strong>public</strong></p>
+
+<ul>
+<li>(boolean) Sets the rds instance to be publicly accessible.</li>
+<li>This field not is mandatory.</li>
+<li>The value of this field can be true or alse. Default is false.</li>
+</ul></li>
+
+<li><p><strong>multi_az</strong></p>
+
+<ul>
+<li>(boolean) Deploys a synchronous standby instance in a different availability zone</li>
+<li>Cannot be used in conjunction with the &lsquo;availability_zone&rsquo; parameter</li>
+<li>This field not is mandatory.</li>
+<li>The value of this field can be true or alse. Default is false.</li>
+</ul></li>
+
+<li><p><strong>availability_zones</strong></p>
+
+<ul>
+<li>Array of strings. The availability zones to deploy the rds instance to.</li>
+<li>This field not is mandatory.</li>
+<li>The availability zone must be in the same region as the vpc it is deployed to.</li>
+<li>If the rds instance is set to private, there must be networks specified for each availability zone.</li>
+</ul></li>
+
+<li><p><strong>security_groups</strong></p>
+
+<ul>
+<li>Array of String&rsquo;s that defines which security groups to apply to the rds instance.</li>
+<li>This field not is mandatory.</li>
+<li>This field must specify a security group that exists on the yaml.</li>
+</ul></li>
+
+<li><p><strong>networks</strong></p>
+
+<ul>
+<li>Array of String&rsquo;s that defines which networks to expose the rds instance to.</li>
+<li>This field not is mandatory (if public is set to true).</li>
+<li>This field must specify a security group that exists on the yaml.</li>
+</ul></li>
+
+<li><p><strong>database_name</strong></p>
+
+<ul>
+<li>(string) The database name of the rds instance.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+
+<li><p><strong>database_username</strong></p>
+
+<ul>
+<li>(string) The database username of the rds instance.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+
+<li><p><strong>database_username</strong></p>
+
+<ul>
+<li>(string) The database password of the rds instance.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+
+<li><p><strong>maintenance_window</strong></p>
+
+<ul>
+<li>(string) The time period at which any maintenance tasks will occur.</li>
+<li>This field is not mandatory.</li>
+<li>Format must be a range in the structure of DDD:HH::MM-DDD:HH::MM (Day:Hour:Minute)</li>
+</ul></li>
+
+<li><p><strong>promotion_tier</strong></p>
+
+<ul>
+<li>(int) specifies the order in which an aurora replica is promoted to a primary.</li>
+<li>This field is not mandatory.</li>
+<li>Must be between 1 - 15.</li>
+<li>Default is 1.</li>
+</ul></li>
+
+<li><p><strong>auto_upgrade</strong></p>
+
+<ul>
+<li>(boolean) Performs automatic upgrades on the database (minor versions only)</li>
+<li>This field not is mandatory.</li>
+<li>The value of this field can be true or alse. Default is false.</li>
+</ul></li>
+
+<li><p><strong>replication_source</strong></p>
+
+<ul>
+<li>(string) The target an rds instance to replicate from.</li>
+<li>Must be a valid ARN (Amazon Resource Name) or instance name (if in the same region).</li>
+<li><a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html</a></li>
+</ul></li>
+
+<li><p><strong>final_snapshot</strong></p>
+
+<ul>
+<li>(boolean) Performs a final snapshot when the rds instance is deleted.</li>
+<li>This field not is mandatory.</li>
+<li>The value of this field can be true or alse. Default is false.</li>
+</ul></li>
+
+<li><p><strong>license</strong></p>
+
+<ul>
+<li>(string) The type of license you want to use with the database</li>
+<li>This field is not mandatory.</li>
+<li>Must be one of &lsquo;license-included&rsquo;, &lsquo;bring-your-own-license&rsquo; or &lsquo;general-public-license&rsquo;</li>
+</ul></li>
+</ul>
+
+<p><strong>storage</strong></p>
+
+<p>Storage configuration. Only configurable when using a non-aurora engine.</p>
+
+<ul>
+<li><p><strong>type</strong></p>
+
+<ul>
+<li>(string) The type of storage you want to use.</li>
+<li>This field is not mandatory.</li>
+<li>Must be one of &lsquo;gp2&rsquo; (general purpose SSD), &lsquo;io1&rsquo; (performance optimised SSD) or &lsquo;standard&rsquo; (magnetic disk)</li>
+<li>If io1 is specified, you must also set the &lsquo;iops&rsquo; parameter</li>
+</ul></li>
+
+<li><p><strong>size</strong></p>
+
+<ul>
+<li>(int) The amount of storage (GB) that you want to use.</li>
+<li>This field is not mandatory.</li>
+<li>Must be a value between 5 - 6144.</li>
+<li>Minimum size can vary between engine types.</li>
+</ul></li>
+
+<li><p><strong>iops</strong></p>
+
+<ul>
+<li>(int) The amount of iops that you want the database to be limited to.</li>
+<li>This field is mandatory if storage type is &lsquo;io1&rsquo;.</li>
+<li>This field must only be used in conjunction with &lsquo;io1&rsquo; as a storage type.</li>
+<li>Must be a multiple between 3 and 10 of the storage amount.</li>
+<li>Must also be an integer multiple of 1000.</li>
+</ul></li>
+</ul>
+
+<p><strong>backups</strong></p>
+
+<p>Backup configuration.</p>
+
+<ul>
+<li><p><strong>window</strong></p>
+
+<ul>
+<li>(string) The time period at which backups will occur.</li>
+<li>This field is not mandatory.</li>
+<li>Format must be a range in the structure of DDD:HH::MM-DDD:HH::MM (Day:Hour:Minute)</li>
+</ul></li>
+
+<li><p><strong>retention</strong></p>
+
+<ul>
+<li>(int) The amount of time in days that backups will be retained for.</li>
+<li>This field is not mandatory.</li>
+<li>Must be between 1 - 35 days</li>
+</ul></li>
+</ul>
+
+<h4 id="ebs-volumes">EBS Volumes</h4>
+
+<pre><code> ebs_volumes:
+   - name: database-vol
+     count: 1
+     type: io1
+     size: 100
+     iops: 10000
+     availability_zone: eu-west-1a
+     encrypted: true
+     encryption_key_id: kms-id
+</code></pre>
+
+<ul>
+<li><p><strong>name</strong></p>
+
+<ul>
+<li>(string) The name of the ebs volume.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+<li>This field must be unique by user &amp; manifest.</li>
+</ul></li>
+
+<li><p><strong>count</strong></p>
+
+<ul>
+<li>Integer that defines the number of volunes to be created.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+
+<li><p>This field must be greater or equal that 1</p></li>
+
+<li><p><strong>type</strong></p></li>
+
+<li><p>(string) The type of storage you want to use.</p></li>
+
+<li><p>This field is not mandatory.</p></li>
+
+<li><p>Must be one of &lsquo;gp2&rsquo; (general purpose SSD), &lsquo;io1&rsquo; (performance optimised SSD) or &lsquo;st1&rsquo; (magnetic disk)</p></li>
+
+<li><p>If io1 is specified, you must also set the &lsquo;iops&rsquo; parameter</p></li>
+
+<li><p><strong>size</strong></p></li>
+
+<li><p>(int) The amount of storage (GB) that you want to use.</p></li>
+
+<li><p>This field is not mandatory.</p></li>
+
+<li><p>Must be a value between 1 - 16384. (may vary for different storage types)</p></li>
+
+<li><p><strong>iops</strong></p></li>
+
+<li><p>(int) The amount of iops that you want the volume to be limited to.</p></li>
+
+<li><p>This field is mandatory if storage type is &lsquo;io1&rsquo;.</p></li>
+
+<li><p>This field must only be used in conjunction with &lsquo;io1&rsquo; as a storage type.</p></li>
+
+<li><p>Must be a multiple between 3 and 10 of the storage amount.</p></li>
+
+<li><p>Must also be an integer multiple of 1000.</p></li>
+
+<li><p>Must be a value between 100 - 20000</p></li>
+</ul></li>
+
+<li><p><strong>encrypted</strong></p>
+
+<ul>
+<li>(boolean) Specifies whether the volume will be encrypted.</li>
+<li>This field not is mandatory.</li>
+<li>The value of this field can be true or false. Default is false.</li>
+<li>When enabling encryption, a kms key id must be provided</li>
+</ul></li>
+
+<li><p><strong>encryption_key_id</strong></p>
+
+<ul>
+<li>(string) The kms key id to use when encrypting data on the volume.</li>
+<li>This field is mandatory, only if encryption is set to true.</li>
+</ul></li>
+</ul>
+
+<h4 id="iam-roles">IAM Roles</h4>
+
+<pre><code>iam_roles:
+  - name: test-role
+    path: '/'
+    policies:
+      - test-policy
+    assume_policy_document:
+      Version: '2012-10-17'
+      Statement:
+        - Effect: Allow
+      Principal:
+         Service: ec2.amazonaws.com
+      Action: sts:AssumeRole
+</code></pre>
+
+<ul>
+<li><p><strong>name</strong></p>
+
+<ul>
+<li>(string) The name of the iam role.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+<li>This field must be unique by user &amp; manifest.</li>
+</ul></li>
+
+<li><p><strong>description</strong></p>
+
+<ul>
+<li>(string) A description of the iam role.</li>
+<li>This field is not mandatory.</li>
+</ul></li>
+
+<li><p><strong>path</strong></p>
+
+<ul>
+<li>(String) Defines the path associated with this role.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+
+<li><p><strong>policies</strong></p>
+
+<ul>
+<li>Array of (string) The policies that you want to attach to this role.</li>
+<li>This field is not mandatory.</li>
+<li>Must be a policy specified on the same environment yaml</li>
+</ul></li>
+
+<li><p><strong>assume_policy_document</strong></p>
+
+<ul>
+<li>(Hash) The trust policy that is associated with this role.</li>
+<li>This field is mandatory.</li>
+</ul></li>
+</ul>
+
+<h4 id="iam-policies">IAM Policies</h4>
+
+<pre><code>iam_policies:
+  - name: test-policy
+    path: '/'
+    description: 'test policy'
+    policy_document:
+      Version: '2012-10-17'
+      Statement:
+      - Sid: Stmt1431095274000
+        Effect: Allow
+        Action:
+          - ec2:StartInstances
+          - ec2:StopInstances
+        Resource:
+          - &quot;*&quot;
+</code></pre>
+
+<ul>
+<li><p><strong>name</strong></p>
+
+<ul>
+<li>(string) The name of the iam role.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+<li>This field must be unique by user &amp; manifest.</li>
+</ul></li>
+
+<li><p><strong>description</strong></p>
+
+<ul>
+<li>(string) A description of the iam policy.</li>
+<li>This field is not mandatory.</li>
+</ul></li>
+
+<li><p><strong>path</strong></p>
+
+<ul>
+<li>(String) Defines the path associated with this policy.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+
+<li><p><strong>policy_document</strong></p>
+
+<ul>
+<li>(Hash) The iam policy that is associated with this policy.</li>
+<li>This field is mandatory.</li>
+</ul></li>
+</ul>
+
+<h4 id="iam-instance-profiles">IAM Instance Profiles</h4>
+
+<pre><code>iam_instance_profiles:
+  - name: test-instance-profile
+    path: '/'
+    roles:
+      - test-role
+</code></pre>
+
+<ul>
+<li><p><strong>name</strong></p>
+
+<ul>
+<li>(string) The name of the iam instance profile.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+<li>This field must be unique by user &amp; manifest.</li>
+</ul></li>
+
+<li><p><strong>path</strong></p>
+
+<ul>
+<li>(String) Defines the path associated with this iam instance profile.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+
+<li><p><strong>roles</strong></p>
+
+<ul>
+<li>Array of (string) The roles that you want to attach to this instance profile.</li>
+<li>This field is not mandatory.</li>
+<li>Must be a role specified on the same environment yaml</li>
+</ul></li>
+</ul>
+
+<h2 id="microsoft-azure">Microsoft Azure</h2>
+
+<p>Microsoft Azure is an open, flexible, enterprise-grade cloud computing platform. Move faster, do more and save money with IaaS + PaaS.</p>
+
+<p>The following Azure services are supported by Ernest:</p>
+
+<ul>
+<li>Availability sets</li>
+<li>Load balancers</li>
+<li>Network gateways</li>
+<li>Network interfaces</li>
+<li>Public IP</li>
+<li>Resource groups</li>
+<li>Security groups</li>
+<li>SQL servers</li>
+<li>SQL databases</li>
+<li>SQL firewall rules</li>
+<li>Storage accounts</li>
+<li>Storage containers</li>
+<li>Subnets</li>
+<li>Virtual machines</li>
+<li>Virtual networks</li>
+</ul>
+
+<h3 id="example-yaml-1">Example YAML</h3>
+
+<pre><code>name: demo
+project: my-dc
+
+resource_groups:
+  - name: rg1
+    location: eastus
+
+    security_groups:
+      - name: sg1
+        rules:
+          - name: rule1
+            description: &quot;awesome rule&quot;
+            priority: 101
+            direction: Inbound
+            access: Allow
+            protocol: Tcp
+            source_port_range: 100-4096
+            destination_port_range: 100-4096
+            source_address_prefix: VirtualNetwork
+            destination_address_prefix: VirtualNetwork
+        tags:
+          environment: staging
+
+    virtual_networks:
+      - name: vn_test
+        address_spaces:
+          - 10.0.0.0/16
+        subnets:
+          - name: sub_test
+            address_prefix: 10.0.1.0/24
+            security_group: sg1
+
+    virtual_machines:
+      - name: vm_test
+        count: 2
+        size: Standard_A0
+        image: Canonical:UbuntuServer:14.04.2-LTS:latest
+        network_interfaces:
+          - name: ni_test
+            ip_configurations:
+              - name: config_1
+                subnet: vn_test:sub_test
+                private_ip_address_allocation: dynamic
+        authentication:
+          admin_username: testadmin
+          admin_password: Password1234!
+        storage_os_disk:
+          name: myosdiskaOne
+          storage_account: safest12354
+          storage_container: scfestla
+          caching: ReadWrite
+          create_option: FromImage
+        storage_data_disk:
+          name: myosdiskaTwo
+          storage_account: safest12354
+          storage_container: scfestla
+          disk_size_gb: 1023
+          create_option: empty
+          lun: 0
+        os_profile:
+          computer_name: test
+
+    storage_accounts:
+      - name: safest12354
+        account_type: Standard_LRS
+        containers:
+          - name: scfestla
+            access_type: private
+
+    sql_servers:
+      - name: ernestserver01
+        version: &quot;12.0&quot;
+        administrator_login: mradministrator
+        administrator_login_password: P4ssw0rd
+        databases:
+          - name: mydb
+
+    public_ips:
+      - name: my_ip
+
+    loadbalancers:
+      - name: lb1
+        frontend_ip_configurations:
+          - name: fic1
+            subnet: sub_test
+</code></pre>
+
+<h3 id="field-reference-1">Field Reference</h3>
+
+<h4 id="environment-options-1">Environment Options</h4>
+
+<pre><code>name: demo
+project: my-dc
+</code></pre>
+
+<p>Environment Options support the following fields:</p>
+
+<ul>
+<li><p><strong>name</strong></p>
+
+<ul>
+<li>String that defines the name of the environment to build.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+<li>The value of this field must be 50 characters maximum.</li>
+</ul></li>
+
+<li><p><strong>project</strong></p>
+
+<ul>
+<li>String that defines the name of the project where the environment is built.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+<li>The value of this field must 50 characters maximum.</li>
+</ul></li>
+</ul>
+
+<h3 id="resource-groups">Resource groups</h3>
+
+<p>Resource groups are supporting the following fields:</p>
+
+<ul>
+<li><p><strong>name</strong></p>
+
+<ul>
+<li>String defining the resource group</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+
+<li><p><strong>location</strong></p>
+
+<ul>
+<li>String : the location where the resource group will be created.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+<li>List of valid locations (here)[<a href="http://azure.microsoft.com/en-us/regions/">http://azure.microsoft.com/en-us/regions/</a>]</li>
+</ul></li>
+
+<li><p><strong>security_groups</strong></p></li>
+</ul>
+
+<p>A security_group block is described below</p>
+
+<ul>
+<li><strong>virtual_networks</strong></li>
+</ul>
+
+<p>A virtual_network block is described below</p>
+
+<ul>
+<li><strong>virtual_machines</strong></li>
+</ul>
+
+<p>A virtual_machine block is described below</p>
+
+<ul>
+<li><strong>storage_accounts</strong></li>
+</ul>
+
+<p>A storage_account block is described below</p>
+
+<ul>
+<li><strong>sql_servers</strong></li>
+</ul>
+
+<p>A sql_server block is described below</p>
+
+<ul>
+<li><strong>public_ips</strong></li>
+</ul>
+
+<p>A public_ip block is described below</p>
+
+<ul>
+<li><strong>loadbalancers</strong></li>
+</ul>
+
+<p>A loadbalancer block is described below</p>
+
+<h3 id="security-group">Security Group</h3>
+
+<p>Security groups are supporting the following fields:</p>
+
+<ul>
+<li><p><strong>name</strong></p>
+
+<ul>
+<li>String : the name of the security group</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+
+<li><p><strong>rules</strong></p>
+
+<ul>
+<li><strong>name</strong>
+
+<ul>
+<li>String : the name of the security group rule</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>description</strong>
+
+<ul>
+<li>String : A description for this rule. Restricted to 140 characters.</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>priority</strong>
+
+<ul>
+<li>String : Specifies the priority of the rule. The value can be between 100 and 4096. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>direction</strong>
+
+<ul>
+<li>String : The direction specifies if rule will be evaluated on incoming or outgoing traffic. Possible values are “Inbound” and “Outbound”.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>access</strong>
+
+<ul>
+<li>String : Specifies whether network traffic is allowed or denied. Possible values are “Allow” and “Deny”.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>protocol</strong>
+
+<ul>
+<li>String : Network protocol this rule applies to. Can be Tcp, Udp or * to match both.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>source_port_range</strong>
+
+<ul>
+<li>String : Integer or range between 0 and 65535 or * to match any.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>destination_port_range</strong>
+
+<ul>
+<li>String : Integer or range between 0 and 65535 or * to match any.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>source_address_prefix</strong>
+
+<ul>
+<li>String : CIDR or source IP range or * to match any IP. Tags such as ‘VirtualNetwork’, ‘AzureLoadBalancer’ and ‘Internet’ can also be used.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>destination_address_prefix</strong>
+
+<ul>
+<li>String : CIDR or destination IP range or * to match any IP. Tags such as ‘VirtualNetwork’, ‘AzureLoadBalancer’ and ‘Internet’ can also be used.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+</ul></li>
+
+<li><p><strong>tags</strong></p>
+
+<ul>
+<li>List String : tags to assign to the resource</li>
+<li>This field is optional.</li>
+</ul></li>
+</ul>
+
+<h3 id="storage-accounts">Storage Accounts</h3>
+
+<ul>
+<li><strong>name</strong>
+
+<ul>
+<li>String : Specifies the name of the storage account. Changing this forces a new resource to be created. This must be unique across the entire Azure service, not just within the resource group.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>account_type</strong>
+
+<ul>
+<li>String : Defines the type of storage account to be created. Valid options are <strong>Standard_LRS</strong>, <strong>Standard_ZRS</strong>, <strong>Standard_GRS</strong>, <strong>Standard_RAGRS</strong>, <strong>Premium_LRS</strong>. Changing this is sometimes valid - see the Azure documentation for more information on which types of accounts can be converted into other types.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>account_kind</strong>
+
+<ul>
+<li>String : Defines the Kind of account. Valid options are <strong>Storage</strong> and <strong>BlobStorage</strong>. Changing this forces a new resource to be created. Defaults to <strong>Storage</strong>.</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>enable_blob_encryption</strong>
+
+<ul>
+<li>Boolean : Boolean flag which controls if Encryption Services are enabled for Blob storage, see here for more information.</li>
+<li>This field is optional.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>containers</strong> A list of Storage Account Containers as described below
+
+<ul>
+<li><strong>name</strong>
+
+<ul>
+<li>String : Specifies the name of the storage account. Changing this forces a new resource to be created. This must be unique across the entire Azure service, not just within the resource group.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>access_type</strong>
+
+<ul>
+<li>String : The &lsquo;interface&rsquo; for access the container provides. Can be either <strong>blob</strong>, <strong>container</strong> or <strong>private</strong>.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+</ul></li>
+<li><strong>tags</strong>
+
+<ul>
+<li>List String : tags to assign to the resource</li>
+<li>This field is optional.</li>
+</ul></li>
+</ul>
+
+<h3 id="virtual-networks">Virtual Networks</h3>
+
+<ul>
+<li><strong>name</strong>
+
+<ul>
+<li>String : The name of the virtual network. Changing this forces a new resource to be created.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>address_spaces</strong>
+
+<ul>
+<li>String : The address space that is used the virtual network. You can supply more than one address space. Changing this forces a new resource to be created.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>dns_servers</strong>
+
+<ul>
+<li>String : List of IP addresses of DNS servers</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>subnets</strong>
+A list of Subnets as described below</li>
+</ul>
+
+<h3 id="subnet">Subnet</h3>
+
+<ul>
+<li><strong>name</strong>
+
+<ul>
+<li>String : The name of the virtual network. Changing this forces a new resource to be created.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>address_prefix</strong>
+
+<ul>
+<li>String : The address prefix to use for the subnet.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>security_group</strong>
+
+<ul>
+<li>String : The name of the Security Group to associate with the subnet.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+</ul>
+
+<h3 id="sql-servers">SQL Servers</h3>
+
+<ul>
+<li><strong>name</strong>
+
+<ul>
+<li>String : The name of the sql server. Changing this forces a new resource to be created.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>version</strong>
+
+<ul>
+<li>String : The version for the new server. Valid values are: 2.0 (for v11 server) and 12.0 (for v12 server).</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>administrator_login</strong>
+
+<ul>
+<li>String : The administrator login name for the new server.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>administrator_login_password</strong>
+
+<ul>
+<li>String : The password for the new AdministratorLogin. Please following Azures Password Policy</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>tags</strong>
+
+<ul>
+<li>List String : tags to assign to the resource</li>
+<li>This field is optional.</li>
+</ul></li>
+
+<li><p><strong>databases</strong>
+A list of SQL Databases as described below</p>
+
+<ul>
+<li><strong>name</strong>
+
+<ul>
+<li>String : The name of the database.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>create_mode</strong>
+
+<ul>
+<li>String : Specifies the type of database to create.</li>
+<li>This field is optional.</li>
+<li>Defaults to Default.</li>
+</ul></li>
+<li><strong>source_database_id</strong>
+
+<ul>
+<li>String : The URI of the source database if create_mode value is not Default.</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>restore_point_in_time</strong>
+
+<ul>
+<li>String : The point in time for the restore. Only applies if create_mode is PointInTimeRestore e.g. 2013-11-08T22:00:40Z</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>edition</strong>
+
+<ul>
+<li>String : The edition of the database to be created. Applies only if create_mode is Default. Valid values are: Basic, Standard, Premium, or DataWarehouse. Please see Azure SQL Database Service Tiers.</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>collation</strong>
+
+<ul>
+<li>String : The name of the collation. Applies only if create_mode is Default. Azure default is SQL_LATIN1_GENERAL_CP1_CI_AS</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>max_size_bytes</strong>
+
+<ul>
+<li>String : The maximum size that the database can grow to. Applies only if create_mode is Default. Please see Azure SQL Database Service Tiers.</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>requested_service_objective_id</strong>
+
+<ul>
+<li>String : Use requested_service_objective_id or requested_service_objective_name to set the performance level for the database. Valid values are: S0, S1, S2, S3, P1, P2, P4, P6, P11 and ElasticPool. Please see Azure SQL Database Service Tiers.</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>requested_service_objective_name</strong>
+
+<ul>
+<li>String : Use requested_service_objective_name or requested_service_objective_id to set the performance level for the database. Please see Azure SQL Database Service Tiers.</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>source_database_deletion_date</strong>
+
+<ul>
+<li>String : The deletion date time of the source database. Only applies to deleted databases where create_mode is PointInTimeRestore.</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>tags</strong>
+
+<ul>
+<li>List String : tags to assign to the resource</li>
+<li>This field is optional.</li>
+</ul></li>
+</ul></li>
+
+<li><p><strong>rules</strong>
+A list of SQL Firewall Rules as described below</p>
+
+<ul>
+<li><strong>name</strong>
+
+<ul>
+<li>String : The name of the SQL Firewall Rule.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>start_ip_address</strong>
+
+<ul>
+<li>String :  The starting IP address to allow through the firewall for this rule.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>end_ip_address</strong>
+
+<ul>
+<li>String : The ending IP address to allow through the firewall for this rule.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h3 id="load-balancers-1">Load Balancers</h3>
+
+<ul>
+<li><strong>name</strong>
+
+<ul>
+<li>String : Specifies the name of the LoadBalancer.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>location</strong>
+
+<ul>
+<li>String : Specifies the supported Azure location where the resource exists.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>backend_address_pools</strong>
+
+<ul>
+<li>List of strings : With names of the backend address pools</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+
+<li><p><strong>frontend_ip_configurations</strong>
+A list of Frontend IP Configurations as described below</p>
+
+<ul>
+<li><strong>name</strong>
+
+<ul>
+<li>String : Specifies the name of the frontend ip configuration.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>subnet</strong>
+
+<ul>
+<li>String : Reference to subnet associated with the IP Configuration.</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>public_ip_address_allocation</strong>
+
+<ul>
+<li>String : Defines how a public IP address is assigned. Options are Static or Dynamic.</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>private_ip_address</strong>
+
+<ul>
+<li>String : Private IP Address to assign to the Load Balancer. The last one and first four IPs in any range are reserved and cannot be manually assigned.</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>private_ip_address_allocation</strong>
+
+<ul>
+<li>String : Defines how a private IP address is assigned. Options are Static or Dynamic.</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>rules</strong>
+A list of Load balancer Rules as described below
+
+<ul>
+<li><strong>name</strong>
+
+<ul>
+<li>String : Specifies the name of the Rule.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>protocol</strong>
+
+<ul>
+<li>String : The transport protocol for the external endpoint. Possible values are Udp or Tcp.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>frontend_port</strong>
+
+<ul>
+<li>String :  The port for the external endpoint. Port numbers for each Rule must be unique within the Load Balancer. Possible values range between 1 and 65534, inclusive.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>backend_port</strong>
+
+<ul>
+<li>String : The port used for internal connections on the endpoint. Possible values range between 1 and 65535, inclusive.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>backend_address_pool</strong>
+
+<ul>
+<li>String :  A reference to a Backend Address Pool over which this Load Balancing Rule operates.</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>probe</strong>
+
+<ul>
+<li>String : A reference to a Probe used by this Load Balancing Rule.</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>floating_ip</strong>
+
+<ul>
+<li>String : Floating IP is pertinent to failover scenarios: a &ldquo;floating” IP is reassigned to a secondary server in case the primary server fails. Floating IP is required for SQL AlwaysOn.</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>idle_timeout</strong>
+
+<ul>
+<li>String : Specifies the timeout for the Tcp idle connection. The value can be set between 4 and 30 minutes. The default value is 4 minutes. This element is only used when the protocol is set to Tcp.</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>load_distribution</strong>
+
+<ul>
+<li>String : Specifies the load balancing distribution type to be used by the Load Balancer. Possible values are: Default – The load balancer is configured to use a 5 tuple hash to map traffic to available servers. SourceIP – The load balancer is configured to use a 2 tuple hash to map traffic to available servers. SourceIPProtocol – The load balancer is configured to use a 3 tuple hash to map traffic to available servers.</li>
+<li>This field is optional.</li>
+</ul></li>
+</ul></li>
+</ul></li>
+
+<li><p><strong>probes</strong>
+A list of Load Balancer Probe as described below</p>
+
+<ul>
+<li><strong>name</strong>
+
+<ul>
+<li>String : Specifies the name of the Probe.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>port</strong>
+
+<ul>
+<li>String : Port on which the Probe queries the backend endpoint. Possible values range from 1 to 65535, inclusive.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>protocol</strong>
+
+<ul>
+<li>String : Specifies the protocol of the end point. Possible values are Http or Tcp. If Tcp is specified, a received ACK is required for the probe to be successful. If Http is specified, a 200 OK response from the specified URI is required for the probe to be successful.</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>request_path</strong>
+
+<ul>
+<li>String : The URI used for requesting health status from the backend endpoint. Required if protocol is set to Http. Otherwise, it is not allowed.</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>interval</strong>
+
+<ul>
+<li>String : The interval, in seconds between probes to the backend endpoint for health status. The default value is 15, the minimum value is 5.</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>max_failures</strong>
+
+<ul>
+<li>String : The number of failed probe attempts after which the backend endpoint is removed from rotation. The default value is 2. NumberOfProbes multiplied by intervalInSeconds value must be greater or equal to 10.Endpoints are returned to rotation when at least one probe is successful.</li>
+<li>This field is optional.</li>
+</ul></li>
+</ul></li>
+
+<li><p><strong>tags</strong></p>
+
+<ul>
+<li>List String : tags to assign to the resource</li>
+<li>This field is optional.</li>
+</ul></li>
+</ul>
+
+<h3 id="virtual-machines">Virtual Machines</h3>
+
+<ul>
+<li><strong>name</strong>
+
+<ul>
+<li>String : Specifies the name of the virtual machine resource. Changing this forces a new resource to be created.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>count</strong>
+
+<ul>
+<li>Integer : Number of virtual machines to be created</li>
+<li>This field is optional.</li>
+<li>Defaults to 1</li>
+</ul></li>
+<li><strong>size</strong>
+
+<ul>
+<li>String : Specifies the size of the virtual machine.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>image</strong>
+
+<ul>
+<li>String : String like <code>Canonical:UbuntuServer:14.04.2-LTS:latest</code> composed by:</li>
+<li><code>Canonical</code> publisher : Specifies the publisher of the image used to create the virtual machine.</li>
+<li><code>UbuntuServer</code> offer : Specifies the offer of the image used to create the virtual machine.</li>
+<li><code>14.04.2-LTS</code> sku : Specifies the SKU of the image used to create the virtual machine.</li>
+<li><code>latest</code> version : Specifies the version of the image used to create the virtual machine.</li>
+<li>This field is optional.</li>
+<li>Changing this forces a new resource to be created.</li>
+</ul></li>
+<li><strong>availability_set</strong>
+
+<ul>
+<li>String : Availability set name</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>authentication</strong>
+
+<ul>
+<li><strong>disable_password_authentication</strong>
+
+<ul>
+<li>Boolean : Specifies whether password authentication should be disabled.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>admin_username</strong>
+
+<ul>
+<li>String : Admin username to be set up on the vm</li>
+<li>This field is optional, depending on disable_password_authentication.</li>
+</ul></li>
+<li><strong>admin_password</strong>
+
+<ul>
+<li>String : Admin password to be set up on the vm</li>
+<li>This field is optional, depending on disable_password_authentication.</li>
+</ul></li>
+<li><strong>ssh_keys</strong>
+
+<ul>
+<li>String : A key/value list of ssh keys to be set on the vm</li>
+<li>This field is optional.</li>
+</ul></li>
+</ul></li>
+<li><strong>storage_os_disk</strong>
+
+<ul>
+<li><strong>name</strong>
+
+<ul>
+<li>String : Name of the storage OS disk to be used</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>storage_account</strong>
+
+<ul>
+<li>String : Related storage account name</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>storage_container</strong>
+
+<ul>
+<li>String : Related storage container name.</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>create_option</strong>
+
+<ul>
+<li>String : Specifies how the virtual machine should be created. Possible values are attach and FromImage.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>caching</strong>
+
+<ul>
+<li>String : Specifies the caching requirements.</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>image_uri</strong>
+
+<ul>
+<li>String : Specifies the image_uri in the form publisherName:offer:skus:version. image_uri can also specify the VHD uri of a custom VM image to clone. When cloning a custom disk image the os_type documented below becomes required.</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>os_type</strong>
+
+<ul>
+<li>String : Specifies the operating system Type, valid values are windows, linux.</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>disk_size_gb</strong>
+
+<ul>
+<li>String : Specifies the size of the data disk in gigabytes.</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>managed_disk_type</strong>
+
+<ul>
+<li>String : When provided it creates an attached managed disk.</li>
+<li>This field is optional.</li>
+<li>Allowable values are Standard_LRS or Premium_LRS.</li>
+</ul></li>
+</ul></li>
+<li><strong>os_profile</strong>
+
+<ul>
+<li><strong>computer_name</strong>
+
+<ul>
+<li>String : Specifies the name of the virtual machine.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>custom_data</strong>
+
+<ul>
+<li>String : Specifies a base-64 encoded string of custom data. The base-64 encoded string is decoded to a binary array that is saved as a file on the Virtual Machine. The maximum length of the binary array is 65535 bytes.</li>
+<li>This field is optional.</li>
+</ul></li>
+</ul></li>
+
+<li><p><strong>os_profile_windows_config</strong></p>
+
+<ul>
+<li><strong>provision_vm_agent</strong>
+
+<ul>
+<li>String :</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>enable_automatic_upgrades</strong>
+
+<ul>
+<li>Boolean : enables automatic upgrades</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>winrm</strong> (Optional) A collection of WinRM configuration blocks.
+
+<ul>
+<li><strong>protocol</strong>
+
+<ul>
+<li>String : Specifies the protocol of listener</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>certificate_url</strong>
+
+<ul>
+<li>String : Specifies URL of the certificate with which new Virtual Machines is provisioned.</li>
+<li>This field is optional.</li>
+</ul></li>
+</ul></li>
+<li><strong>additional_unattend_config</strong> (Optional)
+
+<ul>
+<li><strong>pass</strong>
+
+<ul>
+<li>String : Specifies the name of the pass that the content applies to. The only allowable value is oobeSystem.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>component</strong>
+
+<ul>
+<li>String : Specifies the name of the component to configure with the added content. The only allowable value is Microsoft-Windows-Shell-Setup.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>setting_name</strong>
+
+<ul>
+<li>String : Specifies the name of the setting to which the content applies. Possible values are: FirstLogonCommands and AutoLogon.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>content</strong>
+
+<ul>
+<li>String : Specifies the base-64 encoded XML formatted content that is added to the unattend.xml file for the specified path and component.</li>
+<li>This field is optional.</li>
+</ul></li>
+</ul></li>
+</ul></li>
+
+<li><p><strong>network_interfaces</strong></p>
+
+<ul>
+<li><strong>name</strong>
+
+<ul>
+<li>String : The name of the network interface. Changing this forces a new resource to be created.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>security_group</strong>
+
+<ul>
+<li>String : The name of the Network Security Group to associate with the network interface.</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>internal_dns_name_label</strong>
+
+<ul>
+<li>String : Relative DNS name for this NIC used for internal communications between VMs in the same VNet</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>enable_ip_forwarding</strong>
+
+<ul>
+<li>String : Enables IP Forwarding on the NIC. Defaults to false.</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>dns_servers</strong>
+
+<ul>
+<li>String List : List of DNS servers IP addresses to use for this NIC, overrides the VNet-level server list</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>ip_configurations</strong> (Optional) Collection of ipConfigurations associated with this NIC.
+
+<ul>
+<li><strong>name</strong>
+
+<ul>
+<li>String : User-defined name of the IP.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>subnet</strong>
+
+<ul>
+<li>String : Reference to a subnet in which this NIC has been created.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>public_ip_address_allocation</strong>
+
+<ul>
+<li>String : Defines how a public IP address is assigned. Options are Static or Dynamic.</li>
+<li>This field is required.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>private_ip_address_allocation</strong>
+
+<ul>
+<li>String : Defines how a private IP address is assigned. Options are Static or Dynamic.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>private_ip_address</strong>
+
+<ul>
+<li>String : Reference to a Public IP Address to associate with this NIC</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>load_balancer_backend_address_pools</strong>
+
+<ul>
+<li>String :</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+</ul></li>
+<li><strong>tags</strong>
+
+<ul>
+<li>String List : List of Load Balancer Backend Address Pool names references to which this NIC belongs</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+</ul></li>
+
+<li><p><strong>plan</strong> (Optional)</p>
+
+<ul>
+<li><strong>name</strong>
+
+<ul>
+<li>String : Specifies the name of the image from the marketplace.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>publisher</strong>
+
+<ul>
+<li>String : pecifies the publisher of the image.</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>product</strong>
+
+<ul>
+<li>String : Specifies the product of the image from the marketplace.</li>
+<li>This field is optional.</li>
+</ul></li>
+</ul></li>
+
+<li><p><strong>boot_diagnostics</strong> (Optional)</p>
+
+<ul>
+<li><strong>enabled</strong>
+
+<ul>
+<li>String : Whether to enable boot diagnostics for the virtual machine.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>storage_uri</strong>
+
+<ul>
+<li>String : Blob endpoint for the storage account to hold the virtual machine&rsquo;s diagnostic files. This must be the root of a storage account, and not a storage container.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+</ul></li>
+
+<li><p><strong>storage_data_disk</strong> (Optional)</p>
+
+<ul>
+<li><strong>name</strong>
+
+<ul>
+<li>String : Specifies the name of the data disk.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>storage_account</strong>
+
+<ul>
+<li>String : Related storage account name</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>storage_container</strong>
+
+<ul>
+<li>String : Related storage container name.</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>managed_disk_type</strong>
+
+<ul>
+<li>String : When provided it creates an attached managed disk.</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>create_option</strong>
+
+<ul>
+<li>String : Specifies how the virtual machine should be created. Possible values are attach and FromImage.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+</ul></li>
+<li><strong>caching</strong>
+
+<ul>
+<li>String : Specifies the caching requirements.</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>image_uri</strong>
+
+<ul>
+<li>String : Specifies the image_uri in the form publisherName:offer:skus:version. image_uri can also specify the VHD uri of a custom VM image to clone. When cloning a custom disk image the os_type documented below becomes required.</li>
+<li>This field is optional.</li>
+</ul></li>
+<li><strong>os_type</strong>
+
+<ul>
+<li>String : Specifies the operating system Type, valid values are windows, linux.</li>
+<li>This field is optional.</li>
+</ul></li>
+</ul></li>
+
+<li><p><strong>delete_os_disk_on_termination</strong></p>
+
+<ul>
+<li>String : Flag to enable deletion of the OS Disk VHD blob when the VM is deleted, defaults to false</li>
+<li>This field is optional.</li>
+<li>Defaults to false</li>
+</ul></li>
+
+<li><p><strong>delete_data_disks_on_termination</strong></p>
+
+<ul>
+<li>String : Flag to enable deletion of Storage Disk VHD blobs when the VM is deleted, defaults to false</li>
+<li>This field is optional.</li>
+<li>Defaults to false</li>
+</ul></li>
+
+<li><p><strong>license_type</strong></p>
+
+<ul>
+<li>String : Specifies the Windows OS license type. The only allowable value, if supplied, is Windows_Server.</li>
+<li>This field is optional, when a windows machine.</li>
+</ul></li>
+
+<li><p><strong>tags</strong></p>
+
+<ul>
+<li>List String : tags to assign to the resource</li>
+<li>This field is optional.</li>
+</ul></li>
+</ul>
+
+<h2 id="vmware-vcloud-director">VMware vCloud Director</h2>
+
+<p>vCloud Director (vCD) is cloud management tool from VMWare that acts as an overlay on top of vSphere, providing users with a self-service GUI and API. vCloud Director enables service providers to offer Infrastructure as a Service to their customers by providing users with direct control of virtual machine provisioning, and some aspects of networking.</p>
+
+<p>With vCD most network functionality is delivered by the VMWare vShield Edge (vSE) virtual appliance. Unfortunately certain key network operations can only be performed by the service provider and are not available to users. They include:</p>
+
+<ul>
+<li>deploying a vSE</li>
+<li>connecting a vSE to an external network</li>
+<li>sub-allocating external IP addresses to a vSE</li>
+</ul>
+
+<p>All other common network operations are accesible to users, however many of them are limited to users with the <a href="https://pubs.vmware.com/vca/index.jsp?topic=%2Fcom.vmware.vcloud.api.doc_56%2FGUID-BC504F6B-3D38-4F25-AACF-ED584063754F.html">Organization Administrator</a> role assigned to them.</p>
+
+<h3 id="example-yaml-2">Example YAML</h3>
+
+<pre><code>---
+name: demo
+project: r3-jreid2
+
+routers:
+  - name: demo
+    firewall_rules:
+    - name: in_out_any
+      source: internal
+      from_port: any
+      destination: external
+      to_port: any
+      protocol: any
+      action: allow
+
+    - name: out_in_80
+      source: any
+      from_port: any
+      destination: internal
+      to_port: '80'
+      protocol: tcp
+      action: allow
+
+    networks:
+      - name: web
+        subnet: 10.1.0.0/24
+        dns:
+          - 8.8.8.8
+          - 8.8.4.4
+
+    nat_rules:
+      - source: 195.3.186.44
+        from_port: '80'
+        to_port: '80'
+        destination: 10.1.0.11
+        protocol: tcp
+        type: dnat
+      - source: 10.0.0.0/8
+        from_port: any
+        to_port: any
+        destination: 195.3.186.44
+        protocol: any
+        type: snat
+
+instances:
+  - name: web
+    image: r3/ubuntu-1404
+    cpus: 1
+    memory: 1GB
+    disks:
+     - 10GB
+    root_disk: 32GB
+    count: 1
+    networks:
+      name: web
+      start_ip: 10.1.0.11
+    provisioner:
+      - exec:
+        - 'sudo apt-get update'
+        - 'sudo apt-get install apache2 -y'
+      - shell:
+        - #!/bin/sh
+        - if [ x$1 == x&quot;postcustomization&quot; ]; then
+        - yum -y install httpd
+        - service httpd start
+        - fi
+</code></pre>
+
+<h3 id="field-reference-2">Field Reference</h3>
+
+<h4 id="environment-options-2">Environment Options</h4>
+
+<pre><code>name: demo
+project: r3-jreid2
+</code></pre>
+
+<p>Environment Options support the following fields:</p>
+
+<ul>
+<li><p><strong>name</strong></p>
+
+<ul>
+<li>String that defines the name of the environment to build.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+<li>The value of this field must be 50 characters maximum.</li>
+</ul></li>
+
+<li><p><strong>project</strong></p>
+
+<ul>
+<li>String that defines the name of the project where the environment is built.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+<li>The value of this field must 50 characters maximum.</li>
+</ul></li>
+</ul>
+
+<h4 id="networking-1">Networking</h4>
+
+<pre><code>routers:
+  - name: demo
+    firewall_rules:
+    - name: in_out_any
+      source: internal
+      from_port: any
+      destination: external
+      to_port: any
+      protocol: any
+      action: allow
+
+    - name: out_in_80
+      source: any
+      from_port: any
+      destination: internal
+      to_port: '80'
+      protocol: tcp
+      action: allow
+
+    networks:
+      - name: web
+        subnet: 10.1.0.0/24
+        dns:
+          - 8.8.8.8
+          - 8.8.4.4
+
+    nat_rules:
+      - source: 195.3.186.44
+        from_port: '80'
+        to_port: '80'
+        destination: 10.1.0.11
+        protocol: tcp
+        type: dnat
+      - source: 10.0.0.0/8
+        from_port: any
+        to_port: any
+        destination: 195.3.186.44
+        protocol: any
+        type: snat
+</code></pre>
+
+<p>Networking supports the following fields:</p>
+
+<ul>
+<li><strong>name</strong>
+
+<ul>
+<li>String that defines the name of the vSE to manage.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+<li>This field must be unique by user &amp; manifest.</li>
+<li>The value of this field can be 50 characters maximum.</li>
+</ul></li>
+</ul>
+
+<p><strong>firewall_rules</strong></p>
+
+<p>A firewall rule controls traffic that is allowed to flow between both internal and external routers and networks.</p>
+
+<ul>
+<li><p><strong>name</strong></p>
+
+<ul>
+<li>String that defines the name of the rule.</li>
+<li>This field is mandatory.</li>
+<li>This field can’t be null or empty.</li>
+</ul></li>
+
+<li><p><strong>source</strong></p>
+
+<ul>
+<li>String the source of the network where this firewall acts</li>
+<li>This field is mandatory.</li>
+<li>Values can be: external | internal | any | named networks | CIDR</li>
+</ul></li>
+
+<li><p><strong>from_port</strong></p>
+
+<ul>
+<li>Source port numbers</li>
+<li>This field is mandatory.</li>
+<li>Values can be:  an string ( valid port number, 1 - 65535 ) or any</li>
+</ul></li>
+
+<li><p><strong>destination</strong></p>
+
+<ul>
+<li>String the destination of the network where this firewall acts</li>
+<li>This field is mandatory.</li>
+<li>Values can be:  external | internal | any | named networks | CIDR</li>
+</ul></li>
+
+<li><p><strong>to_port</strong></p>
+
+<ul>
+<li>Destination port numbers</li>
+<li>This field is mandatory.</li>
+<li>Values can be:  an string ( valid port number, 1 - 65535 ) or any</li>
+</ul></li>
+
+<li><p><strong>protocol</strong></p>
+
+<ul>
+<li>String with the protocol we are firewalling</li>
+<li>This field is mandatory.</li>
+<li>Values can be: tcp | udp | icmp | any | tcp &amp; udp</li>
+</ul></li>
+</ul>
+
+<p><strong>networks</strong></p>
+
+<p>A network is a virtual network that attaches to a router (vSE). This is what allows us to network/isolate VM’s together.</p>
+
+<ul>
+<li><p><strong>name</strong></p>
+
+<ul>
+<li>String that defines the name of the network to build.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+<li>The value of this field must be 50 characters maximum.</li>
+</ul></li>
+
+<li><p><strong>subnet</strong></p>
+
+<ul>
+<li>String that defines the subnet of the network.</li>
+<li>It must follow CIDR notation as described at: <a href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing">https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing</a></li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+<li>This field must be unique for this user &amp; all the networks on the manifest.</li>
+</ul></li>
+
+<li><p><strong>dns</strong></p>
+
+<ul>
+<li>Array of IPs to use as dns servers on this environment</li>
+<li>It must follow CIDR notation as described at: <a href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing">https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing</a></li>
+<li>This field is optional.</li>
+<li>This field can be empty and it will default to [&ldquo;8.8.8.8&rdquo;, &ldquo;8.8.4.4&rdquo;].</li>
+</ul></li>
+</ul>
+
+<p><strong>nat_rules</strong></p>
+
+<p>A nat rule is something that converts translates a request on a port from one IP to another on a different network.</p>
+
+<ul>
+<li><p><strong>from_port</strong></p>
+
+<ul>
+<li>Source port numbers</li>
+<li>Values can be:  an string ( valid port number, 1 - 65535 ) or any</li>
+</ul></li>
+
+<li><p><strong>destination</strong></p>
+
+<ul>
+<li>String the destination of the IPv4 Address to translate to</li>
+<li>Values can be: IPv4</li>
+</ul></li>
+
+<li><p><strong>to_port</strong></p>
+
+<ul>
+<li>Destination port numbers</li>
+<li>Values can be:  an string ( valid port number, 1 - 65535 ) or any</li>
+</ul></li>
+
+<li><p><strong>source</strong></p>
+
+<ul>
+<li>String that defines the IP from the provider-specified sub-allocated list of IPs of the router.</li>
+<li>It must follow CIDR notation as described at: <a href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing">https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing</a></li>
+</ul></li>
+
+<li><p><strong>protocol</strong></p>
+
+<ul>
+<li>String that defines the protocols to be translated.</li>
+<li>Supported values are TCP, UDP, ICMP, and ANY.</li>
+</ul></li>
+
+<li><p><strong>type</strong></p>
+
+<ul>
+<li>String that defines the type of translation to configure.</li>
+<li><code>dnat</code> is for in-bound translations.</li>
+<li><code>snat</code> is for out-bound translations.</li>
+</ul></li>
+</ul>
+
+<h4 id="instances-1">Instances</h4>
+
+<pre><code>instances:
+  - name: web
+    image: r3/ubuntu-1404
+    cpus: 1
+    memory: 1GB
+    disks:
+     - 10GB
+    root_disk: 32GB
+    count: 1
+    networks:
+      name: web
+      start_ip: 10.1.0.11
+    provisioner:
+      - exec:
+        - 'sudo apt-get update'
+        - 'sudo apt-get install apache2 -y'
+      - shell:
+        - #!/bin/sh
+        - if [ x$1 == x&quot;postcustomization&quot; ]; then
+        - yum -y install httpd
+        - service httpd start
+        - fi
+</code></pre>
+
+<p>Instances support the following fields:</p>
+
+<ul>
+<li><p><strong>name</strong></p>
+
+<ul>
+<li>String that defines the name of the instance to build.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+<li>This field must be unique by user &amp; manifest.</li>
+<li>The value of this field must be 50 characters maximum.</li>
+</ul></li>
+
+<li><p><strong>image</strong></p>
+
+<ul>
+<li>String that defines the name of an image to install on the VM.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+<li>This field is composed in two parts one for the “catalog” and another one for the “image” separated by a slash “/”</li>
+<li>Both “catalog” and “image” are strings and can’t be null.</li>
+</ul></li>
+
+<li><p><strong>cpus</strong></p>
+
+<ul>
+<li>Integer that defines how many CPUs will have the VM.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+<li>This field must be greater or equal than 1</li>
+</ul></li>
+
+<li><p><strong>memory</strong></p>
+
+<ul>
+<li>String that defines the name of a load balancer to add to this environment.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+<li>This field must follow the Binary Prefix format: <a href="https://en.wikipedia.org/wiki/Binary_prefix#Computer_memory">https://en.wikipedia.org/wiki/Binary_prefix#Computer_memory</a></li>
+<li>The possible binary prefixes are MB, GB, TB, PB, YB</li>
+</ul></li>
+
+<li><p><strong>disks:</strong></p>
+
+<ul>
+<li>A list of sizes of hard disks that belongs to the VM</li>
+<li>This field can be an empty list</li>
+<li>This field is a list of strings</li>
+<li>Each element of the string must follow the Binary Prefix format: <a href="https://en.wikipedia.org/wiki/Binary_prefix#Hard_disk_drives">https://en.wikipedia.org/wiki/Binary_prefix#Hard_disk_drives</a></li>
+<li>The possible binary prefixes are MB, GB, TB, PB, YB</li>
+</ul></li>
+
+<li><p><strong>root_disk</strong></p>
+
+<ul>
+<li>String that defines the root disk size of the template the instance is based on.</li>
+<li>This field is optional.</li>
+<li>This field cannot be null or empty.</li>
+<li>The value must be larger than the default root disk size of the template.</li>
+<li>Each element of the string must follow the Binary Prefix format: <a href="https://en.wikipedia.org/wiki/Binary_prefix#Hard_disk_drives">https://en.wikipedia.org/wiki/Binary_prefix#Hard_disk_drives</a></li>
+<li>The possible binary prefixes are MB, GB, TB, PB, YB</li>
+</ul></li>
+
+<li><p><strong>count</strong></p>
+
+<ul>
+<li>Integer that defines the number of VM to be created.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+<li>This field must be greater or equal that 1</li>
+</ul></li>
+</ul>
+
+<p><strong>networks</strong></p>
+
+<p>Networks is a map with two fields</p>
+
+<ul>
+<li><p><strong>name</strong></p>
+
+<ul>
+<li>String that defines the name of a network to attach this instance.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+<li>The value of this field should exist on the networks section previously specified.</li>
+</ul></li>
+
+<li><p><strong>start_ip</strong></p>
+
+<ul>
+<li>String that defines the starting IP to allocate the VMs to be built.</li>
+<li>This field is mandatory.</li>
+<li>This field cannot be null or empty.</li>
+<li>This field must be a valid IP.</li>
+<li>This IP should belong to the network already defined on the instance.</li>
+</ul></li>
+</ul>
+
+<p><strong>provisioner</strong></p>
+
+<p>Provisioner defines the available provisioner mechanisms.</p>
+
+<ul>
+<li><p><strong>exec</strong></p>
+
+<ul>
+<li>Array of strings, any command characters must be escaped with backslashes: (RFC7159, Section 7)</li>
+<li>Each command in the exec array is concatenated together and delimited by a semicolon.</li>
+<li>This field is optional</li>
+<li>If specified as a provisioner type, this array field must contain at least one element</li>
+<li>The specified commands will be executed by the SALT master.</li>
+</ul></li>
+
+<li><p><strong>shell</strong></p>
+
+<ul>
+<li>Array of strings, any command characters must be escaped with backslashes: (RFC7159, Section 7)</li>
+<li>Each command in the exec array is concatenated together and delimited by a semicolon.</li>
+<li>This field is optional</li>
+<li>If specified as a provisioner type, this array field must contain at least one element</li>
+<li>The specified commands will be executed by the vCloud guest customization script.</li>
+</ul></li>
+</ul>
+
+
+			<aside class="copyright" role="note">
+				
+				&copy; 2017 Released under the MIT license &ndash;
+				
+				Documentation built with
+				<a href="https://www.gohugo.io" target="_blank">Hugo</a>
+				using the
+				<a href="http://github.com/digitalcraftsman/hugo-material-docs" target="_blank">Material</a> theme.
+			</aside>
+
+			<footer class="footer">
+				
+
+<nav class="pagination" aria-label="Footer">
+  <div class="previous">
+  
+      <a href="http://docs.ernest.io/commands/" title="Commands">
+        <span class="direction">
+          Previous
+        </span>
+        <div class="page">
+          <div class="button button-previous" role="button" aria-label="Previous">
+            <i class="icon icon-back"></i>
+          </div>
+          <div class="stretch">
+            <div class="title">
+              Commands
+            </div>
+          </div>
+        </div>
+      </a>
+  
+  </div>
+
+  <div class="next">
+  
+      <a href="http://docs.ernest.io/documentation/" title="Documentation">
+        <span class="direction">
+          Next
+        </span>
+        <div class="page">
+          <div class="stretch">
+            <div class="title">
+              Documentation
+            </div>
+          </div>
+          <div class="button button-next" role="button" aria-label="Next">
+            <i class="icon icon-forward"></i>
+          </div>
+        </div>
+      </a>
+  
+  </div>
+</nav>
+
+
+
+
+
+			</footer>
+		</div>
+	</article>
+
+	<div class="results" role="status" aria-live="polite">
+		<div class="scrollable">
+			<div class="wrapper">
+				<div class="meta"></div>
+				<div class="list"></div>
+			</div>
+		</div>
+	</div>
+</main>
+
+    <script>
+    
+      var base_url = 'http:\/\/docs.ernest.io\/';
+      var repo_id  = 'ernestio\/ernest';
+    
+    </script>
+
+    <script src="http://docs.ernest.io/javascripts/application.js"></script>
+    
+
+    <script>
+      /* Add headers to scrollspy */
+      var headers   = document.getElementsByTagName("h2");
+      var scrollspy = document.getElementById('scrollspy');
+
+      if(scrollspy) {
+        if(headers.length > 0) {
+          for(var i = 0; i < headers.length; i++) {
+            var li = document.createElement("li");
+            li.setAttribute("class", "anchor");
+
+            var a  = document.createElement("a");
+            a.setAttribute("href", "#" + headers[i].id);
+            a.setAttribute("title", headers[i].innerHTML);
+            a.innerHTML = headers[i].innerHTML;
+
+            li.appendChild(a)
+            scrollspy.appendChild(li);
+          }
+        } else {
+          scrollspy.parentElement.removeChild(scrollspy)
+        }
+
+
+        /* Add permanent link next to the headers */
+        var headers = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
+
+        for(var i = 0; i < headers.length; i++) {
+            var a = document.createElement("a");
+            a.setAttribute("class", "headerlink");
+            a.setAttribute("href", "#" + headers[i].id);
+            a.setAttribute("title", "Permanent link")
+            a.innerHTML = "#";
+            headers[i].appendChild(a);
+        }
+      }
+    </script>
+
+    
+      <script>
+        (function(i,s,o,g,r,a,m){
+          i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||
+          []).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;
+          m.parentNode.insertBefore(a,m)
+        })(window, document,
+          'script', '//www.google-analytics.com/analytics.js', 'ga');
+         
+        ga('create', 'UA-86033085-1', 'auto');
+        ga('set', 'anonymizeIp', true);
+        ga('send', 'pageview');
+         
+        var buttons = document.querySelectorAll('a');
+        Array.prototype.map.call(buttons, function(item) {
+          if (item.host != document.location.host) {
+            item.addEventListener('click', function() {
+              var action = item.getAttribute('data-action') || 'follow';
+              ga('send', 'event', 'outbound', action, item.href);
+            });
+          }
+        });
+         
+        var query = document.querySelector('.query');
+        query.addEventListener('blur', function() {
+          if (this.value) {
+            var path = document.location.pathname;
+            ga('send', 'pageview', path + '?q=' + this.value);
+          }
+        });
+      </script>
+    
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+  
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-86033085-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+</html>
+

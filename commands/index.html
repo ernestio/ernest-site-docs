@@ -1,0 +1,1676 @@
+<!DOCTYPE html>
+  
+  
+  
+  
+   <html class="no-js"> 
+
+  <head lang="en-us">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=10" />
+    <title>Commands - Ernest</title>
+    <meta name="generator" content="Hugo 0.16-DEV" />
+
+    
+    <meta name="description" content="Developer Driven Orchestration">
+    
+    <link rel="canonical" href="http://docs.ernest.io/commands/">
+    
+    <meta name="author" content="Ernestio">
+    
+
+    <meta property="og:url" content="http://docs.ernest.io/commands/">
+    <meta property="og:title" content="Ernest">
+    <meta property="og:image" content="http://docs.ernest.io/images/dog.png">
+    <meta name="apple-mobile-web-app-title" content="Ernest">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <link rel="shortcut icon" type="image/x-icon" href="http://docs.ernest.io/images/dog.ico">
+    <link rel="icon" type="image/x-icon" href="http://docs.ernest.io/images/dog.ico">
+
+    <style>
+      @font-face {
+        font-family: 'Icon';
+        src: url('http://docs.ernest.io/fonts/icon.eot');
+        src: url('http://docs.ernest.io/fonts/icon.eot')
+               format('embedded-opentype'),
+             url('http://docs.ernest.io/fonts/icon.woff')
+               format('woff'),
+             url('http://docs.ernest.io/fonts/icon.ttf')
+               format('truetype'),
+             url('http://docs.ernest.io/fonts/icon.svg')
+               format('svg');
+        font-weight: normal;
+        font-style: normal;
+      }
+    </style>
+
+    <link rel="stylesheet" href="http://docs.ernest.io/stylesheets/application.css">
+    <link rel="stylesheet" href="http://docs.ernest.io/stylesheets/temporary.css">
+    <link rel="stylesheet" href="http://docs.ernest.io/stylesheets/palettes.css">
+    <link rel="stylesheet" href="http://docs.ernest.io/stylesheets/highlight/highlight.css">
+
+    
+    
+    
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ubuntu:400,700|Ubuntu&#43;Mono">
+    <style>
+      body, input {
+        font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
+      }
+      pre, code {
+        font-family: 'Ubuntu Mono', 'Courier New', 'Courier', monospace;
+      }
+    </style>
+
+    
+    <link rel="stylesheet" href="http://docs.ernest.io/forms.css">
+    
+    <script src="http://docs.ernest.io/javascripts/modernizr.js"></script>
+
+    
+
+  </head>
+  <body class="palette-primary-light-blue palette-accent-orange">
+
+
+
+	
+	
+
+
+<div class="backdrop">
+	<div class="backdrop-paper"></div>
+</div>
+
+<input class="toggle" type="checkbox" id="toggle-drawer">
+<input class="toggle" type="checkbox" id="toggle-search">
+<label class="toggle-button overlay" for="toggle-drawer"></label>
+
+<header class="header">
+	<nav aria-label="Header">
+  <div class="bar default">
+    <div class="button button-menu" role="button" aria-label="Menu">
+      <label class="toggle-button icon icon-menu" for="toggle-drawer">
+        <span></span>
+      </label>
+    </div>
+    <div class="stretch">
+      <div class="title">
+        Commands
+      </div>
+    </div>
+
+    
+    <div class="button button-twitter" role="button" aria-label="Twitter">
+       <a href="https://twitter.com/R3Labs" title="@R3Labs on Twitter" target="_blank" class="toggle-button icon icon-twitter"></a>
+    </div>
+    
+
+    
+    <div class="button button-github" role="button" aria-label="GitHub">
+      <a href="https://github.com/ernestio" title="@ernestio on GitHub" target="_blank" class="toggle-button icon icon-github"></a>
+    </div>
+    
+    
+        
+  </div>
+  <div class="bar search">
+    <div class="button button-close" role="button" aria-label="Close">
+      <label class="toggle-button icon icon-back" for="toggle-search"></label>
+    </div>
+    <div class="stretch">
+      <div class="field">
+        <input class="query" type="text" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck>
+      </div>
+    </div>
+    <div class="button button-reset" role="button" aria-label="Search">
+      <button class="toggle-button icon icon-close" id="reset-search"></button>
+    </div>
+  </div>
+</nav>
+</header>
+
+<main class="main">
+	<div class="drawer">
+		<nav aria-label="Navigation">
+  <a href="https://github.com/ernestio/ernest" class="project">
+    <div class="banner">
+      
+        <div class="logo">
+          <img src="http://docs.ernest.io/images/dog.png">
+        </div>
+      
+      <div class="name">
+        <strong>Ernest <span class="version">3.0.0</span></strong>
+        
+          <br>
+          ernestio/ernest
+        
+      </div>
+    </div>
+  </a>
+
+  <div class="scrollable">
+    <div class="wrapper">
+      
+        <ul class="repo">
+          <li class="repo-download">
+            <a href="http://docs.ernest.io/downloads/" target="_blank" title="Download" data-action="download">
+              <i class="icon icon-download"></i> Download
+            </a>
+          </li>
+          <li class="repo-stars">
+            <a href="https://github.com/ernestio/ernest/stargazers" target="_blank" title="Stargazers" data-action="star">
+              <i class="icon icon-star"></i> Stars
+              <span class="count">&ndash;</span>
+            </a>
+          </li>
+        </ul>
+        <hr>
+      
+
+      <div class="toc">
+        
+        <ul>
+          
+
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Ernest" href="http://docs.ernest.io/">
+	
+	Ernest
+</a>
+
+
+
+  
+</li>
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Getting started" href="http://docs.ernest.io/getting-started/">
+	
+	Getting started
+</a>
+
+
+
+  
+</li>
+
+
+
+<li>
+  
+    
+
+
+
+<a class="current" title="Commands (CLI)" href="http://docs.ernest.io/commands/">
+	
+	Commands (CLI)
+</a>
+
+
+<ul id="scrollspy">
+</ul>
+
+
+  
+</li>
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Providers" href="http://docs.ernest.io/providers/">
+	
+	Providers
+</a>
+
+
+
+  
+</li>
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Downloads" href="http://docs.ernest.io/downloads/">
+	
+	Downloads
+</a>
+
+
+
+  
+</li>
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Developer" href="http://docs.ernest.io/developer/">
+	
+	Developer
+</a>
+
+
+
+  
+</li>
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Community" href="http://docs.ernest.io/community/">
+	
+	Community
+</a>
+
+
+
+  
+</li>
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Support" href="http://docs.ernest.io/support/">
+	
+	Support
+</a>
+
+
+
+  
+</li>
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="License" href="http://docs.ernest.io/license/">
+	
+	License
+</a>
+
+
+
+  
+</li>
+
+
+        </ul>
+        
+
+        
+        <hr>
+        <span class="section">The author</span>
+        
+        <ul>
+          
+          <li>
+            <a href="https://twitter.com/R3Labs" target="_blank" title="@R3Labs on Twitter">
+              @R3Labs on Twitter
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <a href="https://github.com/ernestio" target="_blank" title="@ernestio on GitHub">
+              @ernestio on GitHub
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <a href="mailto:info@r3labs.io" title="Email of info@r3labs.io">
+              Contact via email
+            </a>
+          </li>
+          
+        </ul>
+        
+      </div>
+    </div>
+  </div>
+</nav>
+
+	</div>
+
+	<article class="article">
+		<div class="wrapper">
+			<h1>Commands </h1>
+
+			
+
+<h2 id="using-the-cli">Using the CLI</h2>
+
+<h3 id="connecting-to-ernest">Connecting to Ernest</h3>
+
+<p>First specify the IP address of our Ernest Server:</p>
+
+<pre><code>$ ernest target https://&lt;Ernest Server IP&gt;
+Target set
+</code></pre>
+
+<p>Now we should login to Ernest with the built-in admin account:</p>
+
+<pre><code>$ ernest login
+Username: admin
+Password: *******
+</code></pre>
+
+<h3 id="projects">Projects</h3>
+
+<p>Ernest uses the concept of a project to group together one or more environments. A project can specify the default infrastructure service provider for those projects, although this can be overriden on at the environment level. An example of creating a project in Ernest for Amazon Web Services is:</p>
+
+<pre><code>$ ernest project create aws --region &lt;region&gt; --secret_access_key &lt;secret_access_key&gt; --access_key_id &lt;access_key_id&gt; &lt;project_name&gt;
+</code></pre>
+
+<p>The credentials of a project can be changed with the <code>updated</code> command. A project that does not contain any environments can be <code>deleted</code>.</p>
+
+<h3 id="environments">Environments</h3>
+
+<h4 id="what-is-an-environment">What is an Environment?</h4>
+
+<p>With Ernest an environment is a collection of networking, virtual machines, and configuration options. An environment is defined in YAML format, and you can see examples of this in the provider-specific documentation.</p>
+
+<h4 id="how-to-create-modify-environments">How to create/modify Environments</h4>
+
+<p>Once we have created a project and defined our environment in YAML the process of building the environment is:</p>
+
+<pre><code>$ ernest env apply &lt;yaml_file&gt;
+</code></pre>
+
+<p>Once the environment is created we can modify it by changing the YAML and then re-applying it. Ernest will calculate the differences and apply only those changes necessary to transition the environment from the current state to the requested state.</p>
+
+<p>Finally you can also delete environments if needed:</p>
+
+<pre><code>$ ernest env delete &lt;project_name&gt; &lt;environment_name&gt;
+</code></pre>
+
+<h4 id="view-environment-state-and-history">View Environment State and History</h4>
+
+<p>Ernest stores the current state of each environment, as well as the historical states. You can list the available environments with:</p>
+
+<pre><code>$ ernest env list
+</code></pre>
+
+<p>For a given environment you can see the history of all builds:</p>
+
+<pre><code>$ ernest env history &lt;project_name&gt; &lt;environment_name&gt;
+</code></pre>
+
+<p>We can view the YAML for a specific build by:</p>
+
+<pre><code>$ ernest env definition &lt;project_name&gt; &lt;environment_name&gt; --build &lt;build_id&gt;
+</code></pre>
+
+<p>We can view the difference between two builds:</p>
+
+<pre><code>$ ernest env diff &lt;project_name&gt; &lt;environment_name&gt; &lt;build_id 1&gt; &lt;build_id 2&gt;
+</code></pre>
+
+<p>We can revert to a previous build:</p>
+
+<pre><code>$ ernest env revert &lt;project_name&gt; &lt;environment_name&gt; &lt;build_id&gt;
+</code></pre>
+
+<p>We can view provider-generated information related to our environment:</p>
+
+<pre><code>$ ernest service info &lt;service name&gt;
+</code></pre>
+
+<h3 id="users-and-roles">Users and Roles</h3>
+
+<p>Users are created by an admin account:</p>
+
+<pre><code>$ ernest user create &lt;user&gt; &lt;password&gt;
+User &lt;user&gt; successfully created
+</code></pre>
+
+<p>Access to projects and environments is controlled by roles. Ernest supports two different roles:</p>
+
+<ul>
+<li><code>owner</code> can view, modify, and delete the project or environment</li>
+<li><code>reader</code> can view the project or environment</li>
+</ul>
+
+<p>Anyone with the <code>owner</code> role for a project or environment may set or unset roles for other users.</p>
+
+<p>Assigning the <code>owner</code> role for a project to a user is done like this:</p>
+
+<pre><code>$ ernest role set -u user1 -r owner -p &lt;project_name&gt;
+</code></pre>
+
+<p>Assigning the <code>owner</code> role for an environment to a user is done like this:</p>
+
+<pre><code>$ ernest role set -u user1 -r owner -p &lt;project_name&gt; &lt;environment_name&gt;
+</code></pre>
+
+<h3 id="logs">Logs</h3>
+
+<p>By default the Ernest server will write logs to a local file <code>logs/ernest.log</code>. Ernest can be configured to send logs to an external service such as logstash:</p>
+
+<pre><code>$ ernest preferences logger add logstash --hostname 10.50.1.1 --port 5000 --timeout 50000
+</code></pre>
+
+<p>An admin user can also stream the logs real-time via the CLI:</p>
+
+<pre><code>$ ernest log
+</code></pre>
+
+<h3 id="notifications">Notifications</h3>
+
+<p>Ernest can be configured to send notifications. For example messages can be sent to Slack:</p>
+
+<pre><code>$ ernest notify create my_notify slack '{&quot;url&quot;:&quot;https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX&quot;}'
+</code></pre>
+
+<h3 id="usage">Usage</h3>
+
+<p>The usage command can produce a report showing the virtual machines managed by Ernest during a specified period:</p>
+
+<pre><code>$ ernest usage --from 2017-01-01 --to 2017-02-01 --output=report.log
+</code></pre>
+
+<h2 id="cli-command-reference">CLI Command Reference</h2>
+
+<h3 id="ernest-target">ernest target</h3>
+
+<pre><code>NAME:
+   ernest target - Configure Ernest target instance.
+
+USAGE:
+   ernest target &lt;ernest_url&gt;
+
+DESCRIPTION:
+   Sets up ernest instance target.
+
+   Example:
+    $ ernest target https://myernest.com
+</code></pre>
+
+<h3 id="ernest-info">ernest info</h3>
+
+<pre><code>NAME:
+   ernest info - Display system-wide information.
+
+USAGE:
+   ernest info
+
+DESCRIPTION:
+   Displays ernest instance information.
+
+   Example:
+    $ ernest info
+</code></pre>
+
+<h3 id="ernest-login">ernest login</h3>
+
+<pre><code>NAME:
+   ernest login - Login with your Ernest credentials.
+
+USAGE:
+   ernest login [command options]
+
+DESCRIPTION:
+   Logs an user into Ernest instance.
+
+   Example:
+    $ ernest login
+
+   It can also be used without asking the username and password.
+
+   Example:
+    $ ernest login --user &lt;user&gt; --password &lt;password&gt;
+
+
+OPTIONS:
+   --user value      User credentials
+   --password value  Password credentials
+</code></pre>
+
+<h3 id="ernest-logout">ernest logout</h3>
+
+<pre><code>NAME:
+   ernest logout - Clear local authentication credentials.
+
+USAGE:
+   ernest logout
+
+DESCRIPTION:
+   Logs out an user from Ernest instance.
+
+   Example:
+    $ ernest logout
+</code></pre>
+
+<h3 id="ernest-user-list">ernest user list</h3>
+
+<pre><code>NAME:
+   ernest user list - List available users.
+
+USAGE:
+   ernest user list
+
+DESCRIPTION:
+   List available users.
+
+   Example:
+    $ ernest user list
+</code></pre>
+
+<h3 id="ernest-user-create">ernest user create</h3>
+
+<pre><code>NAME:
+   ernest user create - Create a new user.
+
+USAGE:
+   ernest user create [command options] &lt;username&gt; &lt;password&gt;
+
+DESCRIPTION:
+   Create a new user on the targeted instance of Ernest.
+
+   Example:
+    $ ernest user create &lt;username&gt; &lt;password&gt;
+
+   You can also add an email to the user with the flag --email
+
+   Example:
+    $ ernest user create --email username@example.com &lt;username&gt; &lt;password&gt;
+
+
+OPTIONS:
+   --email value  Email for the user
+</code></pre>
+
+<h3 id="ernest-user-change-password">ernest user change-password</h3>
+
+<pre><code>NAME:
+   ernest user change-password - Change password of available users.
+
+USAGE:
+   ernest user change-password [command options] [arguments...]
+
+DESCRIPTION:
+   Change password of available users.
+
+   Example:
+    $ ernest user change-password
+
+    or changing a change-password by being admin:
+
+    $ ernest user change-password --user &lt;username&gt; --current-password &lt;current-password&gt; --password &lt;new-password&gt;
+
+
+OPTIONS:
+   --user value              The username of the user to change password
+   --password value          The new user password
+   --current-password value  The current user password
+</code></pre>
+
+<h3 id="ernest-user-disable">ernest user disable</h3>
+
+<pre><code>NAME:
+   ernest user disable - Disable available users.
+
+USAGE:
+   ernest user disable &lt;username&gt;
+
+DESCRIPTION:
+   Disable available users.
+
+  Example:
+   $ ernest user disable &lt;user-name&gt;
+</code></pre>
+
+<h3 id="ernest-user-info">ernest user info</h3>
+
+<pre><code>NAME:
+   ernest user info - Displays information about the specified user (current user by default).
+
+USAGE:
+   ernest user info [command options] [arguments...]
+
+DESCRIPTION:
+
+
+  Example:
+   $ ernest user info
+   $ ernest user info --user &lt;user-name&gt;
+
+
+OPTIONS:
+   --user value  Username
+</code></pre>
+
+<h3 id="ernest-project-list">ernest project list</h3>
+
+<pre><code>NAME:
+   ernest project list - List available projects.
+
+USAGE:
+   ernest project list
+
+DESCRIPTION:
+   List available projects.
+
+   Example:
+    $ ernest project list
+</code></pre>
+
+<h3 id="ernest-project-create-aws">ernest project create aws</h3>
+
+<pre><code>NAME:
+   ernest project create aws - Create a new aws project.
+
+USAGE:
+   ernest project create aws [command options] &lt;project-name&gt;
+
+DESCRIPTION:
+   Create a new AWS project on the targeted instance of Ernest.
+
+  Example:
+   $ ernest project create aws --region us-west-2 --access_key_id AKIAIOSFODNN7EXAMPLE --secret_access_key wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY my_project
+
+   Template example:
+    $ ernest project create aws --template myproject.yml myproject
+    Where myproject.yaml will look like:
+      ---
+      fake: true
+      access_key_id : AKIAIOSFODNN7EXAMPLE
+      secret_access_key: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+      region: us-west-2
+
+
+OPTIONS:
+   --region value, -r value             Project region
+   --access_key_id value, -k value      AWS access key id
+   --secret_access_key value, -s value  AWS Secret access key
+   --template value, -t value           Project template
+   --fake, -f                           Fake project
+</code></pre>
+
+<h3 id="ernest-project-create-azure">ernest project create azure</h3>
+
+<pre><code>NAME:
+   ernest project create azure - Create a new azure project.
+
+USAGE:
+   ernest project create azure [command options] &lt;project-name&gt;
+
+DESCRIPTION:
+   Create a new Azure project on the targeted instance of Ernest.
+
+  Example:
+   $ ernest project create azure --region westus --subscription_id SUBSCRIPTION --client_id USER --client_secret PASSWORD --tenant_id TENANT --environment public my_project
+
+   Template example:
+    $ ernest project create azure --template myproject.yml myproject
+    Where myproject.yaml will look like:
+      ---
+      fake: true
+      region: westus
+      subscription_id: SUBSCRIPTION
+      client_id: USER
+      client_secret: PASSWORD
+      tenant_id: TENANT
+      environment: public
+
+
+OPTIONS:
+   --region value, -r value           Project region
+   --subscription_id value, -s value  Azure subscription id
+   --client_id value, -c value        Azure client id
+   --client_secret value, -p value    Azure client secret
+   --tenant_id value, -t value        Azure tenant_id
+   --environment value, -e value      Azure environment. Supported values are public(default), usgovernment, german and chine
+   --fake, -f                         Fake project
+</code></pre>
+
+<h3 id="ernest-project-create-vcloud">ernest project create vcloud</h3>
+
+<pre><code>NAME:
+   ernest project create vcloud - Create a new vcloud project.
+
+USAGE:
+   ernest project create vcloud [command options] &lt;project-name&gt;
+
+DESCRIPTION:
+   Create a new vcloud project on the targeted instance of Ernest.
+
+   Example:
+    $ ernest project create vcloud --user username --password xxxx --org MY-ORG-NAME --vse-url http://vse.url --vcloud-url https://myernest.com --public-network MY-PUBLIC-NETWORK myproject
+
+   Template example:
+    $ ernest project create vcloud --template myproject.yml myproject
+    Where myproject.yaml will look like:
+      ---
+      fake: true
+      org: org
+      password: pwd
+      public-network: MY-NETWORK
+      user: bla
+      vcloud-url: &quot;http://ss.com&quot;
+      vse-url: &quot;http://ss.com&quot;
+
+
+
+OPTIONS:
+   --user value            Your VCloud valid user name
+   --password value        Your VCloud valid password
+   --org value             Your vCloud Organization
+   --vse-url value         VSE URL
+   --vcloud-url value      VCloud URL
+   --public-network value  Public Network
+   --template value        Project template
+   --fake                  Fake project
+</code></pre>
+
+<h3 id="ernest-project-update-aws">ernest project update aws</h3>
+
+<pre><code>NAME:
+   ernest project update aws - Updates the specified AWS project.
+
+USAGE:
+   ernest project update aws [command options] &lt;project-name&gt;
+
+DESCRIPTION:
+   Updates the specified AWS project.
+
+   Example:
+    $ ernest project update aws --access_key_id AKIAIOSFODNN7EXAMPLE --secret_access_key wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY my_project
+
+
+OPTIONS:
+   --access_key_id value      Your AWS access key id
+   --secret_access_key value  Your AWS secret access key
+</code></pre>
+
+<h3 id="ernest-project-update-azure">ernest project update azure</h3>
+
+<pre><code>NAME:
+   ernest project update azure - Updates the specified Azure project.
+
+USAGE:
+   ernest project update azure [command options] &lt;project-name&gt;
+
+DESCRIPTION:
+   Updates the specified Azure project.
+
+   Example:
+   $ ernest project update azure --subscription_id SUBSCRIPTION --client_id USER --client_secret PASSWORD --tenant_id TENANT --environment public my_project
+
+
+OPTIONS:
+   --subscription_id value, -s value  Azure subscription id
+   --client_id value, -c value        Azure client id
+   --client_secret value, -p value    Azure client secret
+   --tenant_id value, -t value        Azure tenant_id
+   --environment value, -e value      Azure environment. Supported values are public(default), usgovernment, german and chine
+</code></pre>
+
+<h3 id="ernest-project-update-vcloud">ernest project update vcloud</h3>
+
+<pre><code>NAME:
+   ernest project update vcloud - Updates the specified VCloud project.
+
+USAGE:
+   ernest project update vcloud [command options] &lt;project-name&gt;
+
+DESCRIPTION:
+   Updates the specified VCloud project.
+
+   Example:
+    $ ernest project update vcloud --user &lt;me&gt; --org &lt;org&gt; --password &lt;secret&gt; my_project
+
+
+OPTIONS:
+   --user value      Your VCloud valid user name
+   --password value  Your VCloud valid password
+   --org value       Your vCloud Organization
+</code></pre>
+
+<h3 id="ernest-project-delete">ernest project delete</h3>
+
+<pre><code>NAME:
+   ernest project delete - Deletes the specified project.
+
+USAGE:
+   ernest project delete &lt;project-name&gt;
+
+DESCRIPTION:
+   Deletes the name specified project.
+
+   Example:
+    $ ernest project delete my_project
+</code></pre>
+
+<p>###ernest project info</p>
+
+<pre><code>NAME:
+   ernest project info - Project information
+
+USAGE:
+   ernest project info
+
+DESCRIPTION:
+   Display specific project information.
+
+   Example:
+    $ ernest project info &lt;my_project&gt;
+</code></pre>
+
+<h3 id="ernest-environment-list">ernest environment list</h3>
+
+<pre><code>NAME:
+   ernest environment list - List available environments.
+
+USAGE:
+   ernest environment list
+
+DESCRIPTION:
+   List available environments and shows its most relevant information.
+
+   Example:
+    $ ernest environment list
+</code></pre>
+
+<h3 id="ernest-environment-create">ernest environment create</h3>
+
+<pre><code>NAME:
+   ernest environment create - Creates an empty environment based on a specific project
+
+USAGE:
+   ernest environment create [command options] &lt;project&gt; &lt;environment&gt;
+
+DESCRIPTION:
+   You must be logged in to execute this command.
+
+   Examples:
+    $ ernest env create my_project my_environment
+    $ ernest env create --credentials project.yml my_project my_environment
+
+
+OPTIONS:
+   --credentials value                     will override project information
+   --user value                            Your VCloud valid user name
+   --password value                        Your VCloud valid password
+   --org value                             Your vCloud Organization
+   --vse-url value                         VSE URL
+   --vcloud-url value                      VCloud URL
+   --public-network value                  Public Network
+   --vcloud-region value, --reg value      Project region
+   --access_key_id value, -k value         AWS access key id
+   --secret_access_key value, --sak value  AWS Secret access key
+   --region value, -r value                Project region
+   --subscription_id value, -s value       Azure subscription id
+   --client_id value, -c value             Azure client id
+   --client_secret value, -p value         Azure client secret
+   --tenant_id value, -t value             Azure tenant_id
+   --environment value, -e value           Azure environment. Supported values are public(default), usgovernment, german and chine
+</code></pre>
+
+<h3 id="ernest-environment-update">ernest environment update</h3>
+
+<pre><code>NAME:
+   ernest environment update - Creates an empty environment based on a specific project
+
+USAGE:
+   ernest environment update [command options] &lt;project&gt; &lt;environment&gt;
+
+DESCRIPTION:
+   You must be logged in to execute this command.
+
+   Examples:
+    $ ernest env update --credentials project.yml my_project my_environment
+
+
+OPTIONS:
+   --user value                            Your VCloud valid user name
+   --password value                        Your VCloud valid password
+   --org value                             Your vCloud Organization
+   --vse-url value                         VSE URL
+   --vcloud-url value                      VCloud URL
+   --public-network value                  Public Network
+   --vcloud-region value, --reg value      Project region
+   --access_key_id value, -k value         AWS access key id
+   --secret_access_key value, --sak value  AWS Secret access key
+   --region value, -r value                Project region
+   --subscription_id value, -s value       Azure subscription id
+   --client_id value, -c value             Azure client id
+   --client_secret value, -p value         Azure client secret
+   --tenant_id value, -t value             Azure tenant_id
+   --environment value, -e value           Azure environment. Supported values are public(default), usgovernment, german and chine
+</code></pre>
+
+<h3 id="ernest-environment-apply">ernest environment apply</h3>
+
+<pre><code>NAME:
+   ernest environment apply - Builds or changes infrastructure.
+
+USAGE:
+   ernest environment apply [command options] &lt;file.yml&gt;
+
+DESCRIPTION:
+   Sends an environment YAML description file to Ernest to be executed.
+   You must be logged in to execute this command.
+
+   If the file is not provided, ernest.yml will be used by default.
+
+   Examples:
+    $ ernest env apply myenvironment.yml
+    $ ernest env apply --dry myenvironment.yml
+
+
+OPTIONS:
+   --dry                                   print the changes to be applied on an environment intead of applying them
+   --credentials value                     will override project information
+   --user value                            Your VCloud valid user name
+   --password value                        Your VCloud valid password
+   --org value                             Your vCloud Organization
+   --vse-url value                         VSE URL
+   --vcloud-url value                      VCloud URL
+   --public-network value                  Public Network
+   --vcloud-region value, --reg value      Project region
+   --access_key_id value, -k value         AWS access key id
+   --secret_access_key value, --sak value  AWS Secret access key
+   --region value, -r value                Project region
+   --subscription_id value, -s value       Azure subscription id
+   --client_id value, -c value             Azure client id
+   --client_secret value, -p value         Azure client secret
+   --tenant_id value, -t value             Azure tenant_id
+   --environment value, -e value           Azure environment. Supported values are public(default), usgovernment, german and chine
+</code></pre>
+
+<h3 id="ernest-environment-delete">ernest environment delete</h3>
+
+<pre><code>NAME:
+   ernest environment delete - Destroy an environment.
+
+USAGE:
+   ernest environment delete [command options] &lt;project&gt; &lt;environment_name&gt;
+
+DESCRIPTION:
+   Destroys an environment by name.
+
+   Example:
+    $ ernest env delete &lt;my_project&gt; &lt;my_environment&gt;
+
+
+OPTIONS:
+   --force, -f  Hard ernest env removal.
+   --yes, -y    Destroy an environment without prompting confirmation.
+</code></pre>
+
+<h3 id="ernest-environment-history">ernest environment history</h3>
+
+<pre><code>NAME:
+   ernest environment history - Shows the history of an environment, a list of builds
+
+USAGE:
+   ernest environment history ernest-cli env history &lt;my_project&gt; &lt;my_env&gt;
+
+DESCRIPTION:
+   Shows the history of an environment, a list of builds and its status and basic information.
+
+   Example:
+    $ ernest env history &lt;my_project&gt; &lt;my_env&gt;
+</code></pre>
+
+<h3 id="ernest-environment-reset">ernest environment reset</h3>
+
+<pre><code>NAME:
+   ernest environment reset - Reset an in progress environment.
+
+USAGE:
+   ernest environment reset &lt;env_name&gt;
+
+DESCRIPTION:
+   Reseting an environment creation may cause problems, please make sure you know what are you doing.
+
+   Example:
+    $ ernest env reset &lt;my_env&gt;
+</code></pre>
+
+<h3 id="ernest-environment-revert">ernest environment revert</h3>
+
+<pre><code>NAME:
+   ernest environment revert - Reverts an environment to a previous state
+
+USAGE:
+   ernest environment revert [command options] &lt;project&gt; &lt;env_name&gt; &lt;build_id&gt;
+
+DESCRIPTION:
+   Reverts an environment to a previous known state using a build ID from 'ernest env history'.
+
+   Example:
+    $ ernest env revert &lt;project&gt; &lt;env_name&gt; &lt;build_id&gt;
+    $ ernest env revert --dry &lt;project&gt; &lt;env_name&gt; &lt;build_id&gt;
+
+
+OPTIONS:
+   --dry  print the changes to be applied on an environment intead of applying them
+</code></pre>
+
+<h3 id="ernest-environment-definition">ernest environment definition</h3>
+
+<pre><code>NAME:
+   ernest environment definition - Show the current definition of an environment by its name
+
+USAGE:
+   ernest environment definition [command options] &lt;project_name&gt; &lt;env_name&gt;
+
+DESCRIPTION:
+   Show the current definition of an environment by its name getting the definition about the build.
+
+   Example:
+    $ ernest env definition &lt;my_project&gt; &lt;my_env&gt;
+
+
+OPTIONS:
+   --build value  Build ID
+</code></pre>
+
+<h3 id="ernest-environment-info">ernest environment info</h3>
+
+<pre><code>NAME:
+   ernest environment info - $ ernest env info &lt;my_env&gt; --build &lt;specific build&gt;
+
+USAGE:
+   ernest environment info [command options] &lt;project_name&gt; &lt;env_name&gt;
+
+DESCRIPTION:
+   Will show detailed information of the last build of a specified environment.
+  In case you specify --build option you will be able to output the detailed information of specific build.
+
+   Examples:
+    $ ernest env definition &lt;my_project&gt; &lt;my_env&gt;
+    $ ernest env definition &lt;my_project&gt; &lt;my_env&gt; --build build1
+
+
+OPTIONS:
+   --build value  Build ID
+</code></pre>
+
+<h3 id="ernest-environment-monitor">ernest environment monitor</h3>
+
+<pre><code>NAME:
+   ernest environment monitor - Monitor an environment creation.
+
+USAGE:
+   ernest environment monitor &lt;project_name&gt; &lt;env_name&gt;
+
+DESCRIPTION:
+   Monitors an environment while it is being built by its name.
+
+   Example:
+    $ ernest monitor &lt;my_project&gt; &lt;my_env&gt;
+</code></pre>
+
+<h3 id="ernest-environment-diff">ernest environment diff</h3>
+
+<pre><code>NAME:
+   ernest environment diff - $ ernest env diff &lt;project_name&gt; &lt;env_name&gt; &lt;build_a&gt; &lt;build_b&gt;
+
+USAGE:
+   ernest environment diff &lt;env_aname&gt; &lt;build_a&gt; &lt;build_b&gt;
+
+DESCRIPTION:
+   Will display the diff between two different builds
+
+   Examples:
+    $ ernest env diff &lt;my_project&gt; &lt;my_env&gt; 1 2
+</code></pre>
+
+<h3 id="ernest-environment-import">ernest environment import</h3>
+
+<pre><code>NAME:
+   ernest environment import - $ ernest env import &lt;my_project&gt; &lt;my_env&gt;
+
+USAGE:
+   ernest environment import [command options] &lt;env_name&gt;
+
+DESCRIPTION:
+   Will import the environment &lt;my_env&gt; from project &lt;project_name&gt;
+
+   Examples:
+    $ ernest env import my_project my_env
+
+
+OPTIONS:
+   --project value  Project name
+   --filters value  Import filters comma delimited list
+</code></pre>
+
+<h3 id="ernest-preferences-logger-list">ernest preferences logger list</h3>
+
+<pre><code>NAME:
+   ernest preferences logger list - Lists active loggers.
+
+USAGE:
+   ernest preferences logger list
+
+DESCRIPTION:
+   List active loggers.
+
+   Example:
+    $ ernest preferences logger list
+</code></pre>
+
+<h3 id="ernest-preferences-logger-add">ernest preferences logger add</h3>
+
+<pre><code>NAME:
+   ernest preferences logger add - Creates / updates a logger based on its type.
+
+USAGE:
+   ernest preferences logger add [command options]
+
+DESCRIPTION:
+   Creates / updates a logger based on its types.
+
+   Example:
+    $ ernest preferences logger add basic --logfile /tmp/ernest.log
+    $ ernest preferences logger add logstash --hostname 10.50.1.1 --port 5000 --timeout 50000
+    $ ernest preferences logger add rollbar --token MY_ROLLBAR_TOKEN
+
+
+OPTIONS:
+   --logfile value   Specify the path for the loging file
+   --token value     Rollbar token
+   --env value       Rollbar environment
+   --hostname value  Logstash hostname
+   --port value      Logstash port (default: 0)
+   --timeout value   Logstash timeout (default: 0)
+</code></pre>
+
+<h3 id="ernest-preferences-logger-delete">ernest preferences logger delete</h3>
+
+<pre><code>NAME:
+   ernest preferences logger delete - Deletes a logger based on its type.
+
+USAGE:
+   ernest preferences logger delete
+
+DESCRIPTION:
+   Deletes a logger based on its types.
+
+   Example:
+    $ ernest preferences logger delete basic
+</code></pre>
+
+<h3 id="ernest-docs">ernest docs</h3>
+
+<pre><code>NAME:
+   ernest docs - Open docs in the default browser.
+
+USAGE:
+   ernest docs
+
+DESCRIPTION:
+   Open docs in the default browser.
+
+   Example:
+    $ ernest docs
+</code></pre>
+
+<h3 id="ernest-setup">ernest setup</h3>
+
+<pre><code>NAME:
+   ernest setup - Use it to setup your ernest instance
+
+USAGE:
+   ernest setup [command options] [arguments...]
+
+DESCRIPTION:
+   This command will help you to setup your ernest instance by:
+- [ ] configure ernest-cli target
+- [ ] create a plain user
+- [ ] create a group
+- [ ] link the user to the group
+- [ ] login as the newly created user.
+- [ ] create a new project (optional)
+
+
+OPTIONS:
+   --user value, -u value      Admin user
+   --password value, -p value  Admin password
+   --target value, -t value    Ernest location
+</code></pre>
+
+<h3 id="ernest-component">ernest component</h3>
+
+<pre><code>NAME:
+   ernest component - Components related subcommands
+
+USAGE:
+   ernest component command [command options] [arguments...]
+
+COMMANDS:
+     list  List components on your project.
+
+OPTIONS:
+   --help, -h  show help
+</code></pre>
+
+<h3 id="ernest-log">ernest log</h3>
+
+<pre><code>NAME:
+   ernest log - Inline display of ernest logs.
+
+USAGE:
+   ernest log [command options]
+
+DESCRIPTION:
+   Display ernest server logs inline
+
+   Example:
+    $ ernest log
+    $ ernest log --raw
+
+
+OPTIONS:
+   --raw  Raw output will be displayed instead of pretty-printed
+</code></pre>
+
+<h3 id="ernest-usage">ernest usage</h3>
+
+<pre><code>NAME:
+   ernest usage - Exports an usage report to the current folder
+
+USAGE:
+   ernest usage [command options]
+
+DESCRIPTION:
+
+
+   Example:
+    $ ernest usage --from 2017-01-01 --to 2017-02-01 --output=report.log
+      A file named report.log has been exported to the current folder
+
+    Example 2:
+    $ ernest usage &gt; myreport.log
+
+
+OPTIONS:
+   --from value    the from date the report will be calculated from. Format YYYY-MM-DD
+   --to value      the to date the report will be caluclutated to. Format YYYY-MM-DD
+   --output value  the file path to store the report
+</code></pre>
+
+<h3 id="ernest-notify-list">ernest notify list</h3>
+
+<pre><code>NAME:
+   ernest notify list - List available notifications.
+
+USAGE:
+   ernest notify list
+
+DESCRIPTION:
+   List available notifications.
+
+   Example:
+    $ ernest notification list
+</code></pre>
+
+<h3 id="ernest-notify-create">ernest notify create</h3>
+
+<pre><code>NAME:
+   ernest notify create - Create a new notify.
+
+USAGE:
+   ernest notify create &lt;notify_name&gt; &lt;notify_type&gt; &lt;notify_config&gt;
+
+DESCRIPTION:
+   Create a new notify on the targeted instance of Ernest.
+
+   Example:
+    $ ernest notify create &lt;notify_name&gt; &lt;provider_type&gt; &lt;provider-details&gt;
+
+
+   Example:
+   $ ernest notify create my_notify slack '{&quot;url&quot;:&quot;https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX&quot;}'
+</code></pre>
+
+<h3 id="ernest-notify-update">ernest notify update</h3>
+
+<pre><code>NAME:
+   ernest notify update - Update a new notify.
+
+USAGE:
+   ernest notify update &lt;notify_name&gt; &lt;notify_config&gt;
+
+DESCRIPTION:
+   Update an existing notify on the targeted instance of Ernest.
+
+   Example:
+    $ ernest notify update &lt;notify_name&gt; &lt;provider-details&gt;
+
+
+   Example:
+   $ ernest notify update my_notify '{&quot;url&quot;:&quot;https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX&quot;}'
+</code></pre>
+
+<h3 id="ernest-notify-delete">ernest notify delete</h3>
+
+<pre><code>NAME:
+   ernest notify delete - Deletes an existing notify.
+
+USAGE:
+   ernest notify delete &lt;notify_name&gt;
+
+DESCRIPTION:
+   Deletes an existing notify on the targeted instance of Ernest.
+
+   Example:
+    $ ernest notify delete &lt;notify_name&gt;
+
+
+   Example:
+   $ ernest notify delete my_notify
+</code></pre>
+
+<h3 id="ernest-notify-add">ernest notify add</h3>
+
+<pre><code>NAME:
+   ernest notify add - Add service to an existing notify.
+
+USAGE:
+   ernest notify add &lt;service_name&gt; &lt;notify_name&gt;
+
+DESCRIPTION:
+   Adds a service to an existing notify.
+
+   Example:
+    $ ernest notify add &lt;service_name&gt; &lt;notify_name&gt;
+
+
+   Example:
+   $ ernest notify add my_service my_notify
+</code></pre>
+
+<h3 id="ernest-notify-remove">ernest notify remove</h3>
+
+<pre><code>NAME:
+   ernest notify remove - Removes service to an existing notify.
+
+USAGE:
+   ernest notify remove &lt;service_name&gt; &lt;notify_name&gt;
+
+DESCRIPTION:
+   Removes a service to an existing notify.
+
+   Example:
+    $ ernest notify remove &lt;service_name&gt; &lt;notify_name&gt;
+
+
+   Example:
+   $ ernest notify remove my_service my_notify
+</code></pre>
+
+<h3 id="ernest-role-set">ernest role set</h3>
+
+<pre><code>NAME:
+   ernest role set - ernest role set -u john -r owner -p project
+
+USAGE:
+   ernest role set [command options] [arguments...]
+
+DESCRIPTION:
+   Set permissions for a user on a specific resource
+
+   Example:
+    $ ernest roles set -u john -r owner -p my_project
+    $ ernest roles set -u john -r reader -p my_project -e my_environment
+
+
+OPTIONS:
+   --user value, -u value         User to be authorized over the given resource
+   --project value, -p value      Project to authorize
+   --role value, -r value         Role type [owner, reader]
+   --environment value, -e value  Environment to authorize
+</code></pre>
+
+<h3 id="ernest-role-unset">ernest role unset</h3>
+
+<pre><code>NAME:
+   ernest role unset - ernest role unset -u john -r owner -p my_project
+
+USAGE:
+   ernest role unset [command options] [arguments...]
+
+DESCRIPTION:
+   Set permissions for a user on a specific resource
+
+   Example:
+    $ ernest roles set -u john -r owner -p my_project
+    $ ernest roles set -u john -r reader -p my_project -e my_environment
+
+
+OPTIONS:
+   --user value, -u value         User to be authorized over the given resource
+   --project value, -p value      Project to authorize
+   --role value, -r value         Role type [owner, reader]
+   --environment value, -e value  Environment to authorize
+</code></pre>
+
+
+			<aside class="copyright" role="note">
+				
+				&copy; 2017 Released under the MIT license &ndash;
+				
+				Documentation built with
+				<a href="https://www.gohugo.io" target="_blank">Hugo</a>
+				using the
+				<a href="http://github.com/digitalcraftsman/hugo-material-docs" target="_blank">Material</a> theme.
+			</aside>
+
+			<footer class="footer">
+				
+
+<nav class="pagination" aria-label="Footer">
+  <div class="previous">
+  
+      <a href="http://docs.ernest.io/getting-started/" title="Getting started">
+        <span class="direction">
+          Previous
+        </span>
+        <div class="page">
+          <div class="button button-previous" role="button" aria-label="Previous">
+            <i class="icon icon-back"></i>
+          </div>
+          <div class="stretch">
+            <div class="title">
+              Getting started
+            </div>
+          </div>
+        </div>
+      </a>
+  
+  </div>
+
+  <div class="next">
+  
+      <a href="http://docs.ernest.io/providers/" title="Providers">
+        <span class="direction">
+          Next
+        </span>
+        <div class="page">
+          <div class="stretch">
+            <div class="title">
+              Providers
+            </div>
+          </div>
+          <div class="button button-next" role="button" aria-label="Next">
+            <i class="icon icon-forward"></i>
+          </div>
+        </div>
+      </a>
+  
+  </div>
+</nav>
+
+
+
+
+
+			</footer>
+		</div>
+	</article>
+
+	<div class="results" role="status" aria-live="polite">
+		<div class="scrollable">
+			<div class="wrapper">
+				<div class="meta"></div>
+				<div class="list"></div>
+			</div>
+		</div>
+	</div>
+</main>
+
+    <script>
+    
+      var base_url = 'http:\/\/docs.ernest.io\/';
+      var repo_id  = 'ernestio\/ernest';
+    
+    </script>
+
+    <script src="http://docs.ernest.io/javascripts/application.js"></script>
+    
+
+    <script>
+      /* Add headers to scrollspy */
+      var headers   = document.getElementsByTagName("h2");
+      var scrollspy = document.getElementById('scrollspy');
+
+      if(scrollspy) {
+        if(headers.length > 0) {
+          for(var i = 0; i < headers.length; i++) {
+            var li = document.createElement("li");
+            li.setAttribute("class", "anchor");
+
+            var a  = document.createElement("a");
+            a.setAttribute("href", "#" + headers[i].id);
+            a.setAttribute("title", headers[i].innerHTML);
+            a.innerHTML = headers[i].innerHTML;
+
+            li.appendChild(a)
+            scrollspy.appendChild(li);
+          }
+        } else {
+          scrollspy.parentElement.removeChild(scrollspy)
+        }
+
+
+        /* Add permanent link next to the headers */
+        var headers = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
+
+        for(var i = 0; i < headers.length; i++) {
+            var a = document.createElement("a");
+            a.setAttribute("class", "headerlink");
+            a.setAttribute("href", "#" + headers[i].id);
+            a.setAttribute("title", "Permanent link")
+            a.innerHTML = "#";
+            headers[i].appendChild(a);
+        }
+      }
+    </script>
+
+    
+      <script>
+        (function(i,s,o,g,r,a,m){
+          i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||
+          []).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;
+          m.parentNode.insertBefore(a,m)
+        })(window, document,
+          'script', '//www.google-analytics.com/analytics.js', 'ga');
+         
+        ga('create', 'UA-86033085-1', 'auto');
+        ga('set', 'anonymizeIp', true);
+        ga('send', 'pageview');
+         
+        var buttons = document.querySelectorAll('a');
+        Array.prototype.map.call(buttons, function(item) {
+          if (item.host != document.location.host) {
+            item.addEventListener('click', function() {
+              var action = item.getAttribute('data-action') || 'follow';
+              ga('send', 'event', 'outbound', action, item.href);
+            });
+          }
+        });
+         
+        var query = document.querySelector('.query');
+        query.addEventListener('blur', function() {
+          if (this.value) {
+            var path = document.location.pathname;
+            ga('send', 'pageview', path + '?q=' + this.value);
+          }
+        });
+      </script>
+    
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+  
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-86033085-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+</html>
+

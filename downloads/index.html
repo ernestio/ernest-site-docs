@@ -144,7 +144,7 @@
         </div>
       
       <div class="name">
-        <strong>Ernest <span class="version">2.2.0</span></strong>
+        <strong>Ernest <span class="version">3.0.0</span></strong>
         
           <br>
           ernestio/ernest
@@ -222,9 +222,27 @@
 
 
 
-<a  title="Documentation" href="http://docs.ernest.io/documentation/">
+<a  title="Commands (CLI)" href="http://docs.ernest.io/commands/">
 	
-	Documentation
+	Commands (CLI)
+</a>
+
+
+
+  
+</li>
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Providers" href="http://docs.ernest.io/providers/">
+	
+	Providers
 </a>
 
 
@@ -398,14 +416,24 @@
 
 <h2 id="upgrade-ernest">Upgrade Ernest</h2>
 
-<h3 id="from-1-x-x-to-1-y-y">From 1.x.x to 1.y.y</h3>
+<h3 id="from-2-2-0-to-3-0-0">From 2.2.0 to 3.0.0</h3>
+
+<blockquote>
+<p><strong><em>Ernest 3.0.0 introduces backwards incompatible changes to authorisation and the internal naming structure for environments. Therefore it is necessary to re-import your existing environments into Ernest once you have upgraded to 3.0.0.</em></strong></p>
+</blockquote>
 
 <ol>
-<li><p>Shutdown Ernest: <code>docker-compose down</code></p></li>
-
-<li><p>Pull down the latest version of Ernest: <code>git checkout docker-compose.yml &amp;&amp; git checkout config/nginx/ernest.local &amp;&amp; git checkout master &amp;&amp; git pull</code></p></li>
-
 <li><p>Run the setup script: <code>./setup</code></p></li>
+
+<li><p>Unregister each environment from Ernest: <code>ernest env delete &lt;project&gt; &lt;environment&gt; --force</code></p></li>
+
+<li><p>Import each environment into Ernest: <code>ernest env import &lt;project&gt; &lt;environment&gt;</code></p></li>
+</ol>
+
+<h3 id="from-2-x-x-to-2-y-y">From 2.x.x to 2.y.y</h3>
+
+<ol>
+<li>Run the upgrade script: <code>./upgrade</code></li>
 </ol>
 
 <h3 id="from-1-12-0-to-2-0-0">From 1.12.0 to 2.0.0</h3>
@@ -434,10 +462,14 @@
 <li><p>Import each service into Ernest: <code>ernest service import &lt;dc_name&gt; &lt;service_name&gt;</code></p></li>
 </ol>
 
-<h3 id="from-2-x-x-to-2-y-y">From 2.x.x to 2.y.y</h3>
+<h3 id="from-1-x-x-to-1-y-y">From 1.x.x to 1.y.y</h3>
 
 <ol>
-<li>Run the upgrade script: <code>./upgrade</code></li>
+<li><p>Shutdown Ernest: <code>docker-compose down</code></p></li>
+
+<li><p>Pull down the latest version of Ernest: <code>git checkout docker-compose.yml &amp;&amp; git checkout config/nginx/ernest.local &amp;&amp; git checkout master &amp;&amp; git pull</code></p></li>
+
+<li><p>Run the setup script: <code>./setup</code></p></li>
 </ol>
 
 

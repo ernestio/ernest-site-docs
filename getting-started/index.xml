@@ -19,7 +19,7 @@
 
 &lt;h2 id=&#34;setup-ernest&#34;&gt;Setup Ernest&lt;/h2&gt;
 
-&lt;p&gt;In this quickstart guide we will build a simple environment consisting of a public server and private server on AWS, and allow SSH access from our IP. You will need a working copy of Ernest and the Ernest CLI, your AWS Access Key and Secret Key, and an AWS VPC.&lt;/p&gt;
+&lt;p&gt;In this quickstart guide we will build a simple environment consisting of a public server and private server on AWS, and allow SSH access from our IP. You will need a working copy of Ernest and the Ernest CLI, your AWS Access Key and Secret Key.&lt;/p&gt;
 
 &lt;h3 id=&#34;get-ernest&#34;&gt;Get Ernest&lt;/h3&gt;
 
@@ -55,13 +55,7 @@ User user1 successfully created
 Group &#39;group1&#39; successfully created, you can add users with &#39;ernest group add-user username group1&#39;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Add the user to the group:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ ernest group add-user user1 group1
-User &#39;user1&#39; is now assigned to group &#39;group1&#39;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;setup-your-datacenter&#34;&gt;Setup Your Datacenter&lt;/h3&gt;
+&lt;h3 id=&#34;setup-your-project&#34;&gt;Setup Your Project&lt;/h3&gt;
 
 &lt;p&gt;Login as the user:&lt;/p&gt;
 
@@ -71,10 +65,10 @@ Password: *********
 Welcome back user1
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Configure the datacenter on Ernest using your Access Key, Secret Key, and VPC ID:&lt;/p&gt;
+&lt;p&gt;Configure the project on Ernest using your Access Key, Secret Key, and region:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ ernest datacenter create aws --region eu-central-1 --secret_access_key XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX --access_key_id YYYYYYYYYYYYYYYYYYYY my-dc
-Datacenter &#39;my-dc&#39; successfully created
+&lt;pre&gt;&lt;code&gt;$ ernest project create aws --region eu-central-1 --secret_access_key XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX --access_key_id YYYYYYYYYYYYYYYYYYYY my-dc
+Project &#39;my-dc&#39; successfully created
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;create-your-environment&#34;&gt;Create Your Environment&lt;/h2&gt;
@@ -83,7 +77,7 @@ Datacenter &#39;my-dc&#39; successfully created
 
 &lt;pre&gt;&lt;code&gt;---
 name: demo
-datacenter: my-dc
+project: my-dc
 
 vpcs:
   - name: demo-vpc
@@ -129,10 +123,10 @@ instances:
 
 &lt;p&gt;Now we can apply our YAML:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ ernest service apply demo.yml
+&lt;pre&gt;&lt;code&gt;$ ernest env apply demo.yml
 
-Service Name: demo
-Service ID: 9bd5f6d9-7d85-4d04-648d-8f4877d59627
+Environment Name: demo
+Environment ID: 9bd5f6d9-7d85-4d04-648d-8f4877d59627
 
 Firewalls           1/1   Created
 Instances           1/1   Created
@@ -148,6 +142,11 @@ Platform Details
 
 Name : demo
 Status : done
+Project : aws-de
+Provider :
+  Type : aws
+Members:
+  user1 (owner)
 Date : 2017-07-15 06:08:47.714407 +0000 UTC
 
 VPCs:
@@ -183,12 +182,7 @@ Security groups:
 
 &lt;h3 id=&#34;next-steps&#34;&gt;Next Steps&lt;/h3&gt;
 
-&lt;p&gt;Find out how to use the CLI &lt;a href=&#34;http://docs.ernest.io/documentation/&#34;&gt;here&lt;/a&gt;. Then dive into the detailed examples for the supported providers:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Amazon Web Services&lt;/li&gt;
-&lt;li&gt;vCloud Director&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;Find out how to use the CLI &lt;a href=&#34;http://docs.ernest.io/commands/&#34;&gt;here&lt;/a&gt;. Then dive into the detailed examples for the supported providers &lt;a href=&#34;http://docs.ernest.io/providers/&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 </description>
     </item>
     
