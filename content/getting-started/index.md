@@ -5,7 +5,7 @@ weight: 10
 ---
 
 ## Setup Ernest
-In this quickstart guide we will build a simple environment consisting of a public server and private server on AWS, and allow SSH access from our IP. You will need a working copy of Ernest and the Ernest CLI, your AWS Access Key and Secret Key, and an AWS VPC.
+In this quickstart guide we will build a simple environment consisting of a public server and private server on AWS, and allow SSH access from our IP. You will need a working copy of Ernest and the Ernest CLI, your AWS Access Key and Secret Key.
 
 ### Get Ernest
 Follow the instructions [here](/downloads/) to get Ernest and the Ernest CLI.
@@ -43,14 +43,7 @@ $ ernest group create group1
 Group 'group1' successfully created, you can add users with 'ernest group add-user username group1'
 ```
 
-Add the user to the group:
-
-```
-$ ernest group add-user user1 group1
-User 'user1' is now assigned to group 'group1'
-```
-
-### Setup Your Datacenter
+### Setup Your Project
 
 Login as the user:
 
@@ -61,11 +54,11 @@ Password: *********
 Welcome back user1
 ```
 
-Configure the datacenter on Ernest using your Access Key, Secret Key, and VPC ID:
+Configure the project on Ernest using your Access Key, Secret Key, and region:
 
 ```
-$ ernest datacenter create aws --region eu-central-1 --secret_access_key XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX --access_key_id YYYYYYYYYYYYYYYYYYYY my-dc
-Datacenter 'my-dc' successfully created
+$ ernest project create aws --region eu-central-1 --secret_access_key XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX --access_key_id YYYYYYYYYYYYYYYYYYYY my-dc
+Project 'my-dc' successfully created
 ```
 
 ## Create Your Environment
@@ -75,7 +68,7 @@ We will use this YAML (demo.yml) to create our environment:
 ```
 ---
 name: demo
-datacenter: my-dc
+project: my-dc
 
 vpcs:
   - name: demo-vpc
@@ -122,10 +115,10 @@ instances:
 Now we can apply our YAML:
 
 ```
-$ ernest service apply demo.yml
+$ ernest env apply demo.yml
 
-Service Name: demo
-Service ID: 9bd5f6d9-7d85-4d04-648d-8f4877d59627
+Environment Name: demo
+Environment ID: 9bd5f6d9-7d85-4d04-648d-8f4877d59627
 
 Firewalls           1/1   Created
 Instances           1/1   Created
@@ -141,6 +134,11 @@ Platform Details
 
 Name : demo
 Status : done
+Project : aws-de
+Provider :
+  Type : aws
+Members:
+  user1 (owner)
 Date : 2017-07-15 06:08:47.714407 +0000 UTC
 
 VPCs:
@@ -175,7 +173,4 @@ Security groups:
 Congratulations you have built something with Ernest!
 
 ### Next Steps
-Find out how to use the CLI [here](/documentation/). Then dive into the detailed examples for the supported providers:
-
-- Amazon Web Services
-- vCloud Director
+Find out how to use the CLI [here](/commands/). Then dive into the detailed examples for the supported providers [here](/providers/).

@@ -26,13 +26,19 @@ After downloading Ernest CLI, unzip it and move the binary to a directory that i
 
 ## Upgrade Ernest
 
-### From 1.x.x to 1.y.y
+### From 2.2.0 to 3.0.0
 
-1. Shutdown Ernest: `docker-compose down`
+> ***Ernest 3.0.0 introduces backwards incompatible changes to authorisation and the internal naming structure for environments. Therefore it is necessary to re-import your existing environments into Ernest once you have upgraded to 3.0.0.***
 
-2. Pull down the latest version of Ernest: `git checkout docker-compose.yml && git checkout config/nginx/ernest.local && git checkout master && git pull`
+1. Run the setup script: `./setup`
 
-3. Run the setup script: `./setup`
+2. Unregister each environment from Ernest: `ernest env delete <project> <environment> --force`
+
+3. Import each environment into Ernest: `ernest env import <project> <environment>`
+
+### From 2.x.x to 2.y.y
+
+1. Run the upgrade script: `./upgrade`
 
 ### From 1.12.0 to 2.0.0
 
@@ -56,6 +62,10 @@ After downloading Ernest CLI, unzip it and move the binary to a directory that i
 
 9. Import each service into Ernest: `ernest service import <dc_name> <service_name>`
 
-### From 2.x.x to 2.y.y
+### From 1.x.x to 1.y.y
 
-1. Run the upgrade script: `./upgrade`
+1. Shutdown Ernest: `docker-compose down`
+
+2. Pull down the latest version of Ernest: `git checkout docker-compose.yml && git checkout config/nginx/ernest.local && git checkout master && git pull`
+
+3. Run the setup script: `./setup`
