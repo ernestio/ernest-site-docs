@@ -9,7 +9,9 @@ Below are instructions for installing the latest stable release of Ernest ([Rele
 
 Requirements: [Docker](https://docs.docker.com/engine/installation/), [Docker Compose](https://docs.docker.com/compose/install/), [OpenSSL](https://www.openssl.org).
 
-1. Clone the repo containing the Vagrantfile: `git clone https://github.com/ernestio/ernest.git`
+### Community Edition
+
+1. Clone the repo containing the setup file: `git clone https://github.com/ernestio/ernest.git`
 
 2. Change to the cloned directory: `cd ernest`
 
@@ -17,7 +19,105 @@ Requirements: [Docker](https://docs.docker.com/engine/installation/), [Docker Co
 
 4. Enter the hostname, admin username, and admin password when prompted.
 
-Once the container is up Ernest will be available on IP of the Docker host.
+Once the install is finished Ernest will be available on IP of the Docker host.
+
+### Enterprise Edition
+
+1. Clone the repo containing the setup file: `git clone https://github.com/ernestio/ernest.git`
+
+2. Change to the cloned directory: `cd ernest`
+
+3. Copy the Enterprise Edition license file here: `cp /tmp/license.txt .`
+
+4. Modify `config/config-store/config.json` from this:
+
+	```
+	{
+	  "postgres": {
+	    "names": [
+	      "users",
+	      "clients",
+	      "datacenters",
+	      "services"
+	    ],
+	    "user": "",
+	    "password": "",
+	    "url": "postgres://postgres@postgres"
+	  },
+	  "logstash": {
+	    "hostname": "ernest.local",
+	    "port": 5000,
+	    "timeout": 50000
+	  },
+	  "monitor": {
+	    "host": "",
+	    "port": "22000"
+	  },
+	  "logger": {
+	    "host": "",
+	    "port": "22001"
+	  },
+	  "authenticator": {
+	    "providers": [
+	      {
+	        "type": "local"
+	      }
+	    ]
+	  }
+	}
+	```
+
+	to this
+
+	```
+	{
+	  "postgres": {
+	    "names": [
+	      "users",
+	      "clients",
+	      "datacenters",
+	      "services"
+	    ],
+	    "user": "",
+	    "password": "",
+	    "url": "postgres://postgres@postgres"
+	  },
+	  "logstash": {
+	    "hostname": "ernest.local",
+	    "port": 5000,
+	    "timeout": 50000
+	  },
+	  "monitor": {
+	    "host": "",
+	    "port": "22000"
+	  },
+	  "logger": {
+	    "host": "",
+	    "port": "22001"
+	  },
+	  "authenticator": {
+	    "providers": [
+	      {
+	        "type": "local"
+	      },
+	      {
+	        "type": "federation",
+	        "config": {
+	          "url": "https://federation_services_endpoint",
+	          "scope": "http://ernest_fqdn",
+	          "domain": "your_active_directory"
+	        }
+	      }
+	    ]
+	  }
+	}
+	```
+
+5. Run the setup script: `./setup`
+
+6. Enter the hostname, admin username, and admin password when prompted.
+
+Once the install is finished Ernest will be available on IP of the Docker host.
 
 ## Get Ernest CLI
 The Ernest CLI is distributed as a binary package for all supported platforms and architectures. To install Ernest CLI, find the newest version of the [appropriate package](https://github.com/ErnestIO/ernest-cli/releases) for your system and download it.
@@ -25,6 +125,102 @@ The Ernest CLI is distributed as a binary package for all supported platforms an
 After downloading Ernest CLI, unzip it and move the binary to a directory that is on the PATH. See [this page](http://stackoverflow.com/questions/14637979/how-to-permanently-set-path-on-linux) for instructions on setting the PATH on Linux and Mac. See [this](http://stackoverflow.com/questions/1618280/where-can-i-set-path-to-make-exe-on-windows) page for instructions on setting the PATH in Windows.
 
 ## Upgrade Ernest
+
+### From Community Edition to Enterprise Edition
+
+1. Copy the Enterprise Edition license file to the Ernest directory: `cp /tmp/license.txt .`
+
+2. Run the upgrade script: `./upgrade`
+
+3. Modify `config/config-store/config.json` from this:
+
+	```
+	{
+	  "postgres": {
+	    "names": [
+	      "users",
+	      "clients",
+	      "datacenters",
+	      "services"
+	    ],
+	    "user": "",
+	    "password": "",
+	    "url": "postgres://postgres@postgres"
+	  },
+	  "logstash": {
+	    "hostname": "ernest.local",
+	    "port": 5000,
+	    "timeout": 50000
+	  },
+	  "monitor": {
+	    "host": "",
+	    "port": "22000"
+	  },
+	  "logger": {
+	    "host": "",
+	    "port": "22001"
+	  },
+	  "authenticator": {
+	    "providers": [
+	      {
+	        "type": "local"
+	      }
+	    ]
+	  }
+	}
+	```
+
+	to this
+
+	```
+	{
+	  "postgres": {
+	    "names": [
+	      "users",
+	      "clients",
+	      "datacenters",
+	      "services"
+	    ],
+	    "user": "",
+	    "password": "",
+	    "url": "postgres://postgres@postgres"
+	  },
+	  "logstash": {
+	    "hostname": "ernest.local",
+	    "port": 5000,
+	    "timeout": 50000
+	  },
+	  "monitor": {
+	    "host": "",
+	    "port": "22000"
+	  },
+	  "logger": {
+	    "host": "",
+	    "port": "22001"
+	  },
+	  "authenticator": {
+	    "providers": [
+	      {
+	        "type": "local"
+	      },
+	      {
+	        "type": "federation",
+	        "config": {
+	          "url": "https://federation_services_endpoint",
+	          "scope": "http://ernest_fqdn",
+	          "domain": "your_active_directory"
+	        }
+	      }
+	    ]
+	  }
+	}
+	```
+
+4. Restart the authenticator and federation services: `docker-compose restart authenticator federation`
+
+### From 3.x.x to 3.y.y
+
+1. Run the upgrade script: `./upgrade`
 
 ### From 2.2.0 to 3.0.0
 
