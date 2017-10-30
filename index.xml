@@ -9170,8 +9170,10 @@ A list of Load Balancer Probe as described below&lt;/p&gt;
 
 &lt;p&gt;Requirements: &lt;a href=&#34;https://docs.docker.com/engine/installation/&#34;&gt;Docker&lt;/a&gt;, &lt;a href=&#34;https://docs.docker.com/compose/install/&#34;&gt;Docker Compose&lt;/a&gt;, &lt;a href=&#34;https://www.openssl.org&#34;&gt;OpenSSL&lt;/a&gt;.&lt;/p&gt;
 
+&lt;h3 id=&#34;community-edition&#34;&gt;Community Edition&lt;/h3&gt;
+
 &lt;ol&gt;
-&lt;li&gt;&lt;p&gt;Clone the repo containing the Vagrantfile: &lt;code&gt;git clone https://github.com/ernestio/ernest.git&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Clone the repo containing the setup file: &lt;code&gt;git clone https://github.com/ernestio/ernest.git&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;Change to the cloned directory: &lt;code&gt;cd ernest&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
 
@@ -9180,7 +9182,105 @@ A list of Load Balancer Probe as described below&lt;/p&gt;
 &lt;li&gt;&lt;p&gt;Enter the hostname, admin username, and admin password when prompted.&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;Once the container is up Ernest will be available on IP of the Docker host.&lt;/p&gt;
+&lt;p&gt;Once the install is finished Ernest will be available on IP of the Docker host.&lt;/p&gt;
+
+&lt;h3 id=&#34;enterprise-edition&#34;&gt;Enterprise Edition&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Clone the repo containing the setup file: &lt;code&gt;git clone https://github.com/ernestio/ernest.git&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Change to the cloned directory: &lt;code&gt;cd ernest&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Copy the Enterprise Edition license file here: &lt;code&gt;cp /tmp/license.txt .&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Modify &lt;code&gt;config/config-store/config.json&lt;/code&gt; from this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;{
+  &amp;quot;postgres&amp;quot;: {
+    &amp;quot;names&amp;quot;: [
+      &amp;quot;users&amp;quot;,
+      &amp;quot;clients&amp;quot;,
+      &amp;quot;datacenters&amp;quot;,
+      &amp;quot;services&amp;quot;
+    ],
+    &amp;quot;user&amp;quot;: &amp;quot;&amp;quot;,
+    &amp;quot;password&amp;quot;: &amp;quot;&amp;quot;,
+    &amp;quot;url&amp;quot;: &amp;quot;postgres://postgres@postgres&amp;quot;
+  },
+  &amp;quot;logstash&amp;quot;: {
+    &amp;quot;hostname&amp;quot;: &amp;quot;ernest.local&amp;quot;,
+    &amp;quot;port&amp;quot;: 5000,
+    &amp;quot;timeout&amp;quot;: 50000
+  },
+  &amp;quot;monitor&amp;quot;: {
+    &amp;quot;host&amp;quot;: &amp;quot;&amp;quot;,
+    &amp;quot;port&amp;quot;: &amp;quot;22000&amp;quot;
+  },
+  &amp;quot;logger&amp;quot;: {
+    &amp;quot;host&amp;quot;: &amp;quot;&amp;quot;,
+    &amp;quot;port&amp;quot;: &amp;quot;22001&amp;quot;
+  },
+  &amp;quot;authenticator&amp;quot;: {
+    &amp;quot;providers&amp;quot;: [
+      {
+        &amp;quot;type&amp;quot;: &amp;quot;local&amp;quot;
+      }
+    ]
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;to this&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;{
+  &amp;quot;postgres&amp;quot;: {
+    &amp;quot;names&amp;quot;: [
+      &amp;quot;users&amp;quot;,
+      &amp;quot;clients&amp;quot;,
+      &amp;quot;datacenters&amp;quot;,
+      &amp;quot;services&amp;quot;
+    ],
+    &amp;quot;user&amp;quot;: &amp;quot;&amp;quot;,
+    &amp;quot;password&amp;quot;: &amp;quot;&amp;quot;,
+    &amp;quot;url&amp;quot;: &amp;quot;postgres://postgres@postgres&amp;quot;
+  },
+  &amp;quot;logstash&amp;quot;: {
+    &amp;quot;hostname&amp;quot;: &amp;quot;ernest.local&amp;quot;,
+    &amp;quot;port&amp;quot;: 5000,
+    &amp;quot;timeout&amp;quot;: 50000
+  },
+  &amp;quot;monitor&amp;quot;: {
+    &amp;quot;host&amp;quot;: &amp;quot;&amp;quot;,
+    &amp;quot;port&amp;quot;: &amp;quot;22000&amp;quot;
+  },
+  &amp;quot;logger&amp;quot;: {
+    &amp;quot;host&amp;quot;: &amp;quot;&amp;quot;,
+    &amp;quot;port&amp;quot;: &amp;quot;22001&amp;quot;
+  },
+  &amp;quot;authenticator&amp;quot;: {
+    &amp;quot;providers&amp;quot;: [
+      {
+        &amp;quot;type&amp;quot;: &amp;quot;local&amp;quot;
+      },
+      {
+        &amp;quot;type&amp;quot;: &amp;quot;federation&amp;quot;,
+        &amp;quot;config&amp;quot;: {
+          &amp;quot;url&amp;quot;: &amp;quot;https://federation_services_endpoint&amp;quot;,
+          &amp;quot;scope&amp;quot;: &amp;quot;http://ernest_fqdn&amp;quot;,
+          &amp;quot;domain&amp;quot;: &amp;quot;your_active_directory&amp;quot;
+        }
+      }
+    ]
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Run the setup script: &lt;code&gt;./setup&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Enter the hostname, admin username, and admin password when prompted.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Once the install is finished Ernest will be available on IP of the Docker host.&lt;/p&gt;
 
 &lt;h2 id=&#34;get-ernest-cli&#34;&gt;Get Ernest CLI&lt;/h2&gt;
 
@@ -9189,6 +9289,104 @@ A list of Load Balancer Probe as described below&lt;/p&gt;
 &lt;p&gt;After downloading Ernest CLI, unzip it and move the binary to a directory that is on the PATH. See &lt;a href=&#34;http://stackoverflow.com/questions/14637979/how-to-permanently-set-path-on-linux&#34;&gt;this page&lt;/a&gt; for instructions on setting the PATH on Linux and Mac. See &lt;a href=&#34;http://stackoverflow.com/questions/1618280/where-can-i-set-path-to-make-exe-on-windows&#34;&gt;this&lt;/a&gt; page for instructions on setting the PATH in Windows.&lt;/p&gt;
 
 &lt;h2 id=&#34;upgrade-ernest&#34;&gt;Upgrade Ernest&lt;/h2&gt;
+
+&lt;h3 id=&#34;from-community-edition-to-enterprise-edition&#34;&gt;From Community Edition to Enterprise Edition&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Copy the Enterprise Edition license file to the Ernest directory: &lt;code&gt;cp /tmp/license.txt .&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Run the upgrade script: &lt;code&gt;./upgrade&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Modify &lt;code&gt;config/config-store/config.json&lt;/code&gt; from this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;{
+  &amp;quot;postgres&amp;quot;: {
+    &amp;quot;names&amp;quot;: [
+      &amp;quot;users&amp;quot;,
+      &amp;quot;clients&amp;quot;,
+      &amp;quot;datacenters&amp;quot;,
+      &amp;quot;services&amp;quot;
+    ],
+    &amp;quot;user&amp;quot;: &amp;quot;&amp;quot;,
+    &amp;quot;password&amp;quot;: &amp;quot;&amp;quot;,
+    &amp;quot;url&amp;quot;: &amp;quot;postgres://postgres@postgres&amp;quot;
+  },
+  &amp;quot;logstash&amp;quot;: {
+    &amp;quot;hostname&amp;quot;: &amp;quot;ernest.local&amp;quot;,
+    &amp;quot;port&amp;quot;: 5000,
+    &amp;quot;timeout&amp;quot;: 50000
+  },
+  &amp;quot;monitor&amp;quot;: {
+    &amp;quot;host&amp;quot;: &amp;quot;&amp;quot;,
+    &amp;quot;port&amp;quot;: &amp;quot;22000&amp;quot;
+  },
+  &amp;quot;logger&amp;quot;: {
+    &amp;quot;host&amp;quot;: &amp;quot;&amp;quot;,
+    &amp;quot;port&amp;quot;: &amp;quot;22001&amp;quot;
+  },
+  &amp;quot;authenticator&amp;quot;: {
+    &amp;quot;providers&amp;quot;: [
+      {
+        &amp;quot;type&amp;quot;: &amp;quot;local&amp;quot;
+      }
+    ]
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;to this&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;{
+  &amp;quot;postgres&amp;quot;: {
+    &amp;quot;names&amp;quot;: [
+      &amp;quot;users&amp;quot;,
+      &amp;quot;clients&amp;quot;,
+      &amp;quot;datacenters&amp;quot;,
+      &amp;quot;services&amp;quot;
+    ],
+    &amp;quot;user&amp;quot;: &amp;quot;&amp;quot;,
+    &amp;quot;password&amp;quot;: &amp;quot;&amp;quot;,
+    &amp;quot;url&amp;quot;: &amp;quot;postgres://postgres@postgres&amp;quot;
+  },
+  &amp;quot;logstash&amp;quot;: {
+    &amp;quot;hostname&amp;quot;: &amp;quot;ernest.local&amp;quot;,
+    &amp;quot;port&amp;quot;: 5000,
+    &amp;quot;timeout&amp;quot;: 50000
+  },
+  &amp;quot;monitor&amp;quot;: {
+    &amp;quot;host&amp;quot;: &amp;quot;&amp;quot;,
+    &amp;quot;port&amp;quot;: &amp;quot;22000&amp;quot;
+  },
+  &amp;quot;logger&amp;quot;: {
+    &amp;quot;host&amp;quot;: &amp;quot;&amp;quot;,
+    &amp;quot;port&amp;quot;: &amp;quot;22001&amp;quot;
+  },
+  &amp;quot;authenticator&amp;quot;: {
+    &amp;quot;providers&amp;quot;: [
+      {
+        &amp;quot;type&amp;quot;: &amp;quot;local&amp;quot;
+      },
+      {
+        &amp;quot;type&amp;quot;: &amp;quot;federation&amp;quot;,
+        &amp;quot;config&amp;quot;: {
+          &amp;quot;url&amp;quot;: &amp;quot;https://federation_services_endpoint&amp;quot;,
+          &amp;quot;scope&amp;quot;: &amp;quot;http://ernest_fqdn&amp;quot;,
+          &amp;quot;domain&amp;quot;: &amp;quot;your_active_directory&amp;quot;
+        }
+      }
+    ]
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Restart the authenticator and federation services: &lt;code&gt;docker-compose restart authenticator federation&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;from-3-x-x-to-3-y-y&#34;&gt;From 3.x.x to 3.y.y&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Run the upgrade script: &lt;code&gt;./upgrade&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
 
 &lt;h3 id=&#34;from-2-2-0-to-3-0-0&#34;&gt;From 2.2.0 to 3.0.0&lt;/h3&gt;
 

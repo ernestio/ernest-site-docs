@@ -396,8 +396,10 @@
 
 <p>Requirements: <a href="https://docs.docker.com/engine/installation/">Docker</a>, <a href="https://docs.docker.com/compose/install/">Docker Compose</a>, <a href="https://www.openssl.org">OpenSSL</a>.</p>
 
+<h3 id="community-edition">Community Edition</h3>
+
 <ol>
-<li><p>Clone the repo containing the Vagrantfile: <code>git clone https://github.com/ernestio/ernest.git</code></p></li>
+<li><p>Clone the repo containing the setup file: <code>git clone https://github.com/ernestio/ernest.git</code></p></li>
 
 <li><p>Change to the cloned directory: <code>cd ernest</code></p></li>
 
@@ -406,7 +408,105 @@
 <li><p>Enter the hostname, admin username, and admin password when prompted.</p></li>
 </ol>
 
-<p>Once the container is up Ernest will be available on IP of the Docker host.</p>
+<p>Once the install is finished Ernest will be available on IP of the Docker host.</p>
+
+<h3 id="enterprise-edition">Enterprise Edition</h3>
+
+<ol>
+<li><p>Clone the repo containing the setup file: <code>git clone https://github.com/ernestio/ernest.git</code></p></li>
+
+<li><p>Change to the cloned directory: <code>cd ernest</code></p></li>
+
+<li><p>Copy the Enterprise Edition license file here: <code>cp /tmp/license.txt .</code></p></li>
+
+<li><p>Modify <code>config/config-store/config.json</code> from this:</p>
+
+<pre><code>{
+  &quot;postgres&quot;: {
+    &quot;names&quot;: [
+      &quot;users&quot;,
+      &quot;clients&quot;,
+      &quot;datacenters&quot;,
+      &quot;services&quot;
+    ],
+    &quot;user&quot;: &quot;&quot;,
+    &quot;password&quot;: &quot;&quot;,
+    &quot;url&quot;: &quot;postgres://postgres@postgres&quot;
+  },
+  &quot;logstash&quot;: {
+    &quot;hostname&quot;: &quot;ernest.local&quot;,
+    &quot;port&quot;: 5000,
+    &quot;timeout&quot;: 50000
+  },
+  &quot;monitor&quot;: {
+    &quot;host&quot;: &quot;&quot;,
+    &quot;port&quot;: &quot;22000&quot;
+  },
+  &quot;logger&quot;: {
+    &quot;host&quot;: &quot;&quot;,
+    &quot;port&quot;: &quot;22001&quot;
+  },
+  &quot;authenticator&quot;: {
+    &quot;providers&quot;: [
+      {
+        &quot;type&quot;: &quot;local&quot;
+      }
+    ]
+  }
+}
+</code></pre>
+
+<p>to this</p>
+
+<pre><code>{
+  &quot;postgres&quot;: {
+    &quot;names&quot;: [
+      &quot;users&quot;,
+      &quot;clients&quot;,
+      &quot;datacenters&quot;,
+      &quot;services&quot;
+    ],
+    &quot;user&quot;: &quot;&quot;,
+    &quot;password&quot;: &quot;&quot;,
+    &quot;url&quot;: &quot;postgres://postgres@postgres&quot;
+  },
+  &quot;logstash&quot;: {
+    &quot;hostname&quot;: &quot;ernest.local&quot;,
+    &quot;port&quot;: 5000,
+    &quot;timeout&quot;: 50000
+  },
+  &quot;monitor&quot;: {
+    &quot;host&quot;: &quot;&quot;,
+    &quot;port&quot;: &quot;22000&quot;
+  },
+  &quot;logger&quot;: {
+    &quot;host&quot;: &quot;&quot;,
+    &quot;port&quot;: &quot;22001&quot;
+  },
+  &quot;authenticator&quot;: {
+    &quot;providers&quot;: [
+      {
+        &quot;type&quot;: &quot;local&quot;
+      },
+      {
+        &quot;type&quot;: &quot;federation&quot;,
+        &quot;config&quot;: {
+          &quot;url&quot;: &quot;https://federation_services_endpoint&quot;,
+          &quot;scope&quot;: &quot;http://ernest_fqdn&quot;,
+          &quot;domain&quot;: &quot;your_active_directory&quot;
+        }
+      }
+    ]
+  }
+}
+</code></pre></li>
+
+<li><p>Run the setup script: <code>./setup</code></p></li>
+
+<li><p>Enter the hostname, admin username, and admin password when prompted.</p></li>
+</ol>
+
+<p>Once the install is finished Ernest will be available on IP of the Docker host.</p>
 
 <h2 id="get-ernest-cli">Get Ernest CLI</h2>
 
@@ -415,6 +515,104 @@
 <p>After downloading Ernest CLI, unzip it and move the binary to a directory that is on the PATH. See <a href="http://stackoverflow.com/questions/14637979/how-to-permanently-set-path-on-linux">this page</a> for instructions on setting the PATH on Linux and Mac. See <a href="http://stackoverflow.com/questions/1618280/where-can-i-set-path-to-make-exe-on-windows">this</a> page for instructions on setting the PATH in Windows.</p>
 
 <h2 id="upgrade-ernest">Upgrade Ernest</h2>
+
+<h3 id="from-community-edition-to-enterprise-edition">From Community Edition to Enterprise Edition</h3>
+
+<ol>
+<li><p>Copy the Enterprise Edition license file to the Ernest directory: <code>cp /tmp/license.txt .</code></p></li>
+
+<li><p>Run the upgrade script: <code>./upgrade</code></p></li>
+
+<li><p>Modify <code>config/config-store/config.json</code> from this:</p>
+
+<pre><code>{
+  &quot;postgres&quot;: {
+    &quot;names&quot;: [
+      &quot;users&quot;,
+      &quot;clients&quot;,
+      &quot;datacenters&quot;,
+      &quot;services&quot;
+    ],
+    &quot;user&quot;: &quot;&quot;,
+    &quot;password&quot;: &quot;&quot;,
+    &quot;url&quot;: &quot;postgres://postgres@postgres&quot;
+  },
+  &quot;logstash&quot;: {
+    &quot;hostname&quot;: &quot;ernest.local&quot;,
+    &quot;port&quot;: 5000,
+    &quot;timeout&quot;: 50000
+  },
+  &quot;monitor&quot;: {
+    &quot;host&quot;: &quot;&quot;,
+    &quot;port&quot;: &quot;22000&quot;
+  },
+  &quot;logger&quot;: {
+    &quot;host&quot;: &quot;&quot;,
+    &quot;port&quot;: &quot;22001&quot;
+  },
+  &quot;authenticator&quot;: {
+    &quot;providers&quot;: [
+      {
+        &quot;type&quot;: &quot;local&quot;
+      }
+    ]
+  }
+}
+</code></pre>
+
+<p>to this</p>
+
+<pre><code>{
+  &quot;postgres&quot;: {
+    &quot;names&quot;: [
+      &quot;users&quot;,
+      &quot;clients&quot;,
+      &quot;datacenters&quot;,
+      &quot;services&quot;
+    ],
+    &quot;user&quot;: &quot;&quot;,
+    &quot;password&quot;: &quot;&quot;,
+    &quot;url&quot;: &quot;postgres://postgres@postgres&quot;
+  },
+  &quot;logstash&quot;: {
+    &quot;hostname&quot;: &quot;ernest.local&quot;,
+    &quot;port&quot;: 5000,
+    &quot;timeout&quot;: 50000
+  },
+  &quot;monitor&quot;: {
+    &quot;host&quot;: &quot;&quot;,
+    &quot;port&quot;: &quot;22000&quot;
+  },
+  &quot;logger&quot;: {
+    &quot;host&quot;: &quot;&quot;,
+    &quot;port&quot;: &quot;22001&quot;
+  },
+  &quot;authenticator&quot;: {
+    &quot;providers&quot;: [
+      {
+        &quot;type&quot;: &quot;local&quot;
+      },
+      {
+        &quot;type&quot;: &quot;federation&quot;,
+        &quot;config&quot;: {
+          &quot;url&quot;: &quot;https://federation_services_endpoint&quot;,
+          &quot;scope&quot;: &quot;http://ernest_fqdn&quot;,
+          &quot;domain&quot;: &quot;your_active_directory&quot;
+        }
+      }
+    ]
+  }
+}
+</code></pre></li>
+
+<li><p>Restart the authenticator and federation services: <code>docker-compose restart authenticator federation</code></p></li>
+</ol>
+
+<h3 id="from-3-x-x-to-3-y-y">From 3.x.x to 3.y.y</h3>
+
+<ol>
+<li>Run the upgrade script: <code>./upgrade</code></li>
+</ol>
 
 <h3 id="from-2-2-0-to-3-0-0">From 2.2.0 to 3.0.0</h3>
 
