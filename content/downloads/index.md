@@ -27,7 +27,7 @@ Once the install is finished Ernest will be available on IP of the Docker host.
 
 2. Change to the cloned directory: `cd ernest`
 
-3. Copy the Enterprise Edition license file here: `cp /tmp/license.txt .`
+3. Copy the Enterprise Edition license file here: `cp /tmp/license.json`.
 
 4. Modify `config/config-store/config.json` from this:
 
@@ -128,7 +128,7 @@ After downloading Ernest CLI, unzip it and move the binary to a directory that i
 
 ### From Community Edition to Enterprise Edition
 
-1. Copy the Enterprise Edition license file to the Ernest directory: `cp /tmp/license.txt .`
+1. Copy the Enterprise Edition license file to the Ernest directory: `cp /tmp/license.json`.
 
 2. Run the upgrade script: `./upgrade`
 
