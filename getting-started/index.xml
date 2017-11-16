@@ -6,8 +6,11 @@
     <description>Recent content in Getting-starteds on Ernest</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <copyright>Released under the MIT license</copyright>
     <lastBuildDate>Wed, 09 Mar 2016 00:11:02 +0100</lastBuildDate>
-    <atom:link href="http://docs.ernest.io/getting-started/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="http://docs.ernest.io/getting-started/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Getting started</title>
@@ -15,175 +18,10 @@
       <pubDate>Wed, 09 Mar 2016 00:11:02 +0100</pubDate>
       
       <guid>http://docs.ernest.io/getting-started/</guid>
-      <description>
-
-&lt;h2 id=&#34;setup-ernest&#34;&gt;Setup Ernest&lt;/h2&gt;
-
-&lt;p&gt;In this quickstart guide we will build a simple environment consisting of a public server and private server on AWS, and allow SSH access from our IP. You will need a working copy of Ernest and the Ernest CLI, your AWS Access Key and Secret Key.&lt;/p&gt;
-
-&lt;h3 id=&#34;get-ernest&#34;&gt;Get Ernest&lt;/h3&gt;
-
-&lt;p&gt;Follow the instructions &lt;a href=&#34;http://docs.ernest.io/downloads/&#34;&gt;here&lt;/a&gt; to get Ernest and the Ernest CLI.&lt;/p&gt;
-
-&lt;h3 id=&#34;setup-your-user&#34;&gt;Setup Your User&lt;/h3&gt;
-
-&lt;p&gt;Target your Ernest instance:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ ernest target https://10.50.1.11
-Target set
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;where 10.50.1.11 is the IP address of the host running our Ernest instance.&lt;/p&gt;
-
-&lt;p&gt;Login to Ernest as admin:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ ernest login
-Username: admin
-Password: *********
-Welcome back admin
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Create a user:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ ernest user create user1 xxx111YYY
-User user1 successfully created
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Create a group:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ ernest group create group1
-Group &#39;group1&#39; successfully created, you can add users with &#39;ernest group add-user username group1&#39;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;setup-your-project&#34;&gt;Setup Your Project&lt;/h3&gt;
-
-&lt;p&gt;Login as the user:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ ernest login
-Username: user1
-Password: *********
-Welcome back user1
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Configure the project on Ernest using your Access Key, Secret Key, and region:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ ernest project create aws --region eu-central-1 --secret_access_key XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX --access_key_id YYYYYYYYYYYYYYYYYYYY my-dc
-Project &#39;my-dc&#39; successfully created
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;create-your-environment&#34;&gt;Create Your Environment&lt;/h2&gt;
-
-&lt;p&gt;We will use this YAML (demo.yml) to create our environment:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;---
-name: demo
-project: my-dc
-
-vpcs:
-  - name: demo-vpc
-    subnet: 10.0.0.0/16
-    auto_remove: true
-
-networks:
-  - name: demo-net
-    vpc: demo-vpc
-    subnet: 10.0.11.0/24
-    availability_zone: eu-central-1a
-    public: true
-
-security_groups:
-  - name: demo-sg
-    vpc: demo-vpc
-    egress:
-      - ip: 0.0.0.0/0
-        protocol: any
-        from_port: &#39;0&#39;
-        to_port: &#39;65535&#39;
-    ingress:
-      - ip: 80.184.194.73/32
-        protocol: tcp
-        from_port: &#39;80&#39;
-        to_port: &#39;80&#39;
-      - ip: 80.184.194.73/32
-        protocol: tcp
-        from_port: &#39;22&#39;
-        to_port: &#39;22&#39;
-
-instances:
-  - name: demo-ec2
-    type: t2.micro
-    image: ami-3f1bd150
-    network: demo-net
-    start_ip: 10.0.11.11
-    count: 1
-    key_pair: my-key
-    security_groups:
-      - demo-sg
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now we can apply our YAML:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ ernest env apply demo.yml
-
-Environment Name: demo
-Environment ID: 9bd5f6d9-7d85-4d04-648d-8f4877d59627
-
-Firewalls           1/1   Created
-Instances           1/1   Created
-Internet Gateways   1/1   Created
-Networks            1/1   Created
-Vpcs                1/1   Created
-
-Status: Applied
-
-================
-Platform Details
-================
-
-Name : demo
-Status : done
-Project : aws-de
-Provider :
-  Type : aws
-Members:
-  user1 (owner)
-Date : 2017-07-15 06:08:47.714407 +0000 UTC
-
-VPCs:
-+----------+--------------+--------+
-|   NAME   |      ID      | SUBNET |
-+----------+--------------+--------+
-| demo-vpc | vpc-6e6e1506 |        |
-+----------+--------------+--------+
-
-Networks:
-+----------+-----------------+-------------------+
-|   NAME   |       ID        | AVAILABILITY ZONE |
-+----------+-----------------+-------------------+
-| demo-net | subnet-1f7e7d77 | eu-central-1a     |
-+----------+-----------------+-------------------+
-
-Instances:
-+------------+---------------------+---------------+------------+
-|    NAME    |         ID          |   PUBLIC IP   | PRIVATE IP |
-+------------+---------------------+---------------+------------+
-| demo-ec2-1 | i-0aead4f9f8c5c38df | 35.158.17.162 | 10.0.11.11 |
-+------------+---------------------+---------------+------------+
-
-Security groups:
-+---------+-------------+
-|  NAME   |  GROUP ID   |
-+---------+-------------+
-| demo-sg | sg-df90c3b4 |
-+---------+-------------+
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Congratulations you have built something with Ernest!&lt;/p&gt;
-
-&lt;h3 id=&#34;next-steps&#34;&gt;Next Steps&lt;/h3&gt;
-
-&lt;p&gt;Find out how to use the CLI &lt;a href=&#34;http://docs.ernest.io/commands/&#34;&gt;here&lt;/a&gt;. Then dive into the detailed examples for the supported providers &lt;a href=&#34;http://docs.ernest.io/providers/&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
-</description>
+      <description>Setup Ernest In this quickstart guide we will build a simple environment consisting of a public server and private server on AWS, and allow SSH access from our IP. You will need a working copy of Ernest and the Ernest CLI, your AWS Access Key and Secret Key.
+Get Ernest Follow the instructions here to get Ernest and the Ernest CLI.
+Setup Your User Target your Ernest instance:
+$ ernest target https://10.</description>
     </item>
     
   </channel>
