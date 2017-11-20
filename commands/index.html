@@ -495,6 +495,57 @@ User &lt;user&gt; successfully created
 <pre><code>$ ernest role set -u user1 -r owner -p &lt;project_name&gt; &lt;environment_name&gt;
 </code></pre>
 
+<h3 id="reviews">Reviews</h3>
+
+<p>A user with the <code>reader</code> role can not make a change to an environment, however they can request a change like this:</p>
+
+<pre><code>$ ernest env apply &lt;yaml_file&gt;
+</code></pre>
+
+<p>This will create a notification that the user has requested a change. A user with the <code>owner</code> role can then review the change:</p>
+
+<pre><code>$ ernest env review &lt;project_name&gt; &lt;environment_name&gt;
+</code></pre>
+
+<p>and then approve</p>
+
+<pre><code>$ ernest env review &lt;project_name&gt; &lt;environment_name&gt; --accept
+</code></pre>
+
+<p>or reject it</p>
+
+<pre><code>$ ernest env review &lt;project_name&gt; &lt;environment_name&gt; --reject
+</code></pre>
+
+<h3 id="synchronisation-and-resolution">Synchronisation and Resolution</h3>
+
+<p>Ernest can check if the running state of an environment is still synchronised with the expected state we specify in our yaml. If these 2 states have diverged Erenst can then be used to realign them.</p>
+
+<p>Sync can be manually checked:</p>
+
+<pre><code>$ ernest env sync &lt;project_name&gt; &lt;environment_name&gt;
+</code></pre>
+
+<p>Sync can also be scheduled to run:</p>
+
+<pre><code>$ ernest env update aws-de demo --sync_interval '@every 1d'
+</code></pre>
+
+<p>If the states are not in sync a notification is generated. A user can then resolve the problem by ignoring it:</p>
+
+<pre><code>$ ernest env resolve &lt;project_name&gt; &lt;environment_name&gt; --ignore
+</code></pre>
+
+<p>accepting it, which will update Ernest to match the running state:</p>
+
+<pre><code>$ ernest env resolve &lt;project_name&gt; &lt;environment_name&gt; --accept
+</code></pre>
+
+<p>or reject it, which will update the running state to match Ernest:</p>
+
+<pre><code>$ ernest env resolve &lt;project_name&gt; &lt;environment_name&gt; --reject
+</code></pre>
+
 <h3 id="logs">Logs</h3>
 
 <p>By default the Ernest server will write logs to a local file <code>logs/ernest.log</code>. Ernest can be configured to send logs to an external service such as logstash:</p>
@@ -535,22 +586,25 @@ DESCRIPTION:
    Sets up ernest instance target.
 
    Example:
-    $ ernest target https://myernest.com
+     $ ernest target https://myernest.com
 </code></pre>
 
 <h3 id="ernest-info">ernest info</h3>
 
 <pre><code>NAME:
-   ernest info - Display system-wide information.
+   ernest info - Displays system-wide information
 
 USAGE:
    ernest info
 
 DESCRIPTION:
-   Displays ernest instance information.
+   Info will display your current login information
 
    Example:
-    $ ernest info
+   $ ernest info
+   Target:      http://127.0.0.1:8081
+   User:        usr
+   CLI Version: 2.2.0
 </code></pre>
 
 <h3 id="ernest-login">ernest login</h3>
@@ -565,12 +619,12 @@ DESCRIPTION:
    Logs an user into Ernest instance.
 
    Example:
-    $ ernest login
+     $ ernest login
 
    It can also be used without asking the username and password.
 
    Example:
-    $ ernest login --user &lt;user&gt; --password &lt;password&gt;
+     $ ernest login --user &lt;user&gt; --password &lt;password&gt;
 
 
 OPTIONS:
@@ -590,22 +644,7 @@ DESCRIPTION:
    Logs out an user from Ernest instance.
 
    Example:
-    $ ernest logout
-</code></pre>
-
-<h3 id="ernest-user-list">ernest user list</h3>
-
-<pre><code>NAME:
-   ernest user list - List available users.
-
-USAGE:
-   ernest user list
-
-DESCRIPTION:
-   List available users.
-
-   Example:
-    $ ernest user list
+     $ ernest logout
 </code></pre>
 
 <h3 id="ernest-user-create">ernest user create</h3>
@@ -618,43 +657,16 @@ USAGE:
 
 DESCRIPTION:
    Create a new user on the targeted instance of Ernest.
+   Example:
+     $ ernest user create &lt;username&gt; &lt;password&gt;
+     You can also add an email to the user with the flag --email
 
    Example:
-    $ ernest user create &lt;username&gt; &lt;password&gt;
-
-   You can also add an email to the user with the flag --email
-
-   Example:
-    $ ernest user create --email username@example.com &lt;username&gt; &lt;password&gt;
+     $ ernest user create --email username@example.com &lt;username&gt; &lt;password&gt;
 
 
 OPTIONS:
    --email value  Email for the user
-</code></pre>
-
-<h3 id="ernest-user-change-password">ernest user change-password</h3>
-
-<pre><code>NAME:
-   ernest user change-password - Change password of available users.
-
-USAGE:
-   ernest user change-password [command options] [arguments...]
-
-DESCRIPTION:
-   Change password of available users.
-
-   Example:
-    $ ernest user change-password
-
-    or changing a change-password by being admin:
-
-    $ ernest user change-password --user &lt;username&gt; --current-password &lt;current-password&gt; --password &lt;new-password&gt;
-
-
-OPTIONS:
-   --user value              The username of the user to change password
-   --password value          The new user password
-   --current-password value  The current user password
 </code></pre>
 
 <h3 id="ernest-user-disable">ernest user disable</h3>
@@ -668,8 +680,46 @@ USAGE:
 DESCRIPTION:
    Disable available users.
 
-  Example:
-   $ ernest user disable &lt;user-name&gt;
+   Example:
+     $ ernest user disable &lt;user-name&gt;
+</code></pre>
+
+<h3 id="ernest-user-disable-mfa">ernest user disable-mfa</h3>
+
+<pre><code>NAME:
+   ernest user disable-mfa - Disable Multi-Factor Authentication.
+
+USAGE:
+   ernest user disable-mfa [command options] [arguments...]
+
+DESCRIPTION:
+   Disable Multi-Factor Authentication for a user.
+
+   Example:
+     $ ernest user disable-mfa
+
+
+OPTIONS:
+   --user-name value  Target user
+</code></pre>
+
+<h3 id="ernest-user-enable-mfa">ernest user enable-mfa</h3>
+
+<pre><code>NAME:
+   ernest user enable-mfa - Enable Multi-Factor Authentication.
+
+USAGE:
+   ernest user enable-mfa [command options] [arguments...]
+
+DESCRIPTION:
+   Enables Multi-Factor Authentication for a user.
+
+   Example:
+     $ ernest user enable-mfa
+
+
+OPTIONS:
+   --user-name value  Target user
 </code></pre>
 
 <h3 id="ernest-user-info">ernest user info</h3>
@@ -681,15 +731,83 @@ USAGE:
    ernest user info [command options] [arguments...]
 
 DESCRIPTION:
-
-
-  Example:
-   $ ernest user info
-   $ ernest user info --user &lt;user-name&gt;
+   Example:
+     $ ernest user info
+     $ ernest user info --user &lt;user-name&gt;
 
 
 OPTIONS:
    --user value  Username
+</code></pre>
+
+<h3 id="ernest-user-list">ernest user list</h3>
+
+<pre><code>NAME:
+   ernest user list - List available users.
+
+USAGE:
+   ernest user list
+
+DESCRIPTION:
+   List available users.
+</code></pre>
+
+<h3 id="ernest-user-change-password">ernest user change-password</h3>
+
+<pre><code>NAME:
+   ernest user change-password - Change password of available users
+
+USAGE:
+   ernest user change-password [command options] [arguments...]
+
+DESCRIPTION:
+   Change password of available users.
+
+   Example:
+     $ ernest user change-password
+   or changing a change-password by being admin:
+     $ ernest user change-password --user &lt;username&gt; --current-password &lt;current-password&gt; --password &lt;new-password&gt;
+
+
+OPTIONS:
+   --user value              The username of the user to change password
+   --password value          The new user password
+   --current-password value  The current user password
+</code></pre>
+
+<h3 id="ernest-user-reset-mfa">ernest user reset-mfa</h3>
+
+<pre><code>NAME:
+   ernest user reset-mfa - Reset Multi-Factor Authentication.
+
+USAGE:
+   ernest user reset-mfa [command options] [arguments...]
+
+DESCRIPTION:
+   Generates a new Multi-Factor Authentication token for a user.
+
+   Example:
+     $ ernest user reset-mfa
+
+
+OPTIONS:
+   --user-name value  Target user
+</code></pre>
+
+<h3 id="ernest-user-admin">ernest user admin</h3>
+
+<pre><code>NAME:
+   ernest user admin - Add or remove admin users
+
+USAGE:
+   ernest user admin command [command options] [arguments...]
+
+COMMANDS:
+     add  Adds a specific user as ernest admin
+     rm   Removes a specific user as ernest admin
+
+OPTIONS:
+   --help, -h  show help
 </code></pre>
 
 <h3 id="ernest-project-list">ernest project list</h3>
@@ -704,32 +822,16 @@ DESCRIPTION:
    List available projects.
 
    Example:
-    $ ernest project list
+     $ ernest project list
 </code></pre>
 
 <h3 id="ernest-project-create-aws">ernest project create aws</h3>
 
 <pre><code>NAME:
-   ernest project create aws - Create a new aws project.
+   ernest project create aws -
 
 USAGE:
-   ernest project create aws [command options] &lt;project-name&gt;
-
-DESCRIPTION:
-   Create a new AWS project on the targeted instance of Ernest.
-
-  Example:
-   $ ernest project create aws --region us-west-2 --access_key_id AKIAIOSFODNN7EXAMPLE --secret_access_key wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY my_project
-
-   Template example:
-    $ ernest project create aws --template myproject.yml myproject
-    Where myproject.yaml will look like:
-      ---
-      fake: true
-      access_key_id : AKIAIOSFODNN7EXAMPLE
-      secret_access_key: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
-      region: us-west-2
-
+   ernest project create aws [command options] [arguments...]
 
 OPTIONS:
    --region value, -r value             Project region
@@ -742,29 +844,10 @@ OPTIONS:
 <h3 id="ernest-project-create-azure">ernest project create azure</h3>
 
 <pre><code>NAME:
-   ernest project create azure - Create a new azure project.
+   ernest project create azure -
 
 USAGE:
-   ernest project create azure [command options] &lt;project-name&gt;
-
-DESCRIPTION:
-   Create a new Azure project on the targeted instance of Ernest.
-
-  Example:
-   $ ernest project create azure --region westus --subscription_id SUBSCRIPTION --client_id USER --client_secret PASSWORD --tenant_id TENANT --environment public my_project
-
-   Template example:
-    $ ernest project create azure --template myproject.yml myproject
-    Where myproject.yaml will look like:
-      ---
-      fake: true
-      region: westus
-      subscription_id: SUBSCRIPTION
-      client_id: USER
-      client_secret: PASSWORD
-      tenant_id: TENANT
-      environment: public
-
+   ernest project create azure [command options] [arguments...]
 
 OPTIONS:
    --region value, -r value           Project region
@@ -788,20 +871,19 @@ DESCRIPTION:
    Create a new vcloud project on the targeted instance of Ernest.
 
    Example:
-    $ ernest project create vcloud --user username --password xxxx --org MY-ORG-NAME --vse-url http://vse.url --vcloud-url https://myernest.com --public-network MY-PUBLIC-NETWORK myproject
+     $ ernest project create vcloud --user username --password xxxx --org MY-ORG-NAME --vse-url http://vse.url --vcloud-url https://myernest.com --public-network MY-PUBLIC-NETWORK myproject
 
    Template example:
-    $ ernest project create vcloud --template myproject.yml myproject
-    Where myproject.yaml will look like:
-      ---
-      fake: true
-      org: org
-      password: pwd
-      public-network: MY-NETWORK
-      user: bla
-      vcloud-url: &quot;http://ss.com&quot;
-      vse-url: &quot;http://ss.com&quot;
-
+     $ ernest project create vcloud --template myproject.yml myproject
+     Where myproject.yaml will look like:
+       ---
+       fake: true
+       org: org
+       password: pwd
+       public-network: MY-NETWORK
+       user: bla
+       vcloud-url: &quot;http://ss.com&quot;
+       vse-url: &quot;http://ss.com&quot;
 
 
 OPTIONS:
@@ -818,17 +900,10 @@ OPTIONS:
 <h3 id="ernest-project-update-aws">ernest project update aws</h3>
 
 <pre><code>NAME:
-   ernest project update aws - Updates the specified AWS project.
+   ernest project update aws -
 
 USAGE:
-   ernest project update aws [command options] &lt;project-name&gt;
-
-DESCRIPTION:
-   Updates the specified AWS project.
-
-   Example:
-    $ ernest project update aws --access_key_id AKIAIOSFODNN7EXAMPLE --secret_access_key wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY my_project
-
+   ernest project update aws [command options] [arguments...]
 
 OPTIONS:
    --access_key_id value      Your AWS access key id
@@ -838,17 +913,10 @@ OPTIONS:
 <h3 id="ernest-project-update-azure">ernest project update azure</h3>
 
 <pre><code>NAME:
-   ernest project update azure - Updates the specified Azure project.
+   ernest project update azure -
 
 USAGE:
-   ernest project update azure [command options] &lt;project-name&gt;
-
-DESCRIPTION:
-   Updates the specified Azure project.
-
-   Example:
-   $ ernest project update azure --subscription_id SUBSCRIPTION --client_id USER --client_secret PASSWORD --tenant_id TENANT --environment public my_project
-
+   ernest project update azure [command options] [arguments...]
 
 OPTIONS:
    --subscription_id value, -s value  Azure subscription id
@@ -870,7 +938,7 @@ DESCRIPTION:
    Updates the specified VCloud project.
 
    Example:
-    $ ernest project update vcloud --user &lt;me&gt; --org &lt;org&gt; --password &lt;secret&gt; my_project
+     $ ernest project update vcloud --user &lt;me&gt; --org &lt;org&gt; --password &lt;secret&gt; my_project
 
 
 OPTIONS:
@@ -891,10 +959,10 @@ DESCRIPTION:
    Deletes the name specified project.
 
    Example:
-    $ ernest project delete my_project
+     $ ernest project delete my_project
 </code></pre>
 
-<p>###ernest project info</p>
+<h3 id="ernest-project-info">ernest project info</h3>
 
 <pre><code>NAME:
    ernest project info - Project information
@@ -906,7 +974,7 @@ DESCRIPTION:
    Display specific project information.
 
    Example:
-    $ ernest project info &lt;my_project&gt;
+     $ ernest project info &lt;my_project&gt;
 </code></pre>
 
 <h3 id="ernest-environment-list">ernest environment list</h3>
@@ -921,7 +989,7 @@ DESCRIPTION:
    List available environments and shows its most relevant information.
 
    Example:
-    $ ernest environment list
+     $ ernest environment list
 </code></pre>
 
 <h3 id="ernest-environment-create">ernest environment create</h3>
@@ -936,12 +1004,14 @@ DESCRIPTION:
    You must be logged in to execute this command.
 
    Examples:
-    $ ernest env create my_project my_environment
-    $ ernest env create --credentials project.yml my_project my_environment
+     $ ernest env create my_project my_environment
+     $ ernest env create --credentials project.yml my_project my_environment
 
 
 OPTIONS:
    --credentials value                     will override project information
+   --sync_interval value                   sets the automatic sync interval. Accepts cron syntax, i.e. '@every 1d', '@weekly' or '0 0 * * * *' (Daily at midnight)
+   --submissions value                     allows user build submissions from users that have only read only permission to an environment. Options are 'enable' or 'disable'
    --user value                            Your VCloud valid user name
    --password value                        Your VCloud valid password
    --org value                             Your vCloud Organization
@@ -971,10 +1041,12 @@ DESCRIPTION:
    You must be logged in to execute this command.
 
    Examples:
-    $ ernest env update --credentials project.yml my_project my_environment
+     $ ernest env update --credentials project.yml my_project my_environment
 
 
 OPTIONS:
+   --sync_interval value                   sets the automatic sync interval. Accepts cron syntax, i.e. '@every 1d', '@weekly' or '0 0 * * * *' (Daily at midnight)
+   --submissions value                     allows user build submissions from users that have only read only permission to an environment. Options are 'enable' or 'disable'
    --user value                            Your VCloud valid user name
    --password value                        Your VCloud valid password
    --org value                             Your vCloud Organization
@@ -1007,8 +1079,8 @@ DESCRIPTION:
    If the file is not provided, ernest.yml will be used by default.
 
    Examples:
-    $ ernest env apply myenvironment.yml
-    $ ernest env apply --dry myenvironment.yml
+     $ ernest env apply myenvironment.yml
+     $ ernest env apply --dry myenvironment.yml
 
 
 OPTIONS:
@@ -1043,7 +1115,7 @@ DESCRIPTION:
    Destroys an environment by name.
 
    Example:
-    $ ernest env delete &lt;my_project&gt; &lt;my_environment&gt;
+     $ ernest env delete &lt;my_project&gt; &lt;my_environment&gt;
 
 
 OPTIONS:
@@ -1063,7 +1135,7 @@ DESCRIPTION:
    Shows the history of an environment, a list of builds and its status and basic information.
 
    Example:
-    $ ernest env history &lt;my_project&gt; &lt;my_env&gt;
+     $ ernest env history &lt;my_project&gt; &lt;my_env&gt;
 </code></pre>
 
 <h3 id="ernest-environment-reset">ernest environment reset</h3>
@@ -1078,7 +1150,7 @@ DESCRIPTION:
    Reseting an environment creation may cause problems, please make sure you know what are you doing.
 
    Example:
-    $ ernest env reset &lt;my_env&gt;
+     $ ernest env reset &lt;my_env&gt;
 </code></pre>
 
 <h3 id="ernest-environment-revert">ernest environment revert</h3>
@@ -1093,8 +1165,8 @@ DESCRIPTION:
    Reverts an environment to a previous known state using a build ID from 'ernest env history'.
 
    Example:
-    $ ernest env revert &lt;project&gt; &lt;env_name&gt; &lt;build_id&gt;
-    $ ernest env revert --dry &lt;project&gt; &lt;env_name&gt; &lt;build_id&gt;
+     $ ernest env revert &lt;project&gt; &lt;env_name&gt; &lt;build_id&gt;
+     $ ernest env revert --dry &lt;project&gt; &lt;env_name&gt; &lt;build_id&gt;
 
 
 OPTIONS:
@@ -1113,7 +1185,7 @@ DESCRIPTION:
    Show the current definition of an environment by its name getting the definition about the build.
 
    Example:
-    $ ernest env definition &lt;my_project&gt; &lt;my_env&gt;
+     $ ernest env definition &lt;my_project&gt; &lt;my_env&gt;
 
 
 OPTIONS:
@@ -1130,11 +1202,11 @@ USAGE:
 
 DESCRIPTION:
    Will show detailed information of the last build of a specified environment.
-  In case you specify --build option you will be able to output the detailed information of specific build.
+   In case you specify --build option you will be able to output the detailed information of specific build of an environment.
 
    Examples:
-    $ ernest env definition &lt;my_project&gt; &lt;my_env&gt;
-    $ ernest env definition &lt;my_project&gt; &lt;my_env&gt; --build build1
+     $ ernest env definition &lt;my_project&gt; &lt;my_env&gt;
+     $ ernest env definition &lt;my_project&gt; &lt;my_env&gt; --build build1
 
 
 OPTIONS:
@@ -1153,7 +1225,7 @@ DESCRIPTION:
    Monitors an environment while it is being built by its name.
 
    Example:
-    $ ernest monitor &lt;my_project&gt; &lt;my_env&gt;
+     $ ernest monitor &lt;my_project&gt; &lt;my_env&gt;
 </code></pre>
 
 <h3 id="ernest-environment-diff">ernest environment diff</h3>
@@ -1168,7 +1240,7 @@ DESCRIPTION:
    Will display the diff between two different builds
 
    Examples:
-    $ ernest env diff &lt;my_project&gt; &lt;my_env&gt; 1 2
+     $ ernest env diff &lt;my_project&gt; &lt;my_env&gt; 1 2
 </code></pre>
 
 <h3 id="ernest-environment-import">ernest environment import</h3>
@@ -1183,12 +1255,80 @@ DESCRIPTION:
    Will import the environment &lt;my_env&gt; from project &lt;project_name&gt;
 
    Examples:
-    $ ernest env import my_project my_env
+     $ ernest env import my_project my_env
 
 
 OPTIONS:
    --project value  Project name
    --filters value  Import filters comma delimited list
+</code></pre>
+
+<h3 id="ernest-environment-sync">ernest environment sync</h3>
+
+<pre><code>NAME:
+   ernest environment sync - $ ernest env sync &lt;my_project&gt; &lt;my_env&gt;
+
+USAGE:
+   ernest environment sync &lt;project_name&gt; &lt;env_name&gt;
+
+DESCRIPTION:
+   Will sync ernest's environment state from a provider.
+   Any changes detected can then be resolved using the 'resolve' command.
+
+   Examples:
+     $ ernest env sync &lt;my_project&gt; &lt;my_env&gt;
+</code></pre>
+
+<h3 id="ernest-environment-resolve">ernest environment resolve</h3>
+
+<pre><code>NAME:
+   ernest environment resolve - $ ernest env resolve --[accept|reject|ignore] &lt;my_project&gt; &lt;my_env&gt;
+
+USAGE:
+   ernest environment resolve [command options] &lt;project_name&gt; &lt;env_name&gt;
+
+DESCRIPTION:
+   Provides the ability to manage changes detected by a sync.
+   Options:
+     accept changes from provider. Ernests internal state will be updated.
+     reject changes from provider. Ernest will create a build to restore and overwrite any changes on the provider.
+     ignore changes from provider. Ernest will disgard the results of the last sync.
+
+   Examples:
+     $ ernest env resolve --accept &lt;my_project&gt; &lt;my_env&gt;
+     $ ernest env resolve --reject &lt;my_project&gt; &lt;my_env&gt;
+     $ ernest env resolve --ignore &lt;my_project&gt; &lt;my_env&gt;
+
+
+OPTIONS:
+   --accept, -a  Accept Sync changes
+   --reject, -r  Reject Sync changes
+   --ignore, -i  Ignore Sync changes
+</code></pre>
+
+<h3 id="ernest-environment-review">ernest environment review</h3>
+
+<pre><code>NAME:
+   ernest environment review - $ ernest env review --[accept|reject] &lt;my_project&gt; &lt;my_env&gt;
+
+USAGE:
+   ernest environment review [command options] &lt;project_name&gt; &lt;env_name&gt;
+
+DESCRIPTION:
+   Provides the ability to review submitted builds. Running without any flags will show the diff of the submitted build with the prior environment state.
+   Options:
+     accept submitted build. This will trigger an environment build
+     reject submitted build. The build will be rejected.
+
+   Examples:
+     $ ernest env review &lt;my_project&gt; &lt;my_env&gt;
+     $ ernest env review --accept &lt;my_project&gt; &lt;my_env&gt;
+     $ ernest env review --reject &lt;my_project&gt; &lt;my_env&gt;
+
+
+OPTIONS:
+   --accept, -a  Accept Sync changes
+   --reject, -r  Reject Sync changes
 </code></pre>
 
 <h3 id="ernest-preferences-logger-list">ernest preferences logger list</h3>
@@ -1203,7 +1343,7 @@ DESCRIPTION:
    List active loggers.
 
    Example:
-    $ ernest preferences logger list
+     $ ernest preferences logger list
 </code></pre>
 
 <h3 id="ernest-preferences-logger-add">ernest preferences logger add</h3>
@@ -1218,9 +1358,9 @@ DESCRIPTION:
    Creates / updates a logger based on its types.
 
    Example:
-    $ ernest preferences logger add basic --logfile /tmp/ernest.log
-    $ ernest preferences logger add logstash --hostname 10.50.1.1 --port 5000 --timeout 50000
-    $ ernest preferences logger add rollbar --token MY_ROLLBAR_TOKEN
+     $ ernest preferences logger add basic --logfile /tmp/ernest.log
+     $ ernest preferences logger add logstash --hostname 10.50.1.1 --port 5000 --timeout 50000
+     $ ernest preferences logger add rollbar --token MY_ROLLBAR_TOKEN
 
 
 OPTIONS:
@@ -1244,7 +1384,7 @@ DESCRIPTION:
    Deletes a logger based on its types.
 
    Example:
-    $ ernest preferences logger delete basic
+     $ ernest preferences logger delete basic
 </code></pre>
 
 <h3 id="ernest-docs">ernest docs</h3>
@@ -1253,13 +1393,13 @@ DESCRIPTION:
    ernest docs - Open docs in the default browser.
 
 USAGE:
-   ernest docs
+   ernest docs [arguments...]
 
 DESCRIPTION:
    Open docs in the default browser.
 
    Example:
-    $ ernest docs
+     $ ernest docs
 </code></pre>
 
 <h3 id="ernest-setup">ernest setup</h3>
@@ -1272,12 +1412,12 @@ USAGE:
 
 DESCRIPTION:
    This command will help you to setup your ernest instance by:
-- [ ] configure ernest-cli target
-- [ ] create a plain user
-- [ ] create a group
-- [ ] link the user to the group
-- [ ] login as the newly created user.
-- [ ] create a new project (optional)
+   - [ ] configure ernest-cli target
+   - [ ] create a plain user
+   - [ ] create a group
+   - [ ] link the user to the group
+   - [ ] login as the newly created user.
+   - [ ] create a new project (optional)
 
 
 OPTIONS:
@@ -1286,19 +1426,23 @@ OPTIONS:
    --target value, -t value    Ernest location
 </code></pre>
 
-<h3 id="ernest-component">ernest component</h3>
+<h3 id="ernest-component-list">ernest component list</h3>
 
 <pre><code>NAME:
-   ernest component - Components related subcommands
+   ernest component list - List components on your project.
 
 USAGE:
-   ernest component command [command options] [arguments...]
+   ernest component list [command options] [arguments...]
 
-COMMANDS:
-     list  List components on your project.
+DESCRIPTION:
+   List all components on your project.
+
+   Example:
+     $ ernest component list my_project ebs --environment=my_env
+
 
 OPTIONS:
-   --help, -h  show help
+   --environment value  You can filter by environment
 </code></pre>
 
 <h3 id="ernest-log">ernest log</h3>
@@ -1313,8 +1457,8 @@ DESCRIPTION:
    Display ernest server logs inline
 
    Example:
-    $ ernest log
-    $ ernest log --raw
+     $ ernest log
+     $ ernest log --raw
 
 
 OPTIONS:
@@ -1330,14 +1474,12 @@ USAGE:
    ernest usage [command options]
 
 DESCRIPTION:
-
-
    Example:
-    $ ernest usage --from 2017-01-01 --to 2017-02-01 --output=report.log
-      A file named report.log has been exported to the current folder
+     $ ernest usage --from 2017-01-01 --to 2017-02-01 --output=report.log
+     A file named report.log has been exported to the current folder
 
-    Example 2:
-    $ ernest usage &gt; myreport.log
+   Example 2:
+     $ ernest usage &gt; myreport.log
 
 
 OPTIONS:
@@ -1358,7 +1500,7 @@ DESCRIPTION:
    List available notifications.
 
    Example:
-    $ ernest notification list
+     $ ernest notification list
 </code></pre>
 
 <h3 id="ernest-notify-create">ernest notify create</h3>
@@ -1373,7 +1515,7 @@ DESCRIPTION:
    Create a new notify on the targeted instance of Ernest.
 
    Example:
-    $ ernest notify create &lt;notify_name&gt; &lt;provider_type&gt; &lt;provider-details&gt;
+     $ ernest notify create &lt;notify_name&gt; &lt;provider_type&gt; &lt;provider-details&gt;
 
 
    Example:
@@ -1392,7 +1534,7 @@ DESCRIPTION:
    Update an existing notify on the targeted instance of Ernest.
 
    Example:
-    $ ernest notify update &lt;notify_name&gt; &lt;provider-details&gt;
+     $ ernest notify update &lt;notify_name&gt; &lt;provider-details&gt;
 
 
    Example:
@@ -1411,7 +1553,7 @@ DESCRIPTION:
    Deletes an existing notify on the targeted instance of Ernest.
 
    Example:
-    $ ernest notify delete &lt;notify_name&gt;
+     $ ernest notify delete &lt;notify_name&gt;
 
 
    Example:
@@ -1421,39 +1563,41 @@ DESCRIPTION:
 <h3 id="ernest-notify-add">ernest notify add</h3>
 
 <pre><code>NAME:
-   ernest notify add - Add service to an existing notify.
+   ernest notify add - Add environment to an existing notify.
 
 USAGE:
-   ernest notify add &lt;service_name&gt; &lt;notify_name&gt;
+   ernest notify add &lt;notification_name&gt; &lt;project_name&gt; [&lt;env_name&gt;]
 
 DESCRIPTION:
-   Adds a service to an existing notify.
+   Adds a environment to an existing notify.
 
    Example:
-    $ ernest notify add &lt;service_name&gt; &lt;notify_name&gt;
+     $ ernest notify add &lt;notify_name&gt; &lt;project_name&gt; &lt;environment_name&gt;
 
 
    Example:
-   $ ernest notify add my_service my_notify
+   $ ernest notify add my_notify my_project
+   $ ernest notify add my_notify my_project my_env
 </code></pre>
 
 <h3 id="ernest-notify-remove">ernest notify remove</h3>
 
 <pre><code>NAME:
-   ernest notify remove - Removes service to an existing notify.
+   ernest notify remove - Removes an environment to an existing notify.
 
 USAGE:
-   ernest notify remove &lt;service_name&gt; &lt;notify_name&gt;
+   ernest notify remove &lt;notify_name&gt; &lt;project_name&gt; [&lt;env_name&gt;]
 
 DESCRIPTION:
-   Removes a service to an existing notify.
+   Removes an environment to an existing notify.
 
    Example:
-    $ ernest notify remove &lt;service_name&gt; &lt;notify_name&gt;
+     $ ernest notify remove &lt;notify_name&gt; &lt;project_name&gt; &lt;env_name&gt;
 
 
    Example:
-   $ ernest notify remove my_service my_notify
+   $ ernest notify remove my_notify my_project
+   $ ernest notify remove my_notify my_project my_env
 </code></pre>
 
 <h3 id="ernest-role-set">ernest role set</h3>
@@ -1462,14 +1606,14 @@ DESCRIPTION:
    ernest role set - ernest role set -u john -r owner -p project
 
 USAGE:
-   ernest role set [command options] [arguments...]
+   ernest role set [command options]
 
 DESCRIPTION:
    Set permissions for a user on a specific resource
 
    Example:
-    $ ernest roles set -u john -r owner -p my_project
-    $ ernest roles set -u john -r reader -p my_project -e my_environment
+     $ ernest roles set -u john -r owner -p my_project
+     $ ernest roles set -u john -r reader -p my_project -e my_environment
 
 
 OPTIONS:
@@ -1485,14 +1629,14 @@ OPTIONS:
    ernest role unset - ernest role unset -u john -r owner -p my_project
 
 USAGE:
-   ernest role unset [command options] [arguments...]
+   ernest role unset [command options]
 
 DESCRIPTION:
    Set permissions for a user on a specific resource
 
    Example:
-    $ ernest roles set -u john -r owner -p my_project
-    $ ernest roles set -u john -r reader -p my_project -e my_environment
+     $ ernest roles set -u john -r owner -p my_project
+     $ ernest roles set -u john -r reader -p my_project -e my_environment
 
 
 OPTIONS:
