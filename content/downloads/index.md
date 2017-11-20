@@ -7,7 +7,7 @@ weight: 20
 ## Get Ernest
 Below are instructions for installing the latest stable release of Ernest ([Release Notes](https://github.com/ernestio/ernest/releases)).
 
-Requirements: [Docker](https://docs.docker.com/engine/installation/), [Docker Compose](https://docs.docker.com/compose/install/), [OpenSSL](https://www.openssl.org).
+Requirements: [Docker](https://docs.docker.com/engine/installation/), [Docker Compose](https://docs.docker.com/compose/install/), [OpenSSL](https://www.openssl.org), [Wget](https://www.gnu.org/software/wget/).
 
 ### Community Edition
 
