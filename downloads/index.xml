@@ -19,7 +19,7 @@
       
       <guid>http://docs.ernest.io/downloads/</guid>
       <description>Get Ernest Below are instructions for installing the latest stable release of Ernest (Release Notes).
-Requirements: Docker, Docker Compose, OpenSSL.
+Requirements: Docker, Docker Compose, OpenSSL, Wget.
 Community Edition  Clone the repo containing the setup file: git clone https://github.com/ernestio/ernest.git
  Change to the cloned directory: cd ernest
  Run the setup script: ./setup
