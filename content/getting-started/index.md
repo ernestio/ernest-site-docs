@@ -36,13 +36,6 @@ $ ernest user create user1 xxx111YYY
 User user1 successfully created
 ```
 
-Create a group:
-
-```
-$ ernest group create group1
-Group 'group1' successfully created, you can add users with 'ernest group add-user username group1'
-```
-
 ### Setup Your Project
 
 Login as the user:

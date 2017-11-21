@@ -50,7 +50,7 @@ googleAnalytics = "UA-86033085-1"
 [[menu.main]]
 	name   = "Ernest"
 	url    = "/"
-	weight = 0
+	weight = 5
 
 [[menu.main]]
 	name   = "Getting started"
