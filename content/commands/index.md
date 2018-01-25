@@ -219,7 +219,7 @@ NAME:
    ernest target - Configure Ernest target instance.
 
 USAGE:
-   ernest target <ernest_url>
+   ernest target $ ernest target <ernest_url>
 
 DESCRIPTION:
    Sets up ernest instance target.
@@ -269,8 +269,9 @@ DESCRIPTION:
 
 
 OPTIONS:
-   --user value      User credentials
-   --password value  Password credentials
+   --user value               User credentials
+   --password value           Password credentials
+   --verification-code value  MFA verification code
 ```
 
 ### ernest logout
@@ -296,7 +297,7 @@ NAME:
    ernest user create - Create a new user.
 
 USAGE:
-   ernest user create [command options] <username> <password>
+   ernest user create [command options] $ ernest user create <username> <password>
 
 DESCRIPTION:
    Create a new user on the targeted instance of Ernest.
@@ -310,6 +311,8 @@ DESCRIPTION:
 
 OPTIONS:
    --email value  Email for the user
+   --mfa          Enable MFA
+   --admin        User will be created as admin
 ```
 
 ### ernest user disable
@@ -319,7 +322,7 @@ NAME:
    ernest user disable - Disable available users.
 
 USAGE:
-   ernest user disable <username>
+   ernest user disable $ ernest user disable <username>
 
 DESCRIPTION:
    Disable available users.
@@ -477,42 +480,6 @@ DESCRIPTION:
      $ ernest project list
 ```
 
-### ernest project create aws
-
-```
-NAME:
-   ernest project create aws -
-
-USAGE:
-   ernest project create aws [command options] [arguments...]
-
-OPTIONS:
-   --region value, -r value             Project region
-   --access_key_id value, -k value      AWS access key id
-   --secret_access_key value, -s value  AWS Secret access key
-   --template value, -t value           Project template
-   --fake, -f                           Fake project
-```
-
-### ernest project create azure
-
-```
-NAME:
-   ernest project create azure -
-
-USAGE:
-   ernest project create azure [command options] [arguments...]
-
-OPTIONS:
-   --region value, -r value           Project region
-   --subscription_id value, -s value  Azure subscription id
-   --client_id value, -c value        Azure client id
-   --client_secret value, -p value    Azure client secret
-   --tenant_id value, -t value        Azure tenant_id
-   --environment value, -e value      Azure environment. Supported values are public(default), usgovernment, german and chine
-   --fake, -f                         Fake project
-```
-
 ### ernest project create vcloud
 
 ```
@@ -520,13 +487,13 @@ NAME:
    ernest project create vcloud - Create a new vcloud project.
 
 USAGE:
-   ernest project create vcloud [command options] <project-name>
+   ernest project create vcloud [command options] $ ernest project create vcloud [--template myproject.yml] <project-name>
 
 DESCRIPTION:
    Create a new vcloud project on the targeted instance of Ernest.
 
    Example:
-     $ ernest project create vcloud --user username --password xxxx --org MY-ORG-NAME --vse-url http://vse.url --vcloud-url https://myernest.com --public-network MY-PUBLIC-NETWORK myproject
+     $ ernest project create vcloud --user username --password xxxx --org MY-ORG-NAME --vdc MY-VDC-NAME --vcloud-url https://myernest.com myproject
 
    Template example:
      $ ernest project create vcloud --template myproject.yml myproject
@@ -534,53 +501,89 @@ DESCRIPTION:
        ---
        fake: true
        org: org
-       password: pwd
-       public-network: MY-NETWORK
        user: bla
+       password: pwd
+       vdc: MY-VDC
        vcloud-url: "http://ss.com"
-       vse-url: "http://ss.com"
 
 
 OPTIONS:
-   --user value            Your VCloud valid user name
-   --password value        Your VCloud valid password
-   --org value             Your vCloud Organization
-   --vse-url value         VSE URL
-   --vcloud-url value      VCloud URL
-   --public-network value  Public Network
-   --template value        Project template
-   --fake                  Fake project
+   --user value        Your VCloud valid user name
+   --password value    Your VCloud valid password
+   --org value         Your vCloud Organization
+   --vdc value
+   --vcloud-url value  VCloud URL
+   --template value    Template
+   --fake              Fake environment
 ```
 
-### ernest project update aws
+### ernest project create aws
 
 ```
 NAME:
-   ernest project update aws -
+   ernest project create aws - Create a new aws project.
 
 USAGE:
-   ernest project update aws [command options] [arguments...]
+   ernest project create aws [command options] $ ernest project create aws --region us-west-2 --access_key_id AKIAIOSFODNN7EXAMPLE --secret_access_key wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY my_project
+
+DESCRIPTION:
+   Create a new AWS project on the targeted instance of Ernest.
+   Example:
+     $ ernest project create aws --region us-west-2 --access_key_id AKIAIOSFODNN7EXAMPLE --secret_access_key wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY my_project
+   Template example:
+     $ ernest project create aws --template myproject.yml myproject
+   Where myproject.yaml will look like:
+       ---
+       fake: true
+       access_key_id : AKIAIOSFODNN7EXAMPLE
+       secret_access_key: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+       region: us-west-2
+
 
 OPTIONS:
-   --access_key_id value      Your AWS access key id
-   --secret_access_key value  Your AWS secret access key
+   --region value, -r value         Project region
+   --access_key_id value, -k value  AWS access key id
+   --secret_access_key value        AWS Secret access key
+   --template value, -t value       Project template
+   --fake, -f                       Fake project
 ```
 
-### ernest project update azure
+### ernest project create azure
 
 ```
 NAME:
-   ernest project update azure -
+   ernest project create azure - Create a new azure project.
 
 USAGE:
-   ernest project update azure [command options] [arguments...]
+   ernest project create azure [command options] $ ernest project create azure --region westus --subscription_id SUBSCRIPTION --client_id USER --client_secret PASSWORD --tenant_id TENANT --environment public my_project
+
+DESCRIPTION:
+   Create a new Azure project on the targeted instance of Ernest.
+
+   Example:
+     $ ernest project create azure --region westus --subscription_id SUBSCRIPTION --client_id USER --client_secret PASSWORD --tenant_id TENANT --environment public my_project
+
+   Template example:
+     $ ernest project create azure --template myproject.yml myproject
+   Where myproject.yaml will look like:
+     ---
+     fake: true
+     region: westus
+     subscription_id: SUBSCRIPTION
+     client_id: USER
+     client_secret: PASSWORD
+     tenant_id: TENANT
+     environment: public
+
 
 OPTIONS:
-   --subscription_id value, -s value  Azure subscription id
-   --client_id value, -c value        Azure client id
-   --client_secret value, -p value    Azure client secret
-   --tenant_id value, -t value        Azure tenant_id
-   --environment value, -e value      Azure environment. Supported values are public(default), usgovernment, german and chine
+   --region value, -r value         Project region
+   --subscription_id value          Azure subscription id
+   --client_id value, -c value      Azure client id
+   --client_secret value, -p value  Azure client secret
+   --tenant_id value, -t value      Azure tenant_id
+   --environment value              Azure environment. Supported values are public(default), usgovernment, german and chine
+   --fake, -f                       Fake project
 ```
 
 ### ernest project update vcloud
@@ -590,7 +593,7 @@ NAME:
    ernest project update vcloud - Updates the specified VCloud project.
 
 USAGE:
-   ernest project update vcloud [command options] <project-name>
+   ernest project update vcloud [command options] $ ernest project update vcloud [--user <me>] [--org <org>] [--password <secret>] <project-name>
 
 DESCRIPTION:
    Updates the specified VCloud project.
@@ -605,14 +608,90 @@ OPTIONS:
    --org value       Your vCloud Organization
 ```
 
-### ernest project delete
+### ernest project update aws
+
+```
+NAME:
+   ernest project update aws - Updates the specified AWS project.
+
+USAGE:
+   ernest project update aws [command options] $ ernest project update aws --access_key_id AKIAIOSFODNN7EXAMPLE --secret_access_key wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY my_project
+
+DESCRIPTION:
+   Updates the specified AWS project.
+   Example:
+     $ ernest project update aws --access_key_id AKIAIOSFODNN7EXAMPLE --secret_access_key wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY my_project
+
+
+OPTIONS:
+   --access_key_id value, -k value      AWS access key id
+   --secret_access_key value, -s value  AWS Secret access key
+```
+
+### ernest project update azure
+
+```
+NAME:
+   ernest project update azure - Updates the specified Azure project.
+
+USAGE:
+   ernest project update azure [command options] $ ernest project update azure --subscription_id SUBSCRIPTION --client_id USER --client_secret PASSWORD --tenant_id TENANT --environment public my_project
+
+DESCRIPTION:
+   Updates the specified Azure project.
+
+   Example:
+     $ ernest project update azure --subscription_id SUBSCRIPTION --client_id USER --client_secret PASSWORD --tenant_id TENANT --environment public my_project
+
+
+OPTIONS:
+   --subscription_id value          Azure subscription id
+   --client_id value, -c value      Azure client id
+   --client_secret value, -p value  Azure client secret
+   --tenant_id value, -t value      Azure tenant_id
+   --environment value              Azure environment. Supported values are public(default), usgovernment, german and chine
+```
+
+### ernest project delete vcloud
 
 ```
 NAME:
    ernest project delete - Deletes the specified project.
 
 USAGE:
-   ernest project delete <project-name>
+   ernest project delete $ ernest project delete <project-name>
+
+DESCRIPTION:
+   Deletes the name specified project.
+
+   Example:
+     $ ernest project delete my_project
+```
+
+### ernest project delete aws
+
+```
+NAME:
+   ernest project delete - Deletes the specified project.
+
+USAGE:
+   ernest project delete $ ernest project delete <project-name>
+
+DESCRIPTION:
+   Deletes the name specified project.
+
+   Example:
+     $ ernest project delete my_project
+```
+
+### ernest project delete azure
+
+```
+NAME:
+   ernest project delete - Deletes the specified project.
+
+USAGE:
+   ernest project delete $ ernest project delete <project-name>
 
 DESCRIPTION:
    Deletes the name specified project.
@@ -628,7 +707,7 @@ NAME:
    ernest project info - Project information
 
 USAGE:
-   ernest project info
+   ernest project info $ ernest project info <my_project>
 
 DESCRIPTION:
    Display specific project information.
@@ -660,7 +739,7 @@ NAME:
    ernest environment create - Creates an empty environment based on a specific project
 
 USAGE:
-   ernest environment create [command options] <project> <environment>
+   ernest environment create [command options] $ ernest env create <project> <environment> [--credentials project.yml]
 
 DESCRIPTION:
    You must be logged in to execute this command.
@@ -671,24 +750,24 @@ DESCRIPTION:
 
 
 OPTIONS:
-   --credentials value                     will override project information
-   --sync_interval value                   sets the automatic sync interval. Accepts cron syntax, i.e. '@every 1d', '@weekly' or '0 0 * * * *' (Daily at midnight)
-   --submissions value                     allows user build submissions from users that have only read only permission to an environment. Options are 'enable' or 'disable'
-   --user value                            Your VCloud valid user name
-   --password value                        Your VCloud valid password
-   --org value                             Your vCloud Organization
-   --vse-url value                         VSE URL
-   --vcloud-url value                      VCloud URL
-   --public-network value                  Public Network
-   --vcloud-region value, --reg value      Project region
-   --access_key_id value, -k value         AWS access key id
-   --secret_access_key value, --sak value  AWS Secret access key
-   --region value, -r value                Project region
-   --subscription_id value, -s value       Azure subscription id
-   --client_id value, -c value             Azure client id
-   --client_secret value, -p value         Azure client secret
-   --tenant_id value, -t value             Azure tenant_id
-   --environment value, -e value           Azure environment. Supported values are public(default), usgovernment, german and chine
+   --credentials value                 will override project information
+   --sync_interval value               sets the automatic sync interval. Accepts cron syntax, i.e. '@every 1d', '@weekly' or '0 0 * * * *' (Daily at midnight)
+   --submissions value                 allows user build submissions from users that have only read only permission to an environment. Options are 'enable' or 'disable'
+   --user value                        Your VCloud valid user name
+   --password value                    Your VCloud valid password
+   --org value                         Your vCloud Organization
+   --vse-url value                     VSE URL
+   --vcloud-url value                  VCloud URL
+   --public-Network value              Public Network
+   --vcloud-region value, --reg value  Project region
+   --region value, -r value            Project region
+   --access_key_id value, -k value     AWS access key id
+   --secret_access_key value           AWS Secret access key
+   --subscription_id value             Azure subscription id
+   --client_id value, -c value         Azure client id
+   --client_secret value, -p value     Azure client secret
+   --tenant_id value, -t value         Azure tenant_id
+   --environment value                 Azure environment. Supported values are public(default), usgovernment, german and chine
 ```
 
 ### ernest environment update
@@ -698,7 +777,7 @@ NAME:
    ernest environment update - Creates an empty environment based on a specific project
 
 USAGE:
-   ernest environment update [command options] <project> <environment>
+   ernest environment update [command options] $ ernest env update <project> <environment> [--credentials credentials.yml]
 
 DESCRIPTION:
    You must be logged in to execute this command.
@@ -708,23 +787,23 @@ DESCRIPTION:
 
 
 OPTIONS:
-   --sync_interval value                   sets the automatic sync interval. Accepts cron syntax, i.e. '@every 1d', '@weekly' or '0 0 * * * *' (Daily at midnight)
-   --submissions value                     allows user build submissions from users that have only read only permission to an environment. Options are 'enable' or 'disable'
-   --user value                            Your VCloud valid user name
-   --password value                        Your VCloud valid password
-   --org value                             Your vCloud Organization
-   --vse-url value                         VSE URL
-   --vcloud-url value                      VCloud URL
-   --public-network value                  Public Network
-   --vcloud-region value, --reg value      Project region
-   --access_key_id value, -k value         AWS access key id
-   --secret_access_key value, --sak value  AWS Secret access key
-   --region value, -r value                Project region
-   --subscription_id value, -s value       Azure subscription id
-   --client_id value, -c value             Azure client id
-   --client_secret value, -p value         Azure client secret
-   --tenant_id value, -t value             Azure tenant_id
-   --environment value, -e value           Azure environment. Supported values are public(default), usgovernment, german and chine
+   --sync_interval value               sets the automatic sync interval. Accepts cron syntax, i.e. '@every 1d', '@weekly' or '0 0 * * * *' (Daily at midnight)
+   --submissions value                 allows user build submissions from users that have only read only permission to an environment. Options are 'enable' or 'disable'
+   --user value                        Your VCloud valid user name
+   --password value                    Your VCloud valid password
+   --org value                         Your vCloud Organization
+   --vse-url value                     VSE URL
+   --vcloud-url value                  VCloud URL
+   --public-Network value              Public Network
+   --vcloud-region value, --reg value  Project region
+   --region value, -r value            Project region
+   --access_key_id value, -k value     AWS access key id
+   --secret_access_key value           AWS Secret access key
+   --subscription_id value             Azure subscription id
+   --client_id value, -c value         Azure client id
+   --client_secret value, -p value     Azure client secret
+   --tenant_id value, -t value         Azure tenant_id
+   --environment value                 Azure environment. Supported values are public(default), usgovernment, german and chine
 ```
 
 ### ernest environment apply
@@ -734,7 +813,7 @@ NAME:
    ernest environment apply - Builds or changes infrastructure.
 
 USAGE:
-   ernest environment apply [command options] <file.yml>
+   ernest environment apply [command options] $ ernest env apply <file.yml>
 
 DESCRIPTION:
    Sends an environment YAML description file to Ernest to be executed.
@@ -748,23 +827,23 @@ DESCRIPTION:
 
 
 OPTIONS:
-   --dry                                   print the changes to be applied on an environment intead of applying them
-   --credentials value                     will override project information
-   --user value                            Your VCloud valid user name
-   --password value                        Your VCloud valid password
-   --org value                             Your vCloud Organization
-   --vse-url value                         VSE URL
-   --vcloud-url value                      VCloud URL
-   --public-network value                  Public Network
-   --vcloud-region value, --reg value      Project region
-   --access_key_id value, -k value         AWS access key id
-   --secret_access_key value, --sak value  AWS Secret access key
-   --region value, -r value                Project region
-   --subscription_id value, -s value       Azure subscription id
-   --client_id value, -c value             Azure client id
-   --client_secret value, -p value         Azure client secret
-   --tenant_id value, -t value             Azure tenant_id
-   --environment value, -e value           Azure environment. Supported values are public(default), usgovernment, german and chine
+   --dry                               print the changes to be applied on an environment intead of applying them
+   --credentials value                 will override project information
+   --user value                        Your VCloud valid user name
+   --password value                    Your VCloud valid password
+   --org value                         Your vCloud Organization
+   --vse-url value                     VSE URL
+   --vcloud-url value                  VCloud URL
+   --public-Network value              Public Network
+   --vcloud-region value, --reg value  Project region
+   --region value, -r value            Project region
+   --access_key_id value, -k value     AWS access key id
+   --secret_access_key value           AWS Secret access key
+   --subscription_id value             Azure subscription id
+   --client_id value, -c value         Azure client id
+   --client_secret value, -p value     Azure client secret
+   --tenant_id value, -t value         Azure tenant_id
+   --environment value                 Azure environment. Supported values are public(default), usgovernment, german and chine
 ```
 
 ### ernest environment delete
@@ -774,7 +853,7 @@ NAME:
    ernest environment delete - Destroy an environment.
 
 USAGE:
-   ernest environment delete [command options] <project> <environment_name>
+   ernest environment delete [command options] $ ernest env delete <my_project> <my_environment>
 
 DESCRIPTION:
    Destroys an environment by name.
@@ -795,7 +874,7 @@ NAME:
    ernest environment history - Shows the history of an environment, a list of builds
 
 USAGE:
-   ernest environment history ernest-cli env history <my_project> <my_env>
+   ernest environment history $ ernest env history <my_project> <my_env>
 
 DESCRIPTION:
    Shows the history of an environment, a list of builds and its status and basic information.
@@ -811,7 +890,7 @@ NAME:
    ernest environment reset - Reset an in progress environment.
 
 USAGE:
-   ernest environment reset <env_name>
+   ernest environment reset $ ernest env reset <my_env>
 
 DESCRIPTION:
    Reseting an environment creation may cause problems, please make sure you know what are you doing.
@@ -827,7 +906,7 @@ NAME:
    ernest environment revert - Reverts an environment to a previous state
 
 USAGE:
-   ernest environment revert [command options] <project> <env_name> <build_id>
+   ernest environment revert [command options] $ ernest env revert <project> <env_name> <build_id>
 
 DESCRIPTION:
    Reverts an environment to a previous known state using a build ID from 'ernest env history'.
@@ -848,7 +927,7 @@ NAME:
    ernest environment definition - Show the current definition of an environment by its name
 
 USAGE:
-   ernest environment definition [command options] <project_name> <env_name>
+   ernest environment definition [command options] $ ernest env definition <my_project> <my_env>
 
 DESCRIPTION:
    Show the current definition of an environment by its name getting the definition about the build.
@@ -868,7 +947,7 @@ NAME:
    ernest environment info - $ ernest env info <my_env> --build <specific build>
 
 USAGE:
-   ernest environment info [command options] <project_name> <env_name>
+   ernest environment info [command options] $ ernest env definition <my_project> <my_env>
 
 DESCRIPTION:
    Will show detailed information of the last build of a specified environment.
@@ -890,7 +969,7 @@ NAME:
    ernest environment monitor - Monitor an environment creation.
 
 USAGE:
-   ernest environment monitor <project_name> <env_name>
+   ernest environment monitor $ ernest monitor <project_name> <env_name>
 
 DESCRIPTION:
    Monitors an environment while it is being built by its name.
@@ -906,7 +985,7 @@ NAME:
    ernest environment diff - $ ernest env diff <project_name> <env_name> <build_a> <build_b>
 
 USAGE:
-   ernest environment diff <env_aname> <build_a> <build_b>
+   ernest environment diff $ ernest env diff <project_name> <env_name> <build_a> <build_b>
 
 DESCRIPTION:
    Will display the diff between two different builds
@@ -922,7 +1001,7 @@ NAME:
    ernest environment import - $ ernest env import <my_project> <my_env>
 
 USAGE:
-   ernest environment import [command options] <env_name>
+   ernest environment import [command options] $ ernest env import <my_project> <my_env>
 
 DESCRIPTION:
    Will import the environment <my_env> from project <project_name>
@@ -943,7 +1022,7 @@ NAME:
    ernest environment sync - $ ernest env sync <my_project> <my_env>
 
 USAGE:
-   ernest environment sync <project_name> <env_name>
+   ernest environment sync $ ernest env sync <my_project> <my_env>
 
 DESCRIPTION:
    Will sync ernest's environment state from a provider.
@@ -960,7 +1039,7 @@ NAME:
    ernest environment resolve - $ ernest env resolve --[accept|reject|ignore] <my_project> <my_env>
 
 USAGE:
-   ernest environment resolve [command options] <project_name> <env_name>
+   ernest environment resolve [command options] $ ernest env resolve --[accept|reject|ignore] <my_project> <my_env>
 
 DESCRIPTION:
    Provides the ability to manage changes detected by a sync.
@@ -988,7 +1067,7 @@ NAME:
    ernest environment review - $ ernest env review --[accept|reject] <my_project> <my_env>
 
 USAGE:
-   ernest environment review [command options] <project_name> <env_name>
+   ernest environment review [command options] $ ernest env review --[accept|reject] <my_project> <my_env>
 
 DESCRIPTION:
    Provides the ability to review submitted builds. Running without any flags will show the diff of the submitted build with the prior environment state.
@@ -1005,6 +1084,24 @@ DESCRIPTION:
 OPTIONS:
    --accept, -a  Accept Sync changes
    --reject, -r  Reject Sync changes
+```
+
+### ernest environment schedule
+
+```
+NAME:
+   ernest environment schedule - Scheduling environment related subcommands
+
+USAGE:
+   ernest environment schedule command [command options] [arguments...]
+
+COMMANDS:
+     list, a    List environment schedules.
+     add, a     Adds a new schedule for a specific environment.
+     delete, a  Removes a schedule on the specified environment.
+
+OPTIONS:
+   --help, -h  show help
 ```
 
 ### ernest preferences logger list
@@ -1030,7 +1127,7 @@ NAME:
    ernest preferences logger add - Creates / updates a logger based on its type.
 
 USAGE:
-   ernest preferences logger add [command options]
+   ernest preferences logger add [command options] $ ernest preferences logger add [basic|logstash|rollbar]
 
 DESCRIPTION:
    Creates / updates a logger based on its types.
@@ -1057,7 +1154,7 @@ NAME:
    ernest preferences logger delete - Deletes a logger based on its type.
 
 USAGE:
-   ernest preferences logger delete
+   ernest preferences logger delete $ ernest preferences logger delete [basic|logstash|rollbar]
 
 DESCRIPTION:
    Deletes a logger based on its types.
@@ -1082,51 +1179,6 @@ DESCRIPTION:
      $ ernest docs
 ```
 
-### ernest setup
-
-```
-NAME:
-   ernest setup - Use it to setup your ernest instance
-
-USAGE:
-   ernest setup [command options] [arguments...]
-
-DESCRIPTION:
-   This command will help you to setup your ernest instance by:
-   - [ ] configure ernest-cli target
-   - [ ] create a plain user
-   - [ ] create a group
-   - [ ] link the user to the group
-   - [ ] login as the newly created user.
-   - [ ] create a new project (optional)
-
-
-OPTIONS:
-   --user value, -u value      Admin user
-   --password value, -p value  Admin password
-   --target value, -t value    Ernest location
-```
-
-### ernest component list
-
-```
-NAME:
-   ernest component list - List components on your project.
-
-USAGE:
-   ernest component list [command options] [arguments...]
-
-DESCRIPTION:
-   List all components on your project.
-
-   Example:
-     $ ernest component list my_project ebs --environment=my_env
-
-
-OPTIONS:
-   --environment value  You can filter by environment
-```
-
 ### ernest log
 
 ```
@@ -1142,10 +1194,6 @@ DESCRIPTION:
    Example:
      $ ernest log
      $ ernest log --raw
-
-
-OPTIONS:
-   --raw  Raw output will be displayed instead of pretty-printed
 ```
 
 ### ernest usage
@@ -1195,7 +1243,7 @@ NAME:
    ernest notify create - Create a new notify.
 
 USAGE:
-   ernest notify create <notify_name> <notify_type> <notify_config>
+   ernest notify create $ ernest notify create <notify_name> <notify_type> <notify_config>
 
 DESCRIPTION:
    Create a new notify on the targeted instance of Ernest.
@@ -1215,7 +1263,7 @@ NAME:
    ernest notify update - Update a new notify.
 
 USAGE:
-   ernest notify update <notify_name> <notify_config>
+   ernest notify update $ ernest notify update <notify_name> <notify_config>
 
 DESCRIPTION:
    Update an existing notify on the targeted instance of Ernest.
@@ -1235,7 +1283,7 @@ NAME:
    ernest notify delete - Deletes an existing notify.
 
 USAGE:
-   ernest notify delete <notify_name>
+   ernest notify delete $ ernest notify delete <notify_name>
 
 DESCRIPTION:
    Deletes an existing notify on the targeted instance of Ernest.
@@ -1255,7 +1303,7 @@ NAME:
    ernest notify add - Add environment to an existing notify.
 
 USAGE:
-   ernest notify add <notification_name> <project_name> [<env_name>]
+   ernest notify add $ ernest notify add <notification_name> <project_name> [<env_name>]
 
 DESCRIPTION:
    Adds a environment to an existing notify.
@@ -1276,7 +1324,7 @@ NAME:
    ernest notify remove - Removes an environment to an existing notify.
 
 USAGE:
-   ernest notify remove <notify_name> <project_name> [<env_name>]
+   ernest notify remove $ ernest notify remove <notify_name> <project_name> [<env_name>]
 
 DESCRIPTION:
    Removes an environment to an existing notify.
@@ -1297,7 +1345,7 @@ NAME:
    ernest role set - ernest role set -u john -r owner -p project
 
 USAGE:
-   ernest role set [command options]
+   ernest role set [command options] $ ernest roles set -u john -r owner -p my_project [-e my_environment]
 
 DESCRIPTION:
    Set permissions for a user on a specific resource
@@ -1312,6 +1360,7 @@ OPTIONS:
    --project value, -p value      Project to authorize
    --role value, -r value         Role type [owner, reader]
    --environment value, -e value  Environment to authorize
+   --policy value, --pl value     Policy to authorize
 ```
 
 ### ernest role unset
@@ -1321,7 +1370,7 @@ NAME:
    ernest role unset - ernest role unset -u john -r owner -p my_project
 
 USAGE:
-   ernest role unset [command options]
+   ernest role unset [command options] $ ernest roles set -u john -r reader -p my_project [-e my_environment]
 
 DESCRIPTION:
    Set permissions for a user on a specific resource
@@ -1330,11 +1379,11 @@ DESCRIPTION:
      $ ernest roles set -u john -r owner -p my_project
      $ ernest roles set -u john -r reader -p my_project -e my_environment
 
-
 OPTIONS:
    --user value, -u value         User to be authorized over the given resource
    --project value, -p value      Project to authorize
    --role value, -r value         Role type [owner, reader]
    --environment value, -e value  Environment to authorize
+   --policy value, --pl value     Policy to authorize
 ```
 
