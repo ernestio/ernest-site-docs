@@ -48,7 +48,7 @@ Ernest, the Ernest CLI, the VSE Creator Service, and the Ernest Site (this websi
 </table>
 
 ## Social
-Follow us on [Twitter](https://twitter.com/r3labs) and [Facebook](https://www.facebook.com/r3labsio/).
+Follow us on [Twitter](https://twitter.com/ernest_io).
 
 ## Code of conduct
 This code of conduct outlines our expectations for participants within the Ernest community, as well as steps to reporting unacceptable behavior. We are committed to providing a welcoming and inspiring community for all and expect our code of conduct to be honored. Anyone who violates this code of conduct may be banned from the community.
@@ -123,7 +123,7 @@ We encourage everyone to participate and are committed to building a community f
 Although this list cannot be exhaustive, we explicitly honor diversity in age, gender, gender identity or expression, culture, ethnicity, language, national origin, political beliefs, profession, race, religion, sexual orientation, socioeconomic status, and technical ability. We will not tolerate discrimination based on any of the protected characteristics above, including participants with disabilities.
 
 ## Reporting Issues
-If you experience or witness unacceptable behavior—or have any other concerns—please report it by contacting us via codeofconduct@r3labs.io. All reports will be handled with discretion. In your report please include:
+If you experience or witness unacceptable behavior—or have any other concerns—please report it by contacting us via codeofconduct@ernest.io. All reports will be handled with discretion. In your report please include:
 
 ### Your contact information.
 

@@ -145,7 +145,7 @@ When a completed component event is received, the latest service mapping is retr
 
 If an errored component is received, scheduler will wait for all other in flight components to complete before sending an error back to the user. No other components will be sent in this errored state.
 
-The graph library utilised by the scheduler can be found at [graph library](https://github.com/r3labs/graph).
+The graph library utilised by the scheduler can be found at [graph library](https://github.com/ernestio/graph).
 
 ### External Dependencies
 

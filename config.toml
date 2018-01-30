@@ -42,9 +42,9 @@ googleAnalytics = "UA-86033085-1"
 
 
 [social]
-	twitter = "R3Labs"
+	twitter = "ernest_io"
 	github  = "ernestio"
-	email   = "info@r3labs.io"
+	email   = "info@ernest.io"
 
 
 [[menu.main]]
