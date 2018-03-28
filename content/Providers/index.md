@@ -727,7 +727,7 @@ rds_clusters:
     engine_version: 1.9
     public: false
     port: 3306
-    availablily_zones:
+    availability_zones:
       - eu-west-1a
       - eu-west-1b
       - eu-west-1c
